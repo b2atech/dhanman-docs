@@ -3,6 +3,9 @@ C:\Users\DELL\source\repos\dhanman-sales\src\Core\Dhanman.Sales.Domain\Entities\
 
 Create class
 C:\Users\DELL\source\repos\dhanman-sales\src\Core\Dhanman.Sales.Domain\Entities\InvoiceWorkflow\InvoiceWorkflow.cs
+![Example Screenshot](C:\Users\DELL\Pictures\Screenshots\Class.png)
+
+
 
 Create repository 
 C:\Users\DELL\source\repos\dhanman-sales\src\Core\Dhanman.Sales.Domain\Abstractions\IInvoiceWorkflowRepository.cs
