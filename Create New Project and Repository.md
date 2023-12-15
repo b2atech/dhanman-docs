@@ -21,7 +21,7 @@ template.json
     "preferNameDirectory": "true"
 }
 
-For create template   C:\Users\DELL\source\repos\dhanman-sales>dotnet new --install ./
-For uninstall template  C:\Users\DELL\source\repos\dhanman-sales>dotnet new uninstall C:\Users\DELL\source\repos\dhanman-sale
-For create project C:\Users\DELL\source\repos>dotnet new DhanmanCleanArch -o dhanman.timesheet
+**For create template**   C:\Users\DELL\source\repos\dhanman-sales>dotnet new --install ./
+**For uninstall template**  C:\Users\DELL\source\repos\dhanman-sales>dotnet new uninstall C:\Users\DELL\source\repos\dhanman-sale
+**For create project** C:\Users\DELL\source\repos>dotnet new DhanmanCleanArch -o dhanman.timesheet
 
