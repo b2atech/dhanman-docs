@@ -10,16 +10,9 @@
 
 ![image](https://github.com/b2atech/dhanman-docs/assets/91184041/291c7ff7-4dce-4a5a-91d4-10d570dd9a81)
 
-Create folder 
-C:\Users\DELL\source\repos\dhanman-timesheet\src\Core\Dhanman.TimeSheet.Domain\Entities\**Tasks** 
-
-
-Create class
+## Create repository 
 
  
-
-
-Create repository 
 C:\Users\DELL\source\repos\dhanman-sales\src\Core\Dhanman.Sales.Domain\Abstractions\IInvoiceWorkflowRepository.cs
  
 
