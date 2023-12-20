@@ -10,6 +10,42 @@
 
 ![image](https://github.com/b2atech/dhanman-docs/assets/91184041/291c7ff7-4dce-4a5a-91d4-10d570dd9a81)
 
+Code for above class 
+ 
+```using B2aTech.CrossCuttingConcern.Core.Abstractions;
+using B2aTech.CrossCuttingConcern.Core.Primitives;
+
+namespace Dhanman.TimeSheet.Domain.Entities.Tasks;
+
+public class Task : Entity, IAuditableEntity, ISoftDeletableEntity
+{
+
+    #region Properties
+    public Guid ProjectId { get; set; }
+    public Guid ParentTaskId { get; set; }
+    public string Name { get; set; }
+    public int PlannedHours { get; set; }
+    public DateTime CreatedOnUtc { get; }
+    public DateTime? ModifiedOnUtc { get; set; }
+    public DateTime? DeletedOnUtc { get; }
+    public bool IsDeleted { get; set; }
+    public Guid CreatedBy { get; set; }
+    public Guid? ModifiedBy { get; set; }
+    #endregion
+
+    #region Constructor
+    public Task(Guid projectId, Guid parentTaskId, string name, int plannedHours, DateTime createdOnUtc, Guid createdBy)
+    {
+        ProjectId = projectId;
+        ParentTaskId = parentTaskId;
+        Name = name;
+        PlannedHours = plannedHours;
+        CreatedOnUtc = createdOnUtc;
+        CreatedBy = createdBy;
+    }
+    #endregion
+}
+```
 ## Create repository 
 
  
