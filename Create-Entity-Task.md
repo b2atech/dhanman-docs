@@ -10,7 +10,7 @@
 
 ![image](https://github.com/b2atech/dhanman-docs/assets/91184041/291c7ff7-4dce-4a5a-91d4-10d570dd9a81)
 
-Code for above class 
+You can copy code for above class 
  
 ```using B2aTech.CrossCuttingConcern.Core.Abstractions;
 using B2aTech.CrossCuttingConcern.Core.Primitives;
