@@ -1,7 +1,7 @@
 # Create Entity Task 
 
 ## Create folder
-- C:\Users\DELL\source\repos\dhanman-timesheet\src\Core\Dhanman.TimeSheet.Domain\Entities\Tasks 
+C:\Users\DELL\source\repos\dhanman-timesheet\src\Core\Dhanman.TimeSheet.Domain\Entities\Tasks 
 
 ![image](https://github.com/b2atech/dhanman-docs/assets/91184041/06e939ca-32c8-4a8f-92d8-1b364834f5c6)
 
