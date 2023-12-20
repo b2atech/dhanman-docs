@@ -34,8 +34,9 @@ public class Task : Entity, IAuditableEntity, ISoftDeletableEntity
     #endregion
 
     #region Constructor
-    public Task(Guid projectId, Guid parentTaskId, string name, int plannedHours, DateTime createdOnUtc, Guid createdBy)
+    public Task(Guid id, Guid projectId, Guid parentTaskId, string name, int plannedHours, DateTime createdOnUtc, Guid createdBy)
     {
+        Id = id;
         ProjectId = projectId;
         ParentTaskId = parentTaskId;
         Name = name;
