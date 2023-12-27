@@ -17,43 +17,53 @@ AddElementTag("backendContainer", $fontColor=$ELEMENT_FONT_COLOR, $bgColor="#335
 AddRelTag("async", $textColor=$ARROW_FONT_COLOR, $lineColor=$ARROW_COLOR, $lineStyle=DashedLine())
 AddRelTag("sync/async", $textColor=$ARROW_FONT_COLOR, $lineColor=$ARROW_COLOR, $lineStyle=DottedLine())
 
-title Container diagram for Backend sales Project one endpoint flow
+title Service code flow
 
-Person(customer, Customer, "A user of the system, with a company")
+Person(consumer, Consumer, "End point consumer")
 
-System_Boundary(c1, "Api.Controllers"){
-    Container(web_app, "Invoice Controller", "C#", "")
+System_Boundary(ExceptionHandler, "Middlewares"){
+    Container(ex_middleware, "Exception Handler Middleware", "C#", "")
+}
+
+
+System_Boundary(controller, "Api.Controllers"){
+    Container(apiEndpoint, "Controller", "C#", "")
 }
 System_Boundary(cm, "Middlewares"){
     Container(ex_middleware, "Exception Handler Middleware", "C#", "")
 }
-System_Boundary(cm, "Middlewares"){
-    Container(ex_middleware, "Exception Handler Middleware", "C#", "")
-}
-System_Boundary(c_mediator, "Mediator"){
-    APIGateway(mediator, "Mediator", "Send")
-}
-System_Boundary(c_mediator, "Mediator"){
-    APIGateway(mediator, "Mediator", "Send")
-}
+' System_Boundary(c_mediator, "Mediator"){
+'     APIGateway(mediator, "Mediator", "Send")
+' }
+' System_Boundary(c_mediator, "Mediator"){
+'     APIGateway(mediator, "Mediator", "Send")
+' }
 System_Boundary(c_query, "Query"){
     APIGateway(query, "Query", "Send")
+}
+
+System_Boundary(UnitOfWorkBehaviour, "Unit Of Work"){
+    APIGateway(unitOfWork, "Handle", "Handle")
 }
 System_Boundary(c_queryHandler, "Query Handler"){
     APIGateway(queryHandler, "Query Handler", "Send")
 }
-System_Boundary(c_UnitOfWorkBehaviour, "Unit Of Work Behaviour"){
-    APIGateway(unitOfWorkBehaviour, "Unit Of Work Behaviour", "Send")
+
+System_Boundary(c_dbContext, "DB Context"){
+    ContainerDb(dbContext, "query", "Entity Framework")
 }
 
 
-Rel(customer, ex_middleware, "Uses", "HTTPS")
+Rel(consumer, ex_middleware, "calls", "HTTPS")
 
-Rel(ex_middleware, web_app,  "Uses", "async, JSON/HTTPS", $tags="async")
-Rel(web_app, query,  "Uses", "async, JSON/HTTPS", $tags="async")
-Rel(query, mediator,  "Uses", "async, JSON/HTTPS", $tags="async")
-Rel(mediator, queryHandler,  "Uses", "async, JSON/HTTPS", $tags="async")
-Rel( queryHandler, unitOfWorkBehaviour, "Uses", "async, JSON/HTTPS", $tags="async")
-
+Rel(ex_middleware, apiEndpoint,  "Uses", "async, JSON/HTTPS", $tags="async")
+Rel(apiEndpoint, query,  "Uses", "async, JSON/HTTPS", $tags="async")
+Rel(query, unitOfWork,  "Uses", "async, JSON/HTTPS", $tags="async")
+Rel(unitOfWork, queryHandler,  "Uses", "async, JSON/HTTPS", $tags="async")
+Rel( queryHandler, c_dbContext, "Uses", "Entity Framework", $tags="async")
+Rel( c_dbContext, queryHandler, "Returns", "Result", $tags="async")
+Rel(queryHandler,unitOfWork, "Returns", "Result", $tags="async")
+Rel(unitOfWork,query, "Returns", "Result", $tags="async")
+Rel(query,apiEndpoint, "Returns", "Result", $tags="async")
 @enduml
 *

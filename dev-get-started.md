@@ -25,3 +25,9 @@ Dholya2480!
 - [dhanman-purchase](https://github.com/b2atech/dhanman-purchase)https://github.com/b2atech/dhanman-purchase
 - [dhanman-documents](https://github.com/b2atech/dhanman-documents)https://github.com/b2atech/dhanman-documents
 - [dhanman-money](https://github.com/b2atech/dhanman-money)https://github.com/b2atech/dhanman-money
+
+
+## How to use Plant UML on VS Code
+- Plant UML Plugin 
+![Alt text](images/plantUML.webp)
+- [JDK](https://www.oracle.com/java/technologies/downloads/#jdk21-windows) JDK
