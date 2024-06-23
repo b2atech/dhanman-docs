@@ -3,28 +3,10 @@ site_name: DhanMan
 nav:
   - Home: index.md
   - Accounting Entries:
-      - Accounting Transactions: accounting_entries/entries.md
-      - Accounting Transactions Samples: accounting_entries/entries_samples.md
-      - Customer Credit Note: accounting_entries/customer_credit_note.md
-      - Customer Debit Note: accounting_entries/customer_debit_note.md
-      - Vendor Credit Note: accounting_entries/vendor_credit_note.md
-      - Vendor Debit Note: accounting_entries/vendor_debit_note.md
-      - Sales Transactions: accounting_entries/sales_transactions.md
       - Purchase Transactions: accounting_entries/purchase_transactions.md
-      - Sales Returns: accounting_entries/sales_returns.md
-      - Purchase Returns: accounting_entries/purchase_returns.md
-      - Depreciation: accounting_entries/depreciation.md
-      - Amortization: accounting_entries/amortization.md
-      - Accrued Expense Adjustment: accounting_entries/accrued_expense_adjustment.md
-      - Prepaid Expense Adjustment: accounting_entries/prepaid_expense_adjustment.md
-      - Unearned Revenue Adjustment: accounting_entries/unearned_revenue_adjustment.md
-      - Bad Debt Write-off: accounting_entries/bad_debt_write_off.md
-      - Fixed Asset Purchase: accounting_entries/fixed_asset_purchase.md
-      - Payroll Transactions: accounting_entries/payroll_transactions.md
-      - Loan Transactions: accounting_entries/loan_transactions.md
-      - Intercompany Transactions: accounting_entries/intercompany_transactions.md
-      - Manual Journal Entries: accounting_entries/manual_journal.md
-      - Other Transactions: accounting_entries/entries_others.md
+      - Sales Transactions: accounting_entries/sales_transactions.md
+      - Other Entries: accounting_entries/entries_others.md
+      - Sample Entries: accounting_entries/entries_samples.md
   - Financial Reports:
       - Ledger of Customers: financial_reports/ledger_of_customers.md
       - Ledger of Vendors: financial_reports/ledger_of_vendors.md

@@ -1,9 +1,10 @@
-# Sales Transactions
+# Sales
 
 ## Sales Transaction
 A sales transaction is recorded when goods or services are sold to a customer.
 
 **Accounts Affected:**
+
 - **Sales Revenue (Revenue)**: Increase (Credit)
   - Account: `40010 Domestic Sales` or `40110 Export Sales`
 - **Accounts Receivable (Asset)**: Increase (Debit)
@@ -21,6 +22,7 @@ A sales transaction is recorded when goods or services are sold to a customer.
 Sales returns occur when customers return previously sold goods.
 
 **Accounts Affected:**
+
 - **Sales Revenue (Revenue)**: Decrease (Debit)
   - Account: `40010 Domestic Sales` or `40110 Export Sales`
 - **Accounts Receivable (Asset)**: Decrease (Credit)
@@ -38,6 +40,7 @@ Sales returns occur when customers return previously sold goods.
 Sales discounts are reductions in the amount owed by customers, usually offered for early payment.
 
 **Accounts Affected:**
+
 - **Sales Revenue (Revenue)**: Decrease (Debit)
   - Account: `40010 Domestic Sales` or `40110 Export Sales`
 - **Accounts Receivable (Asset)**: Decrease (Credit)
@@ -47,6 +50,7 @@ Sales discounts are reductions in the amount owed by customers, usually offered 
 Cash sales occur when goods or services are sold, and payment is received immediately in cash.
 
 **Accounts Affected:**
+
 - **Sales Revenue (Revenue)**: Increase (Credit)
   - Account: `40010 Domestic Sales` or `40110 Export Sales`
 - **Cash and Cash Equivalents (Asset)**: Increase (Debit)
@@ -64,6 +68,7 @@ Cash sales occur when goods or services are sold, and payment is received immedi
 Credit sales occur when goods or services are sold, and payment is received at a later date.
 
 **Accounts Affected:**
+
 - **Sales Revenue (Revenue)**: Increase (Credit)
   - Account: `40010 Domestic Sales` or `40110 Export Sales`
 - **Accounts Receivable (Asset)**: Increase (Debit)
