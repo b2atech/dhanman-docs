@@ -2,6 +2,7 @@ site_name: DhanMan
 
 nav:
   - Home: index.md
+  - Authentication: authentication-authorization.md
   - Accounting Entries:
       - Purchase Transactions: accounting_entries/purchase_transactions.md
       - Sales Transactions: accounting_entries/sales_transactions.md
