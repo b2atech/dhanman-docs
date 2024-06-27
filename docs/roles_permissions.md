@@ -1,0 +1,76 @@
+# Roles and Permissions Management
+## Roles
+- ### Society
+    - Community Admin
+    - Society Manager
+    - Society Admin
+    - Society Security Admin
+    - Treasurer
+    - Utility Manager
+    - Helpdesk Manager
+    - Readonly Admin
+    - Accountant
+    - Auditor
+
+## Permissions
+- ### Society
+    - Role
+    - Committee Members
+    - Members and Owners
+    - Tenants
+    - Staff Management
+    - Staff Attendance
+    - Staff Payroll
+    - Residents
+    - Apartment Category
+    - Vendors
+    - Vendor Details
+    - Maintenance Staff
+- ### Communication
+    - Broadcast Communication
+    - Push Notification
+    - SMS
+    - Email
+    - Notice Board
+- ### Facilities
+    - Amenities
+    - Facility Booking
+    - Asset Management
+    - Service Requests
+    - Service Providers
+- ### Services
+    - Water Management
+    - Power Management
+    - Garbage Management
+    - Security Management
+    - Parking Management
+    - Housekeeping
+- ### Assets & Inventory
+    - Assets
+    - Assets Category
+    - Inventory
+- ### Accounts
+    - Budget
+    - Invoicing
+    - Billing Details
+    - Dues and Receipts
+    - Purchasing
+    - Voucher
+    - Bank Accounts
+    - Chart of Accounts
+    - Statutory Registers
+    - Audit Logs
+- ### Financial Reports
+    - Dues and Advance Collection
+    - Income and Expense Analysis
+    - Account Balance Reports
+    - Final Account
+    - Ledgers
+    - Tax Reports
+    - Uploads and Downloads
+- ### Settings
+    - Resident and Visitor Management Settings
+    - Maintenance and Account Settings
+    - Financial Year
+    - Non Association Settlement
+    - Visitor Data Retention Setting
