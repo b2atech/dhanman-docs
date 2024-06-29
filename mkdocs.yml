@@ -3,7 +3,9 @@ site_name: DhanMan
 nav:
   - Home: index.md
   - Authentication: authentication-authorization.md
-  - Roles-Permissions: roles_permissions.md
+  - Permissions:
+      - Common: permissions\common.md
+      - Sales: permissions\sales.md
   - Accounting Entries:
       - Purchase Transactions: accounting_entries/purchase_transactions.md
       - Sales Transactions: accounting_entries/sales_transactions.md
@@ -19,7 +21,7 @@ nav:
       - Accounts Receivable Aging Report: financial_reports/accounts_receivable_aging_report.md
       - Accounts Payable Aging Report: financial_reports/accounts _payable_aging_report.md
       - Pending Dues Report: financial_reports/pending_dues_report.md
-      
+  - Office Etiquette Policy: policies/office_etiquette_policy.md
   - Guide:
       - Overview: guide/overview.md
       - Installation: guide/installation.md
