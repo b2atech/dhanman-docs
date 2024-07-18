@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../sales_transactions/">
+      
+      
+        <link rel="next" href="../entries_others/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -16,7 +20,7 @@
     
     
       
-        <title>Clean code principle - c - DhanMan</title>
+        <title>Payroll Transactions - DhanMan</title>
       
     
     
@@ -62,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#clean-code-principle-c" class="md-skip">
+        <a href="#integrating-into-the-payroll-system" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Clean code principle - c
+              Payroll Transactions
             
           </span>
         </div>
@@ -312,17 +316,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -336,7 +342,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Accounting Entries
@@ -350,7 +356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../accounting_entries/purchase_transactions/" class="md-nav__link">
+      <a href="../purchase_transactions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -371,7 +377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../accounting_entries/sales_transactions/" class="md-nav__link">
+      <a href="../sales_transactions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -389,10 +395,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../accounting_entries/payroll_transactions/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Payroll Transactions
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -401,6 +425,57 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#integrating-into-the-payroll-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integrating into the Payroll System
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integrating into the Payroll System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#payroll-processing-accrued-salaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Payroll Processing (Accrued Salaries)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#salary-payment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Salary Payment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -413,7 +488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../accounting_entries/entries_others/" class="md-nav__link">
+      <a href="../entries_others/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -434,7 +509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../accounting_entries/entries_samples/" class="md-nav__link">
+      <a href="../entries_samples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -917,7 +992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cc_principle_backend/" class="md-nav__link">
+      <a href="../../coding_conventions/cc_principle_backend/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1060,8 +1135,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1070,74 +1143,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-use-default-import-to-import-react" class="md-nav__link">
+  <a href="#integrating-into-the-payroll-system" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Use Default import to import React
+      Integrating into the Payroll System
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integrating into the Payroll System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#payroll-processing-accrued-salaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Payroll Processing (Accrued Salaries)
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#2-dont-use-constructor-for-class-components" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#salary-payment" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Don’t use constructor for class components
+      Salary Payment
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3-dont-use-public-accessor-within-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Don’t use public accessor within classes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-dont-use-private-accessor-within-component-class" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Don’t use private accessor within Component class
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-dont-use-method-declaration-within-interfacetype-alias" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Don’t use method declaration within interface/type alias
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-move-unrelated-code-into-a-separate-component" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Move unrelated code into a separate component
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-create-separate-files-for-each-component" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Create separate files for each component
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-format-your-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      9. Format your code
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1156,134 +1190,95 @@
                   
 
 
-<h1 id="clean-code-principle-c">Clean code principle - c<a class="headerlink" href="#clean-code-principle-c" title="Permanent link">&para;</a></h1>
-<h2 id="1-use-default-import-to-import-react">1. Use Default import to import React<a class="headerlink" href="#1-use-default-import-to-import-react" title="Permanent link">&para;</a></h2>
-<p>Don't </p>
-<div class="codehilite"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
-</code></pre></div>
+  <h1>Payroll Transactions</h1>
 
-<p>Do </p>
-<div class="codehilite"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">useContext</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
-</code></pre></div>
-
-<p>Note: Use this option by adding in configure the tsconfig.json file as seen below:</p>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;compilerOptions&quot;</span><span class="o">:</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="s2">&quot;esModuleInterop&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<h2 id="2-dont-use-constructor-for-class-components">2. Don’t use constructor for class components<a class="headerlink" href="#2-dont-use-constructor-for-class-components" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Don&#39;t do</span>
-<span class="nx">type</span><span class="w"> </span><span class="nx">State</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">count</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">}</span>
-<span class="nx">type</span><span class="w"> </span><span class="nx">Props</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
-
-
-<span class="kd">class</span><span class="w"> </span><span class="nx">Counter</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Component</span><span class="o">&lt;</span><span class="nx">Props</span><span class="p">,</span><span class="w"> </span><span class="nx">State</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">props</span><span class="o">:</span><span class="nx">Props</span><span class="p">){</span>
-<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">count</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-
-
-<span class="c1">// Do</span>
-<span class="nx">type</span><span class="w"> </span><span class="nx">State</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">count</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">}</span>
-<span class="nx">type</span><span class="w"> </span><span class="nx">Props</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
-
-
-<span class="kd">class</span><span class="w"> </span><span class="nx">Counter</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Component</span><span class="o">&lt;</span><span class="nx">Props</span><span class="p">,</span><span class="w"> </span><span class="nx">State</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">count</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<h2 id="3-dont-use-public-accessor-within-classes">3. Don’t use public accessor within classes<a class="headerlink" href="#3-dont-use-public-accessor-within-classes" title="Permanent link">&para;</a></h2>
-<p>Don't</p>
-<div class="codehilite"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span>
-
-<span class="kd">class</span><span class="w"> </span><span class="nx">Friends</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kr">public</span><span class="w"> </span><span class="nx">fetchFriends</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
-<span class="w">    </span><span class="kr">public</span><span class="w"> </span><span class="nx">render</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="c1">// jsx blob</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<p>Do</p>
-<div class="codehilite"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span>
-
-<span class="kd">class</span><span class="w"> </span><span class="nx">Friends</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">fetchFriends</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
-<span class="w">    </span><span class="nx">render</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="c1">// jsx blob</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<h2 id="4-dont-use-private-accessor-within-component-class">4. Don’t use private accessor within Component class<a class="headerlink" href="#4-dont-use-private-accessor-within-component-class" title="Permanent link">&para;</a></h2>
-<p>Don't</p>
-<div class="codehilite"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Component</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span>
-
-<span class="kd">class</span><span class="w"> </span><span class="nx">Friends</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kr">private</span><span class="w"> </span><span class="nx">fetchProfileByID</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
-
-<span class="w">  </span><span class="nx">render</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="c1">// jsx blob</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<p>Do</p>
-<div class="codehilite"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Component</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="kd">class</span><span class="w"> </span><span class="nx">Friends</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">_fetchProfileByID</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
-
-<span class="w">  </span><span class="nx">render</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="c1">// jsx blob</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<ol>
-<li>Don’t use enum</li>
-</ol>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Don&#39;t do this</span>
-<span class="kr">enum</span><span class="w"> </span><span class="nx">Response</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">Successful</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">Failed</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">Pending</span>
-<span class="p">}</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">fetchData</span><span class="w"> </span><span class="p">(</span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="nx">Response</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// some code.</span>
-<span class="p">}</span>
-
-<span class="c1">// Do this</span>
-<span class="nx">type</span><span class="w"> </span><span class="nx">Response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Sucessful</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">Failed</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">Pending</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">fetchData</span><span class="w"> </span><span class="p">(</span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="nx">Response</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// some code.</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<h2 id="6-dont-use-method-declaration-within-interfacetype-alias">6. Don’t use method declaration within interface/type alias<a class="headerlink" href="#6-dont-use-method-declaration-within-interfacetype-alias" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Don&#39;t do</span>
-<span class="kr">interface</span><span class="w"> </span><span class="nx">Counter</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">start</span><span class="p">(</span><span class="nx">count</span><span class="o">:</span><span class="nx">number</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
-<span class="w">  </span><span class="nx">reset</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span>
-<span class="p">}</span>
-
-<span class="c1">// Do</span>
-<span class="kr">interface</span><span class="w"> </span><span class="nx">Counter</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">start</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">count</span><span class="o">:</span><span class="nx">number</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">string</span>
-<span class="w">  </span><span class="nx">reset</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">string</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<h2 id="7-move-unrelated-code-into-a-separate-component">7. Move unrelated code into a separate component<a class="headerlink" href="#7-move-unrelated-code-into-a-separate-component" title="Permanent link">&para;</a></h2>
-<h2 id="8-create-separate-files-for-each-component">8. Create separate files for each component<a class="headerlink" href="#8-create-separate-files-for-each-component" title="Permanent link">&para;</a></h2>
-<h2 id="9-format-your-code">9. Format your code<a class="headerlink" href="#9-format-your-code" title="Permanent link">&para;</a></h2>
+<h3 id="integrating-into-the-payroll-system">Integrating into the Payroll System<a class="headerlink" href="#integrating-into-the-payroll-system" title="Permanent link">&para;</a></h3>
+<h4 id="payroll-processing-accrued-salaries">Payroll Processing (Accrued Salaries)<a class="headerlink" href="#payroll-processing-accrued-salaries" title="Permanent link">&para;</a></h4>
+<p><strong>Accounts Affected:</strong></p>
+<ul>
+<li><strong>Salaries and Wages (Expense):</strong> Increase (Debit)</li>
+<li>Account: <code>51710 Salaries and Wages</code></li>
+<li><strong>Payroll Taxes (Expense):</strong> Increase (Debit)</li>
+<li>Account: <code>51810 Payroll Taxes</code></li>
+<li><strong>Employee Benefits (Expense):</strong> Increase (Debit)</li>
+<li>Account: <code>51910 Employee Benefits</code></li>
+<li><strong>Provident Fund Payable (Liability):</strong> Increase (Credit)</li>
+<li>Account: <code>23040 Provident Fund Payable</code></li>
+<li><strong>Income Tax Payable (Liability):</strong> Increase (Credit)</li>
+<li>Account: <code>23050 Income Tax Payable</code></li>
+<li><strong>Salaries Payable (Liability):</strong> Increase (Credit)</li>
+<li>Account: <code>21020 Salaries Payable</code></li>
+</ul>
+<p><strong>Example Journal Entry:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Account</th>
+<th>Debit</th>
+<th>Credit</th>
+<th>Increase/Decrease</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024-07-31</td>
+<td>Salaries and Wages (Expense)</td>
+<td>10,000.00</td>
+<td></td>
+<td>Increase (Debit)</td>
+</tr>
+<tr>
+<td>2024-07-31</td>
+<td>Payroll Taxes (Expense)</td>
+<td>1,000.00</td>
+<td></td>
+<td>Increase (Debit)</td>
+</tr>
+<tr>
+<td>2024-07-31</td>
+<td>Employee Benefits (Expense)</td>
+<td>500.00</td>
+<td></td>
+<td>Increase (Debit)</td>
+</tr>
+<tr>
+<td>2024-07-31</td>
+<td>Provident Fund Payable (Liability)</td>
+<td></td>
+<td>800.00</td>
+<td>Increase (Credit)</td>
+</tr>
+<tr>
+<td>2024-07-31</td>
+<td>Income Tax Payable (Liability)</td>
+<td></td>
+<td>700.00</td>
+<td>Increase (Credit)</td>
+</tr>
+<tr>
+<td>2024-07-31</td>
+<td>Salaries Payable (Liability)</td>
+<td></td>
+<td>10,000.00</td>
+<td>Increase (Credit)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="salary-payment">Salary Payment<a class="headerlink" href="#salary-payment" title="Permanent link">&para;</a></h4>
+<p><strong>Accounts Affected:</strong></p>
+<ul>
+<li><strong>Salaries Payable (Liability):</strong> Decrease (Debit)</li>
+<li>Account: <code>21020 Salaries Payable</code></li>
+<li><strong>Cash and Cash Equivalents (Asset):</strong> Decrease (Credit)</li>
+<li>Account: <code>11120 Bank Accounts</code></li>
+</ul>
+<p><strong>Example Journal Entry:</strong>
+| Date | Account | Debit | Credit | Increase/Decrease |
+|------------|--------------------------------|---------|---------|-------------------|
+| 2024-08-01 | Salaries Payable (Liability) | 10,000.00| | Decrease (Debit) |
+| 2024-08-01 | Bank Accounts (Asset) | | 10,000.00| Decrease (Credit) |</p>
+<p>By structuring your payroll system in this way, you ensure that you have a comprehensive and flexible setup that can handle various payroll-related scenarios and provide accurate accounting entries.</p>
 
 
 
