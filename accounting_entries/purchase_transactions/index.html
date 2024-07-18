@@ -446,6 +446,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#process-for-recording-and-paying-bills" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process for Recording and Paying Bills
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process for Recording and Paying Bills">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-the-bill-in-the-purchase-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Create the Bill in the Purchase Module
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-make-the-payment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Make the Payment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explanation-and-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation and Best Practices
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1184,6 +1226,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#process-for-recording-and-paying-bills" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process for Recording and Paying Bills
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process for Recording and Paying Bills">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-the-bill-in-the-purchase-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Create the Bill in the Purchase Module
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-make-the-payment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Make the Payment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explanation-and-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation and Best Practices
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1269,6 +1353,80 @@
 <li>Account: <code>11420 CGST Receivable</code></li>
 <li>Account: <code>11430 IGST Receivable</code></li>
 </ul>
+<h2 id="process-for-recording-and-paying-bills">Process for Recording and Paying Bills<a class="headerlink" href="#process-for-recording-and-paying-bills" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-create-the-bill-in-the-purchase-module">Step 1: Create the Bill in the Purchase Module<a class="headerlink" href="#step-1-create-the-bill-in-the-purchase-module" title="Permanent link">&para;</a></h3>
+<p><strong>Accounts Affected:</strong></p>
+<ul>
+<li><strong>Electricity Expense (Expense):</strong> Increase (Debit)</li>
+<li>Account: <code>51510 Electricity Expense</code></li>
+<li><strong>Trade Payables (Liability):</strong> Increase (Credit)</li>
+<li>Account: <code>21010 Trade Payables</code></li>
+</ul>
+<p><strong>Example Journal Entry for Bill Creation:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Account</th>
+<th>Debit</th>
+<th>Credit</th>
+<th>Increase/Decrease</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024-04-01</td>
+<td>Electricity Expense (Expense)</td>
+<td>500.00</td>
+<td></td>
+<td>Increase (Debit)</td>
+</tr>
+<tr>
+<td>2024-04-01</td>
+<td>Trade Payables (Liability)</td>
+<td></td>
+<td>500.00</td>
+<td>Increase (Credit)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-2-make-the-payment">Step 2: Make the Payment<a class="headerlink" href="#step-2-make-the-payment" title="Permanent link">&para;</a></h3>
+<p><strong>Accounts Affected:</strong></p>
+<ul>
+<li><strong>Trade Payables (Liability):</strong> Decrease (Debit)</li>
+<li>Account: <code>21010 Trade Payables</code></li>
+<li><strong>Cash and Cash Equivalents (Asset):</strong> Decrease (Credit)</li>
+<li>Account: <code>11120 Bank Accounts</code></li>
+</ul>
+<p><strong>Example Journal Entry for Payment:</strong>
+| Date | Account | Debit | Credit | Increase/Decrease |
+|------------|-----------------------------|---------|---------|-------------------|
+| 2024-04-10 | Trade Payables (Liability) | 500.00 | | Decrease (Debit) |
+| 2024-04-10 | Bank Accounts (Asset) | | 500.00 | Decrease (Credit) |</p>
+<h2 id="explanation-and-best-practices">Explanation and Best Practices<a class="headerlink" href="#explanation-and-best-practices" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Categorization:</strong></p>
+<ul>
+<li><strong>Liabilities:</strong> This is the parent category for all liability accounts.</li>
+<li><strong>Current Liabilities:</strong> Sub-category under Liabilities for short-term obligations.</li>
+<li><strong>Trade Payables:</strong> Specific account under Current Liabilities for payables to vendors and other short-term obligations.</li>
+</ul>
+</li>
+<li>
+<p><strong>Bill Creation:</strong></p>
+<ul>
+<li>Record the bill in the purchase module to increase the respective expense account and the trade payables account.</li>
+</ul>
+</li>
+<li>
+<p><strong>Payment Processing:</strong></p>
+<ul>
+<li>When making a payment, decrease the trade payables account and the cash or bank account.</li>
+</ul>
+</li>
+</ol>
+<p>By following this structure, you ensure that your accounting records are accurate, consistent, and aligned with standard accounting practices. This approach also provides clear visibility into your financial obligations and helps maintain an audit trail for all transactions.</p>
 
 
 
