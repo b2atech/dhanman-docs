@@ -1,4 +1,4 @@
-site_name: DhanMan 
+site_name: DhanMan
 
 nav:
   - Home: index.md
@@ -9,6 +9,7 @@ nav:
   - Accounting Entries:
       - Purchase Transactions: accounting_entries/purchase_transactions.md
       - Sales Transactions: accounting_entries/sales_transactions.md
+      - Payroll Transactions: accounting_entries/payroll_transactions.md
       - Other Entries: accounting_entries/entries_others.md
       - Sample Entries: accounting_entries/entries_samples.md
   - Financial Reports:
@@ -21,6 +22,8 @@ nav:
       - Accounts Receivable Aging Report: financial_reports/accounts_receivable_aging_report.md
       - Accounts Payable Aging Report: financial_reports/accounts _payable_aging_report.md
       - Pending Dues Report: financial_reports/pending_dues_report.md
+  - Payroll:
+      - Sample Templates: payroll/sample_templates.md
   - Office Etiquette Policy: policies/office_etiquette_policy.md
   - Guide:
       - Overview: guide/overview.md
@@ -28,7 +31,7 @@ nav:
       - Usage:
           - Basic Usage: guide/usage/basic.md
           - Advanced Usage: guide/usage/advanced.md
-  - Coding Conventions :
+  - Coding Conventions:
       - Backend: coding_conventions/cc_principle_backend.md
       - Endpoints:
           - Users: api/endpoints/users.md
@@ -36,7 +39,7 @@ nav:
   - About: about.md
 
 theme:
-  name: 'material'
+  name: "material"
   highlightjs: true
 
 markdown_extensions:
