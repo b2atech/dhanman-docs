@@ -25,11 +25,12 @@
 
 3) **For uninstall template**  C:\Users\DELL\source\repos\dhanman-sales>dotnet new uninstall C:\Users\DELL\source\repos\dhanman-sale
 
-4) **For create project** C:\Users\DELL\source\repos>dotnet new DhanmanCleanArch -o dhanman.timesheet
+4) **For create project** C:\Users\DELL\source\repos>dotnet new DhanmanCleanArch -o Dhanman.Timesheet
 
 5) Remove unnecessary code
 
-6) Some main important setting in two files 
+6) Some main important setting in two files
+7) dotnet new --list
 
 
 
