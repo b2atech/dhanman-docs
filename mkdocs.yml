@@ -2,8 +2,9 @@ site_name: DhanMan
 
 nav:
   - Home: index.md
+  - Accounting: accounting\introduction.md
   - Authentication: authentication-authorization.md
-  - Permissions:
+  - Permissions: 
       - Common: permissions\common.md
       - Sales: permissions\sales.md
   - Accounting Entries:
