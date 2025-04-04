@@ -37,6 +37,8 @@ nav:
       - Endpoints:
           - Users: api/endpoints/users.md
           - Products: api/endpoints/products.md
+  - Devops:
+      - DigitalOcen: devops/qa_deployment_guide.md
   - About: about.md
 
 theme:
