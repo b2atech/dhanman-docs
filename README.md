@@ -1,6 +1,7 @@
 # dhanman-docs
 wiki
 
+mkdocs gh-deploy
 
 
 devdhanman

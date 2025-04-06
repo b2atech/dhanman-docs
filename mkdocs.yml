@@ -30,6 +30,7 @@ nav:
       - Backend: coding_conventions/cc_principle_backend.md
   - Devops:
       - DigitalOcen: devops/qa_deployment_guide.md
+      - QA-PROD: devops/qa_prod_deployment_guide.md
   - About: about.md
 
 theme:
