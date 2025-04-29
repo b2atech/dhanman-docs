@@ -5,7 +5,7 @@ nav:
   - Accounting: accounting\introduction.md
   - Authentication: authentication-authorization.md
   - Sytem Architecture:
-      - Overview: system_architecture/design.md
+      - Overview: system_overview/design.md
   - Permissions: 
       - Common: system_overview\common.md
       - Sales: permissions\sales.md
