@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../../how-to/email-templates/">
+        <link rel="prev" href="../../coding_conventions/cc_principle_backend/">
       
       
-        <link rel="next" href="../qa_prod_deployment_guide/">
+        <link rel="next" href="../../devops/qa_deployment_guide/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>DigitalOcen - DhanMan</title>
+        <title>Email Templates - DhanMan</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#qa-deployment-setup-for-dhanman-microservices-qa-environment" class="md-skip">
+        <a href="#email-template-service-crosscuttingconcern-documentation" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              DigitalOcen
+              Email Templates
             
           </span>
         </div>
@@ -860,17 +860,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
@@ -884,75 +886,10 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             How Tos
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../how-to/email-templates/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Email Templates
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Devops
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_11">
-            <span class="md-nav__icon md-icon"></span>
-            Devops
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -976,7 +913,7 @@
           
   
   <span class="md-ellipsis">
-    DigitalOcen
+    Email Templates
   </span>
   
 
@@ -987,7 +924,7 @@
         
   
   <span class="md-ellipsis">
-    DigitalOcen
+    Email Templates
   </span>
   
 
@@ -1009,37 +946,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-build-and-publish-the-net-app" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      📦 1. Build and Publish the .NET App
+      Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-create-folder-and-deploy-to-server" class="md-nav__link">
+  <a href="#folder-structure" class="md-nav__link">
     <span class="md-ellipsis">
-      📁 2. Create Folder and Deploy to Server
+      📦 Folder Structure
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📁 2. Create Folder and Deploy to Server">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Configuration">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-folder-on-the-droplet" class="md-nav__link">
+  <a href="#appsettingsjson" class="md-nav__link">
     <span class="md-ellipsis">
-      Create folder on the droplet:
+      appsettings.json
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#upload-files-from-local" class="md-nav__link">
+  <a href="#connection-string" class="md-nav__link">
     <span class="md-ellipsis">
-      Upload files from local:
+      Connection String
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#di-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      DI Registration
     </span>
   </a>
   
@@ -1051,37 +1006,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-create-systemd-service" class="md-nav__link">
+  <a href="#emailservice" class="md-nav__link">
     <span class="md-ellipsis">
-      ⚙️ 3. Create systemd Service
+      ✉️ EmailService
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="⚙️ 3. Create systemd Service">
+    <nav class="md-nav" aria-label="✉️ EmailService">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-service-file" class="md-nav__link">
+  <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
-      Create service file:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#paste-this-content" class="md-nav__link">
-    <span class="md-ellipsis">
-      Paste this content:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reload-and-start-the-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reload and start the service:
+      Usage
     </span>
   </a>
   
@@ -1093,37 +1030,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-configure-nginx-reverse-proxy" class="md-nav__link">
+  <a href="#emailtemplateservice" class="md-nav__link">
     <span class="md-ellipsis">
-      🌐 4. Configure NGINX Reverse Proxy
+      🧩 EmailTemplateService
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🌐 4. Configure NGINX Reverse Proxy">
+    <nav class="md-nav" aria-label="🧩 EmailTemplateService">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-nginx-config" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      Create NGINX config:
+      Description
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#paste" class="md-nav__link">
+  <a href="#example-template-in-db" class="md-nav__link">
     <span class="md-ellipsis">
-      Paste:
+      Example Template in DB
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#enable-and-reload" class="md-nav__link">
+  <a href="#usage_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Enable and reload:
+      Usage
     </span>
   </a>
   
@@ -1135,19 +1072,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-setup-https-with-certbot" class="md-nav__link">
+  <a href="#templatedemailservice-helper" class="md-nav__link">
     <span class="md-ellipsis">
-      🔐 5. Setup HTTPS with Certbot
+      🤖 TemplatedEmailService (Helper)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🔐 5. Setup HTTPS with Certbot">
+    <nav class="md-nav" aria-label="🤖 TemplatedEmailService (Helper)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#run-certbot" class="md-nav__link">
+  <a href="#usage_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Run Certbot:
+      Usage
     </span>
   </a>
   
@@ -1159,27 +1096,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-verify-deployment" class="md-nav__link">
+  <a href="#consumer-example-service-layer" class="md-nav__link">
     <span class="md-ellipsis">
-      🧪 6. Verify Deployment
+      🧪 Consumer Example (Service Layer)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-repeat-for-each-service" class="md-nav__link">
+  <a href="#notes" class="md-nav__link">
     <span class="md-ellipsis">
-      🔁 7. Repeat for Each Service
+      🧠 Notes
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-port-mapping-by-environment" class="md-nav__link">
+  <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
-      🔢 8. Port Mapping by Environment
+      ✅ Summary
     </span>
   </a>
   
@@ -1194,6 +1131,48 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Devops
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Devops
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
               
                 
   
@@ -1201,7 +1180,28 @@
   
   
     <li class="md-nav__item">
-      <a href="../qa_prod_deployment_guide/" class="md-nav__link">
+      <a href="../../devops/qa_deployment_guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DigitalOcen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devops/qa_prod_deployment_guide/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1269,37 +1269,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-build-and-publish-the-net-app" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      📦 1. Build and Publish the .NET App
+      Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-create-folder-and-deploy-to-server" class="md-nav__link">
+  <a href="#folder-structure" class="md-nav__link">
     <span class="md-ellipsis">
-      📁 2. Create Folder and Deploy to Server
+      📦 Folder Structure
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📁 2. Create Folder and Deploy to Server">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Configuration">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-folder-on-the-droplet" class="md-nav__link">
+  <a href="#appsettingsjson" class="md-nav__link">
     <span class="md-ellipsis">
-      Create folder on the droplet:
+      appsettings.json
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#upload-files-from-local" class="md-nav__link">
+  <a href="#connection-string" class="md-nav__link">
     <span class="md-ellipsis">
-      Upload files from local:
+      Connection String
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#di-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      DI Registration
     </span>
   </a>
   
@@ -1311,37 +1329,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-create-systemd-service" class="md-nav__link">
+  <a href="#emailservice" class="md-nav__link">
     <span class="md-ellipsis">
-      ⚙️ 3. Create systemd Service
+      ✉️ EmailService
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="⚙️ 3. Create systemd Service">
+    <nav class="md-nav" aria-label="✉️ EmailService">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-service-file" class="md-nav__link">
+  <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
-      Create service file:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#paste-this-content" class="md-nav__link">
-    <span class="md-ellipsis">
-      Paste this content:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reload-and-start-the-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reload and start the service:
+      Usage
     </span>
   </a>
   
@@ -1353,37 +1353,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-configure-nginx-reverse-proxy" class="md-nav__link">
+  <a href="#emailtemplateservice" class="md-nav__link">
     <span class="md-ellipsis">
-      🌐 4. Configure NGINX Reverse Proxy
+      🧩 EmailTemplateService
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🌐 4. Configure NGINX Reverse Proxy">
+    <nav class="md-nav" aria-label="🧩 EmailTemplateService">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-nginx-config" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      Create NGINX config:
+      Description
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#paste" class="md-nav__link">
+  <a href="#example-template-in-db" class="md-nav__link">
     <span class="md-ellipsis">
-      Paste:
+      Example Template in DB
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#enable-and-reload" class="md-nav__link">
+  <a href="#usage_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Enable and reload:
+      Usage
     </span>
   </a>
   
@@ -1395,19 +1395,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-setup-https-with-certbot" class="md-nav__link">
+  <a href="#templatedemailservice-helper" class="md-nav__link">
     <span class="md-ellipsis">
-      🔐 5. Setup HTTPS with Certbot
+      🤖 TemplatedEmailService (Helper)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🔐 5. Setup HTTPS with Certbot">
+    <nav class="md-nav" aria-label="🤖 TemplatedEmailService (Helper)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#run-certbot" class="md-nav__link">
+  <a href="#usage_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Run Certbot:
+      Usage
     </span>
   </a>
   
@@ -1419,27 +1419,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-verify-deployment" class="md-nav__link">
+  <a href="#consumer-example-service-layer" class="md-nav__link">
     <span class="md-ellipsis">
-      🧪 6. Verify Deployment
+      🧪 Consumer Example (Service Layer)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-repeat-for-each-service" class="md-nav__link">
+  <a href="#notes" class="md-nav__link">
     <span class="md-ellipsis">
-      🔁 7. Repeat for Each Service
+      🧠 Notes
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-port-mapping-by-environment" class="md-nav__link">
+  <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
-      🔢 8. Port Mapping by Environment
+      ✅ Summary
     </span>
   </a>
   
@@ -1460,217 +1460,147 @@
                   
 
 
-<h1 id="qa-deployment-setup-for-dhanman-microservices-qa-environment">✅ QA Deployment Setup for Dhanman Microservices (QA Environment)<a class="headerlink" href="#qa-deployment-setup-for-dhanman-microservices-qa-environment" title="Permanent link">&para;</a></h1>
-<p>This guide walks through the complete setup to deploy and serve multiple .NET microservices in the QA environment using systemd, NGINX, and HTTPS via Let's Encrypt.</p>
+<h1 id="email-template-service-crosscuttingconcern-documentation">📧 Email &amp; Template Service - CrossCuttingConcern Documentation<a class="headerlink" href="#email-template-service-crosscuttingconcern-documentation" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This module provides a centralized and reusable email sending solution using:
+- <code>EmailService</code> for sending emails via SMTP
+- <code>EmailTemplateService</code> for managing DB-driven email templates
+- <code>TemplatedEmailService</code> as a helper that combines both</p>
+<p>This design keeps the configuration and transport details abstracted from consumers.</p>
 <hr />
-<h2 id="1-build-and-publish-the-net-app">📦 1. Build and Publish the .NET App<a class="headerlink" href="#1-build-and-publish-the-net-app" title="Permanent link">&para;</a></h2>
-<p>Use the following command to publish your app for Linux:</p>
-<div class="codehilite"><pre><span></span><code>dotnet<span class="w"> </span>publish<span class="w"> </span>-c<span class="w"> </span>Release<span class="w"> </span>-r<span class="w"> </span>linux-x64<span class="w"> </span>--self-contained<span class="w"> </span><span class="nb">false</span><span class="w"> </span>-o<span class="w"> </span>./publish
-</code></pre></div>
-
-<ul>
-<li><code>-r linux-x64</code>: Targets Linux 64-bit</li>
-<li><code>--self-contained false</code>: Uses framework-dependent deployment</li>
-<li><code>-o ./publish</code>: Output folder</li>
-</ul>
-<hr />
-<h2 id="2-create-folder-and-deploy-to-server">📁 2. Create Folder and Deploy to Server<a class="headerlink" href="#2-create-folder-and-deploy-to-server" title="Permanent link">&para;</a></h2>
-<h3 id="create-folder-on-the-droplet">Create folder on the droplet:<a class="headerlink" href="#create-folder-on-the-droplet" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/www/qa/&lt;service-folder&gt;
-</code></pre></div>
-
-<h3 id="upload-files-from-local">Upload files from local:<a class="headerlink" href="#upload-files-from-local" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>scp<span class="w"> </span>-r<span class="w"> </span>./publish/*<span class="w"> </span>root@&lt;droplet-ip&gt;:/var/www/qa/&lt;service-folder&gt;
-</code></pre></div>
-
-<p>Replace <code>&lt;service-folder&gt;</code> with the service name, e.g., <code>dhanman-common</code>.</p>
-<hr />
-<h2 id="3-create-systemd-service">⚙️ 3. Create systemd Service<a class="headerlink" href="#3-create-systemd-service" title="Permanent link">&para;</a></h2>
-<h3 id="create-service-file">Create service file:<a class="headerlink" href="#create-service-file" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/systemd/system/&lt;service-name&gt;-qa.service
-</code></pre></div>
-
-<h3 id="paste-this-content">Paste this content:<a class="headerlink" href="#paste-this-content" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="k">[Unit]</span>
-<span class="na">Description</span><span class="o">=</span><span class="s">&lt;Service Name&gt; - QA</span>
-<span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
-
-<span class="k">[Service]</span>
-<span class="na">WorkingDirectory</span><span class="o">=</span><span class="s">/var/www/qa/&lt;service-folder&gt;</span>
-<span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/bin/dotnet /var/www/qa/&lt;service-folder&gt;/&lt;ServiceDll&gt;.dll --urls &quot;http://localhost:&lt;port&gt;&quot;</span>
-<span class="na">Restart</span><span class="o">=</span><span class="s">always</span>
-<span class="na">RestartSec</span><span class="o">=</span><span class="s">10</span>
-<span class="na">KillSignal</span><span class="o">=</span><span class="s">SIGINT</span>
-<span class="na">SyslogIdentifier</span><span class="o">=</span><span class="s">&lt;service-name&gt;-qa</span>
-<span class="na">User</span><span class="o">=</span><span class="s">root</span>
-<span class="na">Environment</span><span class="o">=</span><span class="s">ASPNETCORE_ENVIRONMENT=QA</span>
-
-<span class="k">[Install]</span>
-<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
-</code></pre></div>
-
-<h3 id="reload-and-start-the-service">Reload and start the service:<a class="headerlink" href="#reload-and-start-the-service" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
-sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>&lt;service-name&gt;-qa
-sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>&lt;service-name&gt;-qa
-sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>&lt;service-name&gt;-qa
+<h2 id="folder-structure">📦 Folder Structure<a class="headerlink" href="#folder-structure" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code>CrossCuttingConcern.Email/
+├── Abstractions/
+│   ├── IEmailService.cs
+│   └── IEmailTemplateService.cs
+│
+├── Entities/
+│   ├── EmailMessage.cs
+│   └── ProcessedEmailTemplate.cs
+│
+├── Services/
+│   ├── EmailService.cs
+│   ├── EmailTemplateService.cs
+│   └── TemplatedEmailService.cs
+│
+├── Settings/
+│   └── SmtpSettings.cs
 </code></pre></div>
 
 <hr />
-<h2 id="4-configure-nginx-reverse-proxy">🌐 4. Configure NGINX Reverse Proxy<a class="headerlink" href="#4-configure-nginx-reverse-proxy" title="Permanent link">&para;</a></h2>
-<h3 id="create-nginx-config">Create NGINX config:<a class="headerlink" href="#create-nginx-config" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/&lt;service-name&gt;
+<h2 id="configuration">🔧 Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<h3 id="appsettingsjson"><code>appsettings.json</code><a class="headerlink" href="#appsettingsjson" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="nt">&quot;Smtp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;Host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;smtp-relay.brevo.com&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">587</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-smtp-user&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-smtp-password&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;FromEmail&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;support@dhanman.com&quot;</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<h3 id="paste">Paste:<a class="headerlink" href="#paste" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">&lt;subdomain&gt;.dhanman.com</span><span class="p">;</span>
+<h3 id="connection-string">Connection String<a class="headerlink" href="#connection-string" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="nt">&quot;ConnectionStrings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;TemplateDb&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Host=localhost;Port=5432;Database=TemplateDb;Username=postgres;Password=password&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
 
-<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://localhost:&lt;port&gt;</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">proxy_http_version</span><span class="w"> </span><span class="mi">1</span><span class="s">.1</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Upgrade</span><span class="w"> </span><span class="nv">$http_upgrade</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Connection</span><span class="w"> </span><span class="s">keep-alive</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">proxy_cache_bypass</span><span class="w"> </span><span class="nv">$http_upgrade</span><span class="p">;</span>
+<h3 id="di-registration">DI Registration<a class="headerlink" href="#di-registration" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="n">services</span><span class="p">.</span><span class="n">Configure</span><span class="o">&lt;</span><span class="n">SmtpSettings</span><span class="o">&gt;</span><span class="p">(</span><span class="n">configuration</span><span class="p">.</span><span class="n">GetSection</span><span class="p">(</span><span class="s">&quot;Smtp&quot;</span><span class="p">));</span>
+<span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="o">&lt;</span><span class="n">IDateTime</span><span class="p">,</span><span class="w"> </span><span class="n">SystemDateTime</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="n">services</span><span class="p">.</span><span class="n">AddDbContext</span><span class="o">&lt;</span><span class="n">TemplateDbContext</span><span class="o">&gt;</span><span class="p">(</span><span class="n">options</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">    </span><span class="n">options</span><span class="p">.</span><span class="n">UseNpgsql</span><span class="p">(</span><span class="n">configuration</span><span class="p">.</span><span class="n">GetConnectionString</span><span class="p">(</span><span class="s">&quot;TemplateDb&quot;</span><span class="p">)));</span>
+
+<span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="o">&lt;</span><span class="n">ITemplateDbContext</span><span class="o">&gt;</span><span class="p">(</span><span class="n">provider</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">    </span><span class="n">provider</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="o">&lt;</span><span class="n">TemplateDbContext</span><span class="o">&gt;</span><span class="p">());</span>
+
+<span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="o">&lt;</span><span class="n">IEmailService</span><span class="p">,</span><span class="w"> </span><span class="n">EmailService</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="o">&lt;</span><span class="n">IEmailTemplateService</span><span class="p">,</span><span class="w"> </span><span class="n">EmailTemplateService</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="o">&lt;</span><span class="n">TemplatedEmailService</span><span class="o">&gt;</span><span class="p">();</span>
+</code></pre></div>
+
+<hr />
+<h2 id="emailservice">✉️ EmailService<a class="headerlink" href="#emailservice" title="Permanent link">&para;</a></h2>
+<h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="n">_emailService</span><span class="p">.</span><span class="n">SendEmailAsync</span><span class="p">(</span>
+<span class="w">    </span><span class="n">to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bharat.mane@gmail.com&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">subject</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Manual Email&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">body</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;p&gt;Hello Bharat&lt;/p&gt;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">isHtml</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">);</span>
+</code></pre></div>
+
+<hr />
+<h2 id="emailtemplateservice">🧩 EmailTemplateService<a class="headerlink" href="#emailtemplateservice" title="Permanent link">&para;</a></h2>
+<h3 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h3>
+<p>Fetches email templates from DB, caches them, and replaces placeholders.</p>
+<h3 id="example-template-in-db">Example Template in DB<a class="headerlink" href="#example-template-in-db" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code>Subject: Welcome to Dhanman
+BodyHtml: Hello {{CustomerName}}, click &lt;a href=&quot;{{LoginUrl}}&quot;&gt;here&lt;/a&gt; to login.
+</code></pre></div>
+
+<h3 id="usage_1">Usage<a class="headerlink" href="#usage_1" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">placeholders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="na">[&quot;CustomerName&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Bharat&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="na">[&quot;LoginUrl&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://dhanman.com/login&quot;</span>
+<span class="p">};</span>
+
+<span class="kt">var</span><span class="w"> </span><span class="n">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_templateService</span><span class="p">.</span><span class="n">GetProcessedTemplateAsync</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="n">placeholders</span><span class="p">);</span>
+</code></pre></div>
+
+<hr />
+<h2 id="templatedemailservice-helper">🤖 TemplatedEmailService (Helper)<a class="headerlink" href="#templatedemailservice-helper" title="Permanent link">&para;</a></h2>
+<h3 id="usage_2">Usage<a class="headerlink" href="#usage_2" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">placeholders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="na">[&quot;CustomerName&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="n">CustomerName</span><span class="p">,</span>
+<span class="w">    </span><span class="na">[&quot;OrderId&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">ToString</span><span class="p">()</span>
+<span class="p">};</span>
+
+<span class="k">await</span><span class="w"> </span><span class="n">_templatedEmailService</span><span class="p">.</span><span class="n">SendAsync</span><span class="p">(</span>
+<span class="w">    </span><span class="n">templateId</span><span class="p">:</span><span class="w"> </span><span class="mi">102</span><span class="p">,</span>
+<span class="w">    </span><span class="n">recipient</span><span class="p">:</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="n">CustomerEmail</span><span class="p">,</span>
+<span class="w">    </span><span class="n">placeholders</span><span class="p">:</span><span class="w"> </span><span class="n">placeholders</span><span class="p">);</span>
+</code></pre></div>
+
+<p>No need to manually deal with template loading or SMTP.</p>
+<hr />
+<h2 id="consumer-example-service-layer">🧪 Consumer Example (Service Layer)<a class="headerlink" href="#consumer-example-service-layer" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">OrderService</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">TemplatedEmailService</span><span class="w"> </span><span class="n">_templatedEmailService</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">OrderService</span><span class="p">(</span><span class="n">TemplatedEmailService</span><span class="w"> </span><span class="n">templatedEmailService</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_templatedEmailService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">templatedEmailService</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">SendOrderConfirmation</span><span class="p">(</span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">placeholders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="na">[&quot;CustomerName&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="n">CustomerName</span><span class="p">,</span>
+<span class="w">            </span><span class="na">[&quot;OrderId&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">ToString</span><span class="p">()</span>
+<span class="w">        </span><span class="p">};</span>
+
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">_templatedEmailService</span><span class="p">.</span><span class="n">SendAsync</span><span class="p">(</span><span class="mi">102</span><span class="p">,</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="n">CustomerEmail</span><span class="p">,</span><span class="w"> </span><span class="n">placeholders</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<h3 id="enable-and-reload">Enable and reload:<a class="headerlink" href="#enable-and-reload" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/&lt;service-name&gt;<span class="w"> </span>/etc/nginx/sites-enabled/
-sudo<span class="w"> </span>nginx<span class="w"> </span>-t
-sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
-</code></pre></div>
-
 <hr />
-<h2 id="5-setup-https-with-certbot">🔐 5. Setup HTTPS with Certbot<a class="headerlink" href="#5-setup-https-with-certbot" title="Permanent link">&para;</a></h2>
-<p>Ensure the DNS record for <code>&lt;subdomain&gt;.dhanman.com</code> points to your droplet.</p>
-<h3 id="run-certbot">Run Certbot:<a class="headerlink" href="#run-certbot" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>&lt;subdomain&gt;.dhanman.com
-</code></pre></div>
-
-<p>Choose:</p>
-<div class="codehilite"><pre><span></span><code>2: Redirect - Make all requests redirect to secure HTTPS
-</code></pre></div>
-
-<p>Certbot will:
-- Add the HTTPS block
-- Enable HTTP/2
-- Set up auto-renewal</p>
-<hr />
-<h2 id="6-verify-deployment">🧪 6. Verify Deployment<a class="headerlink" href="#6-verify-deployment" title="Permanent link">&para;</a></h2>
+<h2 id="notes">🧠 Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
 <ul>
-<li>✅ Visit: <code>https://&lt;subdomain&gt;.dhanman.com</code></li>
-<li>🔒 Confirm HTTPS lock</li>
-<li>🌀 Test auto-renew:</li>
+<li><code>TemplatedEmailService</code> is a <strong>concrete helper</strong>, injected directly.</li>
+<li><code>EmailTemplateService</code> uses <code>TemplateDbContext</code> with scoped lifetime.</li>
+<li>SMTP settings are injected via <code>IOptions&lt;SmtpSettings&gt;</code>.</li>
+<li>Placeholders must exactly match what the template expects (e.g. <code>{{CustomerName}}</code>).</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w"> </span>--dry-run
-</code></pre></div>
-
 <hr />
-<h2 id="7-repeat-for-each-service">🔁 7. Repeat for Each Service<a class="headerlink" href="#7-repeat-for-each-service" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Service Name</th>
-<th>Port</th>
-<th>Folder</th>
-<th>Subdomain</th>
-<th>systemd Service File</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>dhanman-common</td>
-<td>5101</td>
-<td>/var/www/qa/dhanman-common</td>
-<td>qa.common.dhanman.com</td>
-<td>dhanman-common-qa.service</td>
-</tr>
-<tr>
-<td>dhanman-sales</td>
-<td>5100</td>
-<td>/var/www/qa/dhanman-sales</td>
-<td>qa.sales.dhanman.com</td>
-<td>dhanman-sales-qa.service</td>
-</tr>
-<tr>
-<td>dhanman-payroll</td>
-<td>5102</td>
-<td>/var/www/qa/dhanman-payroll</td>
-<td>qa.payroll.dhanman.com</td>
-<td>dhanman-payroll-qa.service</td>
-</tr>
-<tr>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-</tbody>
-</table>
-<p>Repeat all above steps for each service with its own:
-- Folder
-- Port
-- Subdomain
-- systemd and NGINX config</p>
-<hr />
-<hr />
-<h2 id="8-port-mapping-by-environment">🔢 8. Port Mapping by Environment<a class="headerlink" href="#8-port-mapping-by-environment" title="Permanent link">&para;</a></h2>
-<p>Here’s a reference table to manage ports across <strong>Dev</strong>, <strong>QA</strong>, and <strong>Prod</strong> environments:</p>
-<table>
-<thead>
-<tr>
-<th>Service Name</th>
-<th>Dev Port</th>
-<th>QA Port</th>
-<th>Prod Port</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>dhanman-common</td>
-<td>5001</td>
-<td>5101</td>
-<td>5201</td>
-</tr>
-<tr>
-<td>dhanman-sales</td>
-<td>5000</td>
-<td>5100</td>
-<td>5200</td>
-</tr>
-<tr>
-<td>dhanman-payroll</td>
-<td>5002</td>
-<td>5102</td>
-<td>5202</td>
-</tr>
-<tr>
-<td>dhanman-purchase</td>
-<td>5003</td>
-<td>5103</td>
-<td>5203</td>
-</tr>
-<tr>
-<td>dhanman-inventory</td>
-<td>5004</td>
-<td>5104</td>
-<td>5204</td>
-</tr>
-<tr>
-<td>dhanman-myhome</td>
-<td>5005</td>
-<td>5105</td>
-<td>5205</td>
-</tr>
-</tbody>
-</table>
-<p>Make sure to update <code>--urls</code> in systemd and <code>proxy_pass</code> in NGINX accordingly for each environment.</p>
-<hr />
+<h2 id="summary">✅ Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>With this module, any service can send emails via a template-driven system without worrying about HTML formatting or SMTP details.</p>
+<p>Use <code>TemplatedEmailService</code> to send branded, consistent emails with ease.</p>
 
 
 
