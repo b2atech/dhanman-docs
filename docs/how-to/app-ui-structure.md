@@ -53,18 +53,16 @@ src/
 ```
 
 Each provider layer:
-- **GlobalErrorBoundary**: Catch any crash globally.
-- **ConfigProvider**: Manage Organization, Company, Financial Year context.
-- **ThemeCustomization**: Material UI theme setup.
-- **Locales**: Language and RTL support.
-- **ScrollTop**: Scrolls page to top on route changes.
-- **ErrorProvider**: Manage app-wide caught errors.
-- **SafeAuth0Provider**: Wraps Auth0Provider inside AuthErrorBoundary.
-- **Notistack**: Snackbar system for notifications.
-- **BackdropProvider**: Loader/spinner control.
-- **RouterProvider**: React Router DOM routes.
-
----
+  - **GlobalErrorBoundary**: Catch any crash globally.
+  - **ConfigProvider**: Manage Organization, Company, Financial Year context.
+  - **ThemeCustomization**: Material UI theme setup.
+  - **Locales**: Language and RTL support.
+  - **ScrollTop**: Scrolls page to top on route changes.
+  - **ErrorProvider**: Manage app-wide caught errors.
+  - **SafeAuth0Provider**: Wraps Auth0Provider inside AuthErrorBoundary.
+  - **Notistack**: Snackbar system for notifications.
+  - **BackdropProvider**: Loader/spinner control.
+  - **RouterProvider**: React Router DOM routes.
 
 ---
 

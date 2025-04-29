@@ -4,8 +4,10 @@ nav:
   - Home: index.md
   - Accounting: accounting\introduction.md
   - Authentication: authentication-authorization.md
+  - Sytem Architecture:
+      - Overview: system_architecture/design.md
   - Permissions: 
-      - Common: permissions\common.md
+      - Common: system_overview\common.md
       - Sales: permissions\sales.md
   - Accounting Entries:
       - Purchase Transactions: accounting_entries/purchase_transactions.md
