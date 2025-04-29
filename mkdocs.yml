@@ -29,7 +29,8 @@ nav:
   - Coding Conventions:
       - Backend: coding_conventions/cc_principle_backend.md
   - How Tos:
-      - Email Templates: how-to/email-templates.md
+      - Email Templates: how-to/email_templates.md
+      - App UI Structure: how-to/app-ui-structure.md
   - Devops:
       - DigitalOcen: devops/qa_deployment_guide.md
       - QA-PROD: devops/qa_prod_deployment_guide.md
