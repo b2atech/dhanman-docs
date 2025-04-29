@@ -27,6 +27,45 @@ src/
 └── shared/                    # Shared utils & storage helpers
 ```
 
+## 🏗️ App Wrapping (App.tsx Structure)
+
+```tsx
+<GlobalErrorBoundary>
+  <ConfigProvider>
+    <ThemeCustomization>
+      <Locales>
+        <ScrollTop>
+          <ErrorProvider>
+            <SafeAuth0Provider>
+              <Notistack>
+                <BackdropProvider>
+                  <RouterProvider router={router} />
+                  <Snackbar />
+                </BackdropProvider>
+              </Notistack>
+            </SafeAuth0Provider>
+          </ErrorProvider>
+        </ScrollTop>
+      </Locales>
+    </ThemeCustomization>
+  </ConfigProvider>
+</GlobalErrorBoundary>
+```
+
+Each provider layer:
+- **GlobalErrorBoundary**: Catch any crash globally.
+- **ConfigProvider**: Manage Organization, Company, Financial Year context.
+- **ThemeCustomization**: Material UI theme setup.
+- **Locales**: Language and RTL support.
+- **ScrollTop**: Scrolls page to top on route changes.
+- **ErrorProvider**: Manage app-wide caught errors.
+- **SafeAuth0Provider**: Wraps Auth0Provider inside AuthErrorBoundary.
+- **Notistack**: Snackbar system for notifications.
+- **BackdropProvider**: Loader/spinner control.
+- **RouterProvider**: React Router DOM routes.
+
+---
+
 ---
 
 ## 🔐 Authentication & Permissions
@@ -56,6 +95,110 @@ useEffect(() => {
 - `useAuth()` hook gives access to `userPermissions`.
 - Used for conditional rendering of menus, routes, or UI elements.
 - Permissions follow RBAC model with dynamic policies.
+
+---
+
+
+
+## 🗂️ Routes Structure
+
+### src/routes/index.tsx
+```tsx
+createBrowserRouter([
+  LandingRoutes, // Public landing pages
+  LoginRoutes,   // Login / Callback
+  MainRoutes     // Protected /App Routes
+]);
+```
+
+### src/routes/MainRoutes.tsx
+Splits into module-specific routes:
+```tsx
+{
+  path: '/community',
+  element: <MinimalLayout />,
+  errorElement: <RouteErrorPage />, // Per module fallback
+  children: [...]
+}
+{
+  path: '/sales', children: [...]
+}
+{
+  path: '/purchase', children: [...]
+}
+...
+```
+
+✅ **Each domain (`community`, `sales`, etc.) has its own file.**
+✅ **Every route tree uses an `errorElement` for route errors.**
+
+---
+
+## 🔐 Auth & Permission Lifecycle
+
+### Login Flow
+```plaintext
+- User clicks Login
+- Auth0 popup appears
+- On success:
+    1. Token stored → localStorage
+    2. User profile fetched
+    3. Restore Last Selected Org/Company/FinYear
+    4. Update ConfigContext
+    5. Fetch Permissions based on organization
+    6. Save Permissions into context + localStorage
+```
+
+### Core Files
+- `contexts/Auth0Context.tsx` → Handles login, token, user, permissions.
+- `hooks/useAuth.ts` → Custom hook to access auth.
+- `hooks/useConfig.ts` → Custom hook to access org/company/fin year.
+
+
+---
+
+## 🧩 Menu Generation and Permissions
+
+### Menu is Generated Dynamically via `useMenuItems`
+
+```tsx
+const menuItems = useMenuItems();
+```
+
+Internal working:
+```ts
+const getMenuItemsImpl = ({ permissions, company, user }) => {
+  if (!Array.isArray(permissions)) return [];
+  return permissions.map(p => generateMenuItemFromPermission(p));
+};
+```
+- Menu options are based on permissions.
+- No hardcoded menu.
+- Hides features if permission missing.
+
+✅ **Safe fallbacks if permissions are missing.**
+
+### Example:
+If user has `Sales.Invoice.View`, they see `Invoices` menu.
+If not, it won't even render that menu item.
+
+---
+
+## 🚨 Error Handling in the App
+
+- **GlobalErrorBoundary**: Any React error at the App level.
+- **AuthErrorBoundary**: If Auth0 provider crashes.
+- **RouteErrorPage**: Per route crash fallback.
+
+Sample Route Usage:
+```tsx
+{
+  path: '/sales',
+  element: <MinimalLayout />,
+  errorElement: <RouteErrorPage />,
+  children: [...]
+}
+```
 
 ---
 
@@ -169,6 +312,39 @@ Used in routing `errorElement`. Displays fallback UI for route crashes (e.g. fai
                       │ useMenuItems builds Menu  │
                       └───────────────────────────┘
 ```
+---
 
+## 🔄 Full App Lifecycle Diagram
 
+```plaintext
+[User Lands]
+  ↓
+[Auth0 Check Session]
+  ↓
+Is Logged In? 
+ |        
+No        Yes
+ |           ↓
+Show Login   Fetch Token
+               ↓
+           Fetch User Profile
+               ↓
+           Restore Org/Company/FinYear
+               ↓
+           Fetch Permissions
+               ↓
+           Update Auth Context
+               ↓
+           Render Menu Items Dynamically
+```
 
+---
+
+## 📦 Summary
+
+- **App wrapping is deeply layered but clean.**
+- **Dynamic routing with modular approach.**
+- **Permission-driven UI visibility (RBAC).**
+- **Error boundaries at App, Auth, and Route levels.**
+- **Use of centralized hooks (`useAuth`, `useConfig`, `useMenuItems`).**
+- **Minimal hardcoding → Everything reactive.**
