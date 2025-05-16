@@ -5,8 +5,11 @@ nav:
   - Accounting: accounting\introduction.md
   - Authentication: authentication-authorization.md
   - Sytem Architecture:
+      - Architecture: system_overview/architecture.md
       - Overview: system_overview/design.md
+      - RabbitMQ Setup: system_overview/rabbitmq_setup.md      
       - Messging Overview: system_overview/messging_design.md
+      - MinIO Setup: system_overview/MinIO.md
       - MKDocs: system_overview/mkdocs.md
   - Permissions: 
       - Common: system_overview\common.md
@@ -50,10 +53,15 @@ markdown_extensions:
   - admonition
   - toc:
       permalink: true
+  - plantuml_markdown:
+      server: http://www.plantuml.com/plantuml
+
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js
   - js/extra.js
+  - https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js
 
 extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css
   - extra.css
+  - https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css

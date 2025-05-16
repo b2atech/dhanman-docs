@@ -1,4 +1,4 @@
-# Dhanman Microservices RabbitMQ Messaging Developer Guide (Updated)
+# Dhanman Microservices RabbitMQ Messaging Developer Guide
 
 ---
 
@@ -137,9 +137,9 @@ This messaging architecture, built on **B2aTech.CrossCuttingConcern** and **Dhan
 
 ## Architecture Diagram
 
-![Messaging Image](../images/messaging.png)
+![Messaging Image](../assets/messaging.png)
 
 ---
 
-*End of Document*
+
 
