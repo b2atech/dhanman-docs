@@ -6,6 +6,7 @@ nav:
   - Authentication: authentication-authorization.md
   - Sytem Architecture:
       - Architecture: system_overview/architecture.md
+      - Sales: system_overview/dhanman_sales.md    
       - Overview: system_overview/design.md
       - RabbitMQ Setup: system_overview/rabbitmq_setup.md      
       - Messging Overview: system_overview/messging_design.md
