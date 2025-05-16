@@ -6,6 +6,8 @@ nav:
   - Authentication: authentication-authorization.md
   - Sytem Architecture:
       - Overview: system_overview/design.md
+      - Messging Overview: system_overview/messging_design.md
+      - MKDocs: system_overview/mkdocs.md
   - Permissions: 
       - Common: system_overview\common.md
       - Sales: permissions\sales.md
