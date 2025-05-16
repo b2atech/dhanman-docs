@@ -137,7 +137,7 @@ This messaging architecture, built on **B2aTech.CrossCuttingConcern** and **Dhan
 
 ## Architecture Diagram
 
-![Messaging Image](images/messaging.png)
+![Messaging Image](../images/messaging.png)
 
 ---
 
