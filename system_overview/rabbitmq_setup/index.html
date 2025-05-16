@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../ledger_of_customers/">
+        <link rel="prev" href="../design/">
       
       
-        <link rel="next" href="../trial_balance/">
+        <link rel="next" href="../messging_design/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Ledger of Vendors - DhanMan</title>
+        <title>RabbitMQ Setup - DhanMan</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ledger-of-vendors" class="md-skip">
+        <a href="#dhanman-rabbitmq-setup-prod-qa" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ledger of Vendors
+              RabbitMQ Setup
             
           </span>
         </div>
@@ -254,17 +254,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -278,7 +280,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Sytem Architecture
@@ -292,7 +294,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../system_overview/architecture/" class="md-nav__link">
+      <a href="../architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -313,7 +315,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../system_overview/design/" class="md-nav__link">
+      <a href="../design/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -331,10 +333,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../system_overview/rabbitmq_setup/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    RabbitMQ Setup
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -343,6 +365,212 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-docker-rabbitmq-containers-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Docker RabbitMQ Containers Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Docker RabbitMQ Containers Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-production-rabbitmq" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Production RabbitMQ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-qa-rabbitmq" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. QA RabbitMQ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-create-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Create Users
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Create Users">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-production-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Production User
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-qa-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. QA User
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-dns-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. DNS Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-nginx-reverse-proxy-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. NGINX Reverse Proxy Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. NGINX Reverse Proxy Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-production-nginx-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Production NGINX Config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-qa-nginx-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. QA NGINX Config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-enable-sites" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3. Enable Sites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-test-reload-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4. Test &amp; Reload NGINX
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-ssl-setup-with-certbot" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. SSL Setup with Certbot
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. SSL Setup with Certbot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-production-ssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Production SSL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-qa-ssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. QA SSL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-final-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Final Result
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-optional-security-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Optional Security Enhancements
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -355,7 +583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../system_overview/messging_design/" class="md-nav__link">
+      <a href="../messging_design/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -376,7 +604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../system_overview/MinIO/" class="md-nav__link">
+      <a href="../MinIO/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -397,7 +625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../system_overview/mkdocs.md" class="md-nav__link">
+      <a href="../mkdocs.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -460,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../system_overview/common.md" class="md-nav__link">
+      <a href="../common.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -653,19 +881,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -679,7 +905,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Financial Reports
@@ -693,7 +919,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ledger_of_customers/" class="md-nav__link">
+      <a href="../../financial_reports/ledger_of_customers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -711,19 +937,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../financial_reports/ledger_of_vendors/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -732,7 +949,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -745,7 +961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../trial_balance/" class="md-nav__link">
+      <a href="../../financial_reports/trial_balance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -766,7 +982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../balance_sheet/" class="md-nav__link">
+      <a href="../../financial_reports/balance_sheet/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -787,7 +1003,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../profit_and_loss_statement/" class="md-nav__link">
+      <a href="../../financial_reports/profit_and_loss_statement/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -808,7 +1024,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cash_flow_statement/" class="md-nav__link">
+      <a href="../../financial_reports/cash_flow_statement/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -829,7 +1045,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../accounts_receivable_aging_report/" class="md-nav__link">
+      <a href="../../financial_reports/accounts_receivable_aging_report/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -850,7 +1066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../accounts%20_payable_aging_report/" class="md-nav__link">
+      <a href="../../financial_reports/accounts%20_payable_aging_report/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -871,7 +1087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pending_dues_report/" class="md-nav__link">
+      <a href="../../financial_reports/pending_dues_report/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1246,6 +1462,200 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-docker-rabbitmq-containers-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Docker RabbitMQ Containers Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Docker RabbitMQ Containers Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-production-rabbitmq" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Production RabbitMQ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-qa-rabbitmq" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. QA RabbitMQ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-create-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Create Users
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Create Users">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-production-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Production User
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-qa-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. QA User
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-dns-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. DNS Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-nginx-reverse-proxy-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. NGINX Reverse Proxy Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. NGINX Reverse Proxy Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-production-nginx-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Production NGINX Config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-qa-nginx-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. QA NGINX Config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-enable-sites" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3. Enable Sites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-test-reload-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4. Test &amp; Reload NGINX
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-ssl-setup-with-certbot" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. SSL Setup with Certbot
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. SSL Setup with Certbot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-production-ssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Production SSL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-qa-ssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. QA SSL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-final-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Final Result
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-optional-security-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Optional Security Enhancements
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1259,28 +1669,156 @@
                   
 
 
-<h1 id="ledger-of-vendors">Ledger of Vendors<a class="headerlink" href="#ledger-of-vendors" title="Permanent link">&para;</a></h1>
-<p>The vendor ledger shows transactions related to vendor accounts (Accounts Payable).</p>
-<div class="codehilite"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span>
-<span class="w">    </span><span class="n">th</span><span class="p">.</span><span class="n">transaction_date</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">transaction_date</span><span class="p">,</span>
-<span class="w">    </span><span class="n">v</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">vendor_name</span><span class="p">,</span>
-<span class="w">    </span><span class="n">coa</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">account_name</span><span class="p">,</span>
-<span class="w">    </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">je</span><span class="p">.</span><span class="n">entry_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;C&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">je</span><span class="p">.</span><span class="n">amount</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">credit</span><span class="p">,</span>
-<span class="w">    </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">je</span><span class="p">.</span><span class="n">entry_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;D&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">je</span><span class="p">.</span><span class="n">amount</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">debit</span><span class="p">,</span>
-<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">je</span><span class="p">.</span><span class="n">entry_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;C&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">je</span><span class="p">.</span><span class="n">amount</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="o">-</span><span class="n">je</span><span class="p">.</span><span class="n">amount</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">th</span><span class="p">.</span><span class="n">transaction_date</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">balance</span>
-<span class="k">FROM</span><span class="w"> </span>
-<span class="w">    </span><span class="n">transaction_header</span><span class="w"> </span><span class="n">th</span>
-<span class="k">JOIN</span><span class="w"> </span>
-<span class="w">    </span><span class="n">journal_entries</span><span class="w"> </span><span class="n">je</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">th</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">je</span><span class="p">.</span><span class="n">transaction_id</span>
-<span class="k">JOIN</span><span class="w"> </span>
-<span class="w">    </span><span class="n">chart_of_accounts</span><span class="w"> </span><span class="n">coa</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">je</span><span class="p">.</span><span class="n">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coa</span><span class="p">.</span><span class="n">id</span>
-<span class="k">JOIN</span><span class="w"> </span>
-<span class="w">    </span><span class="n">vendors</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">th</span><span class="p">.</span><span class="n">vendor_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">id</span>
-<span class="k">WHERE</span><span class="w"> </span>
-<span class="w">    </span><span class="n">coa</span><span class="p">.</span><span class="n">account_type_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">account_types</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Accounts Payable&#39;</span><span class="p">)</span>
-<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span>
-<span class="w">    </span><span class="n">th</span><span class="p">.</span><span class="n">transaction_date</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">name</span><span class="p">;</span>
+<h1 id="dhanman-rabbitmq-setup-prod-qa">Dhanman RabbitMQ Setup (Prod + QA)<a class="headerlink" href="#dhanman-rabbitmq-setup-prod-qa" title="Permanent link">&para;</a></h1>
+<h2 id="1-prerequisites">1. Prerequisites<a class="headerlink" href="#1-prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Ubuntu 21.10 / 22.04 VPS on OVH</li>
+<li>Docker and Docker Compose installed</li>
+<li>NGINX already running for other services</li>
+<li>Domain: dhanman.com</li>
+</ul>
+<hr />
+<h2 id="2-docker-rabbitmq-containers-setup">2. Docker RabbitMQ Containers Setup<a class="headerlink" href="#2-docker-rabbitmq-containers-setup" title="Permanent link">&para;</a></h2>
+<h3 id="21-production-rabbitmq">2.1. Production RabbitMQ<a class="headerlink" href="#21-production-rabbitmq" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--hostname<span class="w"> </span>dhanman-rabbit-prod<span class="w"> </span>--name<span class="w"> </span>rabbitmq-prod<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-p<span class="w"> </span><span class="m">5672</span>:5672<span class="w"> </span>-p<span class="w"> </span><span class="m">15672</span>:15672<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>rabbitmq:3-management
 </code></pre></div>
+
+<h3 id="22-qa-rabbitmq">2.2. QA RabbitMQ<a class="headerlink" href="#22-qa-rabbitmq" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--hostname<span class="w"> </span>dhanman-rabbit-qa<span class="w"> </span>--name<span class="w"> </span>rabbitmq-qa<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-p<span class="w"> </span><span class="m">5673</span>:5672<span class="w"> </span>-p<span class="w"> </span><span class="m">15673</span>:15672<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>rabbitmq:3-management
+</code></pre></div>
+
+<hr />
+<h2 id="3-create-users">3. Create Users<a class="headerlink" href="#3-create-users" title="Permanent link">&para;</a></h2>
+<h3 id="31-production-user">3.1. Production User<a class="headerlink" href="#31-production-user" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>rabbitmq-prod<span class="w"> </span>rabbitmqctl<span class="w"> </span>add_user<span class="w"> </span>dhanman<span class="w"> </span><span class="s1">&#39;ProdStrongPassword&#39;</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>rabbitmq-prod<span class="w"> </span>rabbitmqctl<span class="w"> </span>set_user_tags<span class="w"> </span>dhanman<span class="w"> </span>administrator
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>rabbitmq-prod<span class="w"> </span>rabbitmqctl<span class="w"> </span>set_permissions<span class="w"> </span>-p<span class="w"> </span>/<span class="w"> </span>dhanman<span class="w"> </span><span class="s2">&quot;.*&quot;</span><span class="w"> </span><span class="s2">&quot;.*&quot;</span><span class="w"> </span><span class="s2">&quot;.*&quot;</span>
+</code></pre></div>
+
+<h3 id="32-qa-user">3.2. QA User<a class="headerlink" href="#32-qa-user" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>rabbitmq-qa<span class="w"> </span>rabbitmqctl<span class="w"> </span>add_user<span class="w"> </span>dhanman_qa<span class="w"> </span><span class="s1">&#39;QaStrongPassword&#39;</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>rabbitmq-qa<span class="w"> </span>rabbitmqctl<span class="w"> </span>set_user_tags<span class="w"> </span>dhanman_qa<span class="w"> </span>administrator
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>rabbitmq-qa<span class="w"> </span>rabbitmqctl<span class="w"> </span>set_permissions<span class="w"> </span>-p<span class="w"> </span>/<span class="w"> </span>dhanman_qa<span class="w"> </span><span class="s2">&quot;.*&quot;</span><span class="w"> </span><span class="s2">&quot;.*&quot;</span><span class="w"> </span><span class="s2">&quot;.*&quot;</span>
+</code></pre></div>
+
+<hr />
+<h2 id="4-dns-setup">4. DNS Setup<a class="headerlink" href="#4-dns-setup" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Host</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rabbitmq.dhanman.com</td>
+<td>A</td>
+<td>51.79.156.217</td>
+</tr>
+<tr>
+<td>qa.rabbitmq.dhanman.com</td>
+<td>A</td>
+<td>51.79.156.217</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-nginx-reverse-proxy-setup">5. NGINX Reverse Proxy Setup<a class="headerlink" href="#5-nginx-reverse-proxy-setup" title="Permanent link">&para;</a></h2>
+<h3 id="51-production-nginx-config">5.1. Production NGINX Config<a class="headerlink" href="#51-production-nginx-config" title="Permanent link">&para;</a></h3>
+<p>File: <code>/etc/nginx/sites-available/rabbitmq-prod.conf</code></p>
+<div class="codehilite"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">rabbitmq.dhanman.com</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://127.0.0.1:15672/</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_http_version</span><span class="w"> </span><span class="mi">1</span><span class="s">.1</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Upgrade</span><span class="w"> </span><span class="nv">$http_upgrade</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Connection</span><span class="w"> </span><span class="s">&quot;upgrade&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Proto</span><span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="52-qa-nginx-config">5.2. QA NGINX Config<a class="headerlink" href="#52-qa-nginx-config" title="Permanent link">&para;</a></h3>
+<p>File: <code>/etc/nginx/sites-available/rabbitmq-qa.conf</code></p>
+<div class="codehilite"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">qa.rabbitmq.dhanman.com</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://127.0.0.1:15673/</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_http_version</span><span class="w"> </span><span class="mi">1</span><span class="s">.1</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Upgrade</span><span class="w"> </span><span class="nv">$http_upgrade</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Connection</span><span class="w"> </span><span class="s">&quot;upgrade&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Proto</span><span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="53-enable-sites">5.3. Enable Sites<a class="headerlink" href="#53-enable-sites" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/rabbitmq-prod.conf<span class="w"> </span>/etc/nginx/sites-enabled/
+sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/rabbitmq-qa.conf<span class="w"> </span>/etc/nginx/sites-enabled/
+</code></pre></div>
+
+<h3 id="54-test-reload-nginx">5.4. Test &amp; Reload NGINX<a class="headerlink" href="#54-test-reload-nginx" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
+sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+</code></pre></div>
+
+<hr />
+<h2 id="6-ssl-setup-with-certbot">6. SSL Setup with Certbot<a class="headerlink" href="#6-ssl-setup-with-certbot" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>certbot<span class="w"> </span>python3-certbot-nginx<span class="w"> </span>-y
+</code></pre></div>
+
+<h3 id="61-production-ssl">6.1. Production SSL<a class="headerlink" href="#61-production-ssl" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>rabbitmq.dhanman.com
+</code></pre></div>
+
+<h3 id="62-qa-ssl">6.2. QA SSL<a class="headerlink" href="#62-qa-ssl" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>qa.rabbitmq.dhanman.com
+</code></pre></div>
+
+<hr />
+<h2 id="7-final-result">7. Final Result<a class="headerlink" href="#7-final-result" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>URL</th>
+<th>Environment</th>
+<th>Ports</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://rabbitmq.dhanman.com">https://rabbitmq.dhanman.com</a></td>
+<td>Production</td>
+<td>5672 AMQP + 443 HTTPS (Mgmt UI)</td>
+</tr>
+<tr>
+<td><a href="https://qa.rabbitmq.dhanman.com">https://qa.rabbitmq.dhanman.com</a></td>
+<td>QA</td>
+<td>5673 AMQP + 443 HTTPS (Mgmt UI)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-optional-security-enhancements">8. Optional Security Enhancements<a class="headerlink" href="#8-optional-security-enhancements" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Run <code>sudo ufw allow 'Nginx Full'</code></li>
+<li>Add IP restrictions or basic auth for QA endpoint</li>
+<li>Add RabbitMQ Prometheus exporter for Grafana dashboards</li>
+</ul>
 
 
 

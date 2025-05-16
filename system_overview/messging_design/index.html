@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../design/">
+        <link rel="prev" href="../rabbitmq_setup/">
       
       
-        <link rel="next" href="../../permissions/sales/">
+        <link rel="next" href="../MinIO/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -47,6 +47,8 @@
     
       <link rel="stylesheet" href="../../extra.css">
     
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -66,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dhanman-microservices-rabbitmq-messaging-developer-guide-updated" class="md-skip">
+        <a href="#dhanman-microservices-rabbitmq-messaging-developer-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -292,11 +294,53 @@
   
   
     <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../design/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rabbitmq_setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RabbitMQ Setup
   </span>
   
 
@@ -560,6 +604,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MinIO/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MinIO Setup
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1628,7 +1693,7 @@
                   
 
 
-<h1 id="dhanman-microservices-rabbitmq-messaging-developer-guide-updated">Dhanman Microservices RabbitMQ Messaging Developer Guide (Updated)<a class="headerlink" href="#dhanman-microservices-rabbitmq-messaging-developer-guide-updated" title="Permanent link">&para;</a></h1>
+<h1 id="dhanman-microservices-rabbitmq-messaging-developer-guide">Dhanman Microservices RabbitMQ Messaging Developer Guide<a class="headerlink" href="#dhanman-microservices-rabbitmq-messaging-developer-guide" title="Permanent link">&para;</a></h1>
 <hr />
 <h2 id="1-introduction-to-messaging-architecture">1. Introduction to Messaging Architecture<a class="headerlink" href="#1-introduction-to-messaging-architecture" title="Permanent link">&para;</a></h2>
 <p>We use RabbitMQ as our message broker to enable asynchronous, loosely coupled communication between microservices via messages. This event-driven architecture helps build scalable and responsive systems.</p>
@@ -1807,7 +1872,6 @@
 <h2 id="architecture-diagram">Architecture Diagram<a class="headerlink" href="#architecture-diagram" title="Permanent link">&para;</a></h2>
 <p><img alt="Messaging Image" src="../../assets/messaging.png" /></p>
 <hr />
-<p><em>End of Document</em></p>
 
 
 
@@ -1862,6 +1926,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
       
         <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
       
     
   </body>
