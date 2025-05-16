@@ -137,7 +137,7 @@ This messaging architecture, built on **B2aTech.CrossCuttingConcern** and **Dhan
 
 ## Architecture Diagram
 
-![Architecture Diagram](https://www.mermaidchart.com/raw/005f9e47-3f44-4943-a887-d63257385875?theme=light&version=v0.1&format=svg)
+![Messaging Image](images/messaging.png)
 
 ---
 
