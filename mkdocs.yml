@@ -42,7 +42,7 @@ nav:
       - App UI Structure: how-to/app-ui-structure.md
   - Devops:
       - DigitalOcen: devops/qa_deployment_guide.md
-      - Data Backup: devops/data_backup/dump_restore_clean.md
+      - Data Backup: devops/dump_restore_clean.md
       - QA-PROD: devops/qa_prod_deployment_guide.md
   - About: about.md
 
