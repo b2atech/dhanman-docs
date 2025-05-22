@@ -8,8 +8,9 @@ nav:
       - Architecture: system_overview/architecture.md
       - Sales: system_overview/dhanman_sales.md
       - Overview: system_overview/design.md
-      - Budgeting: system_overview/budgeting_system.md
-      - RabbitMQ Setup: system_overview/rabbitmq_setup.md
+      - Budgeting : system_overview/budgeting_system.md
+      - Water Tanker : system_overview/water_tanker.md
+      - RabbitMQ Setup: system_overview/rabbitmq_setup.md      
       - Messging Overview: system_overview/messging_design.md
       - MinIO Setup: system_overview/MinIO.md
       - MKDocs: system_overview/mkdocs.md
