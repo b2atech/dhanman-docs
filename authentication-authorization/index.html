@@ -1,0 +1,1949 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../system_overview/architecture/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Authentication - DhanMan</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+    
+      <link rel="stylesheet" href="../extra.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#request-authentication-authorization" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="DhanMan" class="md-header__button md-logo" aria-label="DhanMan" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DhanMan
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Authentication
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="DhanMan" class="md-nav__button md-logo" aria-label="DhanMan" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DhanMan
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../accounting/introduction.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Accounting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Authentication
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detailed Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-incoming-request-with-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Incoming Request with Token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Authentication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dependency-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Dependency Injection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-controller-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Controller Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Authorization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-permission-checking" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Permission Checking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-action-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Action Execution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Sytem Architecture
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Sytem Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system_overview/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system_overview/dhanman_sales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sales
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system_overview/design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system_overview/budgeting_system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Budgeting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system_overview/water_tanker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Water Tanker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system_overview/rabbitmq_setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RabbitMQ Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system_overview/messging_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Messging Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system_overview/MinIO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MinIO Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system_overview/mkdocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MKDocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Permissions
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Permissions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system_overview/common.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Common
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../permissions/sales.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sales
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Accounting Entries
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Accounting Entries
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../accounting_entries/purchase_transactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Purchase Transactions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../accounting_entries/sales_transactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sales Transactions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../accounting_entries/payroll_transactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Payroll Transactions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../accounting_entries/entries_others/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Other Entries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../accounting_entries/entries_samples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sample Entries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Financial Reports
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Financial Reports
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../financial_reports/ledger_of_customers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ledger of Customers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../financial_reports/ledger_of_vendors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ledger of Vendors
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../financial_reports/trial_balance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Trial Balance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../financial_reports/balance_sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Balance Sheet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../financial_reports/profit_and_loss_statement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Profit and Loss Statement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../financial_reports/cash_flow_statement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cash Flow Statement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../financial_reports/accounts_receivable_aging_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Accounts Receivable Aging Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../financial_reports/accounts%20_payable_aging_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Accounts Payable Aging Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../financial_reports/pending_dues_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pending Dues Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Payroll
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Payroll
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payroll/sample_templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sample Templates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../policies/office_etiquette_policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Office Etiquette Policy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Coding Conventions
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Coding Conventions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../coding_conventions/cc_principle_backend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backend
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    How Tos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            How Tos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/email_templates.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Email Templates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/app-ui-structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    App UI Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Devops
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            Devops
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops/qa_deployment_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DigitalOcen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops/dump_restore_clean/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Backup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops/qa_prod_deployment_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    QA-PROD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detailed Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-incoming-request-with-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Incoming Request with Token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Authentication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dependency-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Dependency Injection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-controller-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Controller Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Authorization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-permission-checking" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Permission Checking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-action-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Action Execution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="request-authentication-authorization">Request -&gt;Authentication-&gt;Authorization<a class="headerlink" href="#request-authentication-authorization" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This document outlines the flow of a request from when it enters the system, how authentication and authorization are handled, and how the <code>IUserContextService</code>, <code>PermissionHandler</code>, and <code>PermissionService</code> work together.</p>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Incoming Request</strong>: A request with a JWT token arrives at the API.</li>
+<li><strong>Authentication</strong>: The JWT token is validated, and user claims are populated.</li>
+<li><strong>Dependency Injection</strong>: <code>IUserContextService</code> is injected to provide user context.</li>
+<li><strong>Controller Handling</strong>: The request is routed to a controller derived from <code>ApiController</code>.</li>
+<li><strong>Authorization</strong>: The <code>[Authorize]</code> attribute triggers the <code>PermissionHandler</code>.</li>
+<li><strong>Permission Checking</strong>:<ul>
+<li><code>PermissionHandler</code> uses <code>IServiceScopeFactory</code> to create a new scope and resolve <code>IPermissionService</code>.</li>
+<li><code>PermissionService</code> checks the database and cache for the required permissions.</li>
+</ul>
+</li>
+<li><strong>Action Execution</strong>: If authorization succeeds, the controller action is executed.</li>
+</ol>
+<h2 id="detailed-steps">Detailed Steps<a class="headerlink" href="#detailed-steps" title="Permanent link">&para;</a></h2>
+<h3 id="1-incoming-request-with-token">1. Incoming Request with Token<a class="headerlink" href="#1-incoming-request-with-token" title="Permanent link">&para;</a></h3>
+<p>When a client makes a request to the API, it includes a JWT token in the <code>Authorization</code> header.</p>
+<div class="codehilite"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/api/orders</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.example.com</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...</span>
+</code></pre></div>
+
+<h3 id="2-authentication">2. Authentication<a class="headerlink" href="#2-authentication" title="Permanent link">&para;</a></h3>
+<p>The middleware in <code>Startup.cs</code> or <code>Program.cs</code> is configured to validate JWT tokens.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span><span class="w"> </span><span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">services</span><span class="p">.</span><span class="n">AddAuthentication</span><span class="p">(</span><span class="n">options</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">options</span><span class="p">.</span><span class="n">DefaultAuthenticateScheme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JwtBearerDefaults</span><span class="p">.</span><span class="n">AuthenticationScheme</span><span class="p">;</span>
+<span class="w">        </span><span class="n">options</span><span class="p">.</span><span class="n">DefaultChallengeScheme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JwtBearerDefaults</span><span class="p">.</span><span class="n">AuthenticationScheme</span><span class="p">;</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="n">AddJwtBearer</span><span class="p">(</span><span class="n">options</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">options</span><span class="p">.</span><span class="n">Authority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://your-auth-server.com&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">options</span><span class="p">.</span><span class="n">Audience</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;your-audience&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// Other JWT validation parameters</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="n">services</span><span class="p">.</span><span class="n">AddAuthorization</span><span class="p">();</span>
+<span class="w">    </span><span class="n">services</span><span class="p">.</span><span class="n">AddHttpContextAccessor</span><span class="p">();</span>
+<span class="w">    </span><span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="o">&lt;</span><span class="n">IUserContextService</span><span class="p">,</span><span class="w"> </span><span class="n">UserContextService</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="o">&lt;</span><span class="n">IPermissionService</span><span class="p">,</span><span class="w"> </span><span class="n">PermissionService</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="o">&lt;</span><span class="n">IAuthorizationHandler</span><span class="p">,</span><span class="w"> </span><span class="n">PermissionHandler</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">services</span><span class="p">.</span><span class="n">AddDbContext</span><span class="o">&lt;</span><span class="n">PermissionDbContext</span><span class="o">&gt;</span><span class="p">(</span><span class="n">options</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">        </span><span class="n">options</span><span class="p">.</span><span class="n">UseNpgsql</span><span class="p">(</span><span class="n">Configuration</span><span class="p">.</span><span class="n">GetConnectionString</span><span class="p">(</span><span class="s">&quot;PermissionDbConnection&quot;</span><span class="p">))</span>
+<span class="w">               </span><span class="p">.</span><span class="n">UseSnakeCaseNamingConvention</span><span class="p">());</span>
+
+<span class="w">    </span><span class="c1">// Other service registrations</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>When the request arrives, the <code>AddJwtBearer</code> middleware validates the token. If the token is valid, the user is authenticated and the user's claims are populated in <code>HttpContext.User</code>.</p>
+<h3 id="3-dependency-injection">3. Dependency Injection<a class="headerlink" href="#3-dependency-injection" title="Permanent link">&para;</a></h3>
+<p>Services like <code>IUserContextService</code> are injected into controllers and other services as needed. This is configured in the <code>ConfigureServices</code> method as shown above.</p>
+<h3 id="4-controller-handling">4. Controller Handling<a class="headerlink" href="#4-controller-handling" title="Permanent link">&para;</a></h3>
+<p>The request is routed to the appropriate controller. All controllers inherit from <code>ApiController</code>, which ensures they have access to common functionality like <code>IUserContextService</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="na">[Authorize]</span>
+<span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ApiController</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ControllerBase</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="n">IMediator</span><span class="w"> </span><span class="n">Mediator</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="n">IUserContextService</span><span class="w"> </span><span class="n">UserContextService</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="nf">ApiController</span><span class="p">(</span><span class="n">IMediator</span><span class="w"> </span><span class="n">mediator</span><span class="p">,</span><span class="w"> </span><span class="n">IUserContextService</span><span class="w"> </span><span class="n">userContextService</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Mediator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mediator</span><span class="p">;</span>
+<span class="w">        </span><span class="n">UserContextService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">userContextService</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="5-authorization">5. Authorization<a class="headerlink" href="#5-authorization" title="Permanent link">&para;</a></h3>
+<p>The <code>[Authorize]</code> attribute on <code>ApiController</code> triggers the authorization process.</p>
+<h3 id="6-permission-checking">6. Permission Checking<a class="headerlink" href="#6-permission-checking" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>PermissionHandler</strong>:</p>
+<ul>
+<li>The <code>PermissionHandler</code> is an <code>AuthorizationHandler</code> that checks if the user has the required permissions.</li>
+</ul>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PermissionHandler</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AuthorizationHandler</span><span class="o">&lt;</span><span class="n">PermissionRequirement</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IServiceScopeFactory</span><span class="w"> </span><span class="n">_serviceScopeFactory</span><span class="p">;</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IHttpContextAccessor</span><span class="w"> </span><span class="n">_httpContextAccessor</span><span class="p">;</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ILogger</span><span class="o">&lt;</span><span class="n">PermissionHandler</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_logger</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="nf">PermissionHandler</span><span class="p">(</span><span class="n">IServiceScopeFactory</span><span class="w"> </span><span class="n">serviceScopeFactory</span><span class="p">,</span><span class="w"> </span><span class="n">IHttpContextAccessor</span><span class="w"> </span><span class="n">httpContextAccessor</span><span class="p">,</span><span class="w"> </span><span class="n">ILogger</span><span class="o">&lt;</span><span class="n">PermissionHandler</span><span class="o">&gt;</span><span class="w"> </span><span class="n">logger</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">_serviceScopeFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">serviceScopeFactory</span><span class="p">;</span>
+<span class="w">            </span><span class="n">_httpContextAccessor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">httpContextAccessor</span><span class="p">;</span>
+<span class="w">            </span><span class="n">_logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logger</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">HandleRequirementAsync</span><span class="p">(</span><span class="n">AuthorizationHandlerContext</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">PermissionRequirement</span><span class="w"> </span><span class="n">requirement</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogDebug</span><span class="p">(</span><span class="s">&quot;Starting authorization check for permission: {Permission}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">requirement</span><span class="p">.</span><span class="n">Permission</span><span class="p">);</span>
+
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">userIdClaim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_httpContextAccessor</span><span class="p">.</span><span class="n">HttpContext</span><span class="p">.</span><span class="n">User</span><span class="o">?.</span><span class="n">FindFirst</span><span class="p">(</span><span class="s">&quot;dhanman_id&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">userIdClaim</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">Guid</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">userIdClaim</span><span class="p">.</span><span class="n">Value</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">userId</span><span class="p">))</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogInformation</span><span class="p">(</span><span class="s">&quot;User {UserId} found, checking permissions.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">userId</span><span class="p">);</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="n">HasPermissionIterativelyAsync</span><span class="p">(</span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">requirement</span><span class="p">))</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">context</span><span class="p">.</span><span class="n">Succeed</span><span class="p">(</span><span class="n">requirement</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogInformation</span><span class="p">(</span><span class="s">&quot;Authorization succeeded for user {UserId} on permission {Permission}.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">requirement</span><span class="p">.</span><span class="n">Permission</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogWarning</span><span class="p">(</span><span class="s">&quot;User ID claim &#39;dhanman_id&#39; not found or invalid.&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogWarning</span><span class="p">(</span><span class="s">&quot;Authorization failed for user {UserId} on permission {Permission}.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">userIdClaim</span><span class="o">?.</span><span class="n">Value</span><span class="p">,</span><span class="w"> </span><span class="n">requirement</span><span class="p">.</span><span class="n">Permission</span><span class="p">);</span>
+<span class="w">            </span><span class="n">context</span><span class="p">.</span><span class="n">Fail</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">HasPermissionIterativelyAsync</span><span class="p">(</span><span class="n">Guid</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">PermissionRequirement</span><span class="w"> </span><span class="n">requirement</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogDebug</span><span class="p">(</span><span class="s">&quot;Checking permissions iteratively for user {UserId}.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">userId</span><span class="p">);</span>
+
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">permissionsToCheck</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Stack</span><span class="o">&lt;</span><span class="n">PermissionRequirement</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">            </span><span class="n">permissionsToCheck</span><span class="p">.</span><span class="n">Push</span><span class="p">(</span><span class="n">requirement</span><span class="p">);</span>
+
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">permissionsToCheck</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">currentPermission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">permissionsToCheck</span><span class="p">.</span><span class="n">Pop</span><span class="p">();</span>
+
+<span class="w">                </span><span class="k">using</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">scope</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_serviceScopeFactory</span><span class="p">.</span><span class="n">CreateScope</span><span class="p">())</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="kt">var</span><span class="w"> </span><span class="n">permissionService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scope</span><span class="p">.</span><span class="n">ServiceProvider</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="o">&lt;</span><span class="n">IPermissionService</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">                    </span><span class="c1">// Check if the user has the current permission</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="n">permissionService</span><span class="p">.</span><span class="n">HasPermissionAsync</span><span class="p">(</span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">currentPermission</span><span class="p">.</span><span class="n">Permission</span><span class="p">))</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogDebug</span><span class="p">(</span><span class="s">&quot;Permission {Permission} granted for user {UserId}.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">currentPermission</span><span class="p">.</span><span class="n">Permission</span><span class="p">,</span><span class="w"> </span><span class="n">userId</span><span class="p">);</span>
+<span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">                </span><span class="c1">// Add child permissions to the stack for checking</span>
+<span class="w">                </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">childPermission</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">currentPermission</span><span class="p">.</span><span class="n">ChildPermissions</span><span class="p">)</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">permissionsToCheck</span><span class="p">.</span><span class="n">Push</span><span class="p">(</span><span class="n">childPermission</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogDebug</span><span class="p">(</span><span class="s">&quot;Permission {Permission} denied for user {UserId}.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">requirement</span><span class="p">.</span><span class="n">Permission</span><span class="p">,</span><span class="w"> </span><span class="n">userId</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+
+<ol>
+<li>
+<p><strong>PermissionService</strong>:</p>
+<ul>
+<li>The <code>PermissionService</code> checks if the user has the necessary permissions by querying the database.</li>
+</ul>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PermissionService</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IPermissionService</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">PermissionDbContext</span><span class="w"> </span><span class="n">_context</span><span class="p">;</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IMemoryCache</span><span class="w"> </span><span class="n">_cache</span><span class="p">;</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ILogger</span><span class="o">&lt;</span><span class="n">PermissionService</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_logger</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="nf">PermissionService</span><span class="p">(</span><span class="n">PermissionDbContext</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">IMemoryCache</span><span class="w"> </span><span class="n">cache</span><span class="p">,</span><span class="w"> </span><span class="n">ILogger</span><span class="o">&lt;</span><span class="n">PermissionService</span><span class="o">&gt;</span><span class="w"> </span><span class="n">logger</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">_context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">;</span>
+<span class="w">            </span><span class="n">_cache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cache</span><span class="p">;</span>
+<span class="w">            </span><span class="n">_logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logger</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">HasPermissionAsync</span><span class="p">(</span><span class="n">Guid</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">permission</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">cacheKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">$&quot;{userId}_{permission}&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogDebug</span><span class="p">(</span><span class="s">&quot;Checking permissions for user {UserId} on permission {Permission}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">permission</span><span class="p">);</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_cache</span><span class="p">.</span><span class="n">TryGetValue</span><span class="p">(</span><span class="n">cacheKey</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">hasPermissionfromCache</span><span class="p">))</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogInformation</span><span class="p">(</span><span class="s">&quot;Permission {Permission} for user {UserId} found in cache.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">permission</span><span class="p">,</span><span class="w"> </span><span class="n">userId</span><span class="p">);</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">hasPermissionfromCache</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogDebug</span><span class="p">(</span><span class="s">&quot;Permission {Permission} for user {UserId} not found in cache. Checking database.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">permission</span><span class="p">,</span><span class="w"> </span><span class="n">userId</span><span class="p">);</span>
+
+<span class="w">            </span><span class="kt">bool</span><span class="w"> </span><span class="n">hasPermission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_context</span><span class="p">.</span><span class="n">UserPermissions</span>
+<span class="w">                </span><span class="p">.</span><span class="n">AnyAsync</span><span class="p">(</span><span class="n">up</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">up</span><span class="p">.</span><span class="n">UserId</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">userId</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">up</span><span class="p">.</span><span class="n">Permission</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">permission</span><span class="p">);</span>
+
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">cacheEntryOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MemoryCacheEntryOptions</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="n">SetSlidingExpiration</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromMinutes</span><span class="p">(</span><span class="mi">60</span><span class="p">));</span>
+
+<span class="w">            </span><span class="n">_cache</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="n">cacheKey</span><span class="p">,</span><span class="w"> </span><span class="n">hasPermission</span><span class="p">,</span><span class="w"> </span><span class="n">cacheEntryOptions</span><span class="p">);</span>
+
+<span class="w">            </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogInformation</span><span class="p">(</span><span class="s">&quot;Permission {Permission} for user {UserId} retrieved from database and cached: {HasPermission}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">permission</span><span class="p">,</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">hasPermission</span><span class="p">);</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">hasPermission</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+
+<h3 id="7-action-execution">7. Action Execution<a class="headerlink" href="#7-action-execution" title="Permanent link">&para;</a></h3>
+<p>If the authorization succeeds, the controller action is executed. If it fails, the request is denied with a <code>403 Forbidden</code> response.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+      
+        <script src="../js/extra.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+    
+  </body>
+</html>

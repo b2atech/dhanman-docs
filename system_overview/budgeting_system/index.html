@@ -1,0 +1,2060 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../design/">
+      
+      
+        <link rel="next" href="../water_tanker/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Budgeting - DhanMan</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#budgeting-system-overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DhanMan" class="md-header__button md-logo" aria-label="DhanMan" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DhanMan
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Budgeting
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DhanMan" class="md-nav__button md-logo" aria-label="DhanMan" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DhanMan
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounting/introduction.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Accounting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authentication-authorization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Sytem Architecture
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Sytem Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dhanman_sales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sales
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Budgeting
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Budgeting
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-proposed-database-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Proposed Database Tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-key-data-handling-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Key Data Handling Logic
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-planning-ui-wireframe-editable-change-or-budget-amount" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Planning UI Wireframe (Editable % Change or Budget Amount)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-reporting-variance-ui-wireframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Reporting / Variance UI Wireframe
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-data-aggregation-for-parent-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Data Aggregation for Parent Accounts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-fetch-budget-lines-for-a-company-financial-year" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Fetch Budget Lines for a Company &amp; Financial Year
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-get-last-year-actuals-per-account-for-a-company-period" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Get Last Year Actuals per Account for a Company &amp; Period
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-aggregate-budget-and-actuals-for-company-by-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Aggregate Budget and Actuals for Company by Account
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-consolidated-budget-and-actuals-across-all-companies-in-an-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Consolidated Budget and Actuals Across All Companies in an Organization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-roll-up-budget-summary-at-parent-account-level-recursive-query-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Roll-Up Budget Summary at Parent Account Level (Recursive Query Example)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../water_tanker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Water Tanker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rabbitmq_setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RabbitMQ Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../messging_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Messging Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MinIO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MinIO Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mkdocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MKDocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Permissions
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Permissions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Common
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../permissions/sales.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sales
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Accounting Entries
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Accounting Entries
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounting_entries/purchase_transactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Purchase Transactions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounting_entries/sales_transactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sales Transactions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounting_entries/payroll_transactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Payroll Transactions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounting_entries/entries_others/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Other Entries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounting_entries/entries_samples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sample Entries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Financial Reports
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Financial Reports
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../financial_reports/ledger_of_customers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ledger of Customers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../financial_reports/ledger_of_vendors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ledger of Vendors
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../financial_reports/trial_balance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Trial Balance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../financial_reports/balance_sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Balance Sheet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../financial_reports/profit_and_loss_statement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Profit and Loss Statement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../financial_reports/cash_flow_statement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cash Flow Statement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../financial_reports/accounts_receivable_aging_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Accounts Receivable Aging Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../financial_reports/accounts%20_payable_aging_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Accounts Payable Aging Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../financial_reports/pending_dues_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pending Dues Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Payroll
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Payroll
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../payroll/sample_templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sample Templates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../policies/office_etiquette_policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Office Etiquette Policy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Coding Conventions
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Coding Conventions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../coding_conventions/cc_principle_backend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backend
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    How Tos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            How Tos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/email_templates.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Email Templates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/app-ui-structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    App UI Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Devops
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            Devops
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devops/qa_deployment_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DigitalOcen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devops/dump_restore_clean/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Backup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devops/qa_prod_deployment_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    QA-PROD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-proposed-database-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Proposed Database Tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-key-data-handling-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Key Data Handling Logic
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-planning-ui-wireframe-editable-change-or-budget-amount" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Planning UI Wireframe (Editable % Change or Budget Amount)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-reporting-variance-ui-wireframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Reporting / Variance UI Wireframe
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-data-aggregation-for-parent-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Data Aggregation for Parent Accounts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-fetch-budget-lines-for-a-company-financial-year" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Fetch Budget Lines for a Company &amp; Financial Year
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-get-last-year-actuals-per-account-for-a-company-period" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Get Last Year Actuals per Account for a Company &amp; Period
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-aggregate-budget-and-actuals-for-company-by-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Aggregate Budget and Actuals for Company by Account
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-consolidated-budget-and-actuals-across-all-companies-in-an-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Consolidated Budget and Actuals Across All Companies in an Organization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-roll-up-budget-summary-at-parent-account-level-recursive-query-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Roll-Up Budget Summary at Parent Account Level (Recursive Query Example)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="budgeting-system-overview">Budgeting System Overview<a class="headerlink" href="#budgeting-system-overview" title="Permanent link">&para;</a></h1>
+<p>The budgeting system is designed to enable organizations and their constituent companies to plan, monitor, and analyze their financial resources effectively. It leverages a hierarchical Chart of Accounts maintained at the organization level while supporting granular budget entries and financial tracking at the company level.</p>
+<h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><strong>Company-Level Budgeting:</strong><br />
+  Budgets are created and managed for individual companies, enabling detailed financial planning aligned with actual business units.</p>
+</li>
+<li>
+<p><strong>Hierarchical Account Structure:</strong><br />
+  The system uses the organization's Chart of Accounts, supporting multiple levels of accounts. Budget entries are made at the leaf account level, while parent accounts provide aggregated summaries.</p>
+</li>
+<li>
+<p><strong>Flexible Planning Interface:</strong><br />
+  Users can plan budgets by either entering absolute amounts or specifying percentage changes based on prior period actuals. This flexibility speeds up the budgeting process and enhances usability.</p>
+</li>
+<li>
+<p><strong>Dynamic Roll-ups and Reporting:</strong><br />
+  Parent account budgets and financial reports are generated by aggregating child account data. The system provides comprehensive variance analysis, showing differences between budgeted and actual amounts in both absolute and percentage terms.</p>
+</li>
+<li>
+<p><strong>Multi-Level Reporting:</strong><br />
+  Financial reports such as Trial Balance, Balance Sheet, and Budget Variance are available at both company and organization levels, supporting both granular and consolidated views.</p>
+</li>
+</ul>
+<p>This budgeting system integrates with transactional data, ensuring accuracy and consistency in financial management, and supports workflows for drafting, submitting, and approving budgets.</p>
+<p><img alt="Messaging Image" src="../../assets/budget_er.svg" /></p>
+<h2 id="1-proposed-database-tables">1. Proposed Database Tables<a class="headerlink" href="#1-proposed-database-tables" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- Budget header: one per organization + financial year + status etc.</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">budgets</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">id</span><span class="w"> </span><span class="n">uuid</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">gen_random_uuid</span><span class="p">()</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">  </span><span class="n">organization_id</span><span class="w"> </span><span class="n">uuid</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="n">company_id</span><span class="w"> </span><span class="n">uuid</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">companies</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+<span class="w">  </span><span class="n">finance_year_id</span><span class="w"> </span><span class="n">int4</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="n">name</span><span class="w"> </span><span class="nb">text</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="n">status</span><span class="w"> </span><span class="nb">text</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;Draft&#39;</span><span class="p">,</span><span class="w"> </span><span class="c1">-- Draft, Submitted, Approved</span>
+<span class="w">  </span><span class="n">created_by</span><span class="w"> </span><span class="n">uuid</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="n">created_on_utc</span><span class="w"> </span><span class="k">timestamp</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">now</span><span class="p">(),</span>
+<span class="w">  </span><span class="n">modified_by</span><span class="w"> </span><span class="n">uuid</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="n">modified_on_utc</span><span class="w"> </span><span class="k">timestamp</span><span class="w"> </span><span class="k">NULL</span>
+<span class="p">);</span>
+
+<span class="c1">-- Budget line: one per leaf account per period</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">budget_lines</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">id</span><span class="w"> </span><span class="n">uuid</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">gen_random_uuid</span><span class="p">()</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">  </span><span class="n">budget_id</span><span class="w"> </span><span class="n">uuid</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">budgets</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">CASCADE</span><span class="p">,</span>
+<span class="w">  </span><span class="n">account_id</span><span class="w"> </span><span class="n">uuid</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">chart_of_accounts</span><span class="p">(</span><span class="n">id</span><span class="p">),</span>
+<span class="w">  </span><span class="n">period_start</span><span class="w"> </span><span class="nb">date</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="n">period_end</span><span class="w"> </span><span class="nb">date</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="n">amount</span><span class="w"> </span><span class="nb">numeric</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="n">created_on_utc</span><span class="w"> </span><span class="k">timestamp</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">now</span><span class="p">(),</span>
+<span class="w">  </span><span class="n">modified_on_utc</span><span class="w"> </span><span class="k">timestamp</span><span class="w"> </span><span class="k">NULL</span>
+<span class="p">);</span>
+
+<span class="c1">-- (Optional) To define account hierarchy levels if not precomputed</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">chart_of_account_levels</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">account_id</span><span class="w"> </span><span class="n">uuid</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">chart_of_accounts</span><span class="p">(</span><span class="n">id</span><span class="p">),</span>
+<span class="w">  </span><span class="k">level</span><span class="w"> </span><span class="n">int4</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="c1">-- 1=root, 2=next level, etc.</span>
+<span class="p">);</span>
+</code></pre></div>
+
+<h2 id="2-key-data-handling-logic">2. Key Data Handling Logic<a class="headerlink" href="#2-key-data-handling-logic" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Users enter budgets in <code>budget_lines</code> for leaf accounts (e.g., accounts at level 3 or lowest level shown).</li>
+<li>Parent account budgets are <em>not</em> entered; they are calculated by summing child leaf budgets when querying or reporting.</li>
+<li>You can filter accounts by <code>level</code> in the UI to show only relevant accounts for entry.</li>
+<li><strong>Budget amount is the source of truth stored in the database.</strong></li>
+</ul>
+<h2 id="3-planning-ui-wireframe-editable-change-or-budget-amount">3. Planning UI Wireframe (Editable % Change or Budget Amount)<a class="headerlink" href="#3-planning-ui-wireframe-editable-change-or-budget-amount" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code>+----------------------------------------------------------+
+| Budget: &quot;FY 2025 Budget&quot;                                  |
+| Organization: [Org Name]   Year: [2025]                   |
+| Filter: Account Type [Expenses ▼]  Account Level [3 ▼]    |
++----------------------------------------------------------+
+
+| Account Number | Account Name           | Last Year Actual | % Change (editable) | Budget Amount (editable) |
+|---------------|------------------------|------------------|---------------------|--------------------------|
+| 6001          | Electricity            | 120,000          | [ +5.0%    ]        | [ 126,000 ]              |
+| 6002          | Water                  | 80,000           | [ -3.0%    ]        | [ 77,600  ]              |
+| 7001          | Cleaning               | 40,000           | [  0.0%    ]        | [ 40,000  ]              |
++----------------------------------------------------------+
+
+[Save Draft]   [Submit for Approval]   [Export Excel]  [Cancel]
+</code></pre></div>
+
+<ul>
+<li>Users can <strong>edit either % Change or Budget Amount</strong>, and the other field updates dynamically.</li>
+<li><code>Last Year Actual</code> is fetched dynamically from prior data.</li>
+<li><strong>Budget amount is saved in DB.</strong></li>
+</ul>
+<h2 id="4-reporting-variance-ui-wireframe">4. Reporting / Variance UI Wireframe<a class="headerlink" href="#4-reporting-variance-ui-wireframe" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code>+-------------------------------------------------------------+
+| Budget vs Actuals Dashboard                                  |
+| Organization: [Org Name]   Year: [2025]                      |
+| Filter: Account Type [Expenses ▼]  Period: [Monthly ▼]       |
++-------------------------------------------------------------+
+
+| Account Number | Account Name           | Budget | Actual | Variance (Amount) | Variance (%) |
+|---------------|------------------------|--------|--------|-------------------|--------------|
+| 6000          | Utilities              | 400K   | 420K   | -20K              | -5.0%        |
+|   6001        | Electricity            | 150K   | 160K   | -10K              | -6.7%        |
+|   6002        | Water                  | 250K   | 260K   | -10K              | -4.0%        |
+| 7000          | Maintenance            | 300K   | 280K   | +20K              | +7.1%        |
+|   7001        | Cleaning               | 120K   | 130K   | -10K              | -8.3%        |
+|   7002        | Repairs                | 180K   | 150K   | +30K              | +20.0%       |
++-------------------------------------------------------------+
+
+[Export PDF]   [Drilldown Details]   [Filter Options]
+</code></pre></div>
+
+<ul>
+<li>Variance is shown both as an absolute amount and percentage for clear analysis.</li>
+</ul>
+<h2 id="5-data-aggregation-for-parent-accounts">5. Data Aggregation for Parent Accounts<a class="headerlink" href="#5-data-aggregation-for-parent-accounts" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Parent accounts budgets and actuals are <strong>calculated by summing child leaf accounts</strong>.</li>
+<li>Leaf accounts are where budget amounts are entered.</li>
+</ul>
+<hr />
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Budget Entries</td>
+<td>Only on leaf accounts (lowest visible level)</td>
+</tr>
+<tr>
+<td>Parent Budgets</td>
+<td>Calculated by summing all child leaf accounts’ budgets</td>
+</tr>
+<tr>
+<td>Filtering</td>
+<td>By account level and account type</td>
+</tr>
+<tr>
+<td>UI</td>
+<td>Editable % Change or Budget Amount in planning; read-only budget in reporting</td>
+</tr>
+<tr>
+<td>Reporting</td>
+<td>Shows budget, actual, variance (amount and %) at all hierarchy levels</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1-fetch-budget-lines-for-a-company-financial-year">1. Fetch Budget Lines for a Company &amp; Financial Year<a class="headerlink" href="#1-fetch-budget-lines-for-a-company-financial-year" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">  </span><span class="n">bl</span><span class="p">.</span><span class="n">id</span><span class="p">,</span>
+<span class="w">  </span><span class="n">bl</span><span class="p">.</span><span class="n">account_id</span><span class="p">,</span>
+<span class="w">  </span><span class="n">coa</span><span class="p">.</span><span class="n">account_number</span><span class="p">,</span>
+<span class="w">  </span><span class="n">coa</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">account_name</span><span class="p">,</span>
+<span class="w">  </span><span class="n">bl</span><span class="p">.</span><span class="n">period_start</span><span class="p">,</span>
+<span class="w">  </span><span class="n">bl</span><span class="p">.</span><span class="n">period_end</span><span class="p">,</span>
+<span class="w">  </span><span class="n">bl</span><span class="p">.</span><span class="n">amount</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">budget_amount</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">budget_lines</span><span class="w"> </span><span class="n">bl</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">budgets</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">bl</span><span class="p">.</span><span class="n">budget_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">id</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">chart_of_accounts</span><span class="w"> </span><span class="n">coa</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">bl</span><span class="p">.</span><span class="n">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coa</span><span class="p">.</span><span class="n">id</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">company_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">:</span><span class="n">company_id</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">finance_year_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">:</span><span class="n">finance_year_id</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">coa</span><span class="p">.</span><span class="n">account_number</span><span class="p">,</span><span class="w"> </span><span class="n">bl</span><span class="p">.</span><span class="n">period_start</span><span class="p">;</span>
+</code></pre></div>
+
+<h2 id="2-get-last-year-actuals-per-account-for-a-company-period">2. Get Last Year Actuals per Account for a Company &amp; Period<a class="headerlink" href="#2-get-last-year-actuals-per-account-for-a-company-period" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">  </span><span class="n">je</span><span class="p">.</span><span class="n">account_id</span><span class="p">,</span>
+<span class="w">  </span><span class="k">SUM</span><span class="p">(</span><span class="n">je</span><span class="p">.</span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">actual_amount</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">journal_entries</span><span class="w"> </span><span class="n">je</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">transaction_headers</span><span class="w"> </span><span class="n">th</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">je</span><span class="p">.</span><span class="n">transaction_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">th</span><span class="p">.</span><span class="n">id</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">th</span><span class="p">.</span><span class="n">company_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">:</span><span class="n">company_id</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">je</span><span class="p">.</span><span class="n">transaction_date</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="p">:</span><span class="n">period_start</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="p">:</span><span class="n">period_end</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">je</span><span class="p">.</span><span class="n">account_id</span><span class="p">;</span>
+</code></pre></div>
+
+<h2 id="3-aggregate-budget-and-actuals-for-company-by-account">3. Aggregate Budget and Actuals for Company by Account<a class="headerlink" href="#3-aggregate-budget-and-actuals-for-company-by-account" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="k">WITH</span><span class="w"> </span><span class="n">budget_data</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">bl</span><span class="p">.</span><span class="n">account_id</span><span class="p">,</span>
+<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">bl</span><span class="p">.</span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_budget</span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">budget_lines</span><span class="w"> </span><span class="n">bl</span>
+<span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">budgets</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">bl</span><span class="p">.</span><span class="n">budget_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">id</span>
+<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">company_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">:</span><span class="n">company_id</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">finance_year_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">:</span><span class="n">finance_year_id</span>
+<span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">bl</span><span class="p">.</span><span class="n">account_id</span>
+<span class="p">),</span>
+<span class="n">actual_data</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">je</span><span class="p">.</span><span class="n">account_id</span><span class="p">,</span>
+<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">je</span><span class="p">.</span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_actual</span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">journal_entries</span><span class="w"> </span><span class="n">je</span>
+<span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">transaction_headers</span><span class="w"> </span><span class="n">th</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">je</span><span class="p">.</span><span class="n">transaction_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">th</span><span class="p">.</span><span class="n">id</span>
+<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">th</span><span class="p">.</span><span class="n">company_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">:</span><span class="n">company_id</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">je</span><span class="p">.</span><span class="n">transaction_date</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="p">:</span><span class="n">period_start</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="p">:</span><span class="n">period_end</span>
+<span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">je</span><span class="p">.</span><span class="n">account_id</span>
+<span class="p">)</span>
+
+<span class="k">SELECT</span>
+<span class="w">  </span><span class="n">coa</span><span class="p">.</span><span class="n">account_number</span><span class="p">,</span>
+<span class="w">  </span><span class="n">coa</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+<span class="w">  </span><span class="n">bd</span><span class="p">.</span><span class="n">total_budget</span><span class="p">,</span>
+<span class="w">  </span><span class="n">ad</span><span class="p">.</span><span class="n">total_actual</span><span class="p">,</span>
+<span class="w">  </span><span class="p">(</span><span class="n">bd</span><span class="p">.</span><span class="n">total_budget</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">COALESCE</span><span class="p">(</span><span class="n">ad</span><span class="p">.</span><span class="n">total_actual</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">variance_amount</span><span class="p">,</span>
+<span class="w">  </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">bd</span><span class="p">.</span><span class="n">total_budget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="k">NULL</span>
+<span class="w">       </span><span class="k">ELSE</span><span class="w"> </span><span class="n">ROUND</span><span class="p">(((</span><span class="n">bd</span><span class="p">.</span><span class="n">total_budget</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">COALESCE</span><span class="p">(</span><span class="n">ad</span><span class="p">.</span><span class="n">total_actual</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">bd</span><span class="p">.</span><span class="n">total_budget</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">variance_percentage</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">budget_data</span><span class="w"> </span><span class="n">bd</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">actual_data</span><span class="w"> </span><span class="n">ad</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">bd</span><span class="p">.</span><span class="n">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ad</span><span class="p">.</span><span class="n">account_id</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">chart_of_accounts</span><span class="w"> </span><span class="n">coa</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">bd</span><span class="p">.</span><span class="n">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coa</span><span class="p">.</span><span class="n">id</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">coa</span><span class="p">.</span><span class="n">account_number</span><span class="p">;</span>
+</code></pre></div>
+
+<h2 id="4-consolidated-budget-and-actuals-across-all-companies-in-an-organization">4. Consolidated Budget and Actuals Across All Companies in an Organization<a class="headerlink" href="#4-consolidated-budget-and-actuals-across-all-companies-in-an-organization" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="k">WITH</span><span class="w"> </span><span class="n">budget_data</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">bl</span><span class="p">.</span><span class="n">account_id</span><span class="p">,</span>
+<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">bl</span><span class="p">.</span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_budget</span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">budget_lines</span><span class="w"> </span><span class="n">bl</span>
+<span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">budgets</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">bl</span><span class="p">.</span><span class="n">budget_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">id</span>
+<span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">companies</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">company_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">id</span>
+<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">organization_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">:</span><span class="n">organization_id</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">finance_year_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">:</span><span class="n">finance_year_id</span>
+<span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">bl</span><span class="p">.</span><span class="n">account_id</span>
+<span class="p">),</span>
+<span class="n">actual_data</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">je</span><span class="p">.</span><span class="n">account_id</span><span class="p">,</span>
+<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">je</span><span class="p">.</span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_actual</span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">journal_entries</span><span class="w"> </span><span class="n">je</span>
+<span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">transaction_headers</span><span class="w"> </span><span class="n">th</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">je</span><span class="p">.</span><span class="n">transaction_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">th</span><span class="p">.</span><span class="n">id</span>
+<span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">companies</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">th</span><span class="p">.</span><span class="n">company_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">id</span>
+<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">organization_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">:</span><span class="n">organization_id</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">je</span><span class="p">.</span><span class="n">transaction_date</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="p">:</span><span class="n">period_start</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="p">:</span><span class="n">period_end</span>
+<span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">je</span><span class="p">.</span><span class="n">account_id</span>
+<span class="p">)</span>
+
+<span class="k">SELECT</span>
+<span class="w">  </span><span class="n">coa</span><span class="p">.</span><span class="n">account_number</span><span class="p">,</span>
+<span class="w">  </span><span class="n">coa</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+<span class="w">  </span><span class="n">bd</span><span class="p">.</span><span class="n">total_budget</span><span class="p">,</span>
+<span class="w">  </span><span class="n">ad</span><span class="p">.</span><span class="n">total_actual</span><span class="p">,</span>
+<span class="w">  </span><span class="p">(</span><span class="n">bd</span><span class="p">.</span><span class="n">total_budget</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">COALESCE</span><span class="p">(</span><span class="n">ad</span><span class="p">.</span><span class="n">total_actual</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">variance_amount</span><span class="p">,</span>
+<span class="w">  </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">bd</span><span class="p">.</span><span class="n">total_budget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="k">NULL</span>
+<span class="w">       </span><span class="k">ELSE</span><span class="w"> </span><span class="n">ROUND</span><span class="p">(((</span><span class="n">bd</span><span class="p">.</span><span class="n">total_budget</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">COALESCE</span><span class="p">(</span><span class="n">ad</span><span class="p">.</span><span class="n">total_actual</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">bd</span><span class="p">.</span><span class="n">total_budget</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">variance_percentage</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">budget_data</span><span class="w"> </span><span class="n">bd</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">actual_data</span><span class="w"> </span><span class="n">ad</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">bd</span><span class="p">.</span><span class="n">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ad</span><span class="p">.</span><span class="n">account_id</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">chart_of_accounts</span><span class="w"> </span><span class="n">coa</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">bd</span><span class="p">.</span><span class="n">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coa</span><span class="p">.</span><span class="n">id</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">coa</span><span class="p">.</span><span class="n">account_number</span><span class="p">;</span>
+</code></pre></div>
+
+<h2 id="5-roll-up-budget-summary-at-parent-account-level-recursive-query-example">5. Roll-Up Budget Summary at Parent Account Level (Recursive Query Example)<a class="headerlink" href="#5-roll-up-budget-summary-at-parent-account-level-recursive-query-example" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="k">WITH</span><span class="w"> </span><span class="k">RECURSIVE</span><span class="w"> </span><span class="n">coa_tree</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">id</span><span class="p">,</span>
+<span class="w">    </span><span class="n">parent_account_id</span><span class="p">,</span>
+<span class="w">    </span><span class="n">account_number</span><span class="p">,</span>
+<span class="w">    </span><span class="n">name</span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">chart_of_accounts</span>
+<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">parent_account_id</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="c1">-- root level accounts</span>
+
+<span class="w">  </span><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span>
+
+<span class="w">  </span><span class="k">SELECT</span>
+<span class="w">    </span><span class="k">c</span><span class="p">.</span><span class="n">id</span><span class="p">,</span>
+<span class="w">    </span><span class="k">c</span><span class="p">.</span><span class="n">parent_account_id</span><span class="p">,</span>
+<span class="w">    </span><span class="k">c</span><span class="p">.</span><span class="n">account_number</span><span class="p">,</span>
+<span class="w">    </span><span class="k">c</span><span class="p">.</span><span class="n">name</span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">chart_of_accounts</span><span class="w"> </span><span class="k">c</span>
+<span class="w">  </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">coa_tree</span><span class="w"> </span><span class="n">ct</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">parent_account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ct</span><span class="p">.</span><span class="n">id</span>
+<span class="p">),</span>
+<span class="n">budget_sums</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">bl</span><span class="p">.</span><span class="n">account_id</span><span class="p">,</span>
+<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">bl</span><span class="p">.</span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_budget</span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">budget_lines</span><span class="w"> </span><span class="n">bl</span>
+<span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">budgets</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">bl</span><span class="p">.</span><span class="n">budget_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">id</span>
+<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">company_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">:</span><span class="n">company_id</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">finance_year_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">:</span><span class="n">finance_year_id</span>
+<span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">bl</span><span class="p">.</span><span class="n">account_id</span>
+<span class="p">)</span>
+<span class="k">SELECT</span>
+<span class="w">  </span><span class="n">ct</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">account_id</span><span class="p">,</span>
+<span class="w">  </span><span class="n">ct</span><span class="p">.</span><span class="n">account_number</span><span class="p">,</span>
+<span class="w">  </span><span class="n">ct</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+<span class="w">  </span><span class="k">COALESCE</span><span class="p">(</span><span class="k">SUM</span><span class="p">(</span><span class="n">bs</span><span class="p">.</span><span class="n">total_budget</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">budget_amount</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">coa_tree</span><span class="w"> </span><span class="n">ct</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">budget_sums</span><span class="w"> </span><span class="n">bs</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">bs</span><span class="p">.</span><span class="n">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ct</span><span class="p">.</span><span class="n">id</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">ct</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">ct</span><span class="p">.</span><span class="n">account_number</span><span class="p">,</span><span class="w"> </span><span class="n">ct</span><span class="p">.</span><span class="n">name</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">ct</span><span class="p">.</span><span class="n">account_number</span><span class="p">;</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2124 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../rabbitmq_setup/">
+      
+      
+        <link rel="next" href="../MinIO/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Messging Overview - DhanMan</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dhanman-microservices-rabbitmq-messaging-developer-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DhanMan" class="md-header__button md-logo" aria-label="DhanMan" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DhanMan
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Messging Overview
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DhanMan" class="md-nav__button md-logo" aria-label="DhanMan" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DhanMan
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounting/introduction.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Accounting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authentication-authorization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Sytem Architecture
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Sytem Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dhanman_sales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sales
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../budgeting_system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Budgeting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../water_tanker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Water Tanker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rabbitmq_setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RabbitMQ Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Messging Overview
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Messging Overview
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction-to-messaging-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Introduction to Messaging Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction to Messaging Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Concepts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-our-exchanges" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Our Exchanges
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Queues
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-types-of-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Types of Messages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-publishers-consumers" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Publishers &amp; Consumers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Publishers &amp; Consumers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#publishers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publishers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consumers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-common-service-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Common Service Role
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-what-has-been-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. What Has Been Done
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-developer-responsibilities-going-forward" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Developer Responsibilities Going Forward
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Developer Responsibilities Going Forward">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-new-eventscommands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining New Events/Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publishing-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publishing Messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consuming-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consuming Messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue-exchange-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queue &amp; Exchange Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hosted-service-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hosted Service Registration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handle-idempotency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handle Idempotency
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-useful-rabbitmq-management-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Useful RabbitMQ Management Tips
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture Diagram
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MinIO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MinIO Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mkdocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MKDocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Permissions
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Permissions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Common
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../permissions/sales.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sales
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Accounting Entries
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Accounting Entries
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounting_entries/purchase_transactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Purchase Transactions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounting_entries/sales_transactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sales Transactions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounting_entries/payroll_transactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Payroll Transactions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounting_entries/entries_others/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Other Entries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounting_entries/entries_samples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sample Entries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Financial Reports
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Financial Reports
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../financial_reports/ledger_of_customers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ledger of Customers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../financial_reports/ledger_of_vendors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ledger of Vendors
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../financial_reports/trial_balance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Trial Balance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../financial_reports/balance_sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Balance Sheet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../financial_reports/profit_and_loss_statement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Profit and Loss Statement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../financial_reports/cash_flow_statement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cash Flow Statement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../financial_reports/accounts_receivable_aging_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Accounts Receivable Aging Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../financial_reports/accounts%20_payable_aging_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Accounts Payable Aging Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../financial_reports/pending_dues_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pending Dues Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Payroll
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Payroll
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../payroll/sample_templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sample Templates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../policies/office_etiquette_policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Office Etiquette Policy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Coding Conventions
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Coding Conventions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../coding_conventions/cc_principle_backend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backend
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    How Tos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            How Tos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/email_templates.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Email Templates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/app-ui-structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    App UI Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Devops
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            Devops
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devops/qa_deployment_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DigitalOcen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devops/dump_restore_clean/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Backup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devops/qa_prod_deployment_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    QA-PROD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction-to-messaging-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Introduction to Messaging Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction to Messaging Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Concepts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-our-exchanges" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Our Exchanges
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Queues
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-types-of-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Types of Messages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-publishers-consumers" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Publishers &amp; Consumers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Publishers &amp; Consumers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#publishers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publishers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consumers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-common-service-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Common Service Role
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-what-has-been-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. What Has Been Done
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-developer-responsibilities-going-forward" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Developer Responsibilities Going Forward
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Developer Responsibilities Going Forward">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-new-eventscommands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining New Events/Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publishing-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publishing Messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consuming-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consuming Messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue-exchange-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queue &amp; Exchange Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hosted-service-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hosted Service Registration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handle-idempotency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handle Idempotency
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-useful-rabbitmq-management-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Useful RabbitMQ Management Tips
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture Diagram
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="dhanman-microservices-rabbitmq-messaging-developer-guide">Dhanman Microservices RabbitMQ Messaging Developer Guide<a class="headerlink" href="#dhanman-microservices-rabbitmq-messaging-developer-guide" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="1-introduction-to-messaging-architecture">1. Introduction to Messaging Architecture<a class="headerlink" href="#1-introduction-to-messaging-architecture" title="Permanent link">&para;</a></h2>
+<p>We use RabbitMQ as our message broker to enable asynchronous, loosely coupled communication between microservices via messages. This event-driven architecture helps build scalable and responsive systems.</p>
+<h3 id="key-concepts">Key Concepts<a class="headerlink" href="#key-concepts" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Exchange</strong>: Entry point for messages in RabbitMQ. Routes messages to queues based on exchange type and routing keys.</li>
+<li><strong>Queue</strong>: Holds messages until they are consumed.</li>
+<li><strong>Routing Key</strong>: Used by direct exchanges to route messages to appropriate queues.</li>
+<li><strong>Publisher</strong>: Sends messages to exchanges.</li>
+<li><strong>Consumer</strong>: Receives messages from queues.</li>
+</ul>
+<hr />
+<h2 id="2-our-exchanges">2. Our Exchanges<a class="headerlink" href="#2-our-exchanges" title="Permanent link">&para;</a></h2>
+<p>We have two main exchanges configured:</p>
+<table>
+<thead>
+<tr>
+<th>Exchange Name</th>
+<th>Type</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dhanman.events</td>
+<td>Fanout</td>
+<td>Broadcast event messages to all subscribed queues</td>
+</tr>
+<tr>
+<td>dhanman.commands</td>
+<td>Direct</td>
+<td>Route commands to specific service queues based on routing keys</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-queues">3. Queues<a class="headerlink" href="#3-queues" title="Permanent link">&para;</a></h2>
+<p>Each microservice has dedicated queues to consume commands and events:</p>
+<table>
+<thead>
+<tr>
+<th>Microservice</th>
+<th>Command Queue</th>
+<th>Event Queue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sales</td>
+<td>sales.commands</td>
+<td>sales.events</td>
+</tr>
+<tr>
+<td>Purchase</td>
+<td>purchase.commands</td>
+<td>purchase.events</td>
+</tr>
+<tr>
+<td>Common</td>
+<td>common.commands</td>
+<td>common.events</td>
+</tr>
+<tr>
+<td>Community</td>
+<td>community.commands</td>
+<td>community.events</td>
+</tr>
+<tr>
+<td>Payroll</td>
+<td>payroll.commands</td>
+<td>payroll.events</td>
+</tr>
+<tr>
+<td>Inventory</td>
+<td>inventory.commands</td>
+<td>inventory.events</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-types-of-messages">4. Types of Messages<a class="headerlink" href="#4-types-of-messages" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><strong>Events</strong>:<br />
+  Represent something that has happened (e.g., <code>UserCreatedEvent</code>, <code>InvoiceCreatedEvent</code>). Published typically with fanout exchange to notify all interested services.</p>
+</li>
+<li>
+<p><strong>Commands</strong>:<br />
+  Represent instructions for something to be done (e.g., <code>CreateInvoiceCommand</code>). Routed with direct exchange using routing keys targeting specific service queues.</p>
+</li>
+</ul>
+<hr />
+<h2 id="5-publishers-consumers">5. Publishers &amp; Consumers<a class="headerlink" href="#5-publishers-consumers" title="Permanent link">&para;</a></h2>
+<h3 id="publishers">Publishers<a class="headerlink" href="#publishers" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><code>IEventPublisher</code> (in <strong>B2aTech.CrossCuttingConcern</strong>):<br />
+  Publishes events to <code>dhanman.events</code> fanout exchange using contracts from <strong>Dhanman.Shared.Contracts</strong>.</p>
+</li>
+<li>
+<p><code>ICommandPublisher</code> (in <strong>B2aTech.CrossCuttingConcern</strong>):<br />
+  Publishes commands to <code>dhanman.commands</code> direct exchange with routing keys.</p>
+</li>
+</ul>
+<h3 id="consumers">Consumers<a class="headerlink" href="#consumers" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><code>IEventConsumer</code> (in <strong>B2aTech.CrossCuttingConcern</strong>):<br />
+  Consumes from event queues subscribed to the fanout exchange.</p>
+</li>
+<li>
+<p><code>ICommandConsumer</code> (in <strong>B2aTech.CrossCuttingConcern</strong>):<br />
+  Consumes from command queues directly routed by the command exchange.</p>
+</li>
+</ul>
+<hr />
+<h2 id="6-common-service-role">6. Common Service Role<a class="headerlink" href="#6-common-service-role" title="Permanent link">&para;</a></h2>
+<p>The Common microservice primarily consumes events like:</p>
+<ul>
+<li><code>InvoiceCreatedEvent</code>  </li>
+<li><code>PaymentMadeEvent</code>  </li>
+<li><code>PaymentReceivedEvent</code>  </li>
+<li><code>BillCreatedEvent</code>  </li>
+<li><code>SalaryPostedEvent</code>  </li>
+<li><code>SalaryCreatedEvent</code>  </li>
+</ul>
+<p>which originate in Sales, Purchase, Payroll, etc. Common processes these to update ledger entries and maintain core accounting records.</p>
+<hr />
+<h2 id="7-what-has-been-done">7. What Has Been Done<a class="headerlink" href="#7-what-has-been-done" title="Permanent link">&para;</a></h2>
+<ul>
+<li>RabbitMQ instances deployed with Docker for QA and Production.</li>
+<li>Exchanges and queues declared programmatically at startup for idempotency.</li>
+<li>Messaging infrastructure abstracted in <strong>B2aTech.CrossCuttingConcern</strong> reusable package.</li>
+<li>Shared contracts for events and commands defined in <strong>Dhanman.Shared.Contracts</strong>.</li>
+<li>Each microservice (Sales, Purchase, Common, etc.) has a background hosted service that listens to its respective queues.</li>
+<li>Basic event and command handlers implemented (e.g., <code>UserCreatedEventHandler</code>).</li>
+<li>Dependency injection and service registration set up for messaging components.</li>
+</ul>
+<hr />
+<h2 id="8-developer-responsibilities-going-forward">8. Developer Responsibilities Going Forward<a class="headerlink" href="#8-developer-responsibilities-going-forward" title="Permanent link">&para;</a></h2>
+<h3 id="defining-new-eventscommands">Defining New Events/Commands<a class="headerlink" href="#defining-new-eventscommands" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add DTOs to <strong>Dhanman.Shared.Contracts</strong> for new messages.</li>
+</ul>
+<h3 id="publishing-messages">Publishing Messages<a class="headerlink" href="#publishing-messages" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use <code>IEventPublisher</code> or <code>ICommandPublisher</code> in your microservice (e.g., Sales) to publish messages upon domain events or actions.</li>
+</ul>
+<h3 id="consuming-messages">Consuming Messages<a class="headerlink" href="#consuming-messages" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Implement <code>IMessageHandler&lt;T&gt;</code> for relevant events/commands in consuming microservices (e.g., Common listens to Sales events).</li>
+</ul>
+<h3 id="queue-exchange-management">Queue &amp; Exchange Management<a class="headerlink" href="#queue-exchange-management" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Declare any new queues or bindings in <code>RabbitMqInitializer</code> or ensure they are declared via consumers’ startup code.</li>
+</ul>
+<h3 id="hosted-service-registration">Hosted Service Registration<a class="headerlink" href="#hosted-service-registration" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Register <code>RabbitMqListenerHostedService</code> in your microservice’s <code>Program.cs</code> to start consuming messages.</li>
+</ul>
+<h3 id="handle-idempotency">Handle Idempotency<a class="headerlink" href="#handle-idempotency" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Make your handlers resilient to repeated or duplicate messages.</li>
+</ul>
+<hr />
+<h2 id="9-useful-rabbitmq-management-tips">9. Useful RabbitMQ Management Tips<a class="headerlink" href="#9-useful-rabbitmq-management-tips" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Use the RabbitMQ Management UI (<a href="https://rabbitmq.dhanman.com">rabbitmq.dhanman.com</a>) to monitor queues, exchanges, message rates.</li>
+<li>View ready/unacknowledged message counts to monitor health.</li>
+<li>Inspect logs and dead-letter queues for errors.</li>
+</ul>
+<hr />
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>This messaging architecture, built on <strong>B2aTech.CrossCuttingConcern</strong> and <strong>Dhanman.Shared.Contracts</strong>, establishes a consistent, scalable foundation for inter-service communication across the Dhanman ecosystem. Developers extending any microservice should align with these patterns to ensure reliability and maintainability.</p>
+<hr />
+<h2 id="architecture-diagram">Architecture Diagram<a class="headerlink" href="#architecture-diagram" title="Permanent link">&para;</a></h2>
+<p><img alt="Messaging Image" src="../../assets/messaging.png" /></p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+    
+  </body>
+</html>
