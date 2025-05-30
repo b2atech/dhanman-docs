@@ -1,12 +1,11 @@
-name: Deploy MkDocs Documentation
+name: Build & Deploy MkDocs to OVH
 
 on:
   push:
     branches:
-      - main  # Triggers when changes are pushed to main
-
+      - main
 jobs:
-  deploy:
+  build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,11 +17,23 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install dependencies
+      - name: Install MkDocs and plugins
         run: |
           pip install mkdocs mkdocs-material plantuml-markdown
 
-      - name: Deploy to GitHub Pages
-        run: mkdocs gh-deploy --force
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build MkDocs site
+        run: mkdocs build
+
+      - name: Deploy to OVH Server
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.OVH_HOST }}
+          username: ${{ secrets.OVH_USER }}
+          password: ${{ secrets.OVH_PASSWORD }}
+          port: 22
+          source: "site/*"
+          target: "/var/www/dhanman-docs-site"  # Change to your OVH web root folder for docs
+          strip_components: 1
+          timeout: 30s
+          command_timeout: 10m
+          debug: false
