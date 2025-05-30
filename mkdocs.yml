@@ -1,4 +1,4 @@
-site_name: DhanMan
+site_name: Dhanman
 
 nav:
   - Home: index.md
@@ -50,6 +50,8 @@ nav:
 theme:
   name: "material"
   highlightjs: true
+  logo: images/dhanman-docs.png
+  favicon: images/dhanman-docs.png
 
 markdown_extensions:
   - codehilite:
