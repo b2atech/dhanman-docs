@@ -142,6 +142,192 @@ sudo systemctl start dhanman-payroll-test.service
 sudo systemctl start dhanman-purchase-test.service
 sudo systemctl start dhanman-sales-test.service
 ```
+### 🔴 Stop services
 
-# Additional sections would follow the exact same format for Stop, Restart, Enable, Disable, View logs as described.
-# Full detail can be generated completely if requested.
+#### 🔴 Stop all QA services
+Copy:
+```bash
+sudo systemctl stop dhanman-common-qa.service
+sudo systemctl stop dhanman-community-qa.service
+sudo systemctl stop dhanman-document-qa.service
+sudo systemctl stop dhanman-inventory-qa.service
+sudo systemctl stop dhanman-payroll-qa.service
+sudo systemctl stop dhanman-purchase-qa.service
+sudo systemctl stop dhanman-sales-qa.service
+```
+
+#### 🔴 Stop all PROD services
+Copy:
+```bash
+sudo systemctl stop dhanman-common-prod.service
+sudo systemctl stop dhanman-community-prod.service
+sudo systemctl stop dhanman-document-prod.service
+sudo systemctl stop dhanman-inventory-prod.service
+sudo systemctl stop dhanman-payroll-prod.service
+sudo systemctl stop dhanman-purchase-prod.service
+sudo systemctl stop dhanman-sales-prod.service
+```
+
+#### 🔴 Stop all TEST services
+Copy:
+```bash
+sudo systemctl stop dhanman-common-test.service
+sudo systemctl stop dhanman-community-test.service
+sudo systemctl stop dhanman-document-test.service
+sudo systemctl stop dhanman-inventory-test.service
+sudo systemctl stop dhanman-payroll-test.service
+sudo systemctl stop dhanman-purchase-test.service
+sudo systemctl stop dhanman-sales-test.service
+```
+
+### 🔄 Restart services
+
+#### 🔄 Restart all QA services
+Copy:
+```bash
+sudo systemctl restart dhanman-common-qa.service
+sudo systemctl restart dhanman-community-qa.service
+sudo systemctl restart dhanman-document-qa.service
+sudo systemctl restart dhanman-inventory-qa.service
+sudo systemctl restart dhanman-payroll-qa.service
+sudo systemctl restart dhanman-purchase-qa.service
+sudo systemctl restart dhanman-sales-qa.service
+```
+
+#### 🔄 Restart all PROD services
+Copy:
+```bash
+sudo systemctl restart dhanman-common-prod.service
+sudo systemctl restart dhanman-community-prod.service
+sudo systemctl restart dhanman-document-prod.service
+sudo systemctl restart dhanman-inventory-prod.service
+sudo systemctl restart dhanman-payroll-prod.service
+sudo systemctl restart dhanman-purchase-prod.service
+sudo systemctl restart dhanman-sales-prod.service
+```
+
+#### 🔄 Restart all TEST services
+Copy:
+```bash
+sudo systemctl restart dhanman-common-test.service
+sudo systemctl restart dhanman-community-test.service
+sudo systemctl restart dhanman-document-test.service
+sudo systemctl restart dhanman-inventory-test.service
+sudo systemctl restart dhanman-payroll-test.service
+sudo systemctl restart dhanman-purchase-test.service
+sudo systemctl restart dhanman-sales-test.service
+```
+
+### ⚙️ Enable services at boot
+
+#### ⚙️ Enable all QA services
+Copy:
+```bash
+sudo systemctl enable dhanman-common-qa.service
+sudo systemctl enable dhanman-community-qa.service
+sudo systemctl enable dhanman-document-qa.service
+sudo systemctl enable dhanman-inventory-qa.service
+sudo systemctl enable dhanman-payroll-qa.service
+sudo systemctl enable dhanman-purchase-qa.service
+sudo systemctl enable dhanman-sales-qa.service
+```
+
+#### ⚙️ Enable all PROD services
+Copy:
+```bash
+sudo systemctl enable dhanman-common-prod.service
+sudo systemctl enable dhanman-community-prod.service
+sudo systemctl enable dhanman-document-prod.service
+sudo systemctl enable dhanman-inventory-prod.service
+sudo systemctl enable dhanman-payroll-prod.service
+sudo systemctl enable dhanman-purchase-prod.service
+sudo systemctl enable dhanman-sales-prod.service
+```
+
+#### ⚙️ Enable all TEST services
+Copy:
+```bash
+sudo systemctl enable dhanman-common-test.service
+sudo systemctl enable dhanman-community-test.service
+sudo systemctl enable dhanman-document-test.service
+sudo systemctl enable dhanman-inventory-test.service
+sudo systemctl enable dhanman-payroll-test.service
+sudo systemctl enable dhanman-purchase-test.service
+sudo systemctl enable dhanman-sales-test.service
+```
+
+### 🔒 Disable services at boot
+
+#### 🔒 Disable all QA services
+Copy:
+```bash
+sudo systemctl disable dhanman-common-qa.service
+sudo systemctl disable dhanman-community-qa.service
+sudo systemctl disable dhanman-document-qa.service
+sudo systemctl disable dhanman-inventory-qa.service
+sudo systemctl disable dhanman-payroll-qa.service
+sudo systemctl disable dhanman-purchase-qa.service
+sudo systemctl disable dhanman-sales-qa.service
+```
+
+#### 🔒 Disable all PROD services
+Copy:
+```bash
+sudo systemctl disable dhanman-common-prod.service
+sudo systemctl disable dhanman-community-prod.service
+sudo systemctl disable dhanman-document-prod.service
+sudo systemctl disable dhanman-inventory-prod.service
+sudo systemctl disable dhanman-payroll-prod.service
+sudo systemctl disable dhanman-purchase-prod.service
+sudo systemctl disable dhanman-sales-prod.service
+```
+
+#### 🔒 Disable all TEST services
+Copy:
+```bash
+sudo systemctl disable dhanman-common-test.service
+sudo systemctl disable dhanman-community-test.service
+sudo systemctl disable dhanman-document-test.service
+sudo systemctl disable dhanman-inventory-test.service
+sudo systemctl disable dhanman-payroll-test.service
+sudo systemctl disable dhanman-purchase-test.service
+sudo systemctl disable dhanman-sales-test.service
+```
+
+### 📜 View logs
+
+#### 📜 View logs all QA services
+Copy:
+```bash
+sudo journalctl -u dhanman-common-qa.service -f
+sudo journalctl -u dhanman-community-qa.service -f
+sudo journalctl -u dhanman-document-qa.service -f
+sudo journalctl -u dhanman-inventory-qa.service -f
+sudo journalctl -u dhanman-payroll-qa.service -f
+sudo journalctl -u dhanman-purchase-qa.service -f
+sudo journalctl -u dhanman-sales-qa.service -f
+```
+
+#### 📜 View logs all PROD services
+Copy:
+```bash
+sudo journalctl -u dhanman-common-prod.service -f
+sudo journalctl -u dhanman-community-prod.service -f
+sudo journalctl -u dhanman-document-prod.service -f
+sudo journalctl -u dhanman-inventory-prod.service -f
+sudo journalctl -u dhanman-payroll-prod.service -f
+sudo journalctl -u dhanman-purchase-prod.service -f
+sudo journalctl -u dhanman-sales-prod.service -f
+```
+
+#### 📜 View logs all TEST services
+Copy:
+```bash
+sudo journalctl -u dhanman-common-test.service -f
+sudo journalctl -u dhanman-community-test.service -f
+sudo journalctl -u dhanman-document-test.service -f
+sudo journalctl -u dhanman-inventory-test.service -f
+sudo journalctl -u dhanman-payroll-test.service -f
+sudo journalctl -u dhanman-purchase-test.service -f
+sudo journalctl -u dhanman-sales-test.service -f
+```
