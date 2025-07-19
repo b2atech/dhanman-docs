@@ -14,6 +14,7 @@ nav:
       - Messging Overview: system_overview/messging_design.md
       - MinIO Setup: system_overview/MinIO.md
       - MKDocs: system_overview/mkdocs.md
+      - Commands: system_overview/services_commands.md
   - Permissions:
       - Common: system_overview\common.md
       - Sales: permissions\sales.md
