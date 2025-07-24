@@ -18,9 +18,9 @@ Dhanman.{Module}.{Entity}.{Action}[.SubAction]
 | Part        | Description                                                   | Example                        |
 |-------------|---------------------------------------------------------------|--------------------------------|
 | `Module`    | The bounded context or domain (e.g., `Sales`, `Purchase`)     | `Sales`, `Payroll`             |
-| `Entity`    | The target resource, always in **singular form**              | `Invoice`, `Bill`, `Customer` |
+| `Entity`    | The target resource (always in **singular** form)             | `Invoice`, `Bill`, `Customer` |
 | `Action`    | The operation allowed on the entity (verb, in PascalCase)     | `Read`, `Write`, `Delete`     |
-| `SubAction` | *(Optional)* for variants like `Level1`, `SendForApproval`    | `Approve.Level1`              |
+| `SubAction` | *(Optional)* for workflow-specific variations                 | `Approve.Level1`, `SendForApproval` |
 
 ---
 
@@ -29,7 +29,7 @@ Dhanman.{Module}.{Entity}.{Action}[.SubAction]
 | Good Permission Name                              | Meaning                                                                 |
 |---------------------------------------------------|-------------------------------------------------------------------------|
 | `Dhanman.Sales.Invoice.Read`                      | Can view a single or multiple invoices                                 |
-| `Dhanman.Purchase.Bill.Delete`                   | Can delete one or more bills                                           |
+| `Dhanman.Purchase.Bill.Delete`                    | Can delete one or more bills                                           |
 | `Dhanman.Payroll.Employee.Write`                 | Can create or update employee records                                  |
 | `Dhanman.Sales.Invoice.Approve.Level2`           | Can approve an invoice at Level 2                                      |
 | `Dhanman.MyHome.ResidentRequest.Approve`         | Can approve resident requests in MyHome module                         |
@@ -76,6 +76,66 @@ Use these **only for superusers or system administrators**.
 - ✅ Prefer **specific, scoped permissions** over vague/global ones
 - ✅ Use `SubAction` only for meaningful variants like approval levels
 - ✅ Use `Dhanman.Global.{Action}` for cross-module admin powers
+- ✅ Enforce consistent entity names using a controlled ResourceType list
+
+---
+
+## 🧾 Canonical ResourceTypes
+
+To maintain consistency, use only the following singular-form resource types:
+
+### Common
+- Company
+- CompanyWarehouse
+- CompanyPreference
+- User
+- Permission
+- Organization
+- Vendor
+- Customer
+- Ledger
+- COA
+
+### Purchase
+- Bill
+- Payment
+- Note
+- VendorWarehouse
+
+### Sales
+- Invoice
+- Payment
+- Note
+- MyHomeInvoice
+
+### MyHome
+- Resident
+- ResidentRequest
+- Visitor
+- Event
+- ServiceProvider
+- Building
+- Unit
+- Floor
+- Gate
+- Delivery
+- Apartment
+
+### Inventory
+- Product
+
+### Payroll
+- Employee
+- Leave
+- Holiday
+- Task
+- Project
+- PayrollComponent
+- Payroll
+
+### Developer
+- Token
+- Id
 
 ---
 
@@ -97,4 +157,4 @@ Use these **only for superusers or system administrators**.
 
 ---
 
-> Keep your permissions clean, contextual, and scalable.
+> Keep your permissions clean, contextual, consistent, and scalable.
