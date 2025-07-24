@@ -16,8 +16,9 @@ nav:
       - MKDocs: system_overview/mkdocs.md
       - Commands: system_overview/services_commands.md
   - Permissions:
-      - Common: system_overview\common.md
-      - Sales: permissions\sales.md
+      - Naming Guidelines : permissions/permissions-naming-guidelines.md
+      - Common: system_overview/common.md
+      - Sales: permissions/sales.md
   - Accounting Entries:
       - Purchase Transactions: accounting_entries/purchase_transactions.md
       - Sales Transactions: accounting_entries/sales_transactions.md
