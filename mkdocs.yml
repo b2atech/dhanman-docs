@@ -15,7 +15,7 @@ nav:
       - MinIO Setup: system_overview/MinIO.md
       - MKDocs: system_overview/mkdocs.md
       - Commands: system_overview/services_commands.md
-      - Dbtula Command: dbtula/DbTula-Extract-Commands.md
+      - Dbtula Commands: dbtula/DbTula-Extract-Commands.md
   - Test:
       - Playwright E2E: test/testid-strategy.md
   - Permissions:
