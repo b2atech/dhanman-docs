@@ -4,6 +4,20 @@
 
 ---
 
+### � Set Docker containers to auto-restart (unless stopped manually)
+
+> Configure containers for resilience after debugging.
+
+```bash
+docker update --restart=unless-stopped dc2e017a761c   # Set Grafana to auto-restart
+docker update --restart=unless-stopped 25f887b8c4b4   # Set Loki to auto-restart
+docker update --restart=unless-stopped 490ec2335d55   # Set Promtail to auto-restart
+docker update --restart=unless-stopped 2793193cd3f7   # Set RabbitMQ to auto-restart
+docker update --restart=unless-stopped <jenkins_id>   # Set Jenkins to auto-restart
+```
+
+---
+
 ## 🔍 **Phase 1: System Health Overview**
 
 ### 🕰️ Check server uptime and reboot history
@@ -126,20 +140,6 @@ docker ps -a                        # Show all containers and their status
 docker logs rabbitmq-qa --tail 50   # Last 50 log lines for specific container
 docker logs -f rabbitmq-qa          # Live log streaming
 docker stats                        # Real-time container resource usage
-```
-
----
-
-### � Set Docker containers to auto-restart (unless stopped manually)
-
-> Configure containers for resilience after debugging.
-
-```bash
-docker update --restart=unless-stopped dc2e017a761c   # Set Grafana to auto-restart
-docker update --restart=unless-stopped 25f887b8c4b4   # Set Loki to auto-restart
-docker update --restart=unless-stopped 490ec2335d55   # Set Promtail to auto-restart
-docker update --restart=unless-stopped 2793193cd3f7   # Set RabbitMQ to auto-restart
-docker update --restart=unless-stopped <jenkins_id>   # Set Jenkins to auto-restart
 ```
 
 ---
