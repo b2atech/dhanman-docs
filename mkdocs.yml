@@ -15,11 +15,13 @@ nav:
       - MinIO Setup: system_overview/MinIO.md
       - MKDocs: system_overview/mkdocs.md
       - Commands: system_overview/services_commands.md
+      - DebugCommands: system_overview/additional_debugging.md
       - Dbtula Commands: dbtula/DbTula-Extract-Commands.md
   - Test:
       - Playwright E2E: test/testid-strategy.md
   - Permissions:
       - Naming Guidelines: permissions/permissions-naming-guidelines.md
+      - Users: permissions/users.md
       - Common: system_overview/common.md
       - Sales: permissions/sales.md
   - Accounting Entries:
