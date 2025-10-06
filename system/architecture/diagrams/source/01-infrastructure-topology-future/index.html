@@ -1191,78 +1191,78 @@
 
   <h1>01 infrastructure topology future</h1>
 
-<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span><span class="p">;</span>
-<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Production</span><span class="w"> </span><span class="p">[</span><span class="n">Production</span><span class="w"> </span><span class="n">Environment</span><span class="p">]</span>
-<span class="w">        </span><span class="n">direction</span><span class="w"> </span><span class="n">TB</span>
-<span class="w">        </span><span class="n">A</span><span class="p">[</span><span class="n">RabbitMQ</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">connects</span><span class="w"> </span><span class="n">to</span><span class="o">|</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">MinIO</span><span class="p">]</span>
-<span class="w">        </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">interacts</span><span class="w"> </span><span class="n">with</span><span class="o">|</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">dhanman</span><span class="o">-</span><span class="n">common</span><span class="p">]</span>
-<span class="w">        </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">interacts</span><span class="w"> </span><span class="n">with</span><span class="o">|</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">dhanman</span><span class="o">-</span><span class="n">myhome</span><span class="p">]</span>
-<span class="w">        </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">interacts</span><span class="w"> </span><span class="n">with</span><span class="o">|</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">dhanman</span><span class="o">-</span><span class="n">sales</span><span class="p">]</span>
-<span class="w">        </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">interacts</span><span class="w"> </span><span class="n">with</span><span class="o">|</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">dhanman</span><span class="o">-</span><span class="n">purchase</span><span class="p">]</span>
-<span class="w">        </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">interacts</span><span class="w"> </span><span class="n">with</span><span class="o">|</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">dhanman</span><span class="o">-</span><span class="n">inventory</span><span class="p">]</span>
-<span class="w">        </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">interacts</span><span class="w"> </span><span class="n">with</span><span class="o">|</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">dhanman</span><span class="o">-</span><span class="n">payroll</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code>graph TD;
+    subgraph Production [Production Environment]
+        direction TB
+        A[RabbitMQ] --&gt;|connects to| B[MinIO]
+        B --&gt;|interacts with| C[dhanman-common]
+        B --&gt;|interacts with| D[dhanman-myhome]
+        B --&gt;|interacts with| E[dhanman-sales]
+        B --&gt;|interacts with| F[dhanman-purchase]
+        B --&gt;|interacts with| G[dhanman-inventory]
+        B --&gt;|interacts with| H[dhanman-payroll]
 
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">28</span><span class="n">a745</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">28</span><span class="n">a745</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">28</span><span class="n">a745</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">28</span><span class="n">a745</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">28</span><span class="n">a745</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">28</span><span class="n">a745</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">G</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">28</span><span class="n">a745</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">28</span><span class="n">a745</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
+        style A fill:#28a745,stroke:#333,stroke-width:2px;
+        style B fill:#28a745,stroke:#333,stroke-width:2px;
+        style C fill:#28a745,stroke:#333,stroke-width:2px;
+        style D fill:#28a745,stroke:#333,stroke-width:2px;
+        style E fill:#28a745,stroke:#333,stroke-width:2px;
+        style F fill:#28a745,stroke:#333,stroke-width:2px;
+        style G fill:#28a745,stroke:#333,stroke-width:2px;
+        style H fill:#28a745,stroke:#333,stroke-width:2px;
 
-<span class="w">        </span><span class="n">IP</span><span class="p">[</span><span class="mf">51.79.156.217</span><span class="p">]</span><span class="o">:::</span><span class="n">ip</span>
-<span class="w">    </span><span class="n">end</span>
+        IP[51.79.156.217]:::ip
+    end
 
-<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">QA</span><span class="w"> </span><span class="p">[</span><span class="n">QA</span><span class="w"> </span><span class="n">Environment</span><span class="p">]</span>
-<span class="w">        </span><span class="n">direction</span><span class="w"> </span><span class="n">TB</span>
-<span class="w">        </span><span class="n">I</span><span class="p">[</span><span class="n">RabbitMQ</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">connects</span><span class="w"> </span><span class="n">to</span><span class="o">|</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">MinIO</span><span class="p">]</span>
-<span class="w">        </span><span class="n">J</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">interacts</span><span class="w"> </span><span class="n">with</span><span class="o">|</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="n">dhanman</span><span class="o">-</span><span class="n">common</span><span class="p">]</span>
-<span class="w">        </span><span class="n">J</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">interacts</span><span class="w"> </span><span class="n">with</span><span class="o">|</span><span class="w"> </span><span class="n">L</span><span class="p">[</span><span class="n">dhanman</span><span class="o">-</span><span class="n">myhome</span><span class="p">]</span>
-<span class="w">        </span><span class="n">J</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">interacts</span><span class="w"> </span><span class="n">with</span><span class="o">|</span><span class="w"> </span><span class="n">M</span><span class="p">[</span><span class="n">dhanman</span><span class="o">-</span><span class="n">sales</span><span class="p">]</span>
-<span class="w">        </span><span class="n">J</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">interacts</span><span class="w"> </span><span class="n">with</span><span class="o">|</span><span class="w"> </span><span class="n">N</span><span class="p">[</span><span class="n">dhanman</span><span class="o">-</span><span class="n">purchase</span><span class="p">]</span>
-<span class="w">        </span><span class="n">J</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">interacts</span><span class="w"> </span><span class="n">with</span><span class="o">|</span><span class="w"> </span><span class="n">O</span><span class="p">[</span><span class="n">dhanman</span><span class="o">-</span><span class="n">inventory</span><span class="p">]</span>
-<span class="w">        </span><span class="n">J</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">interacts</span><span class="w"> </span><span class="n">with</span><span class="o">|</span><span class="w"> </span><span class="n">P</span><span class="p">[</span><span class="n">dhanman</span><span class="o">-</span><span class="n">payroll</span><span class="p">]</span>
+    subgraph QA [QA Environment]
+        direction TB
+        I[RabbitMQ] --&gt;|connects to| J[MinIO]
+        J --&gt;|interacts with| K[dhanman-common]
+        J --&gt;|interacts with| L[dhanman-myhome]
+        J --&gt;|interacts with| M[dhanman-sales]
+        J --&gt;|interacts with| N[dhanman-purchase]
+        J --&gt;|interacts with| O[dhanman-inventory]
+        J --&gt;|interacts with| P[dhanman-payroll]
 
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mo">007</span><span class="n">bff</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">J</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mo">007</span><span class="n">bff</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">K</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mo">007</span><span class="n">bff</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mo">007</span><span class="n">bff</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">M</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mo">007</span><span class="n">bff</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mo">007</span><span class="n">bff</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">O</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mo">007</span><span class="n">bff</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mo">007</span><span class="n">bff</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
+        style I fill:#007bff,stroke:#333,stroke-width:2px;
+        style J fill:#007bff,stroke:#333,stroke-width:2px;
+        style K fill:#007bff,stroke:#333,stroke-width:2px;
+        style L fill:#007bff,stroke:#333,stroke-width:2px;
+        style M fill:#007bff,stroke:#333,stroke-width:2px;
+        style N fill:#007bff,stroke:#333,stroke-width:2px;
+        style O fill:#007bff,stroke:#333,stroke-width:2px;
+        style P fill:#007bff,stroke:#333,stroke-width:2px;
 
-<span class="w">        </span><span class="n">IP</span><span class="p">[</span><span class="mf">54.37.159.71</span><span class="p">]</span><span class="o">:::</span><span class="n">ip</span>
-<span class="w">    </span><span class="n">end</span>
+        IP[54.37.159.71]:::ip
+    end
 
-<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Monitoring</span><span class="w"> </span><span class="p">[</span><span class="n">Monitoring</span><span class="w"> </span><span class="n">Stack</span><span class="p">]</span>
-<span class="w">        </span><span class="n">direction</span><span class="w"> </span><span class="n">TB</span>
-<span class="w">        </span><span class="n">Q</span><span class="p">[</span><span class="n">Grafana</span><span class="p">]</span>
-<span class="w">        </span><span class="n">R</span><span class="p">[</span><span class="n">Loki</span><span class="p">]</span>
-<span class="w">        </span><span class="n">S</span><span class="p">[</span><span class="n">Netdata</span><span class="p">]</span>
+    subgraph Monitoring [Monitoring Stack]
+        direction TB
+        Q[Grafana]
+        R[Loki]
+        S[Netdata]
 
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">6</span><span class="n">c757d</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">6</span><span class="n">c757d</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">6</span><span class="n">c757d</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">    </span><span class="n">end</span>
+        style Q fill:#6c757d,stroke:#333,stroke-width:2px;
+        style R fill:#6c757d,stroke:#333,stroke-width:2px;
+        style S fill:#6c757d,stroke:#333,stroke-width:2px;
+    end
 
-<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">External</span><span class="w"> </span><span class="p">[</span><span class="n">External</span><span class="w"> </span><span class="n">Services</span><span class="p">]</span>
-<span class="w">        </span><span class="n">direction</span><span class="w"> </span><span class="n">TB</span>
-<span class="w">        </span><span class="n">T</span><span class="p">[</span><span class="n">Auth0</span><span class="p">]</span>
-<span class="w">        </span><span class="n">U</span><span class="p">[</span><span class="n">Zoho</span><span class="p">]</span>
-<span class="w">        </span><span class="n">V</span><span class="p">[</span><span class="n">Brevo</span><span class="p">]</span>
-<span class="w">        </span><span class="n">W</span><span class="p">[</span><span class="n">GitHub</span><span class="p">]</span>
-<span class="w">        </span><span class="n">X</span><span class="p">[</span><span class="n">Backblaze</span><span class="w"> </span><span class="n">B2</span><span class="p">]</span>
+    subgraph External [External Services]
+        direction TB
+        T[Auth0]
+        U[Zoho]
+        V[Brevo]
+        W[GitHub]
+        X[Backblaze B2]
 
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">fd7e14</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">U</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">fd7e14</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">fd7e14</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">W</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">fd7e14</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">        </span><span class="n">style</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">fd7e14</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
-<span class="w">    </span><span class="n">end</span>
+        style T fill:#fd7e14,stroke:#333,stroke-width:2px;
+        style U fill:#fd7e14,stroke:#333,stroke-width:2px;
+        style V fill:#fd7e14,stroke:#333,stroke-width:2px;
+        style W fill:#fd7e14,stroke:#333,stroke-width:2px;
+        style X fill:#fd7e14,stroke:#333,stroke-width:2px;
+    end
 
-<span class="w">    </span><span class="n">classDef</span><span class="w"> </span><span class="n">ip</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">1</span><span class="n">px</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">dasharray</span><span class="o">:</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+    classDef ip fill:#fff,stroke:#333,stroke-width:1px,stroke-dasharray: 5 5;
 </code></pre></div>
 
 
@@ -1320,6 +1320,10 @@
         <script src="../../../../../js/extra.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../../../../js/mermaid-init.js"></script>
       
     
   </body>

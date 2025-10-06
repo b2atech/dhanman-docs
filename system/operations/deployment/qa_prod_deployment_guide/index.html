@@ -1279,6 +1279,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#name-deploy-to-prod-on-workflow_dispatch-jobs-deploy-runs-on-ubuntu-latest-environment-prod-env-connectionstrings__communitydb-secretscommunity_db_connection-connectionstrings__permissionsdb-secretspermissions_db_connection-dotnet_environment-production-steps-name-checkout-uses-actionscheckoutv3-name-set-up-net-uses-actionssetup-dotnetv3-with-dotnet-version-80x-name-publish-app-run-dotnet-publish-srcdhanmanmyhomeapidhanmanmyhomeapicsproj-c-release-r-linux-x64-self-contained-false-o-publish-name-upload-to-prod-droplet-uses-appleboyscp-actionv014-with-host-secretsdo_host-username-secretsdo_user-key-secretsdo_ssh_key-source-publish-target-varwwwproddhanman-community-name-restart-prod-app-uses-appleboyssh-actionv0110-with-host-secretsdo_host-username-secretsdo_user-key-secretsdo_ssh_key-script-export-connectionstrings__communitydb-secretscommunity_db_connection-export-connectionstrings__permissionsdb-secretspermissions_db_connection-export-dotnet_environmentproduction-sudo-systemctl-restart-dhanman-community-prod-sudo-systemctl-status-dhanman-community-prod-no-pager" class="md-nav__link">
+    <span class="md-ellipsis">
+      name: Deploy to PROD on: workflow_dispatch: jobs: deploy: runs-on: ubuntu-latest environment: prod env: ConnectionStrings__CommunityDb: ${{ secrets.COMMUNITY_DB_CONNECTION }} ConnectionStrings__PermissionsDb: ${{ secrets.PERMISSIONS_DB_CONNECTION }} DOTNET_ENVIRONMENT: production steps: - name: Checkout uses: actions/checkout@v3 - name: Set up .NET uses: actions/setup-dotnet@v3 with: dotnet-version: &#39;8.0.x&#39; - name: Publish App run: | dotnet publish src/Dhanman.MyHome.Api/Dhanman.MyHome.Api.csproj -c Release -r linux-x64 --self-contained false -o publish - name: Upload to PROD Droplet uses: appleboy/scp-action@v0.1.4 with: host: ${{ secrets.DO_HOST }} username: ${{ secrets.DO_USER }} key: ${{ secrets.DO_SSH_KEY }} source: &quot;publish/*&quot; target: &quot;/var/www/prod/dhanman-community&quot; - name: Restart PROD App uses: appleboy/ssh-action@v0.1.10 with: host: ${{ secrets.DO_HOST }} username: ${{ secrets.DO_USER }} key: ${{ secrets.DO_SSH_KEY }} script: | export ConnectionStrings__CommunityDb=&quot;${{ secrets.COMMUNITY_DB_CONNECTION }}&quot; export ConnectionStrings__PermissionsDb=&quot;${{ secrets.PERMISSIONS_DB_CONNECTION }}&quot; export DOTNET_ENVIRONMENT=production sudo systemctl restart dhanman-community-prod sudo systemctl status dhanman-community-prod --no-pager
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#3-digitalocean-setup" class="md-nav__link">
     <span class="md-ellipsis">
       3. DigitalOcean Setup
@@ -1853,6 +1862,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#name-deploy-to-prod-on-workflow_dispatch-jobs-deploy-runs-on-ubuntu-latest-environment-prod-env-connectionstrings__communitydb-secretscommunity_db_connection-connectionstrings__permissionsdb-secretspermissions_db_connection-dotnet_environment-production-steps-name-checkout-uses-actionscheckoutv3-name-set-up-net-uses-actionssetup-dotnetv3-with-dotnet-version-80x-name-publish-app-run-dotnet-publish-srcdhanmanmyhomeapidhanmanmyhomeapicsproj-c-release-r-linux-x64-self-contained-false-o-publish-name-upload-to-prod-droplet-uses-appleboyscp-actionv014-with-host-secretsdo_host-username-secretsdo_user-key-secretsdo_ssh_key-source-publish-target-varwwwproddhanman-community-name-restart-prod-app-uses-appleboyssh-actionv0110-with-host-secretsdo_host-username-secretsdo_user-key-secretsdo_ssh_key-script-export-connectionstrings__communitydb-secretscommunity_db_connection-export-connectionstrings__permissionsdb-secretspermissions_db_connection-export-dotnet_environmentproduction-sudo-systemctl-restart-dhanman-community-prod-sudo-systemctl-status-dhanman-community-prod-no-pager" class="md-nav__link">
+    <span class="md-ellipsis">
+      name: Deploy to PROD on: workflow_dispatch: jobs: deploy: runs-on: ubuntu-latest environment: prod env: ConnectionStrings__CommunityDb: ${{ secrets.COMMUNITY_DB_CONNECTION }} ConnectionStrings__PermissionsDb: ${{ secrets.PERMISSIONS_DB_CONNECTION }} DOTNET_ENVIRONMENT: production steps: - name: Checkout uses: actions/checkout@v3 - name: Set up .NET uses: actions/setup-dotnet@v3 with: dotnet-version: &#39;8.0.x&#39; - name: Publish App run: | dotnet publish src/Dhanman.MyHome.Api/Dhanman.MyHome.Api.csproj -c Release -r linux-x64 --self-contained false -o publish - name: Upload to PROD Droplet uses: appleboy/scp-action@v0.1.4 with: host: ${{ secrets.DO_HOST }} username: ${{ secrets.DO_USER }} key: ${{ secrets.DO_SSH_KEY }} source: &quot;publish/*&quot; target: &quot;/var/www/prod/dhanman-community&quot; - name: Restart PROD App uses: appleboy/ssh-action@v0.1.10 with: host: ${{ secrets.DO_HOST }} username: ${{ secrets.DO_USER }} key: ${{ secrets.DO_SSH_KEY }} script: | export ConnectionStrings__CommunityDb=&quot;${{ secrets.COMMUNITY_DB_CONNECTION }}&quot; export ConnectionStrings__PermissionsDb=&quot;${{ secrets.PERMISSIONS_DB_CONNECTION }}&quot; export DOTNET_ENVIRONMENT=production sudo systemctl restart dhanman-community-prod sudo systemctl status dhanman-community-prod --no-pager
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#3-digitalocean-setup" class="md-nav__link">
     <span class="md-ellipsis">
       3. DigitalOcean Setup
@@ -2195,7 +2213,7 @@
 <h2 id="2-github-actions-workflow">2. GitHub Actions Workflow<a class="headerlink" href="#2-github-actions-workflow" title="Permanent link">&para;</a></h2>
 <h3 id="21-qa-auto-deployment-triggered-on-merge-to-main">2.1 QA Auto Deployment (triggered on merge to main)<a class="headerlink" href="#21-qa-auto-deployment-triggered-on-merge-to-main" title="Permanent link">&para;</a></h3>
 <p>Create the file <code>.github/workflows/deploy-qa.yml</code> with:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to QA</span>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to QA</span>
 
 <span class="nt">on</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">push</span><span class="p">:</span>
@@ -2247,10 +2265,9 @@
 <span class="w">            </span><span class="no">sudo systemctl restart dhanman-community-qa</span>
 <span class="w">            </span><span class="no">sudo systemctl status dhanman-community-qa --no-pager</span>
 </code></pre></div>
-
 <h3 id="22-prod-manual-deployment">2.2 PROD Manual Deployment<a class="headerlink" href="#22-prod-manual-deployment" title="Permanent link">&para;</a></h3>
 <p>Create the file <code>.github/workflows/deploy-prod.yml</code> with:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to PROD</span>
+<h2 id="name-deploy-to-prod-on-workflow_dispatch-jobs-deploy-runs-on-ubuntu-latest-environment-prod-env-connectionstrings__communitydb-secretscommunity_db_connection-connectionstrings__permissionsdb-secretspermissions_db_connection-dotnet_environment-production-steps-name-checkout-uses-actionscheckoutv3-name-set-up-net-uses-actionssetup-dotnetv3-with-dotnet-version-80x-name-publish-app-run-dotnet-publish-srcdhanmanmyhomeapidhanmanmyhomeapicsproj-c-release-r-linux-x64-self-contained-false-o-publish-name-upload-to-prod-droplet-uses-appleboyscp-actionv014-with-host-secretsdo_host-username-secretsdo_user-key-secretsdo_ssh_key-source-publish-target-varwwwproddhanman-community-name-restart-prod-app-uses-appleboyssh-actionv0110-with-host-secretsdo_host-username-secretsdo_user-key-secretsdo_ssh_key-script-export-connectionstrings__communitydb-secretscommunity_db_connection-export-connectionstrings__permissionsdb-secretspermissions_db_connection-export-dotnet_environmentproduction-sudo-systemctl-restart-dhanman-community-prod-sudo-systemctl-status-dhanman-community-prod-no-pager"><div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to PROD</span>
 
 <span class="nt">on</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span>
@@ -2299,36 +2316,31 @@
 <span class="w">            </span><span class="no">export DOTNET_ENVIRONMENT=production</span>
 <span class="w">            </span><span class="no">sudo systemctl restart dhanman-community-prod</span>
 <span class="w">            </span><span class="no">sudo systemctl status dhanman-community-prod --no-pager</span>
-</code></pre></div>
-
-<hr />
+</code></pre></div><a class="headerlink" href="#name-deploy-to-prod-on-workflow_dispatch-jobs-deploy-runs-on-ubuntu-latest-environment-prod-env-connectionstrings__communitydb-secretscommunity_db_connection-connectionstrings__permissionsdb-secretspermissions_db_connection-dotnet_environment-production-steps-name-checkout-uses-actionscheckoutv3-name-set-up-net-uses-actionssetup-dotnetv3-with-dotnet-version-80x-name-publish-app-run-dotnet-publish-srcdhanmanmyhomeapidhanmanmyhomeapicsproj-c-release-r-linux-x64-self-contained-false-o-publish-name-upload-to-prod-droplet-uses-appleboyscp-actionv014-with-host-secretsdo_host-username-secretsdo_user-key-secretsdo_ssh_key-source-publish-target-varwwwproddhanman-community-name-restart-prod-app-uses-appleboyssh-actionv0110-with-host-secretsdo_host-username-secretsdo_user-key-secretsdo_ssh_key-script-export-connectionstrings__communitydb-secretscommunity_db_connection-export-connectionstrings__permissionsdb-secretspermissions_db_connection-export-dotnet_environmentproduction-sudo-systemctl-restart-dhanman-community-prod-sudo-systemctl-status-dhanman-community-prod-no-pager" title="Permanent link">&para;</a></h2>
 <h2 id="3-digitalocean-setup">3. DigitalOcean Setup<a class="headerlink" href="#3-digitalocean-setup" title="Permanent link">&para;</a></h2>
 <h3 id="31-ssh-key-generation">3.1 SSH Key Generation<a class="headerlink" href="#31-ssh-key-generation" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa<span class="w"> </span>-b<span class="w"> </span><span class="m">4096</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;your_email@example.com&quot;</span>
+<div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa<span class="w"> </span>-b<span class="w"> </span><span class="m">4096</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;your_email@example.com&quot;</span>
 cat<span class="w"> </span>~/.ssh/id_rsa.pub
 </code></pre></div>
-
 <h3 id="32-create-folder-structure-and-env-files">📁 3.2 Create Folder Structure and .env Files<a class="headerlink" href="#32-create-folder-structure-and-env-files" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>✅ Run these <strong>on your DigitalOcean droplet</strong> via SSH</p>
 </blockquote>
 <h4 id="step-1-create-qa-prod-directories">Step 1: Create QA &amp; PROD Directories<a class="headerlink" href="#step-1-create-qa-prod-directories" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/www/qa/dhanman-community
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/www/qa/dhanman-community
 sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/www/prod/dhanman-community
 </code></pre></div>
-
 <h4 id="step-2-add-env-files">Step 2: Add <code>.env</code> Files<a class="headerlink" href="#step-2-add-env-files" title="Permanent link">&para;</a></h4>
 <h5 id="qa-linux">QA (Linux):<a class="headerlink" href="#qa-linux" title="Permanent link">&para;</a></h5>
-<div class="codehilite"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;DOTNET_ENVIRONMENT=qa&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/var/www/qa/dhanman-community/.env
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;DOTNET_ENVIRONMENT=qa&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/var/www/qa/dhanman-community/.env
 sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/var/www/qa/dhanman-community/.env<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="s">&lt;&lt;EOL</span>
 <span class="s">ASPNETCORE_URLS=http://127.0.0.1:5205</span>
 <span class="s">ConnectionStrings__CommunityDb=&lt;QA_COMMUNITY_DB_CONNECTION&gt;</span>
 <span class="s">ConnectionStrings__PermissionsDb=&lt;QA_PERMISSIONS_DB_CONNECTION&gt;</span>
 <span class="s">EOL</span>
 </code></pre></div>
-
 <h5 id="qa-windows-powershell-equivalent">QA (Windows PowerShell Equivalent):<a class="headerlink" href="#qa-windows-powershell-equivalent" title="Permanent link">&para;</a></h5>
-<div class="codehilite"><pre><span></span><code><span class="nv">$envPath</span> <span class="p">=</span> <span class="s2">&quot;/var/www/qa/dhanman-community/.env&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nv">$envPath</span> <span class="p">=</span> <span class="s2">&quot;/var/www/qa/dhanman-community/.env&quot;</span>
 <span class="nv">$qaEnv</span> <span class="p">=</span> <span class="sh">@&quot;</span>
 <span class="sh">DOTNET_ENVIRONMENT=qa</span>
 <span class="sh">ASPNETCORE_URLS=http://127.0.0.1:5205</span>
@@ -2337,18 +2349,16 @@ sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span
 <span class="sh">&quot;@</span>
 <span class="n">ssh</span> <span class="n">root</span><span class="p">@&lt;</span><span class="n">droplet_ip</span><span class="p">&gt;</span> <span class="s2">&quot;echo &#39;$qaEnv&#39; &gt; $envPath&quot;</span>
 </code></pre></div>
-
 <h5 id="prod-linux">PROD (Linux):<a class="headerlink" href="#prod-linux" title="Permanent link">&para;</a></h5>
-<div class="codehilite"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;DOTNET_ENVIRONMENT=production&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/var/www/prod/dhanman-community/.env
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;DOTNET_ENVIRONMENT=production&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/var/www/prod/dhanman-community/.env
 sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/var/www/prod/dhanman-community/.env<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="s">&lt;&lt;EOL</span>
 <span class="s">ASPNETCORE_URLS=http://127.0.0.1:5205</span>
 <span class="s">ConnectionStrings__CommunityDb=&lt;PROD_COMMUNITY_DB_CONNECTION&gt;</span>
 <span class="s">ConnectionStrings__PermissionsDb=&lt;PROD_PERMISSIONS_DB_CONNECTION&gt;</span>
 <span class="s">EOL</span>
 </code></pre></div>
-
 <h5 id="prod-windows-powershell-equivalent">PROD (Windows PowerShell Equivalent):<a class="headerlink" href="#prod-windows-powershell-equivalent" title="Permanent link">&para;</a></h5>
-<div class="codehilite"><pre><span></span><code><span class="nv">$envPath</span> <span class="p">=</span> <span class="s2">&quot;/var/www/prod/dhanman-community/.env&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nv">$envPath</span> <span class="p">=</span> <span class="s2">&quot;/var/www/prod/dhanman-community/.env&quot;</span>
 <span class="nv">$prodEnv</span> <span class="p">=</span> <span class="sh">@&quot;</span>
 <span class="sh">DOTNET_ENVIRONMENT=production</span>
 <span class="sh">ASPNETCORE_URLS=http://127.0.0.1:5205</span>
@@ -2357,18 +2367,16 @@ sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span
 <span class="sh">&quot;@</span>
 <span class="n">ssh</span> <span class="n">root</span><span class="p">@&lt;</span><span class="n">droplet_ip</span><span class="p">&gt;</span> <span class="s2">&quot;echo &#39;$prodEnv&#39; &gt; $envPath&quot;</span>
 </code></pre></div>
-
 <hr />
 <h3 id="33-create-systemd-services">⚙️ 3.3 Create <code>systemd</code> Services<a class="headerlink" href="#33-create-systemd-services" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>Run this <strong>on your DigitalOcean droplet</strong> via SSH</p>
 </blockquote>
 <h4 id="qa-service">QA Service<a class="headerlink" href="#qa-service" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/systemd/system/dhanman-community-qa.service
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/systemd/system/dhanman-community-qa.service
 </code></pre></div>
-
-<p>Paste:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">[Unit]</span>
+<p>Paste:
+<div class="highlight"><pre><span></span><code><span class="k">[Unit]</span>
 <span class="na">Description</span><span class="o">=</span><span class="s">Dhanman Community QA Service</span>
 <span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
 
@@ -2384,29 +2392,25 @@ sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span
 
 <span class="k">[Install]</span>
 <span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <h4 id="prod-service">PROD Service<a class="headerlink" href="#prod-service" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/systemd/system/dhanman-community-prod.service
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/systemd/system/dhanman-community-prod.service
 </code></pre></div>
-
 <p>Repeat with path changes.</p>
 <h4 id="enable-start-linux">Enable &amp; Start (Linux):<a class="headerlink" href="#enable-start-linux" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
 sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>dhanman-community-qa
 sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>dhanman-community-qa
 sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>dhanman-community-prod
 sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>dhanman-community-prod
 </code></pre></div>
-
 <hr />
 <h3 id="34-nginx-reverse-proxy-setup">🌐 3.4 NGINX Reverse Proxy Setup<a class="headerlink" href="#34-nginx-reverse-proxy-setup" title="Permanent link">&para;</a></h3>
 <h4 id="qa-subdomain-config-linux">QA Subdomain Config (Linux)<a class="headerlink" href="#qa-subdomain-config-linux" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/qa.community.dhanman.com
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/qa.community.dhanman.com
 </code></pre></div>
-
-<p>Paste:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<p>Paste:
+<div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
 <span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">qa.community.dhanman.com</span><span class="p">;</span>
 <span class="w">    </span><span class="kn">return</span><span class="w"> </span><span class="mi">301</span><span class="w"> </span><span class="s">https://</span><span class="nv">$host$request_uri</span><span class="p">;</span>
@@ -2430,75 +2434,62 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w
 <span class="w">        </span><span class="kn">proxy_cache_bypass</span><span class="w"> </span><span class="nv">$http_upgrade</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <h4 id="enable-test-linux">Enable &amp; Test (Linux)<a class="headerlink" href="#enable-test-linux" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/qa.community.dhanman.com<span class="w"> </span>/etc/nginx/sites-enabled/
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/qa.community.dhanman.com<span class="w"> </span>/etc/nginx/sites-enabled/
 sudo<span class="w"> </span>nginx<span class="w"> </span>-t
 sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
 </code></pre></div>
-
 <hr />
 <h3 id="35-certbot-ssl">🔐 3.5 Certbot SSL<a class="headerlink" href="#35-certbot-ssl" title="Permanent link">&para;</a></h3>
 <h4 id="install-certbot">Install Certbot<a class="headerlink" href="#install-certbot" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>certbot<span class="w"> </span>python3-certbot-nginx
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>certbot<span class="w"> </span>python3-certbot-nginx
 </code></pre></div>
-
 <h4 id="generate-ssl">Generate SSL<a class="headerlink" href="#generate-ssl" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>qa.community.dhanman.com
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>qa.community.dhanman.com
 sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>prod.community.dhanman.com
 </code></pre></div>
-
 <hr />
 <p>You're now set up to run multiple services in both QA and PROD environments with automated and manual GitHub deployments, process supervision via systemd, reverse proxy via NGINX, and SSL via Certbot.</p>
 <hr />
 <h2 id="troubleshooting-commands-tips">🔧 Troubleshooting Commands &amp; Tips<a class="headerlink" href="#troubleshooting-commands-tips" title="Permanent link">&para;</a></h2>
 <h3 id="check-systemd-service-logs">🔍 Check Systemd Service Logs<a class="headerlink" href="#check-systemd-service-logs" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>dhanman-community-qa.service
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>dhanman-community-qa.service
 sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>dhanman-community-qa.service<span class="w"> </span>-n<span class="w"> </span><span class="m">50</span><span class="w">   </span><span class="c1"># Last 50 logs</span>
 </code></pre></div>
-
 <h3 id="restart-or-enable-systemd-service">🚀 Restart or Enable Systemd Service<a class="headerlink" href="#restart-or-enable-systemd-service" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reexec
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reexec
 sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
 sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>dhanman-community-qa.service
 sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>dhanman-community-qa.service
 </code></pre></div>
-
 <h3 id="check-nginx-configuration-reload">🧪 Check NGINX Configuration &amp; Reload<a class="headerlink" href="#check-nginx-configuration-reload" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>nginx<span class="w"> </span>-t<span class="w">                       </span><span class="c1"># Test config</span>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nginx<span class="w"> </span>-t<span class="w">                       </span><span class="c1"># Test config</span>
 sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx<span class="w">        </span><span class="c1"># Reload after changes</span>
 </code></pre></div>
-
 <h3 id="test-app-on-localhost">🌐 Test App on Localhost<a class="headerlink" href="#test-app-on-localhost" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>http://127.0.0.1:&lt;port&gt;<span class="w">       </span><span class="c1"># Example: curl http://127.0.0.1:5205</span>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://127.0.0.1:&lt;port&gt;<span class="w">       </span><span class="c1"># Example: curl http://127.0.0.1:5205</span>
 </code></pre></div>
-
 <h3 id="check-environment-variables">🔐 Check Environment Variables<a class="headerlink" href="#check-environment-variables" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="nv">$ConnectionStrings__CommunityDb</span>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="nv">$ConnectionStrings__CommunityDb</span>
 cat<span class="w"> </span>/proc/<span class="k">$(</span>pgrep<span class="w"> </span>-f<span class="w"> </span><span class="s1">&#39;Dhanman.MyHome.Api&#39;</span><span class="k">)</span>/environ<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">&#39;\0&#39;</span><span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ConnectionStrings
 </code></pre></div>
-
 <h3 id="check-which-port-app-is-running-on">🔎 Check Which Port App is Running On<a class="headerlink" href="#check-which-port-app-is-running-on" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>netstat<span class="w"> </span>-tuln<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>LISTEN
+<div class="highlight"><pre><span></span><code>netstat<span class="w"> </span>-tuln<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>LISTEN
 </code></pre></div>
-
 <h3 id="check-if-nginx-is-listening-to-domain">🔁 Check If NGINX is Listening to Domain<a class="headerlink" href="#check-if-nginx-is-listening-to-domain" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>nginx<span class="w"> </span>-T<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>server_name
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nginx<span class="w"> </span>-T<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>server_name
 </code></pre></div>
-
 <h3 id="remove-duplicate-server_name-entries">📁 Remove Duplicate <code>server_name</code> Entries<a class="headerlink" href="#remove-duplicate-server_name-entries" title="Permanent link">&para;</a></h3>
-<p>Use <code>grep</code> to find duplicates:</p>
-<div class="codehilite"><pre><span></span><code>grep<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;server_name&quot;</span><span class="w"> </span>/etc/nginx/sites-available/
+<p>Use <code>grep</code> to find duplicates:
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;server_name&quot;</span><span class="w"> </span>/etc/nginx/sites-available/
 </code></pre></div>
-
-<p>Manually remove extras from unused or backup config files.</p>
+Manually remove extras from unused or backup config files.</p>
 <h3 id="github-push-blocked-by-secrets">❌ GitHub Push Blocked by Secrets<a class="headerlink" href="#github-push-blocked-by-secrets" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Remove secrets from committed files</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Remove secrets from committed files</span>
 <span class="c1"># OR use the GitHub UI to allow the secret push temporarily:</span>
 https://github.com/&lt;org&gt;/&lt;repo&gt;/security/secret-scanning/unblock-secret/
 </code></pre></div>
-
 <blockquote>
 <p>Always ensure your <code>.env</code> file and secrets are not committed to GitHub!</p>
 </blockquote>
@@ -2560,6 +2551,10 @@ https://github.com/&lt;org&gt;/&lt;repo&gt;/security/secret-scanning/unblock-sec
         <script src="../../../../js/extra.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../../../js/mermaid-init.js"></script>
       
     
   </body>

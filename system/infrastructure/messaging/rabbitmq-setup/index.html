@@ -1745,31 +1745,27 @@
 <hr />
 <h2 id="2-docker-rabbitmq-containers-setup">2. Docker RabbitMQ Containers Setup<a class="headerlink" href="#2-docker-rabbitmq-containers-setup" title="Permanent link">&para;</a></h2>
 <h3 id="21-production-rabbitmq">2.1. Production RabbitMQ<a class="headerlink" href="#21-production-rabbitmq" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--hostname<span class="w"> </span>dhanman-rabbit-prod<span class="w"> </span>--name<span class="w"> </span>rabbitmq-prod<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--hostname<span class="w"> </span>dhanman-rabbit-prod<span class="w"> </span>--name<span class="w"> </span>rabbitmq-prod<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-p<span class="w"> </span><span class="m">5672</span>:5672<span class="w"> </span>-p<span class="w"> </span><span class="m">15672</span>:15672<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>rabbitmq:3-management
 </code></pre></div>
-
 <h3 id="22-qa-rabbitmq">2.2. QA RabbitMQ<a class="headerlink" href="#22-qa-rabbitmq" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--hostname<span class="w"> </span>dhanman-rabbit-qa<span class="w"> </span>--name<span class="w"> </span>rabbitmq-qa<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--hostname<span class="w"> </span>dhanman-rabbit-qa<span class="w"> </span>--name<span class="w"> </span>rabbitmq-qa<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-p<span class="w"> </span><span class="m">5673</span>:5672<span class="w"> </span>-p<span class="w"> </span><span class="m">15673</span>:15672<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>rabbitmq:3-management
 </code></pre></div>
-
 <hr />
 <h2 id="3-create-users">3. Create Users<a class="headerlink" href="#3-create-users" title="Permanent link">&para;</a></h2>
 <h3 id="31-production-user">3.1. Production User<a class="headerlink" href="#31-production-user" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>rabbitmq-prod<span class="w"> </span>rabbitmqctl<span class="w"> </span>add_user<span class="w"> </span>dhanman<span class="w"> </span><span class="s1">&#39;ProdStrongPassword&#39;</span>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>rabbitmq-prod<span class="w"> </span>rabbitmqctl<span class="w"> </span>add_user<span class="w"> </span>dhanman<span class="w"> </span><span class="s1">&#39;ProdStrongPassword&#39;</span>
 docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>rabbitmq-prod<span class="w"> </span>rabbitmqctl<span class="w"> </span>set_user_tags<span class="w"> </span>dhanman<span class="w"> </span>administrator
 docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>rabbitmq-prod<span class="w"> </span>rabbitmqctl<span class="w"> </span>set_permissions<span class="w"> </span>-p<span class="w"> </span>/<span class="w"> </span>dhanman<span class="w"> </span><span class="s2">&quot;.*&quot;</span><span class="w"> </span><span class="s2">&quot;.*&quot;</span><span class="w"> </span><span class="s2">&quot;.*&quot;</span>
 </code></pre></div>
-
 <h3 id="32-qa-user">3.2. QA User<a class="headerlink" href="#32-qa-user" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>rabbitmq-qa<span class="w"> </span>rabbitmqctl<span class="w"> </span>add_user<span class="w"> </span>dhanman_qa<span class="w"> </span><span class="s1">&#39;QaStrongPassword&#39;</span>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>rabbitmq-qa<span class="w"> </span>rabbitmqctl<span class="w"> </span>add_user<span class="w"> </span>dhanman_qa<span class="w"> </span><span class="s1">&#39;QaStrongPassword&#39;</span>
 docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>rabbitmq-qa<span class="w"> </span>rabbitmqctl<span class="w"> </span>set_user_tags<span class="w"> </span>dhanman_qa<span class="w"> </span>administrator
 docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>rabbitmq-qa<span class="w"> </span>rabbitmqctl<span class="w"> </span>set_permissions<span class="w"> </span>-p<span class="w"> </span>/<span class="w"> </span>dhanman_qa<span class="w"> </span><span class="s2">&quot;.*&quot;</span><span class="w"> </span><span class="s2">&quot;.*&quot;</span><span class="w"> </span><span class="s2">&quot;.*&quot;</span>
 </code></pre></div>
-
 <hr />
 <h2 id="4-dns-setup">4. DNS Setup<a class="headerlink" href="#4-dns-setup" title="Permanent link">&para;</a></h2>
 <table>
@@ -1797,7 +1793,7 @@ docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </spa
 <h2 id="5-nginx-reverse-proxy-setup">5. NGINX Reverse Proxy Setup<a class="headerlink" href="#5-nginx-reverse-proxy-setup" title="Permanent link">&para;</a></h2>
 <h3 id="51-production-nginx-config">5.1. Production NGINX Config<a class="headerlink" href="#51-production-nginx-config" title="Permanent link">&para;</a></h3>
 <p>File: <code>/etc/nginx/sites-available/rabbitmq-prod.conf</code></p>
-<div class="codehilite"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">rabbitmq.dhanman.com</span><span class="p">;</span>
 
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
@@ -1812,10 +1808,9 @@ docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </spa
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <h3 id="52-qa-nginx-config">5.2. QA NGINX Config<a class="headerlink" href="#52-qa-nginx-config" title="Permanent link">&para;</a></h3>
 <p>File: <code>/etc/nginx/sites-available/rabbitmq-qa.conf</code></p>
-<div class="codehilite"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">qa.rabbitmq.dhanman.com</span><span class="p">;</span>
 
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
@@ -1830,30 +1825,24 @@ docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </spa
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <h3 id="53-enable-sites">5.3. Enable Sites<a class="headerlink" href="#53-enable-sites" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/rabbitmq-prod.conf<span class="w"> </span>/etc/nginx/sites-enabled/
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/rabbitmq-prod.conf<span class="w"> </span>/etc/nginx/sites-enabled/
 sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/rabbitmq-qa.conf<span class="w"> </span>/etc/nginx/sites-enabled/
 </code></pre></div>
-
 <h3 id="54-test-reload-nginx">5.4. Test &amp; Reload NGINX<a class="headerlink" href="#54-test-reload-nginx" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
 sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
 </code></pre></div>
-
 <hr />
 <h2 id="6-ssl-setup-with-certbot">6. SSL Setup with Certbot<a class="headerlink" href="#6-ssl-setup-with-certbot" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>certbot<span class="w"> </span>python3-certbot-nginx<span class="w"> </span>-y
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>certbot<span class="w"> </span>python3-certbot-nginx<span class="w"> </span>-y
 </code></pre></div>
-
 <h3 id="61-production-ssl">6.1. Production SSL<a class="headerlink" href="#61-production-ssl" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>rabbitmq.dhanman.com
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>rabbitmq.dhanman.com
 </code></pre></div>
-
 <h3 id="62-qa-ssl">6.2. QA SSL<a class="headerlink" href="#62-qa-ssl" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>qa.rabbitmq.dhanman.com
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>qa.rabbitmq.dhanman.com
 </code></pre></div>
-
 <hr />
 <h2 id="7-final-result">7. Final Result<a class="headerlink" href="#7-final-result" title="Permanent link">&para;</a></h2>
 <table>
@@ -1940,6 +1929,10 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="
         <script src="../../../../js/extra.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../../../js/mermaid-init.js"></script>
       
     
   </body>

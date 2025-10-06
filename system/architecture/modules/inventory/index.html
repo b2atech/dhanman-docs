@@ -1445,25 +1445,24 @@
 </ul>
 <hr />
 <h2 id="ui-wireframe-concept">UI Wireframe Concept<a class="headerlink" href="#ui-wireframe-concept" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="nb">--------------------------------------------------------------</span>
-<span class="c">| Water Tanker Delivery Entry                                 |</span>
-<span class="nb">--------------------------------------------------------------</span>
-<span class="c">| Vendor: </span><span class="k">[</span><span class="c">Dropdown with search/select</span><span class="k">]</span><span class="c">                      |</span>
-<span class="c">|                                                            |</span>
-<span class="c">| </span><span class="nb">---------------------------------------------------------</span><span class="c">  |</span>
-<span class="c">| | Tanker Deliveries:                                   </span><span class="k">[</span><span class="nb">+</span><span class="k">]</span><span class="c"> |  </span><span class="nv">&lt;</span><span class="nb">--</span><span class="c"> Add new row button</span>
-<span class="c">| </span><span class="nb">---------------------------------------------------------</span><span class="c">  |</span>
-<span class="c">|  #  | Date       | Time      | Capacity (liters) | Actual Received (liters) | </span><span class="k">[</span><span class="c">x</span><span class="k">]</span><span class="c"> |</span>
-<span class="c">| </span><span class="nb">---------------------------------------------------------</span><span class="c">  |</span>
-<span class="c">|  1  | </span><span class="k">[</span><span class="c">DatePicker</span><span class="k">]</span><span class="c"> | </span><span class="k">[</span><span class="c">TimePicker</span><span class="k">]</span><span class="c"> | </span><span class="k">[</span><span class="c">number input</span><span class="k">]</span><span class="c">   | </span><span class="k">[</span><span class="c">number input</span><span class="k">]</span><span class="c">           |    |</span>
-<span class="c">|  2  | </span><span class="k">[</span><span class="c">DatePicker</span><span class="k">]</span><span class="c"> | </span><span class="k">[</span><span class="c">TimePicker</span><span class="k">]</span><span class="c"> | </span><span class="k">[</span><span class="c">number input</span><span class="k">]</span><span class="c">   | </span><span class="k">[</span><span class="c">number input</span><span class="k">]</span><span class="c">           |    |</span>
-<span class="c">|  3  | </span><span class="k">[</span><span class="c">DatePicker</span><span class="k">]</span><span class="c"> | </span><span class="k">[</span><span class="c">TimePicker</span><span class="k">]</span><span class="c"> | </span><span class="k">[</span><span class="c">number input</span><span class="k">]</span><span class="c">   | </span><span class="k">[</span><span class="c">number input</span><span class="k">]</span><span class="c">           |    |</span>
-<span class="c">|  </span><span class="nt">...</span><span class="c">                                                      |</span>
-<span class="c">|                                                          |</span>
-<span class="c">| </span><span class="k">[</span><span class="c"> Save </span><span class="k">]</span><span class="c">                                   </span><span class="k">[</span><span class="c"> Cancel </span><span class="k">]</span><span class="c">    |</span>
-<span class="nb">--------------------------------------------------------------</span>
+<div class="highlight"><pre><span></span><code>--------------------------------------------------------------
+| Water Tanker Delivery Entry                                 |
+--------------------------------------------------------------
+| Vendor: [Dropdown with search/select]                      |
+|                                                            |
+| ---------------------------------------------------------  |
+| | Tanker Deliveries:                                   [+] |  &lt;-- Add new row button
+| ---------------------------------------------------------  |
+|  #  | Date       | Time      | Capacity (liters) | Actual Received (liters) | [x] |
+| ---------------------------------------------------------  |
+|  1  | [DatePicker] | [TimePicker] | [number input]   | [number input]           |    |
+|  2  | [DatePicker] | [TimePicker] | [number input]   | [number input]           |    |
+|  3  | [DatePicker] | [TimePicker] | [number input]   | [number input]           |    |
+|  ...                                                      |
+|                                                          |
+| [ Save ]                                   [ Cancel ]    |
+--------------------------------------------------------------
 </code></pre></div>
-
 <h3 id="ui-notes">UI Notes<a class="headerlink" href="#ui-notes" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Vendor selected once per form (assumed one vendor per submission).</li>
@@ -1484,7 +1483,7 @@
 <hr />
 <h2 id="important-sql-queries">Important SQL Queries<a class="headerlink" href="#important-sql-queries" title="Permanent link">&para;</a></h2>
 <h3 id="1-create-table">1. Create table<a class="headerlink" href="#1-create-table" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">water_tanker_deliveries</span><span class="w"> </span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">water_tanker_deliveries</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
 <span class="w">    </span><span class="n">company_id</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
 <span class="w">    </span><span class="n">vendor_id</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
@@ -1498,33 +1497,29 @@
 <span class="w">    </span><span class="n">modified_on_utc</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">TIME</span><span class="w"> </span><span class="k">ZONE</span>
 <span class="p">);</span>
 </code></pre></div>
-
 <h3 id="2-insert-multiple-deliveries-example">2. Insert multiple deliveries (example)<a class="headerlink" href="#2-insert-multiple-deliveries-example" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">water_tanker_deliveries</span>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">water_tanker_deliveries</span>
 <span class="p">(</span><span class="n">company_id</span><span class="p">,</span><span class="w"> </span><span class="n">vendor_id</span><span class="p">,</span><span class="w"> </span><span class="n">delivery_date</span><span class="p">,</span><span class="w"> </span><span class="n">delivery_time</span><span class="p">,</span><span class="w"> </span><span class="n">tanker_capacity_liters</span><span class="p">,</span><span class="w"> </span><span class="n">actual_received_liters</span><span class="p">,</span><span class="w"> </span><span class="n">created_by</span><span class="p">)</span>
 <span class="k">VALUES</span>
 <span class="p">(</span><span class="s1">&#39;company-uuid-1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;vendor-uuid-1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2025-05-20&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;08:30:00&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w"> </span><span class="mi">14000</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user-uuid-1&#39;</span><span class="p">),</span>
 <span class="p">(</span><span class="s1">&#39;company-uuid-1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;vendor-uuid-1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2025-05-20&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;15:45:00&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user-uuid-1&#39;</span><span class="p">);</span>
 </code></pre></div>
-
 <h3 id="3-query-total-tankers-and-liters-for-a-month-per-company">3. Query total tankers and liters for a month per company<a class="headerlink" href="#3-query-total-tankers-and-liters-for-a-month-per-company" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="k">SELECT</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
 <span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_tankers</span><span class="p">,</span>
 <span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">actual_received_liters</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_liters</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">water_tanker_deliveries</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">company_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;company-uuid-1&#39;</span>
 <span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">delivery_date</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">&#39;2025-05-01&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">&#39;2025-05-31&#39;</span><span class="p">;</span>
 </code></pre></div>
-
 <h3 id="4-query-deliveries-by-vendor-and-date-range">4. Query deliveries by vendor and date range<a class="headerlink" href="#4-query-deliveries-by-vendor-and-date-range" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">delivery_date</span><span class="p">,</span><span class="w"> </span><span class="n">delivery_time</span><span class="p">,</span><span class="w"> </span><span class="n">tanker_capacity_liters</span><span class="p">,</span><span class="w"> </span><span class="n">actual_received_liters</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">delivery_date</span><span class="p">,</span><span class="w"> </span><span class="n">delivery_time</span><span class="p">,</span><span class="w"> </span><span class="n">tanker_capacity_liters</span><span class="p">,</span><span class="w"> </span><span class="n">actual_received_liters</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">water_tanker_deliveries</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">company_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;company-uuid-1&#39;</span>
 <span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">vendor_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;vendor-uuid-1&#39;</span>
 <span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">delivery_date</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">&#39;2025-05-01&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">&#39;2025-05-31&#39;</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">delivery_date</span><span class="p">,</span><span class="w"> </span><span class="n">delivery_time</span><span class="p">;</span>
 </code></pre></div>
-
 <hr />
 <h2 id="additional-considerations">Additional Considerations<a class="headerlink" href="#additional-considerations" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1639,7 +1634,7 @@
 <hr />
 <h2 id="6-important-sql-queries">6. Important SQL Queries<a class="headerlink" href="#6-important-sql-queries" title="Permanent link">&para;</a></h2>
 <h3 id="create-table">Create table<a class="headerlink" href="#create-table" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">water_tanker_deliveries</span><span class="w"> </span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">water_tanker_deliveries</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
 <span class="w">    </span><span class="n">company_id</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
 <span class="w">    </span><span class="n">vendor_id</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
@@ -1653,33 +1648,29 @@
 <span class="w">    </span><span class="n">modified_on_utc</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">TIME</span><span class="w"> </span><span class="k">ZONE</span>
 <span class="p">);</span>
 </code></pre></div>
-
 <h3 id="insert-example-multiple-deliveries">Insert example (multiple deliveries)<a class="headerlink" href="#insert-example-multiple-deliveries" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">water_tanker_deliveries</span>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">water_tanker_deliveries</span>
 <span class="p">(</span><span class="n">company_id</span><span class="p">,</span><span class="w"> </span><span class="n">vendor_id</span><span class="p">,</span><span class="w"> </span><span class="n">delivery_date</span><span class="p">,</span><span class="w"> </span><span class="n">delivery_time</span><span class="p">,</span><span class="w"> </span><span class="n">tanker_capacity_liters</span><span class="p">,</span><span class="w"> </span><span class="n">actual_received_liters</span><span class="p">,</span><span class="w"> </span><span class="n">created_by</span><span class="p">)</span>
 <span class="k">VALUES</span>
 <span class="p">(</span><span class="s1">&#39;company-uuid-1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;vendor-uuid-1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2025-05-20&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;08:30:00&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w"> </span><span class="mi">14000</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user-uuid-1&#39;</span><span class="p">),</span>
 <span class="p">(</span><span class="s1">&#39;company-uuid-1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;vendor-uuid-1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2025-05-20&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;15:45:00&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user-uuid-1&#39;</span><span class="p">);</span>
 </code></pre></div>
-
 <h3 id="query-total-tankers-and-liters-for-a-month-per-company">Query total tankers and liters for a month per company<a class="headerlink" href="#query-total-tankers-and-liters-for-a-month-per-company" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="k">SELECT</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
 <span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_tankers</span><span class="p">,</span>
 <span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">actual_received_liters</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_liters</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">water_tanker_deliveries</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">company_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;company-uuid-1&#39;</span>
 <span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">delivery_date</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">&#39;2025-05-01&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">&#39;2025-05-31&#39;</span><span class="p">;</span>
 </code></pre></div>
-
 <h3 id="query-deliveries-by-vendor-and-date-range">Query deliveries by vendor and date range<a class="headerlink" href="#query-deliveries-by-vendor-and-date-range" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">delivery_date</span><span class="p">,</span><span class="w"> </span><span class="n">delivery_time</span><span class="p">,</span><span class="w"> </span><span class="n">tanker_capacity_liters</span><span class="p">,</span><span class="w"> </span><span class="n">actual_received_liters</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">delivery_date</span><span class="p">,</span><span class="w"> </span><span class="n">delivery_time</span><span class="p">,</span><span class="w"> </span><span class="n">tanker_capacity_liters</span><span class="p">,</span><span class="w"> </span><span class="n">actual_received_liters</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">water_tanker_deliveries</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">company_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;company-uuid-1&#39;</span>
 <span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">vendor_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;vendor-uuid-1&#39;</span>
 <span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">delivery_date</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">&#39;2025-05-01&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">&#39;2025-05-31&#39;</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">delivery_date</span><span class="p">,</span><span class="w"> </span><span class="n">delivery_time</span><span class="p">;</span>
 </code></pre></div>
-
 <hr />
 <h2 id="7-validation-business-rules">7. Validation &amp; Business Rules<a class="headerlink" href="#7-validation-business-rules" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1799,6 +1790,10 @@
         <script src="../../../../js/extra.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../../../js/mermaid-init.js"></script>
       
     
   </body>

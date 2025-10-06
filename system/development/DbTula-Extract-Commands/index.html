@@ -1305,46 +1305,38 @@
 <hr />
 <h2 id="generic-command">🔹 Generic Command<a class="headerlink" href="#generic-command" title="Permanent link">&para;</a></h2>
 <p><strong>Copy:</strong></p>
-<div class="codehilite"><pre><span></span><code>B2A.DbTula.Cli<span class="w"> </span>--extract<span class="w"> </span>--extract-type<span class="w"> </span>postgres<span class="w"> </span>--extract-conn<span class="w"> </span><span class="s2">&quot;Server=db.qa.dhanman.com;Port=5432;Database=&lt;DB_NAME&gt;;User Id=dhanmanqa;Password=&lt;DB_PASSWORD&gt;;&quot;</span><span class="w"> </span>--objects<span class="w"> </span>functions,procedures,views,triggers,tables<span class="w"> </span>--outputDir<span class="w"> </span><span class="s2">&quot;src/&lt;ServiceName&gt;.Persistence/DBObjects&quot;</span><span class="w"> </span>--overwrite
+<div class="highlight"><pre><span></span><code>B2A.DbTula.Cli<span class="w"> </span>--extract<span class="w"> </span>--extract-type<span class="w"> </span>postgres<span class="w"> </span>--extract-conn<span class="w"> </span><span class="s2">&quot;Server=db.qa.dhanman.com;Port=5432;Database=&lt;DB_NAME&gt;;User Id=dhanmanqa;Password=&lt;DB_PASSWORD&gt;;&quot;</span><span class="w"> </span>--objects<span class="w"> </span>functions,procedures,views,triggers,tables<span class="w"> </span>--outputDir<span class="w"> </span><span class="s2">&quot;src/&lt;ServiceName&gt;.Persistence/DBObjects&quot;</span><span class="w"> </span>--overwrite
 </code></pre></div>
-
 <hr />
 <h2 id="service-wise-commands-qa">🔹 Service-wise Commands (QA)<a class="headerlink" href="#service-wise-commands-qa" title="Permanent link">&para;</a></h2>
 <h3 id="1-common-service">1) Common Service<a class="headerlink" href="#1-common-service" title="Permanent link">&para;</a></h3>
 <p><strong>Copy:</strong></p>
-<div class="codehilite"><pre><span></span><code>B2A.DbTula.Cli<span class="w"> </span>--extract<span class="w"> </span>--extract-type<span class="w"> </span>postgres<span class="w"> </span>--extract-conn<span class="w"> </span><span class="s2">&quot;Server=db.qa.dhanman.com;Port=5432;Database=qa-dhanman-common;User Id=dhanmanqa;Password=&lt;DB_PASSWORD&gt;;&quot;</span><span class="w"> </span>--objects<span class="w"> </span>functions,procedures,views,triggers,tables<span class="w"> </span>--outputDir<span class="w"> </span><span class="s2">&quot;src/Dhanman.Common.Persistence/DBObjects&quot;</span><span class="w"> </span>--overwrite
+<div class="highlight"><pre><span></span><code>B2A.DbTula.Cli<span class="w"> </span>--extract<span class="w"> </span>--extract-type<span class="w"> </span>postgres<span class="w"> </span>--extract-conn<span class="w"> </span><span class="s2">&quot;Server=db.qa.dhanman.com;Port=5432;Database=qa-dhanman-common;User Id=dhanmanqa;Password=&lt;DB_PASSWORD&gt;;&quot;</span><span class="w"> </span>--objects<span class="w"> </span>functions,procedures,views,triggers,tables<span class="w"> </span>--outputDir<span class="w"> </span><span class="s2">&quot;src/Dhanman.Common.Persistence/DBObjects&quot;</span><span class="w"> </span>--overwrite
 </code></pre></div>
-
 <h3 id="2-community-service">2) Community Service<a class="headerlink" href="#2-community-service" title="Permanent link">&para;</a></h3>
 <p><strong>Copy:</strong></p>
-<div class="codehilite"><pre><span></span><code>B2A.DbTula.Cli<span class="w"> </span>--extract<span class="w"> </span>--extract-type<span class="w"> </span>postgres<span class="w"> </span>--extract-conn<span class="w"> </span><span class="s2">&quot;Server=db.qa.dhanman.com;Port=5432;Database=qa-dhanman-community;User Id=dhanmanqa;Password=&lt;DB_PASSWORD&gt;;&quot;</span><span class="w"> </span>--objects<span class="w"> </span>functions,procedures,views,triggers,tables<span class="w"> </span>--outputDir<span class="w"> </span><span class="s2">&quot;src/Dhanman.Community.Persistence/DBObjects&quot;</span><span class="w"> </span>--overwrite
+<div class="highlight"><pre><span></span><code>B2A.DbTula.Cli<span class="w"> </span>--extract<span class="w"> </span>--extract-type<span class="w"> </span>postgres<span class="w"> </span>--extract-conn<span class="w"> </span><span class="s2">&quot;Server=db.qa.dhanman.com;Port=5432;Database=qa-dhanman-community;User Id=dhanmanqa;Password=&lt;DB_PASSWORD&gt;;&quot;</span><span class="w"> </span>--objects<span class="w"> </span>functions,procedures,views,triggers,tables<span class="w"> </span>--outputDir<span class="w"> </span><span class="s2">&quot;src/Dhanman.Community.Persistence/DBObjects&quot;</span><span class="w"> </span>--overwrite
 </code></pre></div>
-
 <h3 id="3-inventory-service">3) Inventory Service<a class="headerlink" href="#3-inventory-service" title="Permanent link">&para;</a></h3>
 <p><strong>Copy:</strong></p>
-<div class="codehilite"><pre><span></span><code>B2A.DbTula.Cli<span class="w"> </span>--extract<span class="w"> </span>--extract-type<span class="w"> </span>postgres<span class="w"> </span>--extract-conn<span class="w"> </span><span class="s2">&quot;Server=db.qa.dhanman.com;Port=5432;Database=qa-dhanman-inventory;User Id=dhanmanqa;Password=&lt;DB_PASSWORD&gt;;&quot;</span><span class="w"> </span>--objects<span class="w"> </span>functions,procedures,views,triggers,tables<span class="w"> </span>--outputDir<span class="w"> </span><span class="s2">&quot;src/Dhanman.Inventory.Persistence/DBObjects&quot;</span><span class="w"> </span>--overwrite
+<div class="highlight"><pre><span></span><code>B2A.DbTula.Cli<span class="w"> </span>--extract<span class="w"> </span>--extract-type<span class="w"> </span>postgres<span class="w"> </span>--extract-conn<span class="w"> </span><span class="s2">&quot;Server=db.qa.dhanman.com;Port=5432;Database=qa-dhanman-inventory;User Id=dhanmanqa;Password=&lt;DB_PASSWORD&gt;;&quot;</span><span class="w"> </span>--objects<span class="w"> </span>functions,procedures,views,triggers,tables<span class="w"> </span>--outputDir<span class="w"> </span><span class="s2">&quot;src/Dhanman.Inventory.Persistence/DBObjects&quot;</span><span class="w"> </span>--overwrite
 </code></pre></div>
-
 <h3 id="4-payroll-service">4) Payroll Service<a class="headerlink" href="#4-payroll-service" title="Permanent link">&para;</a></h3>
 <p><strong>Copy:</strong></p>
-<div class="codehilite"><pre><span></span><code>B2A.DbTula.Cli<span class="w"> </span>--extract<span class="w"> </span>--extract-type<span class="w"> </span>postgres<span class="w"> </span>--extract-conn<span class="w"> </span><span class="s2">&quot;Server=db.qa.dhanman.com;Port=5432;Database=qa-dhanman-payroll;User Id=dhanmanqa;Password=&lt;DB_PASSWORD&gt;;&quot;</span><span class="w"> </span>--objects<span class="w"> </span>functions,procedures,views,triggers,tables<span class="w"> </span>--outputDir<span class="w"> </span><span class="s2">&quot;src/Dhanman.Payroll.Persistence/DBObjects&quot;</span><span class="w"> </span>--overwrite
+<div class="highlight"><pre><span></span><code>B2A.DbTula.Cli<span class="w"> </span>--extract<span class="w"> </span>--extract-type<span class="w"> </span>postgres<span class="w"> </span>--extract-conn<span class="w"> </span><span class="s2">&quot;Server=db.qa.dhanman.com;Port=5432;Database=qa-dhanman-payroll;User Id=dhanmanqa;Password=&lt;DB_PASSWORD&gt;;&quot;</span><span class="w"> </span>--objects<span class="w"> </span>functions,procedures,views,triggers,tables<span class="w"> </span>--outputDir<span class="w"> </span><span class="s2">&quot;src/Dhanman.Payroll.Persistence/DBObjects&quot;</span><span class="w"> </span>--overwrite
 </code></pre></div>
-
 <h3 id="5-purchase-service">5) Purchase Service<a class="headerlink" href="#5-purchase-service" title="Permanent link">&para;</a></h3>
 <p><strong>Copy:</strong></p>
-<div class="codehilite"><pre><span></span><code>B2A.DbTula.Cli<span class="w"> </span>--extract<span class="w"> </span>--extract-type<span class="w"> </span>postgres<span class="w"> </span>--extract-conn<span class="w"> </span><span class="s2">&quot;Server=db.qa.dhanman.com;Port=5432;Database=qa-dhanman-purchase;User Id=dhanmanqa;Password=&lt;DB_PASSWORD&gt;;&quot;</span><span class="w"> </span>--objects<span class="w"> </span>functions,procedures,views,triggers,tables<span class="w"> </span>--outputDir<span class="w"> </span><span class="s2">&quot;src/Dhanman.Purchase.Persistence/DBObjects&quot;</span><span class="w"> </span>--overwrite
+<div class="highlight"><pre><span></span><code>B2A.DbTula.Cli<span class="w"> </span>--extract<span class="w"> </span>--extract-type<span class="w"> </span>postgres<span class="w"> </span>--extract-conn<span class="w"> </span><span class="s2">&quot;Server=db.qa.dhanman.com;Port=5432;Database=qa-dhanman-purchase;User Id=dhanmanqa;Password=&lt;DB_PASSWORD&gt;;&quot;</span><span class="w"> </span>--objects<span class="w"> </span>functions,procedures,views,triggers,tables<span class="w"> </span>--outputDir<span class="w"> </span><span class="s2">&quot;src/Dhanman.Purchase.Persistence/DBObjects&quot;</span><span class="w"> </span>--overwrite
 </code></pre></div>
-
 <h3 id="6-sales-service">6) Sales Service<a class="headerlink" href="#6-sales-service" title="Permanent link">&para;</a></h3>
 <p><strong>Copy:</strong></p>
-<div class="codehilite"><pre><span></span><code>B2A.DbTula.Cli<span class="w"> </span>--extract<span class="w"> </span>--extract-type<span class="w"> </span>postgres<span class="w"> </span>--extract-conn<span class="w"> </span><span class="s2">&quot;Server=db.qa.dhanman.com;Port=5432;Database=qa-dhanman-sales;User Id=dhanmanqa;Password=&lt;DB_PASSWORD&gt;;&quot;</span><span class="w"> </span>--objects<span class="w"> </span>functions,procedures,views,triggers,tables<span class="w"> </span>--outputDir<span class="w"> </span><span class="s2">&quot;src/Dhanman.Sales.Persistence/DBObjects&quot;</span><span class="w"> </span>--overwrite
+<div class="highlight"><pre><span></span><code>B2A.DbTula.Cli<span class="w"> </span>--extract<span class="w"> </span>--extract-type<span class="w"> </span>postgres<span class="w"> </span>--extract-conn<span class="w"> </span><span class="s2">&quot;Server=db.qa.dhanman.com;Port=5432;Database=qa-dhanman-sales;User Id=dhanmanqa;Password=&lt;DB_PASSWORD&gt;;&quot;</span><span class="w"> </span>--objects<span class="w"> </span>functions,procedures,views,triggers,tables<span class="w"> </span>--outputDir<span class="w"> </span><span class="s2">&quot;src/Dhanman.Sales.Persistence/DBObjects&quot;</span><span class="w"> </span>--overwrite
 </code></pre></div>
-
 <h3 id="7-document-service">7) Document Service<a class="headerlink" href="#7-document-service" title="Permanent link">&para;</a></h3>
 <p><strong>Copy:</strong></p>
-<div class="codehilite"><pre><span></span><code>B2A.DbTula.Cli<span class="w"> </span>--extract<span class="w"> </span>--extract-type<span class="w"> </span>postgres<span class="w"> </span>--extract-conn<span class="w"> </span><span class="s2">&quot;Server=db.qa.dhanman.com;Port=5432;Database=qa-dhanman-document;User Id=dhanmanqa;Password=&lt;DB_PASSWORD&gt;;&quot;</span><span class="w"> </span>--objects<span class="w"> </span>functions,procedures,views,triggers,tables<span class="w"> </span>--outputDir<span class="w"> </span><span class="s2">&quot;src/Dhanman.Document.Persistence/DBObjects&quot;</span><span class="w"> </span>--overwrite
+<div class="highlight"><pre><span></span><code>B2A.DbTula.Cli<span class="w"> </span>--extract<span class="w"> </span>--extract-type<span class="w"> </span>postgres<span class="w"> </span>--extract-conn<span class="w"> </span><span class="s2">&quot;Server=db.qa.dhanman.com;Port=5432;Database=qa-dhanman-document;User Id=dhanmanqa;Password=&lt;DB_PASSWORD&gt;;&quot;</span><span class="w"> </span>--objects<span class="w"> </span>functions,procedures,views,triggers,tables<span class="w"> </span>--outputDir<span class="w"> </span><span class="s2">&quot;src/Dhanman.Document.Persistence/DBObjects&quot;</span><span class="w"> </span>--overwrite
 </code></pre></div>
-
 <hr />
 <h2 id="notes">💡 Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1409,6 +1401,10 @@
         <script src="../../../js/extra.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../../js/mermaid-init.js"></script>
       
     
   </body>

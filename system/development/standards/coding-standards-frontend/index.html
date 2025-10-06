@@ -1278,25 +1278,22 @@
 
 <h1 id="clean-code-principle-c">Clean code principle - c<a class="headerlink" href="#clean-code-principle-c" title="Permanent link">&para;</a></h1>
 <h2 id="1-use-default-import-to-import-react">1. Use Default import to import React<a class="headerlink" href="#1-use-default-import-to-import-react" title="Permanent link">&para;</a></h2>
-<p>Don't </p>
-<div class="codehilite"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
-</code></pre></div>
-
-<p>Do </p>
-<div class="codehilite"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">useContext</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
-</code></pre></div>
-
-<p>Note: Use this option by adding in configure the tsconfig.json file as seen below:</p>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<p>Don't 
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Do 
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">useContext</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Note: Use this option by adding in configure the tsconfig.json file as seen below:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="s2">&quot;compilerOptions&quot;</span><span class="o">:</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="s2">&quot;esModuleInterop&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <h2 id="2-dont-use-constructor-for-class-components">2. Don’t use constructor for class components<a class="headerlink" href="#2-dont-use-constructor-for-class-components" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Don&#39;t do</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Don&#39;t do</span>
 <span class="nx">type</span><span class="w"> </span><span class="nx">State</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">count</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">}</span>
 <span class="nx">type</span><span class="w"> </span><span class="nx">Props</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
 
@@ -1318,10 +1315,9 @@
 <span class="w">    </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">count</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <h2 id="3-dont-use-public-accessor-within-classes">3. Don’t use public accessor within classes<a class="headerlink" href="#3-dont-use-public-accessor-within-classes" title="Permanent link">&para;</a></h2>
-<p>Don't</p>
-<div class="codehilite"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span>
+<p>Don't
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span>
 
 <span class="kd">class</span><span class="w"> </span><span class="nx">Friends</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kr">public</span><span class="w"> </span><span class="nx">fetchFriends</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
@@ -1330,9 +1326,8 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
-<p>Do</p>
-<div class="codehilite"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span>
+Do
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span>
 
 <span class="kd">class</span><span class="w"> </span><span class="nx">Friends</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">fetchFriends</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
@@ -1340,11 +1335,10 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="c1">// jsx blob</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <h2 id="4-dont-use-private-accessor-within-component-class">4. Don’t use private accessor within Component class<a class="headerlink" href="#4-dont-use-private-accessor-within-component-class" title="Permanent link">&para;</a></h2>
-<p>Don't</p>
-<div class="codehilite"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Component</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span>
+<p>Don't
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Component</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span>
 
 <span class="kd">class</span><span class="w"> </span><span class="nx">Friends</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">private</span><span class="w"> </span><span class="nx">fetchProfileByID</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
@@ -1353,22 +1347,19 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="c1">// jsx blob</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-
-<p>Do</p>
-<div class="codehilite"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Component</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="kd">class</span><span class="w"> </span><span class="nx">Friends</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">{</span>
+</code></pre></div></p>
+<p>Do
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Component</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="kd">class</span><span class="w"> </span><span class="nx">Friends</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">_fetchProfileByID</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
 
 <span class="w">  </span><span class="nx">render</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="c1">// jsx blob</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <ol>
-<li>Don’t use enum</li>
-</ol>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Don&#39;t do this</span>
+<li>Don’t use enum
+<div class="highlight"><pre><span></span><code><span class="c1">// Don&#39;t do this</span>
 <span class="kr">enum</span><span class="w"> </span><span class="nx">Response</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">Successful</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">Failed</span><span class="p">,</span>
@@ -1385,10 +1376,10 @@
 <span class="kd">function</span><span class="w"> </span><span class="nx">fetchData</span><span class="w"> </span><span class="p">(</span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="nx">Response</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// some code.</span>
 <span class="p">}</span>
-</code></pre></div>
-
+</code></pre></div></li>
+</ol>
 <h2 id="6-dont-use-method-declaration-within-interfacetype-alias">6. Don’t use method declaration within interface/type alias<a class="headerlink" href="#6-dont-use-method-declaration-within-interfacetype-alias" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Don&#39;t do</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Don&#39;t do</span>
 <span class="kr">interface</span><span class="w"> </span><span class="nx">Counter</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">start</span><span class="p">(</span><span class="nx">count</span><span class="o">:</span><span class="nx">number</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
 <span class="w">  </span><span class="nx">reset</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span>
@@ -1400,7 +1391,6 @@
 <span class="w">  </span><span class="nx">reset</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">string</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <h2 id="7-move-unrelated-code-into-a-separate-component">7. Move unrelated code into a separate component<a class="headerlink" href="#7-move-unrelated-code-into-a-separate-component" title="Permanent link">&para;</a></h2>
 <h2 id="8-create-separate-files-for-each-component">8. Create separate files for each component<a class="headerlink" href="#8-create-separate-files-for-each-component" title="Permanent link">&para;</a></h2>
 <h2 id="9-format-your-code">9. Format your code<a class="headerlink" href="#9-format-your-code" title="Permanent link">&para;</a></h2>
@@ -1460,6 +1450,10 @@
         <script src="../../../../js/extra.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../../../js/mermaid-init.js"></script>
       
     
   </body>

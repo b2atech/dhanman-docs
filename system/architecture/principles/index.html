@@ -1911,21 +1911,20 @@
 <hr />
 <h2 id="4-deployment-architecture">⚙️ 4. Deployment Architecture<a class="headerlink" href="#4-deployment-architecture" title="Permanent link">&para;</a></h2>
 <h3 id="folder-structure-on-ovh">🔹 Folder Structure (on OVH)<a class="headerlink" href="#folder-structure-on-ovh" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">prod</span><span class="o">/</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">dhanman</span><span class="o">-</span><span class="n">common</span><span class="o">/</span>
-<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="o">.</span><span class="n">env</span>
-<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">logs</span><span class="o">/</span><span class="n">dhanman</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="n">YYYYMMDD</span><span class="o">.</span><span class="n">log</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="o">...</span>
-<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">logs</span><span class="o">/</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">qa</span><span class="o">/</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">dhanman</span><span class="o">-</span><span class="n">common</span><span class="o">/</span>
-<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="o">.</span><span class="n">env</span>
-<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">logs</span><span class="o">/</span><span class="n">dhanman</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="n">YYYYMMDD</span><span class="o">.</span><span class="n">log</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="o">...</span>
-<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">logs</span><span class="o">/</span>
+<div class="highlight"><pre><span></span><code>/var/www/
+├── prod/
+│   ├── dhanman-common/
+│   │   ├── .env
+│   │   └── logs/dhanman-common-YYYYMMDD.log
+│   ├── ...
+│   └── logs/
+├── qa/
+│   ├── dhanman-common/
+│   │   ├── .env
+│   │   └── logs/dhanman-common-YYYYMMDD.log
+│   ├── ...
+│   └── logs/
 </code></pre></div>
-
 <h3 id="ports">🔹 Ports<a class="headerlink" href="#ports" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -1999,17 +1998,14 @@
 </tbody>
 </table>
 <h3 id="env-example-per-service">🔹 .env Example (Per Service)<a class="headerlink" href="#env-example-per-service" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="n">ASPNETCORE_ENVIRONMENT</span><span class="o">=</span><span class="n">Production</span>
-<span class="n">ConnectionStrings__MainDb</span><span class="o">=</span><span class="n">Host</span><span class="o">=...</span><span class="p">;</span><span class="n">Database</span><span class="o">=</span><span class="n">prod</span><span class="o">-</span><span class="n">dhanman</span><span class="o">-</span><span class="n">common</span><span class="p">;</span><span class="o">...</span>
-<span class="n">ConnectionStrings__PermissionsDb</span><span class="o">=...</span><span class="p">;</span>
-<span class="n">Brevo__ApiKey</span><span class="o">=...</span><span class="p">;</span>
-<span class="n">Logging__Path</span><span class="o">=/</span><span class="k">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">prod</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span>
+<p><div class="highlight"><pre><span></span><code>ASPNETCORE_ENVIRONMENT=Production
+ConnectionStrings__MainDb=Host=...;Database=prod-dhanman-common;...
+ConnectionStrings__PermissionsDb=...;
+Brevo__ApiKey=...;
+Logging__Path=/var/www/prod/logs/
 </code></pre></div>
-
-<ul>
-<li>Injected dynamically from GitHub Secrets during deployment.</li>
-<li>Ensures clean separation of environments.</li>
-</ul>
+- Injected dynamically from GitHub Secrets during deployment.
+- Ensures clean separation of environments.</p>
 <hr />
 <h2 id="5-cicd-github-actions">🚀 5. CI/CD: GitHub Actions<a class="headerlink" href="#5-cicd-github-actions" title="Permanent link">&para;</a></h2>
 <h3 id="qa-deployment">✅ QA Deployment<a class="headerlink" href="#qa-deployment" title="Permanent link">&para;</a></h3>
@@ -2239,6 +2235,10 @@
         <script src="../../../js/extra.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../../js/mermaid-init.js"></script>
       
     
   </body>

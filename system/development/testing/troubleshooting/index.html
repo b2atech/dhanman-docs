@@ -1935,127 +1935,114 @@
 <blockquote>
 <p>Configure containers for resilience after debugging.</p>
 </blockquote>
-<div class="codehilite"><pre><span></span><code>docker<span class="w"> </span>update<span class="w"> </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span>dc2e017a761c<span class="w">   </span><span class="c1"># Set Grafana to auto-restart</span>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>update<span class="w"> </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span>dc2e017a761c<span class="w">   </span><span class="c1"># Set Grafana to auto-restart</span>
 docker<span class="w"> </span>update<span class="w"> </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span>25f887b8c4b4<span class="w">   </span><span class="c1"># Set Loki to auto-restart</span>
 docker<span class="w"> </span>update<span class="w"> </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span>490ec2335d55<span class="w">   </span><span class="c1"># Set Promtail to auto-restart</span>
 docker<span class="w"> </span>update<span class="w"> </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span>2793193cd3f7<span class="w">   </span><span class="c1"># Set RabbitMQ to auto-restart</span>
 docker<span class="w"> </span>update<span class="w"> </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span>&lt;jenkins_id&gt;<span class="w">   </span><span class="c1"># Set Jenkins to auto-restart</span>
 </code></pre></div>
-
 <hr />
 <h2 id="phase-1-system-health-overview">🔍 <strong>Phase 1: System Health Overview</strong><a class="headerlink" href="#phase-1-system-health-overview" title="Permanent link">&para;</a></h2>
 <h3 id="check-server-uptime-and-reboot-history">🕰️ Check server uptime and reboot history<a class="headerlink" href="#check-server-uptime-and-reboot-history" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>Start with understanding the system's current state and recent activity.</p>
 </blockquote>
-<div class="codehilite"><pre><span></span><code>uptime<span class="w">           </span><span class="c1"># Shows current uptime and load average</span>
+<div class="highlight"><pre><span></span><code>uptime<span class="w">           </span><span class="c1"># Shows current uptime and load average</span>
 who<span class="w"> </span>-b<span class="w">           </span><span class="c1"># Shows last boot time</span>
 last<span class="w"> </span>reboot<span class="w">      </span><span class="c1"># Shows reboot history</span>
 </code></pre></div>
-
 <hr />
 <h3 id="check-resource-usage-for-troubleshooting-crashes">🧑‍💻 Check resource usage for troubleshooting crashes<a class="headerlink" href="#check-resource-usage-for-troubleshooting-crashes" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>Identify if resource constraints are causing issues.</p>
 </blockquote>
-<div class="codehilite"><pre><span></span><code>top<span class="w">              </span><span class="c1"># Real-time system monitor; press q to exit</span>
+<div class="highlight"><pre><span></span><code>top<span class="w">              </span><span class="c1"># Real-time system monitor; press q to exit</span>
 htop<span class="w">             </span><span class="c1"># Advanced system monitor (install with sudo apt install htop)</span>
 df<span class="w"> </span>-h<span class="w">            </span><span class="c1"># Show disk space usage</span>
 free<span class="w"> </span>-h<span class="w">          </span><span class="c1"># Show memory usage</span>
 </code></pre></div>
-
 <blockquote>
 <p>Check specific service resource usage:</p>
 </blockquote>
-<div class="codehilite"><pre><span></span><code>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>dhanman-common-qa<span class="w">    </span><span class="c1"># Shows RAM/CPU usage for specific service</span>
+<div class="highlight"><pre><span></span><code>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>dhanman-common-qa<span class="w">    </span><span class="c1"># Shows RAM/CPU usage for specific service</span>
 </code></pre></div>
-
 <hr />
 <h2 id="phase-2-service-status-investigation">🔧 <strong>Phase 2: Service Status Investigation</strong><a class="headerlink" href="#phase-2-service-status-investigation" title="Permanent link">&para;</a></h2>
 <h3 id="check-for-failed-services-system-wide">🔎 Check for failed services (system-wide)<a class="headerlink" href="#check-for-failed-services-system-wide" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>Get an overview of all system service issues.</p>
 </blockquote>
-<div class="codehilite"><pre><span></span><code>systemctl<span class="w"> </span>--failed<span class="w">    </span><span class="c1"># List all failed systemd services</span>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>--failed<span class="w">    </span><span class="c1"># List all failed systemd services</span>
 </code></pre></div>
-
 <hr />
 <h3 id="investigate-why-a-service-failed">🕵️‍♂️ Investigate why a service failed<a class="headerlink" href="#investigate-why-a-service-failed" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>Deep dive into specific service failures.</p>
 </blockquote>
-<div class="codehilite"><pre><span></span><code>systemctl<span class="w"> </span>status<span class="w"> </span>dhanman-common-qa.service<span class="w"> </span>--no-pager<span class="w">    </span><span class="c1"># See full status and last error</span>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>status<span class="w"> </span>dhanman-common-qa.service<span class="w"> </span>--no-pager<span class="w">    </span><span class="c1"># See full status and last error</span>
 journalctl<span class="w"> </span>-xeu<span class="w"> </span>dhanman-common-qa.service<span class="w">               </span><span class="c1"># See extended error logs</span>
 </code></pre></div>
-
 <hr />
 <h3 id="view-recent-logs-for-a-service">📜 View recent logs for a service<a class="headerlink" href="#view-recent-logs-for-a-service" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>Analyze recent service activity and patterns.</p>
 </blockquote>
-<div class="codehilite"><pre><span></span><code>journalctl<span class="w"> </span>-u<span class="w"> </span>dhanman-common-qa.service<span class="w"> </span>-n<span class="w"> </span><span class="m">50</span><span class="w">           </span><span class="c1"># Show last 50 log lines</span>
+<div class="highlight"><pre><span></span><code>journalctl<span class="w"> </span>-u<span class="w"> </span>dhanman-common-qa.service<span class="w"> </span>-n<span class="w"> </span><span class="m">50</span><span class="w">           </span><span class="c1"># Show last 50 log lines</span>
 journalctl<span class="w"> </span>-u<span class="w"> </span>dhanman-common-qa.service<span class="w"> </span>--since<span class="w"> </span><span class="s2">&quot;1 hour ago&quot;</span><span class="w">  </span><span class="c1"># Show recent logs</span>
 </code></pre></div>
-
 <hr />
 <h3 id="show-last-successful-run-start-stop-and-crash-times-for-a-service">� Show last successful run, start, stop, and crash times for a service<a class="headerlink" href="#show-last-successful-run-start-stop-and-crash-times-for-a-service" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>Track service lifecycle events and identify patterns.</p>
 </blockquote>
-<div class="codehilite"><pre><span></span><code>journalctl<span class="w"> </span>-u<span class="w"> </span>dhanman-common-qa.service<span class="w"> </span>--since<span class="w"> </span><span class="s2">&quot;2 days ago&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-Ei<span class="w"> </span><span class="s1">&#39;Starting|Started|Stopped|failed|crash|error&#39;</span>
+<div class="highlight"><pre><span></span><code>journalctl<span class="w"> </span>-u<span class="w"> </span>dhanman-common-qa.service<span class="w"> </span>--since<span class="w"> </span><span class="s2">&quot;2 days ago&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-Ei<span class="w"> </span><span class="s1">&#39;Starting|Started|Stopped|failed|crash|error&#39;</span>
 </code></pre></div>
-
 <hr />
 <h3 id="see-all-restart-stop-start-events-for-a-service">🔄 See all restart, stop, start events for a service<a class="headerlink" href="#see-all-restart-stop-start-events-for-a-service" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>Filter for service state changes to understand behavior patterns.</p>
 </blockquote>
-<div class="codehilite"><pre><span></span><code>journalctl<span class="w"> </span>-u<span class="w"> </span>dhanman-common-qa.service<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-Ei<span class="w"> </span><span class="s1">&#39;failed|restart|stop|start&#39;</span>
+<div class="highlight"><pre><span></span><code>journalctl<span class="w"> </span>-u<span class="w"> </span>dhanman-common-qa.service<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-Ei<span class="w"> </span><span class="s1">&#39;failed|restart|stop|start&#39;</span>
 </code></pre></div>
-
 <hr />
 <h2 id="phase-3-network-connectivity-checks">🌐 <strong>Phase 3: Network &amp; Connectivity Checks</strong><a class="headerlink" href="#phase-3-network-connectivity-checks" title="Permanent link">&para;</a></h2>
 <h3 id="check-if-a-port-is-listening-on-ubuntu">🔌 Check if a port is listening on Ubuntu<a class="headerlink" href="#check-if-a-port-is-listening-on-ubuntu" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>Verify if services are properly bound to expected ports.</p>
 </blockquote>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>netstat<span class="w"> </span>-tulpn<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="m">5673</span><span class="w">    </span><span class="c1"># Show process listening on port 5673</span>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>netstat<span class="w"> </span>-tulpn<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="m">5673</span><span class="w">    </span><span class="c1"># Show process listening on port 5673</span>
 sudo<span class="w"> </span>ss<span class="w"> </span>-tulpn<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="m">5673</span><span class="w">         </span><span class="c1"># Modern alternative using ss command</span>
 </code></pre></div>
-
 <hr />
 <h3 id="test-network-connectivity-to-rabbitmq-from-ubuntu-host">�️ Test network connectivity to RabbitMQ (from Ubuntu host)<a class="headerlink" href="#test-network-connectivity-to-rabbitmq-from-ubuntu-host" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>Validate network connectivity to critical services.</p>
 </blockquote>
-<div class="codehilite"><pre><span></span><code>nc<span class="w"> </span>-vz<span class="w"> </span>localhost<span class="w"> </span><span class="m">5673</span><span class="w">    </span><span class="c1"># Test connection to localhost port 5673</span>
+<div class="highlight"><pre><span></span><code>nc<span class="w"> </span>-vz<span class="w"> </span>localhost<span class="w"> </span><span class="m">5673</span><span class="w">    </span><span class="c1"># Test connection to localhost port 5673</span>
 nc<span class="w"> </span>-vz<span class="w"> </span>&lt;remote_ip&gt;<span class="w"> </span><span class="m">5673</span><span class="w">  </span><span class="c1"># Test connection to remote host (replace &lt;remote_ip&gt;)</span>
 </code></pre></div>
-
 <hr />
 <h2 id="phase-4-docker-container-debugging">🐳 <strong>Phase 4: Docker Container Debugging</strong><a class="headerlink" href="#phase-4-docker-container-debugging" title="Permanent link">&para;</a></h2>
 <h3 id="docker-container-logs-and-status">🐳 Docker container logs and status<a class="headerlink" href="#docker-container-logs-and-status" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>Investigate containerized service issues.</p>
 </blockquote>
-<div class="codehilite"><pre><span></span><code>docker<span class="w"> </span>ps<span class="w"> </span>-a<span class="w">                        </span><span class="c1"># Show all containers and their status</span>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>ps<span class="w"> </span>-a<span class="w">                        </span><span class="c1"># Show all containers and their status</span>
 docker<span class="w"> </span>logs<span class="w"> </span>rabbitmq-qa<span class="w"> </span>--tail<span class="w"> </span><span class="m">50</span><span class="w">   </span><span class="c1"># Last 50 log lines for specific container</span>
 docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>rabbitmq-qa<span class="w">          </span><span class="c1"># Live log streaming</span>
 docker<span class="w"> </span>stats<span class="w">                        </span><span class="c1"># Real-time container resource usage</span>
 </code></pre></div>
-
 <hr />
 <h2 id="phase-5-advanced-debugging-when-standard-methods-fail">🧩 <strong>Phase 5: Advanced Debugging (When Standard Methods Fail)</strong><a class="headerlink" href="#phase-5-advanced-debugging-when-standard-methods-fail" title="Permanent link">&para;</a></h2>
 <h3 id="check-core-dumps-advanced-crash-debugging">🧩 Check core dumps (advanced crash debugging)<a class="headerlink" href="#check-core-dumps-advanced-crash-debugging" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>Investigate application crashes at the system level.</p>
 </blockquote>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>systemd-coredump<span class="w">    </span><span class="c1"># Install core dump viewer</span>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>systemd-coredump<span class="w">    </span><span class="c1"># Install core dump viewer</span>
 coredumpctl<span class="w"> </span>list<span class="w">                     </span><span class="c1"># List all core dumps</span>
 coredumpctl<span class="w"> </span>info<span class="w">                     </span><span class="c1"># Details of the last core dump</span>
 coredumpctl<span class="w"> </span>dump<span class="w"> </span>&lt;PID&gt;<span class="w"> </span>&gt;<span class="w"> </span>core.dump<span class="w">   </span><span class="c1"># Export specific core dump for analysis</span>
 </code></pre></div>
-
 <hr />
 <h2 id="i-comment-guide">ℹ️ Comment Guide<a class="headerlink" href="#i-comment-guide" title="Permanent link">&para;</a></h2>
 <ul>
@@ -2119,6 +2106,10 @@ coredumpctl<span class="w"> </span>dump<span class="w"> </span>&lt;PID&gt;<span 
         <script src="../../../../js/extra.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../../../js/mermaid-init.js"></script>
       
     
   </body>

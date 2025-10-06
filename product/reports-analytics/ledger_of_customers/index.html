@@ -1198,7 +1198,7 @@
 
 <h1 id="ledger-of-customers">Ledger of Customers<a class="headerlink" href="#ledger-of-customers" title="Permanent link">&para;</a></h1>
 <p>The customer ledger shows transactions related to customer accounts (Accounts Receivable).</p>
-<div class="codehilite"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span>
 <span class="w">    </span><span class="n">th</span><span class="p">.</span><span class="n">transaction_date</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">transaction_date</span><span class="p">,</span>
 <span class="w">    </span><span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">customer_name</span><span class="p">,</span>
 <span class="w">    </span><span class="n">coa</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">account_name</span><span class="p">,</span>
@@ -1274,6 +1274,10 @@
         <script src="../../../js/extra.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../../js/mermaid-init.js"></script>
       
     
   </body>

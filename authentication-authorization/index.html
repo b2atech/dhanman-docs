@@ -1320,14 +1320,13 @@
 <h2 id="detailed-steps">Detailed Steps<a class="headerlink" href="#detailed-steps" title="Permanent link">&para;</a></h2>
 <h3 id="1-incoming-request-with-token">1. Incoming Request with Token<a class="headerlink" href="#1-incoming-request-with-token" title="Permanent link">&para;</a></h3>
 <p>When a client makes a request to the API, it includes a JWT token in the <code>Authorization</code> header.</p>
-<div class="codehilite"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/api/orders</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/api/orders</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">api.example.com</span>
 <span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...</span>
 </code></pre></div>
-
 <h3 id="2-authentication">2. Authentication<a class="headerlink" href="#2-authentication" title="Permanent link">&para;</a></h3>
 <p>The middleware in <code>Startup.cs</code> or <code>Program.cs</code> is configured to validate JWT tokens.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span><span class="w"> </span><span class="n">services</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span><span class="w"> </span><span class="n">services</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">services</span><span class="p">.</span><span class="n">AddAuthentication</span><span class="p">(</span><span class="n">options</span><span class="w"> </span><span class="o">=&gt;</span>
 <span class="w">    </span><span class="p">{</span>
@@ -1354,13 +1353,12 @@
 <span class="w">    </span><span class="c1">// Other service registrations</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>When the request arrives, the <code>AddJwtBearer</code> middleware validates the token. If the token is valid, the user is authenticated and the user's claims are populated in <code>HttpContext.User</code>.</p>
 <h3 id="3-dependency-injection">3. Dependency Injection<a class="headerlink" href="#3-dependency-injection" title="Permanent link">&para;</a></h3>
 <p>Services like <code>IUserContextService</code> are injected into controllers and other services as needed. This is configured in the <code>ConfigureServices</code> method as shown above.</p>
 <h3 id="4-controller-handling">4. Controller Handling<a class="headerlink" href="#4-controller-handling" title="Permanent link">&para;</a></h3>
 <p>The request is routed to the appropriate controller. All controllers inherit from <code>ApiController</code>, which ensures they have access to common functionality like <code>IUserContextService</code>.</p>
-<div class="codehilite"><pre><span></span><code><span class="na">[Authorize]</span>
+<div class="highlight"><pre><span></span><code><span class="na">[Authorize]</span>
 <span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ApiController</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ControllerBase</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="n">IMediator</span><span class="w"> </span><span class="n">Mediator</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
@@ -1373,7 +1371,6 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <h3 id="5-authorization">5. Authorization<a class="headerlink" href="#5-authorization" title="Permanent link">&para;</a></h3>
 <p>The <code>[Authorize]</code> attribute on <code>ApiController</code> triggers the authorization process.</p>
 <h3 id="6-permission-checking">6. Permission Checking<a class="headerlink" href="#6-permission-checking" title="Permanent link">&para;</a></h3>
@@ -1385,7 +1382,7 @@
 </ul>
 </li>
 </ol>
-<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PermissionHandler</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AuthorizationHandler</span><span class="o">&lt;</span><span class="n">PermissionRequirement</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PermissionHandler</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AuthorizationHandler</span><span class="o">&lt;</span><span class="n">PermissionRequirement</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IServiceScopeFactory</span><span class="w"> </span><span class="n">_serviceScopeFactory</span><span class="p">;</span>
 <span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IHttpContextAccessor</span><span class="w"> </span><span class="n">_httpContextAccessor</span><span class="p">;</span>
@@ -1458,7 +1455,6 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 </code></pre></div>
-
 <ol>
 <li>
 <p><strong>PermissionService</strong>:</p>
@@ -1467,7 +1463,7 @@
 </ul>
 </li>
 </ol>
-<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PermissionService</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IPermissionService</span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PermissionService</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IPermissionService</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">PermissionDbContext</span><span class="w"> </span><span class="n">_context</span><span class="p">;</span>
 <span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IMemoryCache</span><span class="w"> </span><span class="n">_cache</span><span class="p">;</span>
@@ -1507,7 +1503,6 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 </code></pre></div>
-
 <h3 id="7-action-execution">7. Action Execution<a class="headerlink" href="#7-action-execution" title="Permanent link">&para;</a></h3>
 <p>If the authorization succeeds, the controller action is executed. If it fails, the request is denied with a <code>403 Forbidden</code> response.</p>
 
@@ -1566,6 +1561,10 @@
         <script src="../js/extra.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../js/mermaid-init.js"></script>
       
     
   </body>

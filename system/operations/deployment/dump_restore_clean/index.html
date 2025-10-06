@@ -1533,7 +1533,7 @@
 <hr />
 <h2 id="step-1-backup-from-azure-qa-to-local-sql-files">☁️ Step 1: Backup from Azure QA to Local <code>.sql</code> Files<a class="headerlink" href="#step-1-backup-from-azure-qa-to-local-sql-files" title="Permanent link">&para;</a></h2>
 <p>Use the following commands in PowerShell to <strong>export all QA databases</strong> from Azure:</p>
-<div class="codehilite"><pre><span></span><code><span class="nv">$env:PGPASSWORD</span> <span class="p">=</span> <span class="s2">&quot;Your_Password&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nv">$env:PGPASSWORD</span> <span class="p">=</span> <span class="s2">&quot;Your_Password&quot;</span>
 
 <span class="c"># COMMON</span>
 <span class="p">.\</span><span class="n">pg_dump</span><span class="p">.</span><span class="n">exe</span> <span class="n">-h</span> <span class="n">az-dhanman-qa</span><span class="p">.</span><span class="n">postgres</span><span class="p">.</span><span class="n">database</span><span class="p">.</span><span class="n">azure</span><span class="p">.</span><span class="n">com</span> <span class="n">-U</span> <span class="n">dhanmanqa</span> <span class="n">-d</span> <span class="n">qa-dhanman-common</span> <span class="o">-f</span> <span class="s2">&quot;C:\Users\SAI\Desktop\your_path\qa-common-backup.sql&quot;</span>
@@ -1555,14 +1555,13 @@
 
 <span class="nb">Remove-Item</span> <span class="n">Env</span><span class="p">:</span><span class="n">PGPASSWORD</span>
 </code></pre></div>
-
 <hr />
 <h2 id="step-2-clean-target-ovh-qa-databases">🧼 Step 2: Clean Target OVH QA Databases<a class="headerlink" href="#step-2-clean-target-ovh-qa-databases" title="Permanent link">&para;</a></h2>
 <p>Use the following SQL cleanup block to remove <strong>all objects from the <code>public</code> schema</strong> before restoring:</p>
 <blockquote>
 <p>Save as <code>cleanup.sql</code> and run for each OVH QA DB before restore.</p>
 </blockquote>
-<div class="codehilite"><pre><span></span><code><span class="k">DO</span>
+<div class="highlight"><pre><span></span><code><span class="k">DO</span>
 <span class="err">$$</span>
 <span class="k">DECLARE</span>
 <span class="w">    </span><span class="n">obj</span><span class="w"> </span><span class="n">RECORD</span><span class="p">;</span>
@@ -1619,17 +1618,15 @@
 <span class="k">END</span>
 <span class="err">$$</span><span class="p">;</span>
 </code></pre></div>
-
 <p>Run using:</p>
-<div class="codehilite"><pre><span></span><code><span class="nv">$env:PGPASSWORD</span> <span class="p">=</span> <span class="s2">&quot;Your_Password&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nv">$env:PGPASSWORD</span> <span class="p">=</span> <span class="s2">&quot;Your_Password&quot;</span>
 <span class="p">&amp;</span> <span class="p">.\</span><span class="n">psql</span><span class="p">.</span><span class="n">exe</span> <span class="n">-h</span> <span class="n">51</span><span class="p">.</span><span class="n">79</span><span class="p">.</span><span class="n">156</span><span class="p">.</span><span class="n">217</span> <span class="n">-U</span> <span class="n">postgres</span> <span class="n">-d</span> <span class="n">qa-dhanman-common</span> <span class="o">-f</span> <span class="s2">&quot;C:\path\to\cleanup.sql&quot;</span>
 <span class="nb">Remove-Item</span> <span class="n">Env</span><span class="p">:</span><span class="n">PGPASSWORD</span>
 </code></pre></div>
-
 <p>Repeat for each DB (<code>qa-dhanman-community</code>, etc.)</p>
 <hr />
 <h2 id="step-3-restore-into-ovh-qa-from-local-sql-files">🔄 Step 3: Restore into OVH QA from Local <code>.sql</code> Files<a class="headerlink" href="#step-3-restore-into-ovh-qa-from-local-sql-files" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="nv">$env:PGPASSWORD</span> <span class="p">=</span> <span class="s2">&quot;Your_Password&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nv">$env:PGPASSWORD</span> <span class="p">=</span> <span class="s2">&quot;Your_Password&quot;</span>
 
 <span class="c"># COMMON</span>
 <span class="p">.\</span><span class="n">psql</span><span class="p">.</span><span class="n">exe</span> <span class="n">-h</span> <span class="n">51</span><span class="p">.</span><span class="n">79</span><span class="p">.</span><span class="n">156</span><span class="p">.</span><span class="n">217</span> <span class="n">-U</span> <span class="n">postgres</span> <span class="n">-d</span> <span class="n">qa-dhanman-common</span> <span class="o">-f</span> <span class="s2">&quot;C:\Users\SAI\Desktop\b2aBKqa\qa-common-backup.sql&quot;</span>
@@ -1651,7 +1648,6 @@
 
 <span class="nb">Remove-Item</span> <span class="n">Env</span><span class="p">:</span><span class="n">PGPASSWORD</span>
 </code></pre></div>
-
 <hr />
 <h2 id="summary">✅ Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <table>
@@ -1732,6 +1728,10 @@
         <script src="../../../../js/extra.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../../../js/mermaid-init.js"></script>
       
     
   </body>

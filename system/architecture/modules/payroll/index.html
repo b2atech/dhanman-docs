@@ -1340,7 +1340,7 @@
 <p>This budgeting system integrates with transactional data, ensuring accuracy and consistency in financial management, and supports workflows for drafting, submitting, and approving budgets.</p>
 <p><img alt="Messaging Image" src="../assets/budget_er.svg" /></p>
 <h2 id="1-proposed-database-tables">1. Proposed Database Tables<a class="headerlink" href="#1-proposed-database-tables" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="c1">-- Budget header: one per organization + financial year + status etc.</span>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Budget header: one per organization + financial year + status etc.</span>
 <span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">budgets</span><span class="w"> </span><span class="p">(</span>
 <span class="w">  </span><span class="n">id</span><span class="w"> </span><span class="n">uuid</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">gen_random_uuid</span><span class="p">()</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
 <span class="w">  </span><span class="n">organization_id</span><span class="w"> </span><span class="n">uuid</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
@@ -1372,7 +1372,6 @@
 <span class="w">  </span><span class="k">level</span><span class="w"> </span><span class="n">int4</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="c1">-- 1=root, 2=next level, etc.</span>
 <span class="p">);</span>
 </code></pre></div>
-
 <h2 id="2-key-data-handling-logic">2. Key Data Handling Logic<a class="headerlink" href="#2-key-data-handling-logic" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Users enter budgets in <code>budget_lines</code> for leaf accounts (e.g., accounts at level 3 or lowest level shown).</li>
@@ -1381,47 +1380,45 @@
 <li><strong>Budget amount is the source of truth stored in the database.</strong></li>
 </ul>
 <h2 id="3-planning-ui-wireframe-editable-change-or-budget-amount">3. Planning UI Wireframe (Editable % Change or Budget Amount)<a class="headerlink" href="#3-planning-ui-wireframe-editable-change-or-budget-amount" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="nb">+----------------------------------------------------------+</span>
-<span class="c">| Budget: &quot;FY 2025 Budget&quot;                                  |</span>
-<span class="c">| Organization: </span><span class="k">[</span><span class="c">Org Name</span><span class="k">]</span><span class="c">   Year: </span><span class="k">[</span><span class="c">2025</span><span class="k">]</span><span class="c">                   |</span>
-<span class="c">| Filter: Account Type </span><span class="k">[</span><span class="c">Expenses ▼</span><span class="k">]</span><span class="c">  Account Level </span><span class="k">[</span><span class="c">3 ▼</span><span class="k">]</span><span class="c">    |</span>
-<span class="nb">+----------------------------------------------------------+</span>
+<div class="highlight"><pre><span></span><code>+----------------------------------------------------------+
+| Budget: &quot;FY 2025 Budget&quot;                                  |
+| Organization: [Org Name]   Year: [2025]                   |
+| Filter: Account Type [Expenses ▼]  Account Level [3 ▼]    |
++----------------------------------------------------------+
 
-<span class="c">| Account Number | Account Name           | Last Year Actual | % Change (editable) | Budget Amount (editable) |</span>
-<span class="c">|</span><span class="nb">---------------</span><span class="c">|</span><span class="nb">------------------------</span><span class="c">|</span><span class="nb">------------------</span><span class="c">|</span><span class="nb">---------------------</span><span class="c">|</span><span class="nb">--------------------------</span><span class="c">|</span>
-<span class="c">| 6001          | Electricity            | 120</span><span class="nt">,</span><span class="c">000          | </span><span class="k">[</span><span class="c"> </span><span class="nb">+</span><span class="c">5</span><span class="nt">.</span><span class="c">0%    </span><span class="k">]</span><span class="c">        | </span><span class="k">[</span><span class="c"> 126</span><span class="nt">,</span><span class="c">000 </span><span class="k">]</span><span class="c">              |</span>
-<span class="c">| 6002          | Water                  | 80</span><span class="nt">,</span><span class="c">000           | </span><span class="k">[</span><span class="c"> </span><span class="nb">-</span><span class="c">3</span><span class="nt">.</span><span class="c">0%    </span><span class="k">]</span><span class="c">        | </span><span class="k">[</span><span class="c"> 77</span><span class="nt">,</span><span class="c">600  </span><span class="k">]</span><span class="c">              |</span>
-<span class="c">| 7001          | Cleaning               | 40</span><span class="nt">,</span><span class="c">000           | </span><span class="k">[</span><span class="c">  0</span><span class="nt">.</span><span class="c">0%    </span><span class="k">]</span><span class="c">        | </span><span class="k">[</span><span class="c"> 40</span><span class="nt">,</span><span class="c">000  </span><span class="k">]</span><span class="c">              |</span>
-<span class="nb">+----------------------------------------------------------+</span>
+| Account Number | Account Name           | Last Year Actual | % Change (editable) | Budget Amount (editable) |
+|---------------|------------------------|------------------|---------------------|--------------------------|
+| 6001          | Electricity            | 120,000          | [ +5.0%    ]        | [ 126,000 ]              |
+| 6002          | Water                  | 80,000           | [ -3.0%    ]        | [ 77,600  ]              |
+| 7001          | Cleaning               | 40,000           | [  0.0%    ]        | [ 40,000  ]              |
++----------------------------------------------------------+
 
-<span class="k">[</span><span class="c">Save Draft</span><span class="k">]</span><span class="c">   </span><span class="k">[</span><span class="c">Submit for Approval</span><span class="k">]</span><span class="c">   </span><span class="k">[</span><span class="c">Export Excel</span><span class="k">]</span><span class="c">  </span><span class="k">[</span><span class="c">Cancel</span><span class="k">]</span>
+[Save Draft]   [Submit for Approval]   [Export Excel]  [Cancel]
 </code></pre></div>
-
 <ul>
 <li>Users can <strong>edit either % Change or Budget Amount</strong>, and the other field updates dynamically.</li>
 <li><code>Last Year Actual</code> is fetched dynamically from prior data.</li>
 <li><strong>Budget amount is saved in DB.</strong></li>
 </ul>
 <h2 id="4-reporting-variance-ui-wireframe">4. Reporting / Variance UI Wireframe<a class="headerlink" href="#4-reporting-variance-ui-wireframe" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="o">+-------------------------------------------------------------+</span>
-<span class="o">|</span><span class="w"> </span><span class="n">Budget</span><span class="w"> </span><span class="n">vs</span><span class="w"> </span><span class="n">Actuals</span><span class="w"> </span><span class="n">Dashboard</span><span class="w">                                  </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="n">Organization</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">Org</span><span class="w"> </span><span class="n">Name</span><span class="p">]</span><span class="w">   </span><span class="n">Year</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mi">2025</span><span class="p">]</span><span class="w">                      </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="n">Filter</span><span class="o">:</span><span class="w"> </span><span class="n">Account</span><span class="w"> </span><span class="n">Type</span><span class="w"> </span><span class="p">[</span><span class="n">Expenses</span><span class="w"> </span><span class="err">▼</span><span class="p">]</span><span class="w">  </span><span class="n">Period</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">Monthly</span><span class="w"> </span><span class="err">▼</span><span class="p">]</span><span class="w">       </span><span class="o">|</span>
-<span class="o">+-------------------------------------------------------------+</span>
+<div class="highlight"><pre><span></span><code>+-------------------------------------------------------------+
+| Budget vs Actuals Dashboard                                  |
+| Organization: [Org Name]   Year: [2025]                      |
+| Filter: Account Type [Expenses ▼]  Period: [Monthly ▼]       |
++-------------------------------------------------------------+
 
-<span class="o">|</span><span class="w"> </span><span class="n">Account</span><span class="w"> </span><span class="n">Number</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Account</span><span class="w"> </span><span class="n">Name</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="n">Budget</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Actual</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Variance</span><span class="w"> </span><span class="p">(</span><span class="n">Amount</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Variance</span><span class="w"> </span><span class="p">(</span><span class="o">%</span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
-<span class="o">|---------------|------------------------|--------|--------|-------------------|--------------|</span>
-<span class="o">|</span><span class="w"> </span><span class="mi">6000</span><span class="w">          </span><span class="o">|</span><span class="w"> </span><span class="n">Utilities</span><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="mi">400</span><span class="n">K</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="mi">420</span><span class="n">K</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="mi">-20</span><span class="n">K</span><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="mf">-5.0</span><span class="o">%</span><span class="w">        </span><span class="o">|</span>
-<span class="o">|</span><span class="w">   </span><span class="mi">6001</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">Electricity</span><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="mi">150</span><span class="n">K</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="mi">160</span><span class="n">K</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="mi">-10</span><span class="n">K</span><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="mf">-6.7</span><span class="o">%</span><span class="w">        </span><span class="o">|</span>
-<span class="o">|</span><span class="w">   </span><span class="mi">6002</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">Water</span><span class="w">                  </span><span class="o">|</span><span class="w"> </span><span class="mi">250</span><span class="n">K</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="mi">260</span><span class="n">K</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="mi">-10</span><span class="n">K</span><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="mf">-4.0</span><span class="o">%</span><span class="w">        </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="mi">7000</span><span class="w">          </span><span class="o">|</span><span class="w"> </span><span class="n">Maintenance</span><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="mi">300</span><span class="n">K</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="mi">280</span><span class="n">K</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="o">+</span><span class="mi">20</span><span class="n">K</span><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="o">+</span><span class="mf">7.1</span><span class="o">%</span><span class="w">        </span><span class="o">|</span>
-<span class="o">|</span><span class="w">   </span><span class="mi">7001</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">Cleaning</span><span class="w">               </span><span class="o">|</span><span class="w"> </span><span class="mi">120</span><span class="n">K</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="mi">130</span><span class="n">K</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="mi">-10</span><span class="n">K</span><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="mf">-8.3</span><span class="o">%</span><span class="w">        </span><span class="o">|</span>
-<span class="o">|</span><span class="w">   </span><span class="mi">7002</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">Repairs</span><span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="mi">180</span><span class="n">K</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="mi">150</span><span class="n">K</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="o">+</span><span class="mi">30</span><span class="n">K</span><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="o">+</span><span class="mf">20.0</span><span class="o">%</span><span class="w">       </span><span class="o">|</span>
-<span class="o">+-------------------------------------------------------------+</span>
+| Account Number | Account Name           | Budget | Actual | Variance (Amount) | Variance (%) |
+|---------------|------------------------|--------|--------|-------------------|--------------|
+| 6000          | Utilities              | 400K   | 420K   | -20K              | -5.0%        |
+|   6001        | Electricity            | 150K   | 160K   | -10K              | -6.7%        |
+|   6002        | Water                  | 250K   | 260K   | -10K              | -4.0%        |
+| 7000          | Maintenance            | 300K   | 280K   | +20K              | +7.1%        |
+|   7001        | Cleaning               | 120K   | 130K   | -10K              | -8.3%        |
+|   7002        | Repairs                | 180K   | 150K   | +30K              | +20.0%       |
++-------------------------------------------------------------+
 
-<span class="p">[</span><span class="n">Export</span><span class="w"> </span><span class="n">PDF</span><span class="p">]</span><span class="w">   </span><span class="p">[</span><span class="n">Drilldown</span><span class="w"> </span><span class="n">Details</span><span class="p">]</span><span class="w">   </span><span class="p">[</span><span class="n">Filter</span><span class="w"> </span><span class="n">Options</span><span class="p">]</span>
+[Export PDF]   [Drilldown Details]   [Filter Options]
 </code></pre></div>
-
 <ul>
 <li>Variance is shown both as an absolute amount and percentage for clear analysis.</li>
 </ul>
@@ -1464,7 +1461,7 @@
 </table>
 <hr />
 <h2 id="1-fetch-budget-lines-for-a-company-financial-year">1. Fetch Budget Lines for a Company &amp; Financial Year<a class="headerlink" href="#1-fetch-budget-lines-for-a-company-financial-year" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="k">SELECT</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
 <span class="w">  </span><span class="n">bl</span><span class="p">.</span><span class="n">id</span><span class="p">,</span>
 <span class="w">  </span><span class="n">bl</span><span class="p">.</span><span class="n">account_id</span><span class="p">,</span>
 <span class="w">  </span><span class="n">coa</span><span class="p">.</span><span class="n">account_number</span><span class="p">,</span>
@@ -1479,9 +1476,8 @@
 <span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">finance_year_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">:</span><span class="n">finance_year_id</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">coa</span><span class="p">.</span><span class="n">account_number</span><span class="p">,</span><span class="w"> </span><span class="n">bl</span><span class="p">.</span><span class="n">period_start</span><span class="p">;</span>
 </code></pre></div>
-
 <h2 id="2-get-last-year-actuals-per-account-for-a-company-period">2. Get Last Year Actuals per Account for a Company &amp; Period<a class="headerlink" href="#2-get-last-year-actuals-per-account-for-a-company-period" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="k">SELECT</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
 <span class="w">  </span><span class="n">je</span><span class="p">.</span><span class="n">account_id</span><span class="p">,</span>
 <span class="w">  </span><span class="k">SUM</span><span class="p">(</span><span class="n">je</span><span class="p">.</span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">actual_amount</span>
 <span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">journal_entries</span><span class="w"> </span><span class="n">je</span>
@@ -1490,9 +1486,8 @@
 <span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">je</span><span class="p">.</span><span class="n">transaction_date</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="p">:</span><span class="n">period_start</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="p">:</span><span class="n">period_end</span>
 <span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">je</span><span class="p">.</span><span class="n">account_id</span><span class="p">;</span>
 </code></pre></div>
-
 <h2 id="3-aggregate-budget-and-actuals-for-company-by-account">3. Aggregate Budget and Actuals for Company by Account<a class="headerlink" href="#3-aggregate-budget-and-actuals-for-company-by-account" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="k">WITH</span><span class="w"> </span><span class="n">budget_data</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="k">WITH</span><span class="w"> </span><span class="n">budget_data</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
 <span class="w">  </span><span class="k">SELECT</span>
 <span class="w">    </span><span class="n">bl</span><span class="p">.</span><span class="n">account_id</span><span class="p">,</span>
 <span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">bl</span><span class="p">.</span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_budget</span>
@@ -1527,9 +1522,8 @@
 <span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">chart_of_accounts</span><span class="w"> </span><span class="n">coa</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">bd</span><span class="p">.</span><span class="n">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coa</span><span class="p">.</span><span class="n">id</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">coa</span><span class="p">.</span><span class="n">account_number</span><span class="p">;</span>
 </code></pre></div>
-
 <h2 id="4-consolidated-budget-and-actuals-across-all-companies-in-an-organization">4. Consolidated Budget and Actuals Across All Companies in an Organization<a class="headerlink" href="#4-consolidated-budget-and-actuals-across-all-companies-in-an-organization" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="k">WITH</span><span class="w"> </span><span class="n">budget_data</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="k">WITH</span><span class="w"> </span><span class="n">budget_data</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
 <span class="w">  </span><span class="k">SELECT</span>
 <span class="w">    </span><span class="n">bl</span><span class="p">.</span><span class="n">account_id</span><span class="p">,</span>
 <span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">bl</span><span class="p">.</span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_budget</span>
@@ -1566,9 +1560,8 @@
 <span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">chart_of_accounts</span><span class="w"> </span><span class="n">coa</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">bd</span><span class="p">.</span><span class="n">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coa</span><span class="p">.</span><span class="n">id</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">coa</span><span class="p">.</span><span class="n">account_number</span><span class="p">;</span>
 </code></pre></div>
-
 <h2 id="5-roll-up-budget-summary-at-parent-account-level-recursive-query-example">5. Roll-Up Budget Summary at Parent Account Level (Recursive Query Example)<a class="headerlink" href="#5-roll-up-budget-summary-at-parent-account-level-recursive-query-example" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="k">WITH</span><span class="w"> </span><span class="k">RECURSIVE</span><span class="w"> </span><span class="n">coa_tree</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="k">WITH</span><span class="w"> </span><span class="k">RECURSIVE</span><span class="w"> </span><span class="n">coa_tree</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
 <span class="w">  </span><span class="k">SELECT</span>
 <span class="w">    </span><span class="n">id</span><span class="p">,</span>
 <span class="w">    </span><span class="n">parent_account_id</span><span class="p">,</span>
@@ -1663,6 +1656,10 @@
         <script src="../../../../js/extra.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../../../js/mermaid-init.js"></script>
       
     
   </body>

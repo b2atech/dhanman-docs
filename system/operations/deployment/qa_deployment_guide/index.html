@@ -1791,9 +1791,8 @@
 <hr />
 <h2 id="1-build-and-publish-the-net-app">📦 1. Build and Publish the .NET App<a class="headerlink" href="#1-build-and-publish-the-net-app" title="Permanent link">&para;</a></h2>
 <p>Use the following command to publish your app for Linux:</p>
-<div class="codehilite"><pre><span></span><code>dotnet<span class="w"> </span>publish<span class="w"> </span>-c<span class="w"> </span>Release<span class="w"> </span>-r<span class="w"> </span>linux-x64<span class="w"> </span>--self-contained<span class="w"> </span><span class="nb">false</span><span class="w"> </span>-o<span class="w"> </span>./publish
+<div class="highlight"><pre><span></span><code>dotnet<span class="w"> </span>publish<span class="w"> </span>-c<span class="w"> </span>Release<span class="w"> </span>-r<span class="w"> </span>linux-x64<span class="w"> </span>--self-contained<span class="w"> </span><span class="nb">false</span><span class="w"> </span>-o<span class="w"> </span>./publish
 </code></pre></div>
-
 <ul>
 <li><code>-r linux-x64</code>: Targets Linux 64-bit</li>
 <li><code>--self-contained false</code>: Uses framework-dependent deployment</li>
@@ -1802,22 +1801,19 @@
 <hr />
 <h2 id="2-create-folder-and-deploy-to-server">📁 2. Create Folder and Deploy to Server<a class="headerlink" href="#2-create-folder-and-deploy-to-server" title="Permanent link">&para;</a></h2>
 <h3 id="create-folder-on-the-droplet">Create folder on the droplet:<a class="headerlink" href="#create-folder-on-the-droplet" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/www/qa/&lt;service-folder&gt;
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/www/qa/&lt;service-folder&gt;
 </code></pre></div>
-
 <h3 id="upload-files-from-local">Upload files from local:<a class="headerlink" href="#upload-files-from-local" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>scp<span class="w"> </span>-r<span class="w"> </span>./publish/*<span class="w"> </span>root@&lt;droplet-ip&gt;:/var/www/qa/&lt;service-folder&gt;
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>-r<span class="w"> </span>./publish/*<span class="w"> </span>root@&lt;droplet-ip&gt;:/var/www/qa/&lt;service-folder&gt;
 </code></pre></div>
-
 <p>Replace <code>&lt;service-folder&gt;</code> with the service name, e.g., <code>dhanman-common</code>.</p>
 <hr />
 <h2 id="3-create-systemd-service">⚙️ 3. Create systemd Service<a class="headerlink" href="#3-create-systemd-service" title="Permanent link">&para;</a></h2>
 <h3 id="create-service-file">Create service file:<a class="headerlink" href="#create-service-file" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/systemd/system/&lt;service-name&gt;-qa.service
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/systemd/system/&lt;service-name&gt;-qa.service
 </code></pre></div>
-
 <h3 id="paste-this-content">Paste this content:<a class="headerlink" href="#paste-this-content" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="k">[Unit]</span>
+<div class="highlight"><pre><span></span><code><span class="k">[Unit]</span>
 <span class="na">Description</span><span class="o">=</span><span class="s">&lt;Service Name&gt; - QA</span>
 <span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
 
@@ -1834,22 +1830,19 @@
 <span class="k">[Install]</span>
 <span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
 </code></pre></div>
-
 <h3 id="reload-and-start-the-service">Reload and start the service:<a class="headerlink" href="#reload-and-start-the-service" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
 sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>&lt;service-name&gt;-qa
 sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>&lt;service-name&gt;-qa
 sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>&lt;service-name&gt;-qa
 </code></pre></div>
-
 <hr />
 <h2 id="4-configure-nginx-reverse-proxy">🌐 4. Configure NGINX Reverse Proxy<a class="headerlink" href="#4-configure-nginx-reverse-proxy" title="Permanent link">&para;</a></h2>
 <h3 id="create-nginx-config">Create NGINX config:<a class="headerlink" href="#create-nginx-config" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/&lt;service-name&gt;
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/&lt;service-name&gt;
 </code></pre></div>
-
 <h3 id="paste">Paste:<a class="headerlink" href="#paste" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
 <span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">&lt;subdomain&gt;.dhanman.com</span><span class="p">;</span>
 
@@ -1863,24 +1856,20 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <h3 id="enable-and-reload">Enable and reload:<a class="headerlink" href="#enable-and-reload" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/&lt;service-name&gt;<span class="w"> </span>/etc/nginx/sites-enabled/
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/&lt;service-name&gt;<span class="w"> </span>/etc/nginx/sites-enabled/
 sudo<span class="w"> </span>nginx<span class="w"> </span>-t
 sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
 </code></pre></div>
-
 <hr />
 <h2 id="5-setup-https-with-certbot">🔐 5. Setup HTTPS with Certbot<a class="headerlink" href="#5-setup-https-with-certbot" title="Permanent link">&para;</a></h2>
 <p>Ensure the DNS record for <code>&lt;subdomain&gt;.dhanman.com</code> points to your droplet.</p>
 <h3 id="run-certbot">Run Certbot:<a class="headerlink" href="#run-certbot" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>&lt;subdomain&gt;.dhanman.com
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>&lt;subdomain&gt;.dhanman.com
 </code></pre></div>
-
-<p>Choose:</p>
-<div class="codehilite"><pre><span></span><code><span class="mi">2</span><span class="o">:</span><span class="w"> </span><span class="n">Redirect</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Make</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">requests</span><span class="w"> </span><span class="n">redirect</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">secure</span><span class="w"> </span><span class="n">HTTPS</span>
-</code></pre></div>
-
+<p>Choose:
+<div class="highlight"><pre><span></span><code>2: Redirect - Make all requests redirect to secure HTTPS
+</code></pre></div></p>
 <p>Certbot will:
 - Add the HTTPS block
 - Enable HTTP/2
@@ -1892,9 +1881,8 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="
 <li>🔒 Confirm HTTPS lock</li>
 <li>🌀 Test auto-renew:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w"> </span>--dry-run
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w"> </span>--dry-run
 </code></pre></div>
-
 <hr />
 <h2 id="7-repeat-for-each-service">🔁 7. Repeat for Each Service<a class="headerlink" href="#7-repeat-for-each-service" title="Permanent link">&para;</a></h2>
 <table>
@@ -2053,6 +2041,10 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="
         <script src="../../../../js/extra.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../../../js/mermaid-init.js"></script>
       
     
   </body>

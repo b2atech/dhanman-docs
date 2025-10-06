@@ -2092,17 +2092,15 @@
 <p>The <code>data-testid</code> attribute is used to provide stable, semantic selectors for automated testing. Unlike CSS classes or element types that might change due to styling or refactoring, <code>data-testid</code> attributes are specifically intended for testing and remain stable across UI changes.</p>
 <h2 id="naming-conventions">Naming Conventions<a class="headerlink" href="#naming-conventions" title="Permanent link">&para;</a></h2>
 <h3 id="format">Format<a class="headerlink" href="#format" title="Permanent link">&para;</a></h3>
-<p>Use kebab-case for all test IDs:</p>
-<div class="codehilite"><pre><span></span><code><span class="nx">data</span><span class="o">-</span><span class="nx">testid</span><span class="o">=</span><span class="s2">&quot;auth0-login-button&quot;</span>
+<p>Use kebab-case for all test IDs:
+<div class="highlight"><pre><span></span><code><span class="nx">data</span><span class="o">-</span><span class="nx">testid</span><span class="o">=</span><span class="s2">&quot;auth0-login-button&quot;</span>
 <span class="nx">data</span><span class="o">-</span><span class="nx">testid</span><span class="o">=</span><span class="s2">&quot;invoice-create-form&quot;</span>
 <span class="nx">data</span><span class="o">-</span><span class="nx">testid</span><span class="o">=</span><span class="s2">&quot;bill-status-badge&quot;</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <h3 id="component-based-naming">Component-Based Naming<a class="headerlink" href="#component-based-naming" title="Permanent link">&para;</a></h3>
 <p>Structure test IDs to reflect the component hierarchy and purpose:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">feature</span><span class="o">]-[</span><span class="n">component</span><span class="o">]-[</span><span class="n">element</span><span class="o">]</span>
+<div class="highlight"><pre><span></span><code>[feature]-[component]-[element]
 </code></pre></div>
-
 <p><strong>Examples:</strong>
 - <code>auth0-login-button</code> - Auth0 login button
 - <code>invoice-create-form</code> - Invoice creation form
@@ -2117,15 +2115,14 @@
 <li><code>{feature}-{action}-submit</code> - Submit buttons</li>
 <li><code>{feature}-{action}-cancel</code> - Cancel buttons</li>
 </ul>
-<p><strong>Examples:</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;invoice-create-form&quot;</span><span class="p">&gt;</span>
+<p><strong>Examples:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;invoice-create-form&quot;</span><span class="p">&gt;</span>
 <span class="w">  </span><span class="p">&lt;</span><span class="nt">input</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;invoice-amount-input&quot;</span><span class="w"> </span><span class="p">/&gt;</span>
 <span class="w">  </span><span class="p">&lt;</span><span class="nt">input</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;invoice-description-input&quot;</span><span class="w"> </span><span class="p">/&gt;</span>
 <span class="w">  </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;invoice-create-submit&quot;</span><span class="p">&gt;</span><span class="nx">Create</span><span class="w"> </span><span class="nx">Invoice</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="w">  </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;invoice-create-cancel&quot;</span><span class="p">&gt;</span><span class="nx">Cancel</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <h4 id="lists-and-tables">Lists and Tables<a class="headerlink" href="#lists-and-tables" title="Permanent link">&para;</a></h4>
 <ul>
 <li><code>{feature}-list-container</code> - List wrapper</li>
@@ -2133,15 +2130,14 @@
 <li><code>{feature}-table-row</code> - Table rows</li>
 <li><code>{feature}-{action}-button</code> - Action buttons within lists</li>
 </ul>
-<p><strong>Examples:</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;bill-list-container&quot;</span><span class="p">&gt;</span>
+<p><strong>Examples:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;bill-list-container&quot;</span><span class="p">&gt;</span>
 <span class="w">  </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;bill-list-item&quot;</span><span class="p">&gt;</span>
 <span class="w">    </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;bill-view-button&quot;</span><span class="p">&gt;</span><span class="nx">View</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="w">    </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;bill-edit-button&quot;</span><span class="p">&gt;</span><span class="nx">Edit</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="w">  </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <h4 id="navigation-and-ui-elements">Navigation and UI Elements<a class="headerlink" href="#navigation-and-ui-elements" title="Permanent link">&para;</a></h4>
 <ul>
 <li><code>{section}-nav-link</code> - Navigation links</li>
@@ -2149,8 +2145,8 @@
 <li><code>{feature}-filter-{type}</code> - Filter controls</li>
 <li><code>{feature}-search-input</code> - Search inputs</li>
 </ul>
-<p><strong>Examples:</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
+<p><strong>Examples:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
 <span class="w">  </span><span class="p">&lt;</span><span class="nt">a</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;bills-nav-link&quot;</span><span class="p">&gt;</span><span class="nx">Bills</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 <span class="w">  </span><span class="p">&lt;</span><span class="nt">a</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;invoices-nav-link&quot;</span><span class="p">&gt;</span><span class="nx">Invoices</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 <span class="w">  </span><span class="p">&lt;</span><span class="nt">a</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;payments-nav-link&quot;</span><span class="p">&gt;</span><span class="nx">Payments</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
@@ -2158,8 +2154,7 @@
 
 <span class="p">&lt;</span><span class="nt">span</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;bill-status-badge&quot;</span><span class="p">&gt;</span><span class="nx">Approved</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">input</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;invoice-search-input&quot;</span><span class="w"> </span><span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Search invoices...&quot;</span><span class="w"> </span><span class="p">/&gt;</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <h2 id="implementation-guidelines">Implementation Guidelines<a class="headerlink" href="#implementation-guidelines" title="Permanent link">&para;</a></h2>
 <h3 id="1-add-to-interactive-elements">1. Add to Interactive Elements<a class="headerlink" href="#1-add-to-interactive-elements" title="Permanent link">&para;</a></h3>
 <p>Prioritize adding <code>data-testid</code> to elements that users interact with:
@@ -2170,32 +2165,29 @@
 - Modals
 - Tables</p>
 <h3 id="2-use-semantic-ids">2. Use Semantic IDs<a class="headerlink" href="#2-use-semantic-ids" title="Permanent link">&para;</a></h3>
-<p>Make test IDs descriptive of the element's purpose, not its appearance:</p>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Good</span>
+<p>Make test IDs descriptive of the element's purpose, not its appearance:
+<div class="highlight"><pre><span></span><code><span class="c1">// Good</span>
 <span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;invoice-approve-button&quot;</span><span class="p">&gt;</span><span class="nx">Approve</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 
 <span class="c1">// Avoid</span>
 <span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;green-button&quot;</span><span class="p">&gt;</span><span class="nx">Approve</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <h3 id="3-maintain-consistency">3. Maintain Consistency<a class="headerlink" href="#3-maintain-consistency" title="Permanent link">&para;</a></h3>
-<p>Use consistent patterns across similar components:</p>
-<div class="codehilite"><pre><span></span><code><span class="c1">// All approval buttons follow the same pattern</span>
+<p>Use consistent patterns across similar components:
+<div class="highlight"><pre><span></span><code><span class="c1">// All approval buttons follow the same pattern</span>
 <span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;invoice-approve-button&quot;</span><span class="p">&gt;</span><span class="nx">Approve</span><span class="w"> </span><span class="nx">Invoice</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;bill-approve-button&quot;</span><span class="p">&gt;</span><span class="nx">Approve</span><span class="w"> </span><span class="nx">Bill</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="s">&quot;payment-approve-button&quot;</span><span class="p">&gt;</span><span class="nx">Approve</span><span class="w"> </span><span class="nx">Payment</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <h3 id="4-dynamic-test-ids">4. Dynamic Test IDs<a class="headerlink" href="#4-dynamic-test-ids" title="Permanent link">&para;</a></h3>
-<p>For dynamic content (like lists), include unique identifiers:</p>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span><span class="nx">bills</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">bill</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span>
+<p>For dynamic content (like lists), include unique identifiers:
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nx">bills</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">bill</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span>
 <span class="w">  </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">bill</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="p">{</span><span class="sb">`bill-item-</span><span class="si">${</span><span class="nx">bill</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">}&gt;</span>
 <span class="w">    </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="p">{</span><span class="sb">`bill-edit-button-</span><span class="si">${</span><span class="nx">bill</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">}&gt;</span><span class="nx">Edit</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="w">    </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">data-testid</span><span class="o">=</span><span class="p">{</span><span class="sb">`bill-delete-button-</span><span class="si">${</span><span class="nx">bill</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">}&gt;</span><span class="nx">Delete</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="w">  </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">))}</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
 <h3 id="1-keep-test-ids-stable">1. Keep Test IDs Stable<a class="headerlink" href="#1-keep-test-ids-stable" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2205,7 +2197,7 @@
 </ul>
 <h3 id="2-document-complex-components">2. Document Complex Components<a class="headerlink" href="#2-document-complex-components" title="Permanent link">&para;</a></h3>
 <p>For complex components with multiple interactive elements, document the test ID structure:</p>
-<div class="codehilite"><pre><span></span><code><span class="cm">/**</span>
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
 <span class="cm"> * Invoice Form Component Test IDs:</span>
 <span class="cm"> * - invoice-create-form: Main form container</span>
 <span class="cm"> * - invoice-amount-input: Amount input field</span>
@@ -2215,7 +2207,6 @@
 <span class="cm"> * - invoice-create-cancel: Cancel button</span>
 <span class="cm"> */</span>
 </code></pre></div>
-
 <h3 id="3-avoid-over-testing">3. Avoid Over-Testing<a class="headerlink" href="#3-avoid-over-testing" title="Permanent link">&para;</a></h3>
 <p>Don't add test IDs to every element - focus on:
 - User interaction points
@@ -2238,15 +2229,14 @@
 - Dashboard and analytics components</p>
 <h2 id="testing-integration">Testing Integration<a class="headerlink" href="#testing-integration" title="Permanent link">&para;</a></h2>
 <h3 id="playwright-usage">Playwright Usage<a class="headerlink" href="#playwright-usage" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Using test IDs in Playwright tests</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Using test IDs in Playwright tests</span>
 <span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByTestId</span><span class="p">(</span><span class="s1">&#39;auth0-login-button&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
 <span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByTestId</span><span class="p">(</span><span class="s1">&#39;invoice-create-form&#39;</span><span class="p">).</span><span class="nx">waitFor</span><span class="p">();</span>
 <span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByTestId</span><span class="p">(</span><span class="s1">&#39;bill-amount-input&#39;</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;100.00&#39;</span><span class="p">);</span>
 </code></pre></div>
-
 <h3 id="test-organization">Test Organization<a class="headerlink" href="#test-organization" title="Permanent link">&para;</a></h3>
-<p>Organize tests to match the test ID naming structure:</p>
-<div class="codehilite"><pre><span></span><code>e2e/
+<p>Organize tests to match the test ID naming structure:
+<div class="highlight"><pre><span></span><code>e2e/
 ├── auth/
 │   └── login.spec.ts
 ├── bills/
@@ -2257,8 +2247,7 @@
 │   └── workflow.spec.ts
 └── payments/
     └── process.spec.ts
-</code></pre></div>
-
+</code></pre></div></p>
 <h2 id="maintenance">Maintenance<a class="headerlink" href="#maintenance" title="Permanent link">&para;</a></h2>
 <h3 id="regular-review">Regular Review<a class="headerlink" href="#regular-review" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2330,6 +2319,10 @@
         <script src="../../../../js/extra.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../../../js/mermaid-init.js"></script>
       
     
   </body>

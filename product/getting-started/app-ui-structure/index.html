@@ -637,6 +637,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#login-page-auth0-login-flow-save-token-restore-preferences-org-company-fin-year-fetch-permissions-update-auth-context-localstorage-usemenuitems-builds-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      ┌────────────┐ │ Login Page │ └─────┬──────┘ ↓ ┌──────────────────┐ ┌────────────────┐ │ Auth0 Login Flow │────▶ Save Token │ └──────────────────┘ └──────┬─────────┘ ↓ ┌────────────────────────────┐ │ Restore Preferences │ │ - Org │ │ - Company │ │ - Fin Year │ └──────────┬─────────────────┘ ↓ ┌──────────────────────┐ │ Fetch Permissions │ └──────────┬───────────┘ ↓ ┌────────────────────────┐ │ Update Auth Context │ │ + localStorage │ └──────────┬─────────────┘ ↓ ┌───────────────────────────┐ │ useMenuItems builds Menu │ └───────────────────────────┘
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#full-app-lifecycle-diagram" class="md-nav__link">
     <span class="md-ellipsis">
       🔄 Full App Lifecycle Diagram
@@ -1843,6 +1852,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#login-page-auth0-login-flow-save-token-restore-preferences-org-company-fin-year-fetch-permissions-update-auth-context-localstorage-usemenuitems-builds-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      ┌────────────┐ │ Login Page │ └─────┬──────┘ ↓ ┌──────────────────┐ ┌────────────────┐ │ Auth0 Login Flow │────▶ Save Token │ └──────────────────┘ └──────┬─────────┘ ↓ ┌────────────────────────────┐ │ Restore Preferences │ │ - Org │ │ - Company │ │ - Fin Year │ └──────────┬─────────────────┘ ↓ ┌──────────────────────┐ │ Fetch Permissions │ └──────────┬───────────┘ ↓ ┌────────────────────────┐ │ Update Auth Context │ │ + localStorage │ └──────────┬─────────────┘ ↓ ┌───────────────────────────┐ │ useMenuItems builds Menu │ └───────────────────────────┘
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#full-app-lifecycle-diagram" class="md-nav__link">
     <span class="md-ellipsis">
       🔄 Full App Lifecycle Diagram
@@ -1877,7 +1895,7 @@
 
 <h1 id="app-structure-documentation">📘 App Structure Documentation<a class="headerlink" href="#app-structure-documentation" title="Permanent link">&para;</a></h1>
 <h2 id="folder-structure">🗂️ Folder Structure<a class="headerlink" href="#folder-structure" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code>src/
+<div class="highlight"><pre><span></span><code>src/
 ├── routes/                     # Routing structure
 │   ├── index.tsx              # Root router using createBrowserRouter
 │   ├── MainRoutes.tsx         # Consolidated module routes
@@ -1901,9 +1919,8 @@
 ├── hooks/                     # Custom hooks (useAuth, useConfig, useMenuItems)
 └── shared/                    # Shared utils &amp; storage helpers
 </code></pre></div>
-
 <h2 id="app-wrapping-apptsx-structure">🏗️ App Wrapping (App.tsx Structure)<a class="headerlink" href="#app-wrapping-apptsx-structure" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">GlobalErrorBoundary</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">GlobalErrorBoundary</span><span class="p">&gt;</span>
 <span class="w">  </span><span class="p">&lt;</span><span class="nt">ConfigProvider</span><span class="p">&gt;</span>
 <span class="w">    </span><span class="p">&lt;</span><span class="nt">ThemeCustomization</span><span class="p">&gt;</span>
 <span class="w">      </span><span class="p">&lt;</span><span class="nt">Locales</span><span class="p">&gt;</span>
@@ -1924,7 +1941,6 @@
 <span class="w">  </span><span class="p">&lt;/</span><span class="nt">ConfigProvider</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">GlobalErrorBoundary</span><span class="p">&gt;</span>
 </code></pre></div>
-
 <p>Each provider layer:
   - <strong>GlobalErrorBoundary</strong>: Catch any crash globally.
   - <strong>ConfigProvider</strong>: Manage Organization, Company, Financial Year context.
@@ -1953,13 +1969,12 @@
 <li>Stored in Redux/context + localStorage.</li>
 <li>Permission refreshes automatically on org change.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">organization</span><span class="o">?</span><span class="p">.</span><span class="nx">organizationId</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">isLoggedIn</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">refreshPermissions</span><span class="p">();</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="nx">organization</span><span class="o">?</span><span class="p">.</span><span class="nx">organizationId</span><span class="p">]);</span>
 </code></pre></div>
-
 <h3 id="3-accessing-permissions">3. <strong>Accessing Permissions</strong><a class="headerlink" href="#3-accessing-permissions" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>useAuth()</code> hook gives access to <code>userPermissions</code>.</li>
@@ -1969,16 +1984,15 @@
 <hr />
 <h2 id="routes-structure">🗂️ Routes Structure<a class="headerlink" href="#routes-structure" title="Permanent link">&para;</a></h2>
 <h3 id="srcroutesindextsx">src/routes/index.tsx<a class="headerlink" href="#srcroutesindextsx" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="nx">createBrowserRouter</span><span class="p">([</span>
+<div class="highlight"><pre><span></span><code><span class="nx">createBrowserRouter</span><span class="p">([</span>
 <span class="w">  </span><span class="nx">LandingRoutes</span><span class="p">,</span><span class="w"> </span><span class="c1">// Public landing pages</span>
 <span class="w">  </span><span class="nx">LoginRoutes</span><span class="p">,</span><span class="w">   </span><span class="c1">// Login / Callback</span>
 <span class="w">  </span><span class="nx">MainRoutes</span><span class="w">     </span><span class="c1">// Protected /App Routes</span>
 <span class="p">]);</span>
 </code></pre></div>
-
 <h3 id="srcroutesmainroutestsx">src/routes/MainRoutes.tsx<a class="headerlink" href="#srcroutesmainroutestsx" title="Permanent link">&para;</a></h3>
-<p>Splits into module-specific routes:</p>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<p>Splits into module-specific routes:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/community&#39;</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">element</span><span class="o">:</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">MinimalLayout</span><span class="w"> </span><span class="p">/&gt;,</span>
 <span class="w">  </span><span class="nx">errorElement</span><span class="o">:</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">RouteErrorPage</span><span class="w"> </span><span class="p">/&gt;,</span><span class="w"> </span><span class="c1">// Per module fallback</span>
@@ -1991,14 +2005,13 @@
 <span class="w">  </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/purchase&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">children</span><span class="o">:</span><span class="w"> </span><span class="p">[...]</span>
 <span class="p">}</span>
 <span class="p">...</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <p>✅ <strong>Each domain (<code>community</code>, <code>sales</code>, etc.) has its own file.</strong>
 ✅ <strong>Every route tree uses an <code>errorElement</code> for route errors.</strong></p>
 <hr />
 <h2 id="auth-permission-lifecycle">🔐 Auth &amp; Permission Lifecycle<a class="headerlink" href="#auth-permission-lifecycle" title="Permanent link">&para;</a></h2>
 <h3 id="login-flow">Login Flow<a class="headerlink" href="#login-flow" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>- User clicks Login
+<div class="highlight"><pre><span></span><code>- User clicks Login
 - Auth0 popup appears
 - On success:
     1. Token stored → localStorage
@@ -2008,7 +2021,6 @@
     5. Fetch Permissions based on organization
     6. Save Permissions into context + localStorage
 </code></pre></div>
-
 <h3 id="core-files">Core Files<a class="headerlink" href="#core-files" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>contexts/Auth0Context.tsx</code> → Handles login, token, user, permissions.</li>
@@ -2018,21 +2030,17 @@
 <hr />
 <h2 id="menu-generation-and-permissions">🧩 Menu Generation and Permissions<a class="headerlink" href="#menu-generation-and-permissions" title="Permanent link">&para;</a></h2>
 <h3 id="menu-is-generated-dynamically-via-usemenuitems">Menu is Generated Dynamically via <code>useMenuItems</code><a class="headerlink" href="#menu-is-generated-dynamically-via-usemenuitems" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">menuItems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useMenuItems</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">menuItems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useMenuItems</span><span class="p">();</span>
 </code></pre></div>
-
-<p>Internal working:</p>
-<div class="codehilite"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">getMenuItemsImpl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">permissions</span><span class="p">,</span><span class="w"> </span><span class="nx">company</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<p>Internal working:
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">getMenuItemsImpl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">permissions</span><span class="p">,</span><span class="w"> </span><span class="nx">company</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">permissions</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">[];</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">permissions</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">generateMenuItemFromPermission</span><span class="p">(</span><span class="nx">p</span><span class="p">));</span>
 <span class="p">};</span>
 </code></pre></div>
-
-<ul>
-<li>Menu options are based on permissions.</li>
-<li>No hardcoded menu.</li>
-<li>Hides features if permission missing.</li>
-</ul>
+- Menu options are based on permissions.
+- No hardcoded menu.
+- Hides features if permission missing.</p>
 <p>✅ <strong>Safe fallbacks if permissions are missing.</strong></p>
 <h3 id="example">Example:<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
 <p>If user has <code>Sales.Invoice.View</code>, they see <code>Invoices</code> menu.
@@ -2044,30 +2052,26 @@ If not, it won't even render that menu item.</p>
 <li><strong>AuthErrorBoundary</strong>: If Auth0 provider crashes.</li>
 <li><strong>RouteErrorPage</strong>: Per route crash fallback.</li>
 </ul>
-<p>Sample Route Usage:</p>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<p>Sample Route Usage:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/sales&#39;</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">element</span><span class="o">:</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">MinimalLayout</span><span class="w"> </span><span class="p">/&gt;,</span>
 <span class="w">  </span><span class="nx">errorElement</span><span class="o">:</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">RouteErrorPage</span><span class="w"> </span><span class="p">/&gt;,</span>
 <span class="w">  </span><span class="nx">children</span><span class="o">:</span><span class="w"> </span><span class="p">[...]</span>
 <span class="p">}</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <hr />
 <h2 id="menu-generation">🧭 Menu Generation<a class="headerlink" href="#menu-generation" title="Permanent link">&para;</a></h2>
 <h3 id="usemenuitems"><code>useMenuItems()</code><a class="headerlink" href="#usemenuitems" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Generates dynamic menus based on user permissions + current company/org.</li>
 <li>Reads from centralized permissions list.</li>
-<li>Organized in a modular structure, e.g.:</li>
-</ul>
-<div class="codehilite"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">getMenuItemsImpl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">permissions</span><span class="p">,</span><span class="w"> </span><span class="nx">company</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<li>Organized in a modular structure, e.g.:
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">getMenuItemsImpl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">permissions</span><span class="p">,</span><span class="w"> </span><span class="nx">company</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">permissions</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">[];</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">permissions</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">generateMenuItemFromPermission</span><span class="p">(</span><span class="nx">p</span><span class="p">));</span>
 <span class="p">};</span>
-</code></pre></div>
-
-<ul>
+</code></pre></div></li>
 <li>Resilient to null/undefined using fallback checks.</li>
 </ul>
 <hr />
@@ -2076,16 +2080,15 @@ If not, it won't even render that menu item.</p>
 <li>Each domain (community, sales, inventory, payroll, etc.) has its own file under <code>routes/modules/</code></li>
 <li>Combined in <code>MainRoutes.tsx</code>.</li>
 <li>Public routes (about, terms) in <code>LandingRoutes.tsx</code></li>
-<li>Error boundary per route via:</li>
-</ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<li>Error boundary per route via:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/app&#39;</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">element</span><span class="o">:</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">MinimalLayout</span><span class="w"> </span><span class="p">/&gt;,</span>
 <span class="w">  </span><span class="nx">errorElement</span><span class="o">:</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">RouteErrorPage</span><span class="w"> </span><span class="p">/&gt;,</span><span class="w"> </span><span class="c1">// dynamically catches per route</span>
 <span class="w">  </span><span class="nx">children</span><span class="o">:</span><span class="w"> </span><span class="p">[...]</span>
 <span class="p">}</span>
-</code></pre></div>
-
+</code></pre></div></li>
+</ul>
 <hr />
 <h2 id="error-boundaries">🚨 Error Boundaries<a class="headerlink" href="#error-boundaries" title="Permanent link">&para;</a></h2>
 <h3 id="1-globalerrorboundary">1. <strong>GlobalErrorBoundary</strong><a class="headerlink" href="#1-globalerrorboundary" title="Permanent link">&para;</a></h3>
@@ -2096,17 +2099,16 @@ If not, it won't even render that menu item.</p>
 <p>Used in routing <code>errorElement</code>. Displays fallback UI for route crashes (e.g. failed loaders, permissions map errors).</p>
 <hr />
 <h2 id="full-login-preference-restoration-flow">🔄 Full Login &amp; Preference Restoration Flow<a class="headerlink" href="#full-login-preference-restoration-flow" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="k">[Login Success]</span>
-<span class="w">  </span><span class="na">→ Get user via Auth0</span>
-<span class="w">  </span><span class="na">→ Save token to localStorage</span>
-<span class="w">  </span><span class="na">→ Fetch org/company/finYear from localStorage or defaults</span>
-<span class="w">  </span><span class="na">→ Call `applyLastSelectedPreferences`</span>
-<span class="w">      </span><span class="na">↳ Triggers ConfigContext update</span>
-<span class="w">  </span><span class="na">→ Fetch permissions</span>
-<span class="w">      </span><span class="na">↳ Save to context + localStorage</span>
-<span class="w">  </span><span class="na">→ Render components conditionally based on permissions</span>
+<div class="highlight"><pre><span></span><code>[Login Success]
+  → Get user via Auth0
+  → Save token to localStorage
+  → Fetch org/company/finYear from localStorage or defaults
+  → Call `applyLastSelectedPreferences`
+      ↳ Triggers ConfigContext update
+  → Fetch permissions
+      ↳ Save to context + localStorage
+  → Render components conditionally based on permissions
 </code></pre></div>
-
 <hr />
 <h2 id="key-learnings-best-practices">🧠 Key Learnings / Best Practices<a class="headerlink" href="#key-learnings-best-practices" title="Permanent link">&para;</a></h2>
 <ul>
@@ -2125,7 +2127,7 @@ If not, it won't even render that menu item.</p>
 - Add loader guards while permission fetch is pending</p>
 <hr />
 <h2 id="suggested-diagram">📊 Suggested Diagram<a class="headerlink" href="#suggested-diagram" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code>┌────────────┐
+<h2 id="login-page-auth0-login-flow-save-token-restore-preferences-org-company-fin-year-fetch-permissions-update-auth-context-localstorage-usemenuitems-builds-menu"><div class="highlight"><pre><span></span><code>┌────────────┐
 │ Login Page │
 └─────┬──────┘
       ↓
@@ -2152,31 +2154,28 @@ If not, it won't even render that menu item.</p>
                       ┌───────────────────────────┐
                       │ useMenuItems builds Menu  │
                       └───────────────────────────┘
-</code></pre></div>
-
-<hr />
+</code></pre></div><a class="headerlink" href="#login-page-auth0-login-flow-save-token-restore-preferences-org-company-fin-year-fetch-permissions-update-auth-context-localstorage-usemenuitems-builds-menu" title="Permanent link">&para;</a></h2>
 <h2 id="full-app-lifecycle-diagram">🔄 Full App Lifecycle Diagram<a class="headerlink" href="#full-app-lifecycle-diagram" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="k">[User Lands]</span>
-<span class="w">  </span><span class="na">↓</span>
-<span class="k">[Auth0 Check Session]</span>
-<span class="w">  </span><span class="na">↓</span>
-<span class="na">Is Logged In? </span>
-<span class="w"> </span><span class="na">|        </span>
-<span class="na">No        Yes</span>
-<span class="w"> </span><span class="na">|           ↓</span>
-<span class="na">Show Login   Fetch Token</span>
-<span class="w">               </span><span class="na">↓</span>
-<span class="w">           </span><span class="na">Fetch User Profile</span>
-<span class="w">               </span><span class="na">↓</span>
-<span class="w">           </span><span class="na">Restore Org/Company/FinYear</span>
-<span class="w">               </span><span class="na">↓</span>
-<span class="w">           </span><span class="na">Fetch Permissions</span>
-<span class="w">               </span><span class="na">↓</span>
-<span class="w">           </span><span class="na">Update Auth Context</span>
-<span class="w">               </span><span class="na">↓</span>
-<span class="w">           </span><span class="na">Render Menu Items Dynamically</span>
+<div class="highlight"><pre><span></span><code>[User Lands]
+  ↓
+[Auth0 Check Session]
+  ↓
+Is Logged In? 
+ |        
+No        Yes
+ |           ↓
+Show Login   Fetch Token
+               ↓
+           Fetch User Profile
+               ↓
+           Restore Org/Company/FinYear
+               ↓
+           Fetch Permissions
+               ↓
+           Update Auth Context
+               ↓
+           Render Menu Items Dynamically
 </code></pre></div>
-
 <hr />
 <h2 id="summary">📦 Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <ul>
@@ -2243,6 +2242,10 @@ If not, it won't even render that menu item.</p>
         <script src="../../../js/extra.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../../js/mermaid-init.js"></script>
       
     
   </body>

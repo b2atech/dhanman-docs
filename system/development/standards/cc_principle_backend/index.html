@@ -1916,60 +1916,52 @@
 <h2 id="1-naming-matters">1. Naming Matters<a class="headerlink" href="#1-naming-matters" title="Permanent link">&para;</a></h2>
 <p>A good name allows code to be used by many developers. The name shoul reflect what it does and give context. Use Camel case notation for variables i.e., first letter of first word of variable will be lower case and followed other words will be upper case. Use Pascal case notation for Methods and Classes i.e., first letters of words should be Upper case</p>
 <h3 id="meanfull-name">Meanfull name<a class="headerlink" href="#meanfull-name" title="Permanent link">&para;</a></h3>
-<p>Bad:</p>
-<div class="codehilite"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
-</code></pre></div>
-
-<p>Good:</p>
-<div class="codehilite"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">prices</span><span class="p">;</span>
-</code></pre></div>
-
+<p>Bad:
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Good:
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">prices</span><span class="p">;</span>
+</code></pre></div></p>
 <h3 id="naming-classes">Naming Classes<a class="headerlink" href="#naming-classes" title="Permanent link">&para;</a></h3>
 <p>Bad:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">Common</span>
+<div class="highlight"><pre><span></span><code><span class="n">Common</span>
 <span class="n">MyFunctions</span>
 <span class="n">Utility</span>
 <span class="n">WebsiteBL</span>
 </code></pre></div>
-
-<p>Good:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">User</span>
+<p>Good:
+<div class="highlight"><pre><span></span><code><span class="n">User</span>
 <span class="n">Account</span>
 <span class="n">ProductRepository</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <h3 id="naming-methods">Naming Methods<a class="headerlink" href="#naming-methods" title="Permanent link">&para;</a></h3>
-<p>Bad:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">Started</span>
+<p>Bad:
+<div class="highlight"><pre><span></span><code><span class="n">Started</span>
 <span class="n">Complete</span>
 <span class="n">DoIt</span>
 <span class="n">Page_Load</span>
-</code></pre></div>
-
-<p>Good:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">SendEmail</span>
+</code></pre></div></p>
+<p>Good:
+<div class="highlight"><pre><span></span><code><span class="n">SendEmail</span>
 <span class="n">ExportExcel</span>
 <span class="n">IsValidAccount</span>
 <span class="n">GetAcccount</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <h3 id="naming-booleans">Naming Booleans<a class="headerlink" href="#naming-booleans" title="Permanent link">&para;</a></h3>
-<p>Bad:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">open</span>
+<p>Bad:
+<div class="highlight"><pre><span></span><code><span class="n">open</span>
 <span class="n">active</span>
 <span class="n">login</span>
-</code></pre></div>
-
-<p>Good:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">isOpen</span>
+</code></pre></div></p>
+<p>Good:
+<div class="highlight"><pre><span></span><code><span class="n">isOpen</span>
 <span class="n">isActive</span>
 <span class="n">loggedIn</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <h2 id="2-formatting">2. Formatting<a class="headerlink" href="#2-formatting" title="Permanent link">&para;</a></h2>
 <p>Code should be readability. For examples, indent style is space and tab in project
-Bad</p>
-<div class="codehilite"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
+Bad
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">ConsoleApp2</span>
 <span class="p">{</span><span class="w"> </span>
 <span class="w">    </span><span class="k">internal</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span>
@@ -1979,11 +1971,10 @@ Bad</p>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <p>Good
 Visual Studio has a built-in feature to format your code perfectly, by simply Press CTRL + K and CTRL + D</p>
-<div class="codehilite"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">ConsoleApp2</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">internal</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span>
@@ -1995,112 +1986,110 @@ Visual Studio has a built-in feature to format your code perfectly, by simply Pr
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>or by selecting Analyze and code cleanup -&gt; run code cleanup
 Code style options and code cleanup - Visual Studio (Windows)
 Applies to: Visual Studio Visual Studio for Mac Visual Studio Code You can define code style settings per-project by…
 <a href="http://learn.microsoft.com/">learn.microsoft.com</a>
-or by EditorConfig</p>
-<div class="codehilite"><pre><span></span><code><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="p">[</span><span class="o">*</span><span class="p">]</span>
-<span class="n">indent_style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">space</span>
-<span class="n">indent_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
-<span class="n">end_of_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lf</span>
-<span class="n">charset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span>
-<span class="n">trim_trailing_whitespace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
-<span class="n">insert_final_newline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="c1"># C# files</span>
-<span class="p">[</span><span class="o">*.</span><span class="n">cs</span><span class="p">]</span>
-<span class="n">indent_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>
-<span class="c1"># New line preferences</span>
-<span class="n">csharp_new_line_before_open_brace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">all</span>
-<span class="n">csharp_new_line_before_else</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
-<span class="n">csharp_new_line_before_catch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
-<span class="n">csharp_new_line_before_finally</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
-<span class="n">csharp_new_line_before_members_in_object_initializers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
-<span class="n">csharp_new_line_before_members_in_anonymous_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
-<span class="n">csharp_new_line_within_query_expression_clauses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="c1"># Code files</span>
-<span class="p">[</span><span class="o">*.</span><span class="p">{</span><span class="n">cs</span><span class="p">,</span><span class="n">csx</span><span class="p">,</span><span class="n">vb</span><span class="p">,</span><span class="n">vbx</span><span class="p">}]</span>
-<span class="n">indent_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="c1"># Indentation preferences</span>
-<span class="n">csharp_indent_block_contents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
-<span class="n">csharp_indent_braces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span>
-<span class="n">csharp_indent_case_contents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
-<span class="n">csharp_indent_switch_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
-<span class="n">csharp_indent_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">one_less_than_current</span><span class="c1"># avoid this. unless absolutely necessary</span>
-<span class="n">dotnet_style_qualification_for_field</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">:</span><span class="n">suggestion</span>
-<span class="n">dotnet_style_qualification_for_property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">:</span><span class="n">suggestion</span>
-<span class="n">dotnet_style_qualification_for_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">:</span><span class="n">suggestion</span>
-<span class="n">dotnet_style_qualification_for_event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">:</span><span class="n">suggestion</span><span class="c1"># only use var when it&#39;s obvious what the variable type is</span>
-<span class="c1"># csharp_style_var_for_built_in_types = false:none</span>
-<span class="c1"># csharp_style_var_when_type_is_apparent = false:none</span>
-<span class="c1"># csharp_style_var_elsewhere = false:suggestion# use language keywords instead of BCL types</span>
-<span class="n">dotnet_style_predefined_type_for_locals_parameters_members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="p">:</span><span class="n">suggestion</span>
-<span class="n">dotnet_style_predefined_type_for_member_access</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="p">:</span><span class="n">suggestion</span><span class="c1"># name all constant fields using PascalCase</span>
-<span class="n">dotnet_naming_rule</span><span class="o">.</span><span class="n">constant_fields_should_be_pascal_case</span><span class="o">.</span><span class="n">severity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">suggestion</span>
-<span class="n">dotnet_naming_rule</span><span class="o">.</span><span class="n">constant_fields_should_be_pascal_case</span><span class="o">.</span><span class="n">symbols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">constant_fields</span>
-<span class="n">dotnet_naming_rule</span><span class="o">.</span><span class="n">constant_fields_should_be_pascal_case</span><span class="o">.</span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pascal_case_styledotnet_naming_symbols</span><span class="o">.</span><span class="n">constant_fields</span><span class="o">.</span><span class="n">applicable_kinds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">field</span>
-<span class="n">dotnet_naming_symbols</span><span class="o">.</span><span class="n">constant_fields</span><span class="o">.</span><span class="n">required_modifiers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">constdotnet_naming_style</span><span class="o">.</span><span class="n">pascal_case_style</span><span class="o">.</span><span class="n">capitalization</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pascal_case</span><span class="c1"># static fields should have s_ prefix</span>
-<span class="n">dotnet_naming_rule</span><span class="o">.</span><span class="n">static_fields_should_have_prefix</span><span class="o">.</span><span class="n">severity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">suggestion</span>
-<span class="n">dotnet_naming_rule</span><span class="o">.</span><span class="n">static_fields_should_have_prefix</span><span class="o">.</span><span class="n">symbols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">static_fields</span>
-<span class="n">dotnet_naming_rule</span><span class="o">.</span><span class="n">static_fields_should_have_prefix</span><span class="o">.</span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">static_prefix_styledotnet_naming_symbols</span><span class="o">.</span><span class="n">static_fields</span><span class="o">.</span><span class="n">applicable_kinds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">field</span>
-<span class="n">dotnet_naming_symbols</span><span class="o">.</span><span class="n">static_fields</span><span class="o">.</span><span class="n">required_modifiers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">staticdotnet_naming_style</span><span class="o">.</span><span class="n">static_prefix_style</span><span class="o">.</span><span class="n">required_prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s_</span>
-<span class="n">dotnet_naming_style</span><span class="o">.</span><span class="n">static_prefix_style</span><span class="o">.</span><span class="n">capitalization</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">camel_case</span><span class="c1"># internal and private fields should be _camelCase</span>
-<span class="n">dotnet_naming_rule</span><span class="o">.</span><span class="n">camel_case_for_private_internal_fields</span><span class="o">.</span><span class="n">severity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">suggestion</span>
-<span class="n">dotnet_naming_rule</span><span class="o">.</span><span class="n">camel_case_for_private_internal_fields</span><span class="o">.</span><span class="n">symbols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">private_internal_fields</span>
-<span class="n">dotnet_naming_rule</span><span class="o">.</span><span class="n">camel_case_for_private_internal_fields</span><span class="o">.</span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">camel_case_underscore_styledotnet_naming_symbols</span><span class="o">.</span><span class="n">private_internal_fields</span><span class="o">.</span><span class="n">applicable_kinds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">field</span>
-<span class="n">dotnet_naming_symbols</span><span class="o">.</span><span class="n">private_internal_fields</span><span class="o">.</span><span class="n">applicable_accessibilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">private</span><span class="p">,</span><span class="w"> </span><span class="n">internaldotnet_naming_style</span><span class="o">.</span><span class="n">camel_case_underscore_style</span><span class="o">.</span><span class="n">required_prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_</span>
-<span class="n">dotnet_naming_style</span><span class="o">.</span><span class="n">camel_case_underscore_style</span><span class="o">.</span><span class="n">capitalization</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">camel_case</span><span class="c1"># Code style defaults</span>
-<span class="n">dotnet_sort_system_directives_first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
-<span class="n">csharp_preserve_single_line_blocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
-<span class="n">csharp_preserve_single_line_statements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="c1"># Expression-level preferences</span>
-<span class="n">dotnet_style_object_initializer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="p">:</span><span class="n">suggestion</span>
-<span class="n">dotnet_style_collection_initializer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="p">:</span><span class="n">suggestion</span>
-<span class="n">dotnet_style_explicit_tuple_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="p">:</span><span class="n">suggestion</span>
-<span class="n">dotnet_style_coalesce_expression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="p">:</span><span class="n">suggestion</span>
-<span class="n">dotnet_style_null_propagation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="p">:</span><span class="n">suggestion</span><span class="c1"># Expression-bodied members</span>
-<span class="n">csharp_style_expression_bodied_methods</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">:</span><span class="n">none</span>
-<span class="n">csharp_style_expression_bodied_constructors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">:</span><span class="n">none</span>
-<span class="n">csharp_style_expression_bodied_operators</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">:</span><span class="n">none</span>
-<span class="n">csharp_style_expression_bodied_properties</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="p">:</span><span class="n">none</span>
-<span class="n">csharp_style_expression_bodied_indexers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="p">:</span><span class="n">none</span>
-<span class="n">csharp_style_expression_bodied_accessors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="p">:</span><span class="n">none</span><span class="c1"># Pattern matching</span>
-<span class="n">csharp_style_pattern_matching_over_is_with_cast_check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="p">:</span><span class="n">suggestion</span>
-<span class="n">csharp_style_pattern_matching_over_as_with_null_check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="p">:</span><span class="n">suggestion</span>
-<span class="n">csharp_style_inlined_variable_declaration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="p">:</span><span class="n">suggestion</span><span class="c1"># Null checking preferences</span>
-<span class="n">csharp_style_throw_expression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="p">:</span><span class="n">suggestion</span>
-<span class="n">csharp_style_conditional_delegate_call</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span><span class="p">:</span><span class="n">suggestion</span><span class="c1"># Space preferences</span>
-<span class="n">csharp_space_after_cast</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span>
-<span class="n">csharp_space_after_colon_in_inheritance_clause</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
-<span class="n">csharp_space_after_comma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
-<span class="n">csharp_space_after_dot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span>
-<span class="n">csharp_space_after_keywords_in_control_flow_statements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
-<span class="n">csharp_space_after_semicolon_in_for_statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
-<span class="n">csharp_space_around_binary_operators</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">before_and_after</span>
-<span class="n">csharp_space_around_declaration_statements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">do_not_ignore</span>
-<span class="n">csharp_space_before_colon_in_inheritance_clause</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
-<span class="n">csharp_space_before_comma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span>
-<span class="n">csharp_space_before_dot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span>
-<span class="n">csharp_space_before_open_square_brackets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span>
-<span class="n">csharp_space_before_semicolon_in_for_statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span>
-<span class="n">csharp_space_between_empty_square_brackets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span>
-<span class="n">csharp_space_between_method_call_empty_parameter_list_parentheses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span>
-<span class="n">csharp_space_between_method_call_name_and_opening_parenthesis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span>
-<span class="n">csharp_space_between_method_call_parameter_list_parentheses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span>
-<span class="n">csharp_space_between_method_declaration_empty_parameter_list_parentheses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span>
-<span class="n">csharp_space_between_method_declaration_name_and_open_parenthesis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span>
-<span class="n">csharp_space_between_method_declaration_parameter_list_parentheses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span>
-<span class="n">csharp_space_between_parentheses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span>
-<span class="n">csharp_space_between_square_brackets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">[</span><span class="o">*.</span><span class="p">{</span><span class="n">asm</span><span class="p">,</span><span class="n">inc</span><span class="p">}]</span>
-<span class="n">indent_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="c1"># Xml project files</span>
-<span class="p">[</span><span class="o">*.</span><span class="p">{</span><span class="n">csproj</span><span class="p">,</span><span class="n">vcxproj</span><span class="p">,</span><span class="n">vcxproj</span><span class="o">.</span><span class="n">filters</span><span class="p">,</span><span class="n">proj</span><span class="p">,</span><span class="n">nativeproj</span><span class="p">,</span><span class="n">locproj</span><span class="p">}]</span>
-<span class="n">indent_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="c1"># Xml config files</span>
-<span class="p">[</span><span class="o">*.</span><span class="p">{</span><span class="n">props</span><span class="p">,</span><span class="n">targets</span><span class="p">,</span><span class="n">config</span><span class="p">,</span><span class="n">nuspec</span><span class="p">}]</span>
-<span class="n">indent_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">[</span><span class="n">CMakeLists</span><span class="o">.</span><span class="n">txt</span><span class="p">]</span>
-<span class="n">indent_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">[</span><span class="o">*.</span><span class="n">cmd</span><span class="p">]</span>
-<span class="n">indent_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
-</code></pre></div>
-
+or by EditorConfig
+<div class="highlight"><pre><span></span><code>root = true[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true# C# files
+[*.cs]
+indent_size = 4
+# New line preferences
+csharp_new_line_before_open_brace = all
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+csharp_new_line_before_members_in_object_initializers = true
+csharp_new_line_before_members_in_anonymous_types = true
+csharp_new_line_within_query_expression_clauses = true# Code files
+[*.{cs,csx,vb,vbx}]
+indent_size = 4# Indentation preferences
+csharp_indent_block_contents = true
+csharp_indent_braces = false
+csharp_indent_case_contents = true
+csharp_indent_switch_labels = true
+csharp_indent_labels = one_less_than_current# avoid this. unless absolutely necessary
+dotnet_style_qualification_for_field = false:suggestion
+dotnet_style_qualification_for_property = false:suggestion
+dotnet_style_qualification_for_method = false:suggestion
+dotnet_style_qualification_for_event = false:suggestion# only use var when it&#39;s obvious what the variable type is
+# csharp_style_var_for_built_in_types = false:none
+# csharp_style_var_when_type_is_apparent = false:none
+# csharp_style_var_elsewhere = false:suggestion# use language keywords instead of BCL types
+dotnet_style_predefined_type_for_locals_parameters_members = true:suggestion
+dotnet_style_predefined_type_for_member_access = true:suggestion# name all constant fields using PascalCase
+dotnet_naming_rule.constant_fields_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.constant_fields_should_be_pascal_case.symbols = constant_fields
+dotnet_naming_rule.constant_fields_should_be_pascal_case.style = pascal_case_styledotnet_naming_symbols.constant_fields.applicable_kinds = field
+dotnet_naming_symbols.constant_fields.required_modifiers = constdotnet_naming_style.pascal_case_style.capitalization = pascal_case# static fields should have s_ prefix
+dotnet_naming_rule.static_fields_should_have_prefix.severity = suggestion
+dotnet_naming_rule.static_fields_should_have_prefix.symbols = static_fields
+dotnet_naming_rule.static_fields_should_have_prefix.style = static_prefix_styledotnet_naming_symbols.static_fields.applicable_kinds = field
+dotnet_naming_symbols.static_fields.required_modifiers = staticdotnet_naming_style.static_prefix_style.required_prefix = s_
+dotnet_naming_style.static_prefix_style.capitalization = camel_case# internal and private fields should be _camelCase
+dotnet_naming_rule.camel_case_for_private_internal_fields.severity = suggestion
+dotnet_naming_rule.camel_case_for_private_internal_fields.symbols = private_internal_fields
+dotnet_naming_rule.camel_case_for_private_internal_fields.style = camel_case_underscore_styledotnet_naming_symbols.private_internal_fields.applicable_kinds = field
+dotnet_naming_symbols.private_internal_fields.applicable_accessibilities = private, internaldotnet_naming_style.camel_case_underscore_style.required_prefix = _
+dotnet_naming_style.camel_case_underscore_style.capitalization = camel_case# Code style defaults
+dotnet_sort_system_directives_first = true
+csharp_preserve_single_line_blocks = true
+csharp_preserve_single_line_statements = false# Expression-level preferences
+dotnet_style_object_initializer = true:suggestion
+dotnet_style_collection_initializer = true:suggestion
+dotnet_style_explicit_tuple_names = true:suggestion
+dotnet_style_coalesce_expression = true:suggestion
+dotnet_style_null_propagation = true:suggestion# Expression-bodied members
+csharp_style_expression_bodied_methods = false:none
+csharp_style_expression_bodied_constructors = false:none
+csharp_style_expression_bodied_operators = false:none
+csharp_style_expression_bodied_properties = true:none
+csharp_style_expression_bodied_indexers = true:none
+csharp_style_expression_bodied_accessors = true:none# Pattern matching
+csharp_style_pattern_matching_over_is_with_cast_check = true:suggestion
+csharp_style_pattern_matching_over_as_with_null_check = true:suggestion
+csharp_style_inlined_variable_declaration = true:suggestion# Null checking preferences
+csharp_style_throw_expression = true:suggestion
+csharp_style_conditional_delegate_call = true:suggestion# Space preferences
+csharp_space_after_cast = false
+csharp_space_after_colon_in_inheritance_clause = true
+csharp_space_after_comma = true
+csharp_space_after_dot = false
+csharp_space_after_keywords_in_control_flow_statements = true
+csharp_space_after_semicolon_in_for_statement = true
+csharp_space_around_binary_operators = before_and_after
+csharp_space_around_declaration_statements = do_not_ignore
+csharp_space_before_colon_in_inheritance_clause = true
+csharp_space_before_comma = false
+csharp_space_before_dot = false
+csharp_space_before_open_square_brackets = false
+csharp_space_before_semicolon_in_for_statement = false
+csharp_space_between_empty_square_brackets = false
+csharp_space_between_method_call_empty_parameter_list_parentheses = false
+csharp_space_between_method_call_name_and_opening_parenthesis = false
+csharp_space_between_method_call_parameter_list_parentheses = false
+csharp_space_between_method_declaration_empty_parameter_list_parentheses = false
+csharp_space_between_method_declaration_name_and_open_parenthesis = false
+csharp_space_between_method_declaration_parameter_list_parentheses = false
+csharp_space_between_parentheses = false
+csharp_space_between_square_brackets = false[*.{asm,inc}]
+indent_size = 8# Xml project files
+[*.{csproj,vcxproj,vcxproj.filters,proj,nativeproj,locproj}]
+indent_size = 2# Xml config files
+[*.{props,targets,config,nuspec}]
+indent_size = 2[CMakeLists.txt]
+indent_size = 2[*.cmd]
+indent_size = 2
+</code></pre></div></p>
 <h2 id="3-commenting">3. Commenting<a class="headerlink" href="#3-commenting" title="Permanent link">&para;</a></h2>
 <p>Make proper comment where it is required. Don’t make zommie comment in code</p>
-<div class="codehilite"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">ConsoleApp2</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">internal</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span>
@@ -2116,35 +2105,32 @@ or by EditorConfig</p>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <h2 id="4-reuse-code">4. Reuse Code<a class="headerlink" href="#4-reuse-code" title="Permanent link">&para;</a></h2>
 <p>Don’t copy-paste function through multiple classes. Rather make a shared library project and reference it in each of required projects. This way, we build reusable code.</p>
 <h2 id="5-keep-class-size-small">5. Keep Class Size Small<a class="headerlink" href="#5-keep-class-size-small" title="Permanent link">&para;</a></h2>
 <p>According to single responsibitlity (one of SOLID priciple), make segregate classes to small blocks which has a single responsiblility functions only. This helps us to achieve loosely coupled code.</p>
 <h2 id="6-avoid-magic-stringsnumbers">6. Avoid Magic Strings/Numbers<a class="headerlink" href="#6-avoid-magic-stringsnumbers" title="Permanent link">&para;</a></h2>
 <p>Magic string/number meaning do not use hardcoded strings or values in our application. This will difficult to track strings.
-Bad:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">if</span><span class="p">(</span><span class="n">userRole</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Admin&quot;</span><span class="p">)</span>
+Bad:
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="p">(</span><span class="n">userRole</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Admin&quot;</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">   </span><span class="c1">//logic here</span>
 <span class="p">}</span>
 </code></pre></div>
-
-<p>Good:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">ADMIN_ROLE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Admin&quot;</span>
+Good:</p>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">ADMIN_ROLE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Admin&quot;</span>
 <span class="k">if</span><span class="p">(</span><span class="n">userRole</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ADMIN_ROLE</span><span class="w"> </span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">   </span><span class="c1">//logic here</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <h2 id="7-use-asyncawait">7. Use Async/Await<a class="headerlink" href="#7-use-asyncawait" title="Permanent link">&para;</a></h2>
 <p>Asynchronous Programming helps improve the overall efficiency while dealing with functions that can take some time to finish computing. During such function executions, the complete application may seem to be frozen to the end-user. This results in bad user experience. In such cases, we use async methods to free the main thread
 Read more <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/">here</a>.</p>
 <h2 id="8-dont-use-throw-ex-in-the-catch-block">8. Don’t use ‘throw ex’ in the catch block<a class="headerlink" href="#8-dont-use-throw-ex-in-the-catch-block" title="Permanent link">&para;</a></h2>
 <p>Don’t use ‘throw ex’ exception in catching block, this will lose stack trace data. Instead use ‘throw’, this will store the stack trace as well, which is kind of helps for diagnostics purposes.
-And also don’t ignore caught errors</p>
-<div class="codehilite"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SomeMethod</span><span class="p">()</span>
+And also don’t ignore caught errors
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SomeMethod</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">   </span><span class="k">try</span>
 <span class="w">   </span><span class="p">{</span>
@@ -2156,45 +2142,40 @@ And also don’t ignore caught errors</p>
 <span class="w">   </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
-<p>Incase of WebAPI, use exception handle middleware</p>
+Incase of WebAPI, use exception handle middleware</p>
 <h2 id="9-avoid-long-if-condition">9. Avoid long if condition<a class="headerlink" href="#9-avoid-long-if-condition" title="Permanent link">&para;</a></h2>
 <p>Long IF/ELSE or long SWITCH (long conditional statement) with polymorphism. This is also called RIP design pattern. RIP means Replace If with Polymorphism design pattern
 <a href="https://www.c-sharpcorner.com/article/replace-conditional-statements-ifelse-or-switch-with-factory/">Read more here.</a></p>
-<p>Use Ternary Operator if it is for only one else condition</p>
-<div class="codehilite"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetValue</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="k">value</span><span class="p">)</span>
+<p>Use Ternary Operator if it is for only one else condition
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetValue</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="k">value</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;Value is 10&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Value is not 10&quot;</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <h2 id="10-use-null-coalescing-operator">10. Use Null Coalescing Operator<a class="headerlink" href="#10-use-null-coalescing-operator" title="Permanent link">&para;</a></h2>
 <p>For null checks you can use null checks. ?? operator is known as Null Coalescing Operator in C#. <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-coalescing-operator">Read more here.</a></p>
-<div class="codehilite"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="nf">SomeMethod</span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="nf">SomeMethod</span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Student</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Mukesh Murugan&quot;</span><span class="w"> </span><span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <h2 id="11prefer-string-interpolation">11.Prefer String Interpolation<a class="headerlink" href="#11prefer-string-interpolation" title="Permanent link">&para;</a></h2>
-<p>Bad:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">SomeMethod</span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="p">)</span>
+<p>Bad:
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">SomeMethod</span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Student Name is &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">student</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;. Age is &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">student</span><span class="p">.</span><span class="n">Age</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-
-<p>Good:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">SomeMethod</span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="p">)</span>
+Good:
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">SomeMethod</span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;Student Name is {student.Name}. Age is {student.Age}&quot;</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <h2 id="12-avoid-too-many-parameters">12. Avoid too many parameters<a class="headerlink" href="#12-avoid-too-many-parameters" title="Permanent link">&para;</a></h2>
 <p>If you want to send more then 3 parameter inputs to any mthoed, then wrap it object then pass
-Bad:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="nf">SomeMethod</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">city</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">section</span><span class="p">,</span><span class="w"> </span><span class="n">DateTime</span><span class="w"> </span><span class="n">dateOfBirth</span><span class="p">)</span>
+Bad:
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="nf">SomeMethod</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">city</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">section</span><span class="p">,</span><span class="w"> </span><span class="n">DateTime</span><span class="w"> </span><span class="n">dateOfBirth</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">Student</span><span class="p">()</span>
 <span class="w">   </span><span class="p">{</span>
@@ -2204,14 +2185,12 @@ Bad:</p>
 <span class="w">   </span><span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
-
-<p>Good:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="nf">SomeMethod</span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="p">)</span>
+Good:
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="nf">SomeMethod</span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">student</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <h2 id="13-use-design-patterns">13. Use Design Patterns<a class="headerlink" href="#13-use-design-patterns" title="Permanent link">&para;</a></h2>
 <p>Design Pattern is a way to solve a localised problem. Design pattern are basically patterns that can provide a resuable solution while architecting solutions.</p>
 <h2 id="14-project-structure">14. Project structure<a class="headerlink" href="#14-project-structure" title="Permanent link">&para;</a></h2>
@@ -2224,10 +2203,9 @@ Here are a few other advantages as well.
 5. Inversion of controls, etc</p>
 <h2 id="15-use-expression-bodied-methods">15. Use Expression Bodied Methods<a class="headerlink" href="#15-use-expression-bodied-methods" title="Permanent link">&para;</a></h2>
 <p>Such methods are used in scenarios where the method body is much smaller than even the method definition itself</p>
-<div class="codehilite"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">Message</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;Hello World!&quot;</span><span class="p">;</span>
+<p><div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">Message</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;Hello World!&quot;</span><span class="p">;</span>
 </code></pre></div>
-
-<p>Read more about Expression Bodied Methods <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/expression-bodied-members">here</a>.</p>
+Read more about Expression Bodied Methods <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/expression-bodied-members">here</a>.</p>
 
 
 
@@ -2284,6 +2262,10 @@ Here are a few other advantages as well.
         <script src="../../../../js/extra.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../../../js/mermaid-init.js"></script>
       
     
   </body>

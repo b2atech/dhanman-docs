@@ -1662,7 +1662,7 @@
 <p>This design keeps the configuration and transport details abstracted from consumers.</p>
 <hr />
 <h2 id="folder-structure">📦 Folder Structure<a class="headerlink" href="#folder-structure" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code>CrossCuttingConcern.Email/
+<div class="highlight"><pre><span></span><code>CrossCuttingConcern.Email/
 ├── Abstractions/
 │   ├── IEmailService.cs
 │   └── IEmailTemplateService.cs
@@ -1679,11 +1679,10 @@
 ├── Settings/
 │   └── SmtpSettings.cs
 </code></pre></div>
-
 <hr />
 <h2 id="configuration">🔧 Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <h3 id="appsettingsjson"><code>appsettings.json</code><a class="headerlink" href="#appsettingsjson" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="nt">&quot;Smtp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;Smtp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;Host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;smtp-relay.brevo.com&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;Port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">587</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;Username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-smtp-user&quot;</span><span class="p">,</span>
@@ -1691,15 +1690,13 @@
 <span class="w">  </span><span class="nt">&quot;FromEmail&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;support@dhanman.com&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <h3 id="connection-string">Connection String<a class="headerlink" href="#connection-string" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="nt">&quot;ConnectionStrings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;ConnectionStrings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;TemplateDb&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Host=localhost;Port=5432;Database=TemplateDb;Username=postgres;Password=password&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <h3 id="di-registration">DI Registration<a class="headerlink" href="#di-registration" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="n">services</span><span class="p">.</span><span class="n">Configure</span><span class="o">&lt;</span><span class="n">SmtpSettings</span><span class="o">&gt;</span><span class="p">(</span><span class="n">configuration</span><span class="p">.</span><span class="n">GetSection</span><span class="p">(</span><span class="s">&quot;Smtp&quot;</span><span class="p">));</span>
+<div class="highlight"><pre><span></span><code><span class="n">services</span><span class="p">.</span><span class="n">Configure</span><span class="o">&lt;</span><span class="n">SmtpSettings</span><span class="o">&gt;</span><span class="p">(</span><span class="n">configuration</span><span class="p">.</span><span class="n">GetSection</span><span class="p">(</span><span class="s">&quot;Smtp&quot;</span><span class="p">));</span>
 <span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="o">&lt;</span><span class="n">IDateTime</span><span class="p">,</span><span class="w"> </span><span class="n">SystemDateTime</span><span class="o">&gt;</span><span class="p">();</span>
 
 <span class="n">services</span><span class="p">.</span><span class="n">AddDbContext</span><span class="o">&lt;</span><span class="n">TemplateDbContext</span><span class="o">&gt;</span><span class="p">(</span><span class="n">options</span><span class="w"> </span><span class="o">=&gt;</span>
@@ -1712,28 +1709,25 @@
 <span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="o">&lt;</span><span class="n">IEmailTemplateService</span><span class="p">,</span><span class="w"> </span><span class="n">EmailTemplateService</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="o">&lt;</span><span class="n">TemplatedEmailService</span><span class="o">&gt;</span><span class="p">();</span>
 </code></pre></div>
-
 <hr />
 <h2 id="emailservice">✉️ EmailService<a class="headerlink" href="#emailservice" title="Permanent link">&para;</a></h2>
 <h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="n">_emailService</span><span class="p">.</span><span class="n">SendEmailAsync</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="n">_emailService</span><span class="p">.</span><span class="n">SendEmailAsync</span><span class="p">(</span>
 <span class="w">    </span><span class="n">to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bharat.mane@gmail.com&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="n">subject</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Manual Email&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="n">body</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;p&gt;Hello Bharat&lt;/p&gt;&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="n">isHtml</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">);</span>
 </code></pre></div>
-
 <hr />
 <h2 id="emailtemplateservice">🧩 EmailTemplateService<a class="headerlink" href="#emailtemplateservice" title="Permanent link">&para;</a></h2>
 <h3 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h3>
 <p>Fetches email templates from DB, caches them, and replaces placeholders.</p>
 <h3 id="example-template-in-db">Example Template in DB<a class="headerlink" href="#example-template-in-db" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>Subject:<span class="w"> </span>Welcome<span class="w"> </span>to<span class="w"> </span>Dhanman
-BodyHtml:<span class="w"> </span>Hello<span class="w"> </span><span class="cp">{{</span><span class="nv">CustomerName</span><span class="cp">}}</span>,<span class="w"> </span>click<span class="w"> </span><span class="nt">&lt;a</span><span class="w"> </span><span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span><span class="nv">LoginUrl</span><span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>here<span class="nt">&lt;/a&gt;</span><span class="w"> </span>to<span class="w"> </span>login.
+<div class="highlight"><pre><span></span><code>Subject: Welcome to Dhanman
+BodyHtml: Hello {{CustomerName}}, click &lt;a href=&quot;{{LoginUrl}}&quot;&gt;here&lt;/a&gt; to login.
 </code></pre></div>
-
 <h3 id="usage_1">Usage<a class="headerlink" href="#usage_1" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">placeholders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">placeholders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="na">[&quot;CustomerName&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Bharat&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="na">[&quot;LoginUrl&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://dhanman.com/login&quot;</span>
@@ -1741,11 +1735,10 @@ BodyHtml:<span class="w"> </span>Hello<span class="w"> </span><span class="cp">{
 
 <span class="kt">var</span><span class="w"> </span><span class="n">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_templateService</span><span class="p">.</span><span class="n">GetProcessedTemplateAsync</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="n">placeholders</span><span class="p">);</span>
 </code></pre></div>
-
 <hr />
 <h2 id="templatedemailservice-helper">🤖 TemplatedEmailService (Helper)<a class="headerlink" href="#templatedemailservice-helper" title="Permanent link">&para;</a></h2>
 <h3 id="usage_2">Usage<a class="headerlink" href="#usage_2" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">placeholders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">placeholders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="na">[&quot;CustomerName&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="n">CustomerName</span><span class="p">,</span>
 <span class="w">    </span><span class="na">[&quot;OrderId&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">ToString</span><span class="p">()</span>
@@ -1756,11 +1749,10 @@ BodyHtml:<span class="w"> </span>Hello<span class="w"> </span><span class="cp">{
 <span class="w">    </span><span class="n">recipient</span><span class="p">:</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="n">CustomerEmail</span><span class="p">,</span>
 <span class="w">    </span><span class="n">placeholders</span><span class="p">:</span><span class="w"> </span><span class="n">placeholders</span><span class="p">);</span>
 </code></pre></div>
-
 <p>No need to manually deal with template loading or SMTP.</p>
 <hr />
 <h2 id="consumer-example-service-layer">🧪 Consumer Example (Service Layer)<a class="headerlink" href="#consumer-example-service-layer" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">OrderService</span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">OrderService</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">TemplatedEmailService</span><span class="w"> </span><span class="n">_templatedEmailService</span><span class="p">;</span>
 
@@ -1781,7 +1773,6 @@ BodyHtml:<span class="w"> </span>Hello<span class="w"> </span><span class="cp">{
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <hr />
 <h2 id="notes">🧠 Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1850,6 +1841,10 @@ BodyHtml:<span class="w"> </span>Hello<span class="w"> </span><span class="cp">{
         <script src="../../../js/extra.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../../js/mermaid-init.js"></script>
       
     
   </body>
