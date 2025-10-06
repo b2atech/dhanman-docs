@@ -1,0 +1,404 @@
+Folder PATH listing
+Volume serial number is BEBB-7B45
+C:.
+|   .gitignore
+|   migrate-docs.ps1
+|   mkdocs.yml
+|   package-lock.json
+|   refactor-docs.sh
+|   structure.txt
+|   
++---.github
+|   \---workflows
+|           build.yml
+|           deploy-docs.yml
+|           
++---assets
+|   \---images
++---docs
+|   |   authentication-authorization.md
+|   |   common.md
+|   |   extra.css
+|   |   index.md
+|   |   
+|   +---assets
+|   |       budget_er.svg
+|   |       messaging.png
+|   |       
+|   +---images
+|   |       dhanman-docs.png
+|   |       
+|   +---js
+|   |       extra.js
+|   |       
+|   +---product
+|   |   +---audit-compliance
+|   |   +---community
+|   |   +---events-calendar
+|   |   +---financial-management
+|   |   |   |   introduction.md
+|   |   |   |   
+|   |   |   \---invoices
+|   |   |           credit_debit_notes.md
+|   |   |           entries_others.md
+|   |   |           entries_samples.md
+|   |   |           manual_journal.md
+|   |   |           payroll_transactions.md
+|   |   |           purchase_transactions.md
+|   |   |           sales_transactions.md
+|   |   |           
+|   |   +---gate-management
+|   |   +---getting-started
+|   |   |       app-ui-structure.md
+|   |   |       email-templates.md
+|   |   |       
+|   |   +---integrations
+|   |   +---inventory-assets
+|   |   +---mobile-app
+|   |   +---payroll
+|   |   |       sample_templates.md
+|   |   |       
+|   |   +---purchase-management
+|   |   +---reports-analytics
+|   |   |       accounts _payable_aging_report.md
+|   |   |       accounts_receivable_aging_report.md
+|   |   |       balance_sheet.md
+|   |   |       cash_flow_statement.md
+|   |   |       ledger_of_customers.md
+|   |   |       ledger_of_vendors.md
+|   |   |       pending_dues_report.md
+|   |   |       profit_and_loss_statement.md
+|   |   |       trial_balance.md
+|   |   |       
+|   |   \---water-management
+|   \---system
+|       |   index.md
+|       |   README.md
+|       |   
+|       +---architecture
+|       |   |   index.md
+|       |   |   overview.md
+|       |   |   principles.md
+|       |   |   
+|       |   +---adr
+|       |   |       0001-use-postgresql-18.md
+|       |   |       
+|       |   +---diagrams
+|       |   |   |   README.md
+|       |   |   |   
+|       |   |   \---source
+|       |   |           01-infrastructure-topology-current.md
+|       |   |           01-infrastructure-topology-future.md
+|       |   |           02-application-architecture.md
+|       |   |           03-data-replication-flow.md
+|       |   |           04-cicd-deployment-pipeline.md
+|       |   |           05-monitoring-observability.md
+|       |   |           command-call-flow.puml
+|       |   |           dhanman-container.puml
+|       |   |           query-call-flow.puml
+|       |   |           README.md
+|       |   |           
+|       |   +---modules
+|       |   |       inventory.md
+|       |   |       payroll.md
+|       |   |       sales.md
+|       |   |       
+|       |   \---patterns
+|       |           cqrs.md
+|       |           event-sourcing.md
+|       |           
+|       +---development
+|       |   |   DbTula-Extract-Commands.md
+|       |   |   getting-started.md
+|       |   |   index.md
+|       |   |   
+|       |   +---api-internal
+|       |   |       event-schemas.md
+|       |   |       service-contracts.md
+|       |   |       
+|       |   +---entity-management
+|       |   |       create-entity-task.md
+|       |   |       
+|       |   +---project-structure
+|       |   |       create-new-project.md
+|       |   |       repository-conventions.md
+|       |   |       
+|       |   +---standards
+|       |   |       cc_principle_backend.md
+|       |   |       clean code principle - front end.md
+|       |   |       code-review-checklist.md
+|       |   |       coding-standards-backend.md
+|       |   |       coding-standards-frontend.md
+|       |   |       git-workflow.md
+|       |   |       
+|       |   \---testing
+|       |           testid-strategy.md
+|       |           troubleshooting.md
+|       |           
+|       +---infrastructure
+|       |   |   index.md
+|       |   |   overview.md
+|       |   |   
+|       |   +---database
+|       |   |       postgresql-setup.md
+|       |   |       
+|       |   +---messaging
+|       |   |       rabbitmq-setup.md
+|       |   |       
+|       |   +---monitoring
+|       |   |       grafana-loki.md
+|       |   |       
+|       |   \---storage
+|       |           minio-setup.md
+|       |           
+|       +---onboarding
+|       |       developer-onboarding.md
+|       |       first-contribution.md
+|       |       index.md
+|       |       
+|       +---operations
+|       |   |   index.md
+|       |   |   
+|       |   +---deployment
+|       |   |       dump_restore_clean.md
+|       |   |       qa_deployment_guide.md
+|       |   |       qa_prod_deployment_guide.md
+|       |   |       
+|       |   +---monitoring
+|       |   |       dashboards.md
+|       |   |       
+|       |   \---runbooks
+|       |           qa-refresh-procedure.md
+|       |           
+|       \---security
+|               authentication-flow.md
+|               common.md
+|               index.md
+|               office_etiquette_policy.md
+|               permissions-naming-guidelines.md
+|               sales.md
+|               secrets-management.md
+|               
++---images
+|       budget_er.svg
+|       messaging.png
+|       plantUML.webp
+|       
+\---site
+    |   404.html
+    |   extra.css
+    |   index.html
+    |   sitemap.xml
+    |   sitemap.xml.gz
+    |   
+    +---accounting
+    |   \---introduction
+    |           index.html
+    |           
+    +---accounting_entries
+    |   +---credit_debit_notes
+    |   |       index.html
+    |   |       
+    |   +---entries_others
+    |   |       index.html
+    |   |       
+    |   +---entries_samples
+    |   |       index.html
+    |   |       
+    |   +---manual_journal
+    |   |       index.html
+    |   |       
+    |   +---payroll_transactions
+    |   |       index.html
+    |   |       
+    |   +---purchase_transactions
+    |   |       index.html
+    |   |       
+    |   \---sales_transactions
+    |           index.html
+    |           
+    +---assets
+    |   |   budget_er.svg
+    |   |   messaging.png
+    |   |   
+    |   +---images
+    |   |       favicon.png
+    |   |       
+    |   +---javascripts
+    |   |   |   bundle.60a45f97.min.js
+    |   |   |   bundle.60a45f97.min.js.map
+    |   |   |   
+    |   |   +---lunr
+    |   |   |   |   tinyseg.js
+    |   |   |   |   wordcut.js
+    |   |   |   |   
+    |   |   |   \---min
+    |   |   |           lunr.ar.min.js
+    |   |   |           lunr.da.min.js
+    |   |   |           lunr.de.min.js
+    |   |   |           lunr.du.min.js
+    |   |   |           lunr.el.min.js
+    |   |   |           lunr.es.min.js
+    |   |   |           lunr.fi.min.js
+    |   |   |           lunr.fr.min.js
+    |   |   |           lunr.he.min.js
+    |   |   |           lunr.hi.min.js
+    |   |   |           lunr.hu.min.js
+    |   |   |           lunr.hy.min.js
+    |   |   |           lunr.it.min.js
+    |   |   |           lunr.ja.min.js
+    |   |   |           lunr.jp.min.js
+    |   |   |           lunr.kn.min.js
+    |   |   |           lunr.ko.min.js
+    |   |   |           lunr.multi.min.js
+    |   |   |           lunr.nl.min.js
+    |   |   |           lunr.no.min.js
+    |   |   |           lunr.pt.min.js
+    |   |   |           lunr.ro.min.js
+    |   |   |           lunr.ru.min.js
+    |   |   |           lunr.sa.min.js
+    |   |   |           lunr.stemmer.support.min.js
+    |   |   |           lunr.sv.min.js
+    |   |   |           lunr.ta.min.js
+    |   |   |           lunr.te.min.js
+    |   |   |           lunr.th.min.js
+    |   |   |           lunr.tr.min.js
+    |   |   |           lunr.vi.min.js
+    |   |   |           lunr.zh.min.js
+    |   |   |           
+    |   |   \---workers
+    |   |           search.f8cc74c7.min.js
+    |   |           search.f8cc74c7.min.js.map
+    |   |           
+    |   \---stylesheets
+    |           main.a40c8224.min.css
+    |           main.a40c8224.min.css.map
+    |           palette.06af60db.min.css
+    |           palette.06af60db.min.css.map
+    |           
+    +---authentication-authorization
+    |       index.html
+    |       
+    +---coding_conventions
+    |   +---cc_principle_backend
+    |   |       index.html
+    |   |       
+    |   \---clean code principle - front end
+    |           index.html
+    |           
+    +---common
+    |       index.html
+    |       
+    +---devops
+    |   +---dump_restore_clean
+    |   |       index.html
+    |   |       
+    |   +---qa_deployment_guide
+    |   |       index.html
+    |   |       
+    |   \---qa_prod_deployment_guide
+    |           index.html
+    |           
+    +---financial_reports
+    |   +---accounts _payable_aging_report
+    |   |       index.html
+    |   |       
+    |   +---accounts_receivable_aging_report
+    |   |       index.html
+    |   |       
+    |   +---balance_sheet
+    |   |       index.html
+    |   |       
+    |   +---cash_flow_statement
+    |   |       index.html
+    |   |       
+    |   +---ledger_of_customers
+    |   |       index.html
+    |   |       
+    |   +---ledger_of_vendors
+    |   |       index.html
+    |   |       
+    |   +---pending_dues_report
+    |   |       index.html
+    |   |       
+    |   +---profit_and_loss_statement
+    |   |       index.html
+    |   |       
+    |   \---trial_balance
+    |           index.html
+    |           
+    +---how-to
+    |   +---app-ui-structure
+    |   |       index.html
+    |   |       
+    |   \---email-templates
+    |           index.html
+    |           
+    +---images
+    |       dhanman-docs.png
+    |       
+    +---js
+    |       extra.js
+    |       
+    +---payroll
+    |   \---sample_templates
+    |           index.html
+    |           
+    +---permissions
+    |   +---common
+    |   |       index.html
+    |   |       
+    |   +---permissions-naming-guidelines
+    |   |       index.html
+    |   |       
+    |   \---sales
+    |           index.html
+    |           
+    +---policies
+    |   \---office_etiquette_policy
+    |           index.html
+    |           
+    +---search
+    |       search_index.json
+    |       
+    +---system_overview
+    |   +---architecture
+    |   |       index.html
+    |   |       
+    |   +---budgeting_system
+    |   |       index.html
+    |   |       
+    |   +---commands
+    |   |       index.html
+    |   |       
+    |   +---design
+    |   |       index.html
+    |   |       
+    |   +---dhanman_sales
+    |   |       index.html
+    |   |       
+    |   +---messging_design
+    |   |       index.html
+    |   |       
+    |   +---MinIO
+    |   |       index.html
+    |   |       
+    |   +---mkdocs
+    |   |       index.html
+    |   |       
+    |   +---postgres
+    |   |       index.html
+    |   |       
+    |   +---rabbitmq_setup
+    |   |       index.html
+    |   |       
+    |   +---services_commands
+    |   |       index.html
+    |   |       
+    |   \---water_tanker
+    |           index.html
+    |           
+    \---test
+        \---testid-strategy
+                index.html
+                

@@ -1,3 +1,0 @@
-# Jenkins CI/CD Pipeline
-
-The Jenkins CI/CD pipeline is a crucial part of the Dhanman ERP system's deployment strategy. It automates the process of building, testing, and deploying the application, ensuring that new changes can be integrated seamlessly and efficiently. The pipeline includes stages for code quality checks, unit testing, integration testing, and deployment to production environments.
