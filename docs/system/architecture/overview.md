@@ -1,5 +1,37 @@
 # DhanMan Architecture
 
+# Architecture Overview
+
+Dhanman is an ERP built with a microservices architecture and the CQRS pattern. Each bounded context is a separate service with its own data store, communicating primarily through asynchronous events via RabbitMQ. The frontend is a React/TypeScript SPA that talks to backend REST APIs through an API gateway.
+
+Key objectives
+- Modular services for each business capability (Sales, Purchase, Inventory, Payroll, Community/MyHome, Common)
+- Independent deployability and scaling of services
+- Clear separation of write and read concerns (CQRS)
+- Strong observability (logs, metrics, uptime)
+- Secure, multi-tenant-ready foundation
+
+Core technologies
+- Backend: C# services following Clean Architecture with CQRS (MediatR), Repository pattern
+- Data: PostgreSQL (primary DB per service), optional read models
+- Messaging: RabbitMQ (event-driven integration)
+- Object Storage: MinIO (files, attachments)
+- Frontend: React/TypeScript SPA
+- Observability: Promtail + Loki (logs), Grafana (dashboards), Netdata (+ Cloud) for node metrics, Uptime Kuma for uptime checks
+
+Sections
+- [Runtime Topology](runtime-topology.md)
+- [Service Catalog](service-catalog.md)
+- [CQRS: Commands and Queries](cqrs.md)
+- [Data Management](data-management.md)
+- [Messaging and Integration](messaging-and-integration.md)
+- [Security](security.md)
+- [Observability](observability.md)
+- [Deployment](deployment.md)
+
+Next steps
+- We will attach rendered diagrams under [Diagrams](diagrams/) as PNG/SVG.
+
 ```plantuml
 @startuml
 !includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/v2.7.0/C4_Container.puml
