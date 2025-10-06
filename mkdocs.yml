@@ -118,7 +118,8 @@ theme:
   features:
     - navigation.instant
     - navigation.sections
-    - navigation.expand
+    - navigation.prune        # keep only the current section visible
+    # - navigation.expand     # remove this to avoid expanding everything
 
 markdown_extensions:
   - admonition
