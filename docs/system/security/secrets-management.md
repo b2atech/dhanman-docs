@@ -1,5 +1,5 @@
-﻿#  Secrets Management
+# Secrets Management
 
-- Stored in .env for Dockerized services.
-- In GitHub Actions  Encrypted Secrets.
-- Access via environment variables on runtime.
+- Keep secrets out of code and repos
+- Use environment/secret manager; rotate regularly
+- Protect DB, MQ, and object storage credentials

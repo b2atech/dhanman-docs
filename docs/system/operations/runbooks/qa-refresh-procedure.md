@@ -1,6 +1,6 @@
-﻿#  QA Refresh Procedure
+# QA Refresh Procedure
 
-1. Backup QA DBs to B2.
-2. Restore from Production backups.
-3. Mask sensitive data.
-4. Verify services, restart QA containers.
+- Snapshot production (as allowed)
+- Sanitize data; restore to QA
+- Rotate secrets and keys
+- Validate core flows before releasing to team

@@ -1,5 +1,5 @@
-﻿#  Monitoring Dashboards
+# Monitoring Dashboards
 
-- Grafana: Log insights and service errors
-- Netdata: System-level metrics
-- Uptime-Kuma: HTTP uptime checks
+- Service overview: error rates, latency, throughput
+- Infrastructure: CPU, memory, disk, network
+- Message queues: publish/consume rates, DLQs

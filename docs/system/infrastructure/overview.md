@@ -1,6 +1,12 @@
-﻿#  Infrastructure Overview
+# Infrastructure Overview
 
-Dhanman runs on **OVH Cloud VPS servers** for QA and Production.
-- **Prod:** 51.79.156.217 (Singapore)
-- **QA:** 54.37.159.71 (France)
-- Managed using **Ansible** from Raigad (WSL)
+Core components
+- PostgreSQL (per service)
+- RabbitMQ (events/integration)
+- MinIO (S3-compatible storage)
+- Grafana + Loki + Promtail (logs, dashboards)
+- Netdata (+ Cloud) (system metrics)
+- Uptime Kuma (HTTP checks)
+
+Environments
+- QA and Production on VPS hosts

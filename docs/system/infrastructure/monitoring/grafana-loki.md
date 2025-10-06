@@ -1,15 +1,6 @@
-﻿#  Grafana + Loki Setup
+# Monitoring: Grafana + Loki
 
-- **Promtail** scrapes logs from:
-  - /var/www/prod/logs
-  - /var/www/qa/logs
-- **Loki** stores data in /opt/logging/loki-data
-- **Grafana** dashboards at https://logs.dhanman.com and https://qa.logs.dhanman.com
-"@
-
-New-MarkdownFile "system\infrastructure\monitoring\netdata.md" @"
-#  Netdata Monitoring
-
-- Installed via kickstart.sh on all VPS servers.
-- Connected to Netdata Cloud Room: *Dhanman Infra*
-- Tracks CPU, memory, disk I/O, PostgreSQL, NGINX, Docker metrics.
+- Promtail tails service logs and ships to Loki
+- Grafana dashboards for log queries and metrics
+- Suggested dashboards: request latency, error rates, queue depths
+- Access controls for dashboards and log data per team/tenant

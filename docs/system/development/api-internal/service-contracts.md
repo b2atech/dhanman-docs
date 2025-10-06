@@ -1,9 +1,6 @@
-sudo systemctl restart dhanman-common-qa.service
-sudo systemctl restart dhanman-payroll-qa.service
+# Service Contracts
 
-login to server 
-ssh root@<your_ovh_server_ip>
-sudo -u postgres psql
-
-
-
+- REST endpoints: resources, verbs, status codes
+- DTOs vs domain models; strict validation
+- Error formats and pagination standards
+- Deprecation policy and versioning
