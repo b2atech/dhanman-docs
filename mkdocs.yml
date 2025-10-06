@@ -1,69 +1,128 @@
-site_name: Dhanman
+site_name: Dhanman Documentation
 
 nav:
   - Home: index.md
-  - Accounting: accounting\introduction.md
-  - Authentication: authentication-authorization.md
-  - Sytem Architecture:
-      - Architecture: system_overview/architecture.md
-      - Sales: system_overview/dhanman_sales.md
-      - Overview: system_overview/design.md
-      - Budgeting: system_overview/budgeting_system.md
-      - Water Tanker: system_overview/water_tanker.md
-      - RabbitMQ Setup: system_overview/rabbitmq_setup.md
-      - Messging Overview: system_overview/messging_design.md
-      - MinIO Setup: system_overview/MinIO.md
-      - MKDocs: system_overview/mkdocs.md
-      - Commands: system_overview/services_commands.md
-      - DebugCommands: system_overview/additional_debugging.md
-      - Dbtula Commands: dbtula/DbTula-Extract-Commands.md
-  - Test:
-      - Playwright E2E: test/testid-strategy.md
-  - Permissions:
-      - Naming Guidelines: permissions/permissions-naming-guidelines.md
-      - Users: permissions/users.md
-      - Common: system_overview/common.md
-      - Sales: permissions/sales.md
-  - Accounting Entries:
-      - Purchase Transactions: accounting_entries/purchase_transactions.md
-      - Sales Transactions: accounting_entries/sales_transactions.md
-      - Payroll Transactions: accounting_entries/payroll_transactions.md
-      - Other Entries: accounting_entries/entries_others.md
-      - Sample Entries: accounting_entries/entries_samples.md
-  - Financial Reports:
-      - Ledger of Customers: financial_reports/ledger_of_customers.md
-      - Ledger of Vendors: financial_reports/ledger_of_vendors.md
-      - Trial Balance: financial_reports/trial_balance.md
-      - Balance Sheet: financial_reports/balance_sheet.md
-      - Profit and Loss Statement: financial_reports/profit_and_loss_statement.md
-      - Cash Flow Statement: financial_reports/cash_flow_statement.md
-      - Accounts Receivable Aging Report: financial_reports/accounts_receivable_aging_report.md
-      - Accounts Payable Aging Report: financial_reports/accounts _payable_aging_report.md
-      - Pending Dues Report: financial_reports/pending_dues_report.md
-  - Payroll:
-      - Sample Templates: payroll/sample_templates.md
-  - Office Etiquette Policy: policies/office_etiquette_policy.md
-  - Coding Conventions:
-      - Backend: coding_conventions/cc_principle_backend.md
-  - How Tos:
-      - Email Templates: how-to/email_templates.md
-      - App UI Structure: how-to/app-ui-structure.md
-  - Devops:
-      - DigitalOcen: devops/qa_deployment_guide.md
-      - Data Backup: devops/dump_restore_clean.md
-      - QA-PROD: devops/qa_prod_deployment_guide.md
-  - About: about.md
+
+  # === PRODUCT DOCUMENTATION ===
+  - Product:
+    - Overview: product/index.md
+    - Getting Started:
+      - App UI Structure: product/getting-started/app-ui-structure.md
+      - Email Templates: product/getting-started/email-templates.md
+    - Community & Engagement:
+      - Complaints: product/community/complaints/
+      - Notice Board: product/community/notice-board/
+      - Polls & Voting: product/community/polls-voting/
+      - Resident Portal: product/community/resident-portal/
+    - Gate & Security:
+      - Visitor Management: product/gate-management/visitor-management/
+      - Access Control: product/gate-management/access-control/
+      - Security Staff: product/gate-management/security-staff/
+      - Vehicle Tracking: product/gate-management/vehicle-tracking/
+    - Events & Calendar:
+      - Event Management: product/events-calendar/event-management/
+      - Calendar Views: product/events-calendar/calendar-views/
+      - Facility Booking: product/events-calendar/facility-booking/
+    - Financial Management:
+      - Overview: product/financial-management/introduction.md
+      - Invoices: product/financial-management/invoices/
+      - Maintenance Bills: product/financial-management/maintenance-bills/
+      - Receipts: product/financial-management/receipts/
+    - Purchase & Vendor Management:
+      - Vendors: product/purchase-management/vendors/
+      - Purchase Orders: product/purchase-management/purchase-orders/
+    - Inventory & Assets:
+      - Asset Management: product/inventory-assets/asset-management/
+      - Stock Management: product/inventory-assets/stock-management/
+    - Payroll & HR:
+      - Employee Management: product/payroll/employee-management/
+      - Attendance: product/payroll/attendance/
+      - Salary Processing: product/payroll/salary-processing/
+      - Statutory Compliance: product/payroll/statutory-compliance/
+    - Water Management:
+      - Meter Reading: product/water-management/meter-reading/
+      - Water Billing: product/water-management/water-billing/
+      - Consumption Reports: product/water-management/consumption-reports/
+    - Reports & Analytics: product/reports-analytics/
+    - Integrations:
+      - Payment Gateways: product/integrations/payment-gateways/
+      - Email Providers: product/integrations/email-providers/
+      - SMS Gateways: product/integrations/sms-gateways/
+      - Accounting Export: product/integrations/accounting-export/
+    - Mobile Applications:
+      - Resident App: product/mobile-app/resident-app/
+      - Guard App: product/mobile-app/guard-app/
+    - Audit & Compliance:
+      - Audit Trails: product/audit-compliance/audit-trails/
+      - Compliance Reports: product/audit-compliance/compliance-reports/
+      - Document Management: product/audit-compliance/document-management/
+    - Settings & Configuration:
+      - User & Roles: product/users-roles/
+      - Global Configuration: product/settings-configuration/
+
+  # === SYSTEM DOCUMENTATION ===
+  - System:
+    - Overview: system/index.md
+    - Architecture:
+      - Overview: system/architecture/overview.md
+      - Principles: system/architecture/principles.md
+      - ADR: system/architecture/adr/
+      - Diagrams: system/architecture/diagrams/
+      - Modules: system/architecture/modules/
+      - Patterns: system/architecture/patterns/
+    - Infrastructure:
+      - Overview: system/infrastructure/overview.md
+      - Database: system/infrastructure/database/postgresql-setup.md
+      - Messaging: system/infrastructure/messaging/rabbitmq-setup.md
+      - Monitoring: system/infrastructure/monitoring/grafana-loki.md
+      - Storage: system/infrastructure/storage/minio-setup.md
+    - Development:
+      - Overview: system/development/index.md
+      - Getting Started: system/development/getting-started.md
+      - Standards:
+        - Backend Principles: system/development/standards/cc_principle_backend.md
+        - Frontend Principles: "system/development/standards/clean code principle - front end.md"
+        - Code Review Checklist: system/development/standards/code-review-checklist.md
+        - Git Workflow: system/development/standards/git-workflow.md
+      - Project Structure:
+        - Create New Project: system/development/project-structure/create-new-project.md
+        - Repository Conventions: system/development/project-structure/repository-conventions.md
+      - API Internal:
+        - Event Schemas: system/development/api-internal/event-schemas.md
+        - Service Contracts: system/development/api-internal/service-contracts.md
+      - Testing:
+        - Troubleshooting: system/development/testing/troubleshooting.md
+        - Test ID Strategy: system/development/testing/testid-strategy.md
+    - Operations:
+      - Commands & Service Management: system/operations/commands.md
+      - Deployment:
+        - QA Deployment Guide: system/operations/deployment/qa_deployment_guide.md
+        - QA-PROD Deployment: system/operations/deployment/qa_prod_deployment_guide.md
+        - Data Backup & Restore: system/operations/deployment/dump_restore_clean.md
+      - Monitoring: system/operations/monitoring/dashboards.md
+      - Runbooks: system/operations/runbooks/qa-refresh-procedure.md
+    - Onboarding:
+      - Developer Onboarding: system/onboarding/developer-onboarding.md
+      - First Contribution: system/onboarding/first-contribution.md
+    - Security:
+      - Overview: system/security/index.md
+      - Authentication Flow: system/security/authentication-flow.md
+      - Permissions Guidelines: system/security/permissions-naming-guidelines.md
+      - Secrets Management: system/security/secrets-management.md
+      - Office Etiquette Policy: system/security/office_etiquette_policy.md
 
 theme:
-  name: "material"
-  highlightjs: true
+  name: material
   logo: images/dhanman-docs.png
   favicon: images/dhanman-docs.png
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.expand
 
 markdown_extensions:
-  - codehilite:
-      guess_lang: false
   - admonition
+  - codehilite
   - toc:
       permalink: true
   - plantuml_markdown:
