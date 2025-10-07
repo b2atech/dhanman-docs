@@ -1,0 +1,3040 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../scheduled-jobs/">
+      
+      
+        <link rel="next" href="../../../infrastructure/overview/">
+      
+      
+      <link rel="icon" href="../../../../images/dhanman-docs.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Resilience & Fault Tolerance - Dhanman Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.a40c8224.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+    
+      <link rel="stylesheet" href="../../../../extra.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#resilience-and-fault-tolerance-patterns" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Dhanman Documentation" class="md-header__button md-logo" aria-label="Dhanman Documentation" data-md-component="logo">
+      
+  <img src="../../../../images/dhanman-docs.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dhanman Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Resilience & Fault Tolerance
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Dhanman Documentation" class="md-nav__button md-logo" aria-label="Dhanman Documentation" data-md-component="logo">
+      
+  <img src="../../../../images/dhanman-docs.png" alt="logo">
+
+    </a>
+    Dhanman Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Product
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Product
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../product/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../product/getting-started/app-ui-structure/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../product/community/complaints/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Community & Engagement
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../product/gate-management/visitor-management/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Gate & Security
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../product/events-calendar/event-management/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Events & Calendar
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../product/financial-management/introduction/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Financial Management
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../product/purchase-management/vendors/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Purchase & Vendor Management
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../product/inventory-assets/asset-management/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Inventory & Assets
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../product/payroll/employee-management/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Payroll & HR
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../product/water-management/meter-reading/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Water Management
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../product/reports-analytics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reports & Analytics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../product/integrations/payment-gateways/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Integrations
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../product/mobile-app/resident-app/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Mobile Applications
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../product/audit-compliance/audit-trails/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Audit & Compliance
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../product/users-roles/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Settings & Configuration
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    System
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design-decisions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Decisions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment-scalability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment & Scalability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../principles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagrams
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_9" id="__nav_3_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Patterns
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            Patterns
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cqrs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CQRS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../domain-driven-design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Domain-Driven Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../event-sourcing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event Sourcing & Messaging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../communication-patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Communication Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scheduled-jobs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scheduled Jobs (Hangfire)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Resilience & Fault Tolerance
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Resilience & Fault Tolerance
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-resilience-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Resilience Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Resilience Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-retry-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Retry Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-circuit-breaker-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Circuit Breaker Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-bulkhead-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Bulkhead Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-timeout-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Timeout Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-fallback-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Fallback Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distributed-system-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distributed System Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Distributed System Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6-health-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Health Checks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-idempotency" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Idempotency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-dead-letter-queue-dlq" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Dead Letter Queue (DLQ)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-resilience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Resilience
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Resilience">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#9-database-transaction-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Database Transaction Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-saga-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Saga Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-and-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring and Observability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoring and Observability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-distributed-tracing" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Distributed Tracing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-correlation-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Correlation IDs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Do's ✅
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#donts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Don'ts ❌
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-resilience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Resilience
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Resilience">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chaos-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chaos Engineering
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../infrastructure/overview/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infrastructure
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../development/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Development
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../operations/commands/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Operations
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../onboarding/developer-onboarding/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Onboarding
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../security/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-resilience-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Resilience Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Resilience Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-retry-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Retry Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-circuit-breaker-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Circuit Breaker Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-bulkhead-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Bulkhead Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-timeout-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Timeout Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-fallback-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Fallback Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distributed-system-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distributed System Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Distributed System Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6-health-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Health Checks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-idempotency" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Idempotency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-dead-letter-queue-dlq" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Dead Letter Queue (DLQ)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-resilience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Resilience
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Resilience">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#9-database-transaction-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Database Transaction Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-saga-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Saga Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-and-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring and Observability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoring and Observability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-distributed-tracing" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Distributed Tracing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-correlation-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Correlation IDs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Do's ✅
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#donts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Don'ts ❌
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-resilience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Resilience
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Resilience">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chaos-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chaos Engineering
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="resilience-and-fault-tolerance-patterns">Resilience and Fault Tolerance Patterns<a class="headerlink" href="#resilience-and-fault-tolerance-patterns" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Dhanman's microservices architecture implements comprehensive resilience patterns to ensure system reliability, fault tolerance, and graceful degradation under failure conditions. This document outlines the strategies and patterns used to build a robust, self-healing distributed system.</p>
+<hr />
+<h2 id="core-resilience-patterns">Core Resilience Patterns<a class="headerlink" href="#core-resilience-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="1-retry-pattern">1. Retry Pattern<a class="headerlink" href="#1-retry-pattern" title="Permanent link">&para;</a></h3>
+<p>Automatically retry failed operations with exponential backoff.</p>
+<p><strong>Use Cases:</strong>
+- Transient network failures
+- Temporary database connection issues
+- External API timeouts
+- Message broker connection drops</p>
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">RetryPolicyConfiguration</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">IAsyncPolicy</span><span class="o">&lt;</span><span class="n">HttpResponseMessage</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GetRetryPolicy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">HttpPolicyExtensions</span>
+<span class="w">            </span><span class="p">.</span><span class="n">HandleTransientHttpError</span><span class="p">()</span><span class="w"> </span><span class="c1">// 5xx, 408, network failures</span>
+<span class="w">            </span><span class="p">.</span><span class="n">OrResult</span><span class="p">(</span><span class="n">msg</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">msg</span><span class="p">.</span><span class="n">StatusCode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">TooManyRequests</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">WaitAndRetryAsync</span><span class="p">(</span>
+<span class="w">                </span><span class="n">retryCount</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">                </span><span class="n">sleepDurationProvider</span><span class="p">:</span><span class="w"> </span><span class="n">retryAttempt</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span>
+<span class="w">                    </span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="n">Pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">retryAttempt</span><span class="p">)),</span><span class="w"> </span><span class="c1">// Exponential backoff</span>
+<span class="w">                </span><span class="n">onRetry</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">outcome</span><span class="p">,</span><span class="w"> </span><span class="n">timespan</span><span class="p">,</span><span class="w"> </span><span class="n">retryCount</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogWarning</span><span class="p">(</span>
+<span class="w">                        </span><span class="s">&quot;Retry {RetryCount} after {Delay}ms due to {Reason}&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">retryCount</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">timespan</span><span class="p">.</span><span class="n">TotalMilliseconds</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">outcome</span><span class="p">.</span><span class="n">Exception</span><span class="o">?.</span><span class="n">Message</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="n">outcome</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">StatusCode</span><span class="p">.</span><span class="n">ToString</span><span class="p">()</span>
+<span class="w">                    </span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage in HTTP client</span>
+<span class="n">services</span><span class="p">.</span><span class="n">AddHttpClient</span><span class="o">&lt;</span><span class="n">IExternalApiClient</span><span class="p">,</span><span class="w"> </span><span class="n">ExternalApiClient</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">AddPolicyHandler</span><span class="p">(</span><span class="n">RetryPolicyConfiguration</span><span class="p">.</span><span class="n">GetRetryPolicy</span><span class="p">());</span>
+</code></pre></div>
+<p><strong>RabbitMQ Message Retry:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">RabbitMqConsumer</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IConnection</span><span class="w"> </span><span class="n">_connection</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ILogger</span><span class="o">&lt;</span><span class="n">RabbitMqConsumer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_logger</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ProcessMessageWithRetryAsync</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="n">T</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span>
+<span class="w">        </span><span class="n">Func</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">CancellationToken</span><span class="p">,</span><span class="w"> </span><span class="n">Task</span><span class="o">&gt;</span><span class="w"> </span><span class="n">handler</span><span class="p">,</span>
+<span class="w">        </span><span class="n">CancellationToken</span><span class="w"> </span><span class="n">cancellationToken</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">maxRetries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">retryDelays</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w"> </span><span class="mi">15000</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// 1s, 5s, 15s</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">attempt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">attempt</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">maxRetries</span><span class="p">;</span><span class="w"> </span><span class="n">attempt</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">try</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">await</span><span class="w"> </span><span class="nf">handler</span><span class="p">(</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">cancellationToken</span><span class="p">);</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogWarning</span><span class="p">(</span>
+<span class="w">                    </span><span class="n">ex</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">&quot;Message processing failed (attempt {Attempt}/{MaxRetries})&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">attempt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">maxRetries</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">                </span><span class="p">);</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">attempt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxRetries</span><span class="p">)</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">await</span><span class="w"> </span><span class="n">Task</span><span class="p">.</span><span class="n">Delay</span><span class="p">(</span><span class="n">retryDelays</span><span class="p">[</span><span class="n">attempt</span><span class="p">],</span><span class="w"> </span><span class="n">cancellationToken</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">else</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="c1">// Move to dead-letter queue after all retries exhausted</span>
+<span class="w">                    </span><span class="k">await</span><span class="w"> </span><span class="nf">MoveToDeadLetterQueueAsync</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="2-circuit-breaker-pattern">2. Circuit Breaker Pattern<a class="headerlink" href="#2-circuit-breaker-pattern" title="Permanent link">&para;</a></h3>
+<p>Prevent cascade failures by stopping calls to failing services.</p>
+<p><strong>States:</strong>
+- <strong>Closed</strong>: Normal operation, requests pass through
+- <strong>Open</strong>: Failure threshold exceeded, requests fail immediately
+- <strong>Half-Open</strong>: Testing if service recovered</p>
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">CircuitBreakerConfiguration</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">IAsyncPolicy</span><span class="o">&lt;</span><span class="n">HttpResponseMessage</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GetCircuitBreakerPolicy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">HttpPolicyExtensions</span>
+<span class="w">            </span><span class="p">.</span><span class="n">HandleTransientHttpError</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">CircuitBreakerAsync</span><span class="p">(</span>
+<span class="w">                </span><span class="n">handledEventsAllowedBeforeBreaking</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="c1">// Open after 5 failures</span>
+<span class="w">                </span><span class="n">durationOfBreak</span><span class="p">:</span><span class="w"> </span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span><span class="w"> </span><span class="c1">// Stay open for 30s</span>
+<span class="w">                </span><span class="n">onBreak</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">outcome</span><span class="p">,</span><span class="w"> </span><span class="n">duration</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogError</span><span class="p">(</span>
+<span class="w">                        </span><span class="s">&quot;Circuit breaker opened for {Duration}s due to {Reason}&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">duration</span><span class="p">.</span><span class="n">TotalSeconds</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">outcome</span><span class="p">.</span><span class="n">Exception</span><span class="o">?.</span><span class="n">Message</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="n">outcome</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">StatusCode</span><span class="p">.</span><span class="n">ToString</span><span class="p">()</span>
+<span class="w">                    </span><span class="p">);</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="n">onReset</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogInformation</span><span class="p">(</span><span class="s">&quot;Circuit breaker reset - service recovered&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="n">onHalfOpen</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogInformation</span><span class="p">(</span><span class="s">&quot;Circuit breaker half-open - testing service&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Combined with retry policy</span>
+<span class="n">services</span><span class="p">.</span><span class="n">AddHttpClient</span><span class="o">&lt;</span><span class="n">IPaymentGatewayClient</span><span class="p">,</span><span class="w"> </span><span class="n">PaymentGatewayClient</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">AddPolicyHandler</span><span class="p">(</span><span class="n">RetryPolicyConfiguration</span><span class="p">.</span><span class="n">GetRetryPolicy</span><span class="p">())</span>
+<span class="w">    </span><span class="p">.</span><span class="n">AddPolicyHandler</span><span class="p">(</span><span class="n">CircuitBreakerConfiguration</span><span class="p">.</span><span class="n">GetCircuitBreakerPolicy</span><span class="p">());</span>
+</code></pre></div>
+<p><strong>Circuit Breaker with Polly:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ResilientPaymentService</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IPaymentGatewayClient</span><span class="w"> </span><span class="n">_paymentGateway</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IAsyncPolicy</span><span class="o">&lt;</span><span class="n">PaymentResult</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_policy</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">ResilientPaymentService</span><span class="p">(</span><span class="n">IPaymentGatewayClient</span><span class="w"> </span><span class="n">paymentGateway</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_paymentGateway</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paymentGateway</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">retryPolicy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Policy</span><span class="o">&lt;</span><span class="n">PaymentResult</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="p">.</span><span class="n">Handle</span><span class="o">&lt;</span><span class="n">HttpRequestException</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">Or</span><span class="o">&lt;</span><span class="n">TimeoutException</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">WaitAndRetryAsync</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">retryAttempt</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="n">Pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">retryAttempt</span><span class="p">)));</span>
+
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">circuitBreakerPolicy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Policy</span><span class="o">&lt;</span><span class="n">PaymentResult</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="p">.</span><span class="n">Handle</span><span class="o">&lt;</span><span class="n">HttpRequestException</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">CircuitBreakerAsync</span><span class="p">(</span>
+<span class="w">                </span><span class="n">handledEventsAllowedBeforeBreaking</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">                </span><span class="n">durationOfBreak</span><span class="p">:</span><span class="w"> </span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromMinutes</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">            </span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">_policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Policy</span><span class="p">.</span><span class="n">WrapAsync</span><span class="p">(</span><span class="n">retryPolicy</span><span class="p">,</span><span class="w"> </span><span class="n">circuitBreakerPolicy</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="n">PaymentResult</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ProcessPaymentAsync</span><span class="p">(</span><span class="n">PaymentRequest</span><span class="w"> </span><span class="n">request</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_policy</span><span class="p">.</span><span class="n">ExecuteAsync</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_paymentGateway</span><span class="p">.</span><span class="n">ProcessAsync</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="3-bulkhead-pattern">3. Bulkhead Pattern<a class="headerlink" href="#3-bulkhead-pattern" title="Permanent link">&para;</a></h3>
+<p>Isolate resources to prevent total system failure.</p>
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">BulkheadConfiguration</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">IAsyncPolicy</span><span class="w"> </span><span class="nf">GetBulkheadPolicy</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">maxParallelization</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">maxQueuedActions</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Policy</span><span class="p">.</span><span class="n">BulkheadAsync</span><span class="p">(</span>
+<span class="w">            </span><span class="n">maxParallelization</span><span class="p">:</span><span class="w"> </span><span class="n">maxParallelization</span><span class="p">,</span>
+<span class="w">            </span><span class="n">maxQueuingActions</span><span class="p">:</span><span class="w"> </span><span class="n">maxQueuedActions</span><span class="p">,</span>
+<span class="w">            </span><span class="n">onBulkheadRejectedAsync</span><span class="p">:</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogWarning</span><span class="p">(</span>
+<span class="w">                    </span><span class="s">&quot;Bulkhead rejected execution - all {MaxParallelization} slots in use&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">maxParallelization</span>
+<span class="w">                </span><span class="p">);</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">Task</span><span class="p">.</span><span class="n">CompletedTask</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Separate thread pools for different operations</span>
+<span class="n">services</span><span class="p">.</span><span class="n">AddHttpClient</span><span class="p">(</span><span class="s">&quot;CriticalOperations&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">AddPolicyHandler</span><span class="p">(</span><span class="n">BulkheadConfiguration</span><span class="p">.</span><span class="n">GetBulkheadPolicy</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">));</span>
+
+<span class="n">services</span><span class="p">.</span><span class="n">AddHttpClient</span><span class="p">(</span><span class="s">&quot;NonCriticalOperations&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">AddPolicyHandler</span><span class="p">(</span><span class="n">BulkheadConfiguration</span><span class="p">.</span><span class="n">GetBulkheadPolicy</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">));</span>
+</code></pre></div>
+<p><strong>Database Connection Pooling:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;ConnectionStrings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;DefaultConnection&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Host=localhost;Database=dhanman;Username=user;Password=pass;Maximum Pool Size=100;Minimum Pool Size=10;Connection Idle Lifetime=300&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="4-timeout-pattern">4. Timeout Pattern<a class="headerlink" href="#4-timeout-pattern" title="Permanent link">&para;</a></h3>
+<p>Prevent indefinite waiting for responses.</p>
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TimeoutConfiguration</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">IAsyncPolicy</span><span class="w"> </span><span class="nf">GetTimeoutPolicy</span><span class="p">(</span><span class="n">TimeSpan</span><span class="w"> </span><span class="n">timeout</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Policy</span><span class="p">.</span><span class="n">TimeoutAsync</span><span class="p">(</span>
+<span class="w">            </span><span class="n">timeout</span><span class="p">,</span>
+<span class="w">            </span><span class="n">TimeoutStrategy</span><span class="p">.</span><span class="n">Optimistic</span><span class="p">,</span>
+<span class="w">            </span><span class="n">onTimeoutAsync</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">timespan</span><span class="p">,</span><span class="w"> </span><span class="n">task</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogWarning</span><span class="p">(</span>
+<span class="w">                    </span><span class="s">&quot;Operation timed out after {Timeout}ms&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">timespan</span><span class="p">.</span><span class="n">TotalMilliseconds</span>
+<span class="w">                </span><span class="p">);</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">Task</span><span class="p">.</span><span class="n">CompletedTask</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// HTTP client with timeout</span>
+<span class="n">services</span><span class="p">.</span><span class="n">AddHttpClient</span><span class="o">&lt;</span><span class="n">IReportGeneratorClient</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;ReportGenerator&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">AddPolicyHandler</span><span class="p">(</span><span class="n">TimeoutConfiguration</span><span class="p">.</span><span class="n">GetTimeoutPolicy</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromMinutes</span><span class="p">(</span><span class="mi">5</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">.</span><span class="n">AddPolicyHandler</span><span class="p">(</span><span class="n">RetryPolicyConfiguration</span><span class="p">.</span><span class="n">GetRetryPolicy</span><span class="p">());</span>
+</code></pre></div>
+<p><strong>Database Query Timeout:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">InvoiceRepository</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IInvoiceRepository</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ApplicationDbContext</span><span class="w"> </span><span class="n">_context</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Invoice</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">GetOverdueInvoicesAsync</span><span class="p">(</span><span class="n">CancellationToken</span><span class="w"> </span><span class="n">cancellationToken</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Set command timeout to 30 seconds</span>
+<span class="w">        </span><span class="n">_context</span><span class="p">.</span><span class="n">Database</span><span class="p">.</span><span class="n">SetCommandTimeout</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_context</span><span class="p">.</span><span class="n">Invoices</span>
+<span class="w">            </span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">DueDate</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">UtcNow</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">i</span><span class="p">.</span><span class="n">IsPaid</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">ToListAsync</span><span class="p">(</span><span class="n">cancellationToken</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="5-fallback-pattern">5. Fallback Pattern<a class="headerlink" href="#5-fallback-pattern" title="Permanent link">&para;</a></h3>
+<p>Provide alternative behavior when primary fails.</p>
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">FallbackConfiguration</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">IAsyncPolicy</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GetFallbackPolicy</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">fallbackValue</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Policy</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="p">.</span><span class="n">Handle</span><span class="o">&lt;</span><span class="n">Exception</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">FallbackAsync</span><span class="p">(</span>
+<span class="w">                </span><span class="n">fallbackValue</span><span class="p">,</span>
+<span class="w">                </span><span class="n">onFallbackAsync</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">exception</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogWarning</span><span class="p">(</span>
+<span class="w">                        </span><span class="n">exception</span><span class="p">.</span><span class="n">Exception</span><span class="p">,</span>
+<span class="w">                        </span><span class="s">&quot;Fallback triggered due to error&quot;</span>
+<span class="w">                    </span><span class="p">);</span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="n">Task</span><span class="p">.</span><span class="n">CompletedTask</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Example: Currency conversion with fallback</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">CurrencyConverter</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IExchangeRateApi</span><span class="w"> </span><span class="n">_externalApi</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ICacheService</span><span class="w"> </span><span class="n">_cache</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="kt">decimal</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ConvertAsync</span><span class="p">(</span><span class="kt">decimal</span><span class="w"> </span><span class="n">amount</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="k">from</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">to</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Policy</span><span class="o">&lt;</span><span class="kt">decimal</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="p">.</span><span class="n">Handle</span><span class="o">&lt;</span><span class="n">HttpRequestException</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">FallbackAsync</span><span class="p">(</span>
+<span class="w">                </span><span class="n">fallbackValue</span><span class="p">:</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">GetCachedRateAsync</span><span class="p">(</span><span class="k">from</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">)</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="mf">1.0m</span><span class="p">,</span>
+<span class="w">                </span><span class="n">onFallbackAsync</span><span class="p">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="n">exception</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogWarning</span><span class="p">(</span><span class="s">&quot;Using cached exchange rate due to API failure&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">policy</span><span class="p">.</span><span class="n">ExecuteAsync</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_externalApi</span><span class="p">.</span><span class="n">GetExchangeRateAsync</span><span class="p">(</span><span class="k">from</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">);</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="nf">CacheRateAsync</span><span class="p">(</span><span class="k">from</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="n">rate</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">amount</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">rate</span><span class="p">;</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Feature degradation example</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">NotificationService</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IEmailService</span><span class="w"> </span><span class="n">_emailService</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ISmsService</span><span class="w"> </span><span class="n">_smsService</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">SendNotificationAsync</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Policy</span>
+<span class="w">            </span><span class="p">.</span><span class="n">Handle</span><span class="o">&lt;</span><span class="n">Exception</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">FallbackAsync</span><span class="p">(</span>
+<span class="w">                </span><span class="n">fallbackAction</span><span class="p">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="n">cancellationToken</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="c1">// Fallback to SMS if email fails</span>
+<span class="w">                    </span><span class="k">await</span><span class="w"> </span><span class="n">_smsService</span><span class="p">.</span><span class="n">SendAsync</span><span class="p">(</span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">cancellationToken</span><span class="p">);</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="n">onFallbackAsync</span><span class="p">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="n">exception</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogWarning</span><span class="p">(</span><span class="s">&quot;Email failed, falling back to SMS&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">policy</span><span class="p">.</span><span class="n">ExecuteAsync</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="n">_emailService</span><span class="p">.</span><span class="n">SendAsync</span><span class="p">(</span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="distributed-system-patterns">Distributed System Patterns<a class="headerlink" href="#distributed-system-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="6-health-checks">6. Health Checks<a class="headerlink" href="#6-health-checks" title="Permanent link">&para;</a></h3>
+<p>Monitor service health and dependencies.</p>
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Program.cs</span>
+<span class="n">builder</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="n">AddHealthChecks</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">AddNpgSql</span><span class="p">(</span>
+<span class="w">        </span><span class="n">builder</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="n">GetConnectionString</span><span class="p">(</span><span class="s">&quot;DefaultConnection&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;database&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">timeout</span><span class="p">:</span><span class="w"> </span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+<span class="w">        </span><span class="n">tags</span><span class="p">:</span><span class="w"> </span><span class="k">new</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;db&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;postgres&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">AddRabbitMQ</span><span class="p">(</span>
+<span class="w">        </span><span class="n">rabbitConnectionString</span><span class="p">:</span><span class="w"> </span><span class="n">builder</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="n">GetConnectionString</span><span class="p">(</span><span class="s">&quot;RabbitMQ&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;rabbitmq&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">timeout</span><span class="p">:</span><span class="w"> </span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+<span class="w">        </span><span class="n">tags</span><span class="p">:</span><span class="w"> </span><span class="k">new</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;messaging&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">AddUrlGroup</span><span class="p">(</span>
+<span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="nf">Uri</span><span class="p">(</span><span class="s">&quot;https://api.external-service.com/health&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;external-api&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">timeout</span><span class="p">:</span><span class="w"> </span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+<span class="w">        </span><span class="n">tags</span><span class="p">:</span><span class="w"> </span><span class="k">new</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;external&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">AddCheck</span><span class="o">&lt;</span><span class="n">CustomHealthCheck</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;custom-check&quot;</span><span class="p">);</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">MapHealthChecks</span><span class="p">(</span><span class="s">&quot;/health&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HealthCheckOptions</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">ResponseWriter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">report</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">ContentType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JsonSerializer</span><span class="p">.</span><span class="n">Serialize</span><span class="p">(</span><span class="k">new</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">report</span><span class="p">.</span><span class="n">Status</span><span class="p">.</span><span class="n">ToString</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">checks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">report</span><span class="p">.</span><span class="n">Entries</span><span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">e</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">new</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span>
+<span class="w">                </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">Value</span><span class="p">.</span><span class="n">Status</span><span class="p">.</span><span class="n">ToString</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">Value</span><span class="p">.</span><span class="n">Description</span><span class="p">,</span>
+<span class="w">                </span><span class="n">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">Value</span><span class="p">.</span><span class="n">Duration</span><span class="p">.</span><span class="n">TotalMilliseconds</span>
+<span class="w">            </span><span class="p">}),</span>
+<span class="w">            </span><span class="n">totalDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">report</span><span class="p">.</span><span class="n">TotalDuration</span><span class="p">.</span><span class="n">TotalMilliseconds</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">WriteAsync</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// Liveness probe (basic check)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">MapHealthChecks</span><span class="p">(</span><span class="s">&quot;/health/live&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HealthCheckOptions</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Predicate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">false</span><span class="w"> </span><span class="c1">// No checks, just returns 200 if app running</span>
+<span class="p">});</span>
+
+<span class="c1">// Readiness probe (full check)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">MapHealthChecks</span><span class="p">(</span><span class="s">&quot;/health/ready&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HealthCheckOptions</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Predicate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">check</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">check</span><span class="p">.</span><span class="n">Tags</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;ready&quot;</span><span class="p">)</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>Custom Health Check:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">DatabaseHealthCheck</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IHealthCheck</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IApplicationDbContext</span><span class="w"> </span><span class="n">_context</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="n">HealthCheckResult</span><span class="o">&gt;</span><span class="w"> </span><span class="n">CheckHealthAsync</span><span class="p">(</span>
+<span class="w">        </span><span class="n">HealthCheckContext</span><span class="w"> </span><span class="n">context</span><span class="p">,</span>
+<span class="w">        </span><span class="n">CancellationToken</span><span class="w"> </span><span class="n">cancellationToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Simple query to verify connection</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="n">_context</span><span class="p">.</span><span class="n">Database</span><span class="p">.</span><span class="n">ExecuteSqlRawAsync</span><span class="p">(</span>
+<span class="w">                </span><span class="s">&quot;SELECT 1&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="n">cancellationToken</span>
+<span class="w">            </span><span class="p">);</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">HealthCheckResult</span><span class="p">.</span><span class="n">Healthy</span><span class="p">(</span><span class="s">&quot;Database connection is healthy&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">HealthCheckResult</span><span class="p">.</span><span class="n">Unhealthy</span><span class="p">(</span>
+<span class="w">                </span><span class="s">&quot;Database connection failed&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="n">ex</span>
+<span class="w">            </span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="7-idempotency">7. Idempotency<a class="headerlink" href="#7-idempotency" title="Permanent link">&para;</a></h3>
+<p>Ensure operations can be safely retried.</p>
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">IdempotentCommandHandler</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IRequestHandler</span><span class="o">&lt;</span><span class="n">CreateInvoiceCommand</span><span class="p">,</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="n">Guid</span><span class="o">&gt;&gt;</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IApplicationDbContext</span><span class="w"> </span><span class="n">_context</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IIdempotencyService</span><span class="w"> </span><span class="n">_idempotencyService</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="n">Result</span><span class="o">&lt;</span><span class="n">Guid</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Handle</span><span class="p">(</span>
+<span class="w">        </span><span class="n">CreateInvoiceCommand</span><span class="w"> </span><span class="n">request</span><span class="p">,</span>
+<span class="w">        </span><span class="n">CancellationToken</span><span class="w"> </span><span class="n">cancellationToken</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Check if command already processed</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">idempotencyKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="n">IdempotencyKey</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">existingResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_idempotencyService</span><span class="p">.</span><span class="n">GetResultAsync</span><span class="o">&lt;</span><span class="n">Guid</span><span class="o">&gt;</span><span class="p">(</span><span class="n">idempotencyKey</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">existingResult</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogInformation</span><span class="p">(</span>
+<span class="w">                </span><span class="s">&quot;Command already processed with key {IdempotencyKey}&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="n">idempotencyKey</span>
+<span class="w">            </span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="n">Guid</span><span class="o">&gt;</span><span class="p">.</span><span class="n">Success</span><span class="p">(</span><span class="n">existingResult</span><span class="p">.</span><span class="n">Value</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// Process command</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">invoice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Invoice</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="n">CustomerId</span><span class="p">,</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="n">Amount</span><span class="p">);</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">_context</span><span class="p">.</span><span class="n">Invoices</span><span class="p">.</span><span class="n">AddAsync</span><span class="p">(</span><span class="n">invoice</span><span class="p">,</span><span class="w"> </span><span class="n">cancellationToken</span><span class="p">);</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">_context</span><span class="p">.</span><span class="n">SaveChangesAsync</span><span class="p">(</span><span class="n">cancellationToken</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Store result for future requests</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">_idempotencyService</span><span class="p">.</span><span class="n">SaveResultAsync</span><span class="p">(</span>
+<span class="w">            </span><span class="n">idempotencyKey</span><span class="p">,</span>
+<span class="w">            </span><span class="n">invoice</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span>
+<span class="w">            </span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromHours</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
+<span class="w">        </span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="n">Guid</span><span class="o">&gt;</span><span class="p">.</span><span class="n">Success</span><span class="p">(</span><span class="n">invoice</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Idempotency service</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">IdempotencyService</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IIdempotencyService</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IDistributedCache</span><span class="w"> </span><span class="n">_cache</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="n">T</span><span class="o">?&gt;</span><span class="w"> </span><span class="n">GetResultAsync</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">key</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">cachedValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_cache</span><span class="p">.</span><span class="n">GetStringAsync</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cachedValue</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">JsonSerializer</span><span class="p">.</span><span class="n">Deserialize</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">cachedValue</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="n">SaveResultAsync</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="n">TimeSpan</span><span class="w"> </span><span class="n">expiration</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">serialized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JsonSerializer</span><span class="p">.</span><span class="n">Serialize</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">_cache</span><span class="p">.</span><span class="n">SetStringAsync</span><span class="p">(</span>
+<span class="w">            </span><span class="n">key</span><span class="p">,</span>
+<span class="w">            </span><span class="n">serialized</span><span class="p">,</span>
+<span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">DistributedCacheEntryOptions</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">AbsoluteExpirationRelativeToNow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">expiration</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>API Idempotency Header:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="na">[HttpPost]</span>
+<span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="n">IActionResult</span><span class="o">&gt;</span><span class="w"> </span><span class="n">CreateInvoice</span><span class="p">(</span>
+<span class="w">    </span><span class="na">[FromBody]</span><span class="w"> </span><span class="n">CreateInvoiceRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span>
+<span class="w">    </span><span class="na">[FromHeader(Name = &quot;Idempotency-Key&quot;)]</span><span class="w"> </span><span class="kt">string?</span><span class="w"> </span><span class="n">idempotencyKey</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">idempotencyKey</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nf">BadRequest</span><span class="p">(</span><span class="s">&quot;Idempotency-Key header is required&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CreateInvoiceCommand</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">IdempotencyKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">idempotencyKey</span><span class="p">,</span>
+<span class="w">        </span><span class="n">CustomerId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="n">CustomerId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="n">Amount</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_mediator</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="n">command</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">IsSuccess</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">Ok</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">BadRequest</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">Error</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="8-dead-letter-queue-dlq">8. Dead Letter Queue (DLQ)<a class="headerlink" href="#8-dead-letter-queue-dlq" title="Permanent link">&para;</a></h3>
+<p>Handle messages that cannot be processed.</p>
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">RabbitMqConfiguration</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ConfigureQueuesWithDLQ</span><span class="p">(</span><span class="n">IModel</span><span class="w"> </span><span class="n">channel</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">queueName</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">dlqName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">$&quot;{queueName}.dlq&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">dlxName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">$&quot;{queueName}.dlx&quot;</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// Declare dead-letter exchange</span>
+<span class="w">        </span><span class="n">channel</span><span class="p">.</span><span class="n">ExchangeDeclare</span><span class="p">(</span>
+<span class="w">            </span><span class="n">exchange</span><span class="p">:</span><span class="w"> </span><span class="n">dlxName</span><span class="p">,</span>
+<span class="w">            </span><span class="n">type</span><span class="p">:</span><span class="w"> </span><span class="n">ExchangeType</span><span class="p">.</span><span class="n">Direct</span><span class="p">,</span>
+<span class="w">            </span><span class="n">durable</span><span class="p">:</span><span class="w"> </span><span class="k">true</span>
+<span class="w">        </span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Declare dead-letter queue</span>
+<span class="w">        </span><span class="n">channel</span><span class="p">.</span><span class="n">QueueDeclare</span><span class="p">(</span>
+<span class="w">            </span><span class="n">queue</span><span class="p">:</span><span class="w"> </span><span class="n">dlqName</span><span class="p">,</span>
+<span class="w">            </span><span class="n">durable</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
+<span class="w">            </span><span class="n">exclusive</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span>
+<span class="w">            </span><span class="n">autoDelete</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span>
+<span class="w">            </span><span class="n">arguments</span><span class="p">:</span><span class="w"> </span><span class="k">null</span>
+<span class="w">        </span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Bind DLQ to DLX</span>
+<span class="w">        </span><span class="n">channel</span><span class="p">.</span><span class="n">QueueBind</span><span class="p">(</span>
+<span class="w">            </span><span class="n">queue</span><span class="p">:</span><span class="w"> </span><span class="n">dlqName</span><span class="p">,</span>
+<span class="w">            </span><span class="n">exchange</span><span class="p">:</span><span class="w"> </span><span class="n">dlxName</span><span class="p">,</span>
+<span class="w">            </span><span class="n">routingKey</span><span class="p">:</span><span class="w"> </span><span class="n">queueName</span>
+<span class="w">        </span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Declare main queue with DLX configuration</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">arguments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">object</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;x-dead-letter-exchange&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dlxName</span><span class="w"> </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;x-dead-letter-routing-key&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">queueName</span><span class="w"> </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;x-message-ttl&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">86400000</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// 24 hours</span>
+<span class="w">        </span><span class="p">};</span>
+
+<span class="w">        </span><span class="n">channel</span><span class="p">.</span><span class="n">QueueDeclare</span><span class="p">(</span>
+<span class="w">            </span><span class="n">queue</span><span class="p">:</span><span class="w"> </span><span class="n">queueName</span><span class="p">,</span>
+<span class="w">            </span><span class="n">durable</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
+<span class="w">            </span><span class="n">exclusive</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span>
+<span class="w">            </span><span class="n">autoDelete</span><span class="p">:</span><span class="w"> </span><span class="k">false</span><span class="p">,</span>
+<span class="w">            </span><span class="n">arguments</span><span class="p">:</span><span class="w"> </span><span class="n">arguments</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// DLQ monitoring and reprocessing</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">DeadLetterQueueService</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IModel</span><span class="w"> </span><span class="n">_channel</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ILogger</span><span class="o">&lt;</span><span class="n">DeadLetterQueueService</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_logger</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">DeadLetterMessage</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">GetDeadLetterMessagesAsync</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">queueName</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">dlqName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">$&quot;{queueName}.dlq&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">DeadLetterMessage</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">messageCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_channel</span><span class="p">.</span><span class="n">MessageCount</span><span class="p">(</span><span class="n">dlqName</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="n">Min</span><span class="p">(</span><span class="n">messageCount</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_channel</span><span class="p">.</span><span class="n">BasicGet</span><span class="p">(</span><span class="n">dlqName</span><span class="p">,</span><span class="w"> </span><span class="k">false</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">messages</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">DeadLetterMessage</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">DeliveryTag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">DeliveryTag</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">Body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetString</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">Body</span><span class="p">.</span><span class="n">ToArray</span><span class="p">()),</span>
+<span class="w">                    </span><span class="n">Headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">BasicProperties</span><span class="p">.</span><span class="n">Headers</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">Timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">BasicProperties</span><span class="p">.</span><span class="n">Timestamp</span><span class="p">.</span><span class="n">UnixTime</span>
+<span class="w">                </span><span class="p">});</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">messages</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">ReprocessMessageAsync</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">queueName</span><span class="p">,</span><span class="w"> </span><span class="kt">ulong</span><span class="w"> </span><span class="n">deliveryTag</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">dlqName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">$&quot;{queueName}.dlq&quot;</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// Get message from DLQ</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_channel</span><span class="p">.</span><span class="n">BasicGet</span><span class="p">(</span><span class="n">dlqName</span><span class="p">,</span><span class="w"> </span><span class="k">false</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">InvalidOperationException</span><span class="p">(</span><span class="s">&quot;Message not found&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// Publish to original queue</span>
+<span class="w">        </span><span class="n">_channel</span><span class="p">.</span><span class="n">BasicPublish</span><span class="p">(</span>
+<span class="w">            </span><span class="n">exchange</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">routingKey</span><span class="p">:</span><span class="w"> </span><span class="n">queueName</span><span class="p">,</span>
+<span class="w">            </span><span class="n">basicProperties</span><span class="p">:</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">BasicProperties</span><span class="p">,</span>
+<span class="w">            </span><span class="n">body</span><span class="p">:</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">Body</span>
+<span class="w">        </span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Acknowledge removal from DLQ</span>
+<span class="w">        </span><span class="n">_channel</span><span class="p">.</span><span class="n">BasicAck</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">DeliveryTag</span><span class="p">,</span><span class="w"> </span><span class="k">false</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogInformation</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;Message reprocessed from DLQ {DLQ} to {Queue}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">dlqName</span><span class="p">,</span>
+<span class="w">            </span><span class="n">queueName</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="data-resilience">Data Resilience<a class="headerlink" href="#data-resilience" title="Permanent link">&para;</a></h2>
+<h3 id="9-database-transaction-management">9. Database Transaction Management<a class="headerlink" href="#9-database-transaction-management" title="Permanent link">&para;</a></h3>
+<p>Ensure data consistency with proper transaction handling.</p>
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TransactionalCommandHandler</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IRequestHandler</span><span class="o">&lt;</span><span class="n">CreateInvoiceCommand</span><span class="p">,</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="n">Guid</span><span class="o">&gt;&gt;</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IApplicationDbContext</span><span class="w"> </span><span class="n">_context</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="n">Result</span><span class="o">&lt;</span><span class="n">Guid</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Handle</span><span class="p">(</span>
+<span class="w">        </span><span class="n">CreateInvoiceCommand</span><span class="w"> </span><span class="n">request</span><span class="p">,</span>
+<span class="w">        </span><span class="n">CancellationToken</span><span class="w"> </span><span class="n">cancellationToken</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">transaction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_context</span><span class="p">.</span><span class="n">Database</span><span class="p">.</span><span class="n">BeginTransactionAsync</span><span class="p">(</span><span class="n">cancellationToken</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">try</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Create invoice</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">invoice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Invoice</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="n">CustomerId</span><span class="p">,</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="n">Amount</span><span class="p">);</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="n">_context</span><span class="p">.</span><span class="n">Invoices</span><span class="p">.</span><span class="n">AddAsync</span><span class="p">(</span><span class="n">invoice</span><span class="p">,</span><span class="w"> </span><span class="n">cancellationToken</span><span class="p">);</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="n">_context</span><span class="p">.</span><span class="n">SaveChangesAsync</span><span class="p">(</span><span class="n">cancellationToken</span><span class="p">);</span>
+
+<span class="w">            </span><span class="c1">// Create ledger entries</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">debitEntry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LedgerEntry</span><span class="p">.</span><span class="n">CreateDebit</span><span class="p">(</span><span class="n">invoice</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span><span class="w"> </span><span class="n">invoice</span><span class="p">.</span><span class="n">Amount</span><span class="p">);</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">creditEntry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LedgerEntry</span><span class="p">.</span><span class="n">CreateCredit</span><span class="p">(</span><span class="n">invoice</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span><span class="w"> </span><span class="n">invoice</span><span class="p">.</span><span class="n">Amount</span><span class="p">);</span>
+
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="n">_context</span><span class="p">.</span><span class="n">LedgerEntries</span><span class="p">.</span><span class="n">AddRangeAsync</span><span class="p">(</span>
+<span class="w">                </span><span class="k">new</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">debitEntry</span><span class="p">,</span><span class="w"> </span><span class="n">creditEntry</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="n">cancellationToken</span>
+<span class="w">            </span><span class="p">);</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="n">_context</span><span class="p">.</span><span class="n">SaveChangesAsync</span><span class="p">(</span><span class="n">cancellationToken</span><span class="p">);</span>
+
+<span class="w">            </span><span class="c1">// Commit transaction</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="n">transaction</span><span class="p">.</span><span class="n">CommitAsync</span><span class="p">(</span><span class="n">cancellationToken</span><span class="p">);</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="n">Guid</span><span class="o">&gt;</span><span class="p">.</span><span class="n">Success</span><span class="p">(</span><span class="n">invoice</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="n">transaction</span><span class="p">.</span><span class="n">RollbackAsync</span><span class="p">(</span><span class="n">cancellationToken</span><span class="p">);</span>
+<span class="w">            </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogError</span><span class="p">(</span><span class="n">ex</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Transaction failed, rolling back&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="10-saga-pattern">10. Saga Pattern<a class="headerlink" href="#10-saga-pattern" title="Permanent link">&para;</a></h3>
+<p>Manage distributed transactions across services.</p>
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">InvoicePaymentSaga</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IEventPublisher</span><span class="w"> </span><span class="n">_eventPublisher</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ICommandPublisher</span><span class="w"> </span><span class="n">_commandPublisher</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ISagaRepository</span><span class="w"> </span><span class="n">_sagaRepository</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">HandleInvoiceCreatedEvent</span><span class="p">(</span><span class="n">InvoiceCreatedEvent</span><span class="w"> </span><span class="n">@event</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Step 1: Create saga instance</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">saga</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InvoicePaymentSagaData</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">SagaId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Guid</span><span class="p">.</span><span class="n">NewGuid</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">InvoiceId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">@event</span><span class="p">.</span><span class="n">InvoiceId</span><span class="p">,</span>
+<span class="w">            </span><span class="n">CustomerId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">@event</span><span class="p">.</span><span class="n">CustomerId</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">@event</span><span class="p">.</span><span class="n">Amount</span><span class="p">,</span>
+<span class="w">            </span><span class="n">State</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SagaState</span><span class="p">.</span><span class="n">Started</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">_sagaRepository</span><span class="p">.</span><span class="n">SaveAsync</span><span class="p">(</span><span class="n">saga</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">try</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Step 2: Update ledger in Common service</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="n">_commandPublisher</span><span class="p">.</span><span class="n">PublishAsync</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">UpdateLedgerCommand</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">InvoiceId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">@event</span><span class="p">.</span><span class="n">InvoiceId</span><span class="p">,</span>
+<span class="w">                </span><span class="n">Amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">@event</span><span class="p">.</span><span class="n">Amount</span>
+<span class="w">            </span><span class="p">});</span>
+
+<span class="w">            </span><span class="n">saga</span><span class="p">.</span><span class="n">State</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SagaState</span><span class="p">.</span><span class="n">LedgerUpdated</span><span class="p">;</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="n">_sagaRepository</span><span class="p">.</span><span class="n">SaveAsync</span><span class="p">(</span><span class="n">saga</span><span class="p">);</span>
+
+<span class="w">            </span><span class="c1">// Step 3: Send notification</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="n">_commandPublisher</span><span class="p">.</span><span class="n">PublishAsync</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SendNotificationCommand</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">CustomerId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">@event</span><span class="p">.</span><span class="n">CustomerId</span><span class="p">,</span>
+<span class="w">                </span><span class="n">Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;InvoiceCreated&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="n">InvoiceId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">@event</span><span class="p">.</span><span class="n">InvoiceId</span>
+<span class="w">            </span><span class="p">});</span>
+
+<span class="w">            </span><span class="n">saga</span><span class="p">.</span><span class="n">State</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SagaState</span><span class="p">.</span><span class="n">Completed</span><span class="p">;</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="n">_sagaRepository</span><span class="p">.</span><span class="n">SaveAsync</span><span class="p">(</span><span class="n">saga</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Compensating actions</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="nf">CompensateAsync</span><span class="p">(</span><span class="n">saga</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">CompensateAsync</span><span class="p">(</span><span class="n">InvoicePaymentSagaData</span><span class="w"> </span><span class="n">saga</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogWarning</span><span class="p">(</span><span class="s">&quot;Compensating saga {SagaId}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">saga</span><span class="p">.</span><span class="n">SagaId</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">saga</span><span class="p">.</span><span class="n">State</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">SagaState</span><span class="p">.</span><span class="n">LedgerUpdated</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Reverse ledger entries</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="n">_commandPublisher</span><span class="p">.</span><span class="n">PublishAsync</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ReverseLedgerCommand</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">InvoiceId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saga</span><span class="p">.</span><span class="n">InvoiceId</span>
+<span class="w">            </span><span class="p">});</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">saga</span><span class="p">.</span><span class="n">State</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SagaState</span><span class="p">.</span><span class="n">Compensated</span><span class="p">;</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">_sagaRepository</span><span class="p">.</span><span class="n">SaveAsync</span><span class="p">(</span><span class="n">saga</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="monitoring-and-observability">Monitoring and Observability<a class="headerlink" href="#monitoring-and-observability" title="Permanent link">&para;</a></h2>
+<h3 id="11-distributed-tracing">11. Distributed Tracing<a class="headerlink" href="#11-distributed-tracing" title="Permanent link">&para;</a></h3>
+<p>Track requests across services.</p>
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Program.cs</span>
+<span class="n">builder</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="n">AddOpenTelemetry</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">WithTracing</span><span class="p">(</span><span class="n">tracing</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">tracing</span>
+<span class="w">            </span><span class="p">.</span><span class="n">AddAspNetCoreInstrumentation</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">AddHttpClientInstrumentation</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">AddNpgsql</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">AddSource</span><span class="p">(</span><span class="s">&quot;Dhanman.Sales&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="c1">// Custom tracing</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">InvoiceService</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ActivitySource</span><span class="w"> </span><span class="n">_activitySource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="s">&quot;Dhanman.Sales&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="n">Invoice</span><span class="o">&gt;</span><span class="w"> </span><span class="n">CreateInvoiceAsync</span><span class="p">(</span><span class="n">CreateInvoiceRequest</span><span class="w"> </span><span class="n">request</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">activity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_activitySource</span><span class="p">.</span><span class="n">StartActivity</span><span class="p">(</span><span class="s">&quot;CreateInvoice&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">activity</span><span class="o">?.</span><span class="n">SetTag</span><span class="p">(</span><span class="s">&quot;invoice.customer_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="n">CustomerId</span><span class="p">);</span>
+<span class="w">        </span><span class="n">activity</span><span class="o">?.</span><span class="n">SetTag</span><span class="p">(</span><span class="s">&quot;invoice.amount&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="n">Amount</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">try</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">invoice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">ProcessInvoiceAsync</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="w">            </span><span class="n">activity</span><span class="o">?.</span><span class="n">SetTag</span><span class="p">(</span><span class="s">&quot;invoice.id&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">invoice</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+<span class="w">            </span><span class="n">activity</span><span class="o">?.</span><span class="n">SetStatus</span><span class="p">(</span><span class="n">ActivityStatusCode</span><span class="p">.</span><span class="n">Ok</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">invoice</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">activity</span><span class="o">?.</span><span class="n">SetStatus</span><span class="p">(</span><span class="n">ActivityStatusCode</span><span class="p">.</span><span class="n">Error</span><span class="p">,</span><span class="w"> </span><span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+<span class="w">            </span><span class="n">activity</span><span class="o">?.</span><span class="n">RecordException</span><span class="p">(</span><span class="n">ex</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="12-correlation-ids">12. Correlation IDs<a class="headerlink" href="#12-correlation-ids" title="Permanent link">&para;</a></h3>
+<p>Track related operations across services.</p>
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">CorrelationIdMiddleware</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">RequestDelegate</span><span class="w"> </span><span class="n">_next</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">CorrelationIdHeader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;X-Correlation-Id&quot;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">InvokeAsync</span><span class="p">(</span><span class="n">HttpContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">correlationId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetCorrelationId</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+<span class="w">        </span><span class="n">context</span><span class="p">.</span><span class="n">Items</span><span class="p">[</span><span class="s">&quot;CorrelationId&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">correlationId</span><span class="p">;</span>
+<span class="w">        </span><span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">CorrelationIdHeader</span><span class="p">,</span><span class="w"> </span><span class="n">correlationId</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="p">(</span><span class="n">LogContext</span><span class="p">.</span><span class="n">PushProperty</span><span class="p">(</span><span class="s">&quot;CorrelationId&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">correlationId</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="nf">_next</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetCorrelationId</span><span class="p">(</span><span class="n">HttpContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">TryGetValue</span><span class="p">(</span><span class="n">CorrelationIdHeader</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">correlationId</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">correlationId</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Guid</span><span class="p">.</span><span class="n">NewGuid</span><span class="p">().</span><span class="n">ToString</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage in HTTP clients</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">CorrelationIdDelegatingHandler</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">DelegatingHandler</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IHttpContextAccessor</span><span class="w"> </span><span class="n">_httpContextAccessor</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="n">HttpResponseMessage</span><span class="o">&gt;</span><span class="w"> </span><span class="n">SendAsync</span><span class="p">(</span>
+<span class="w">        </span><span class="n">HttpRequestMessage</span><span class="w"> </span><span class="n">request</span><span class="p">,</span>
+<span class="w">        </span><span class="n">CancellationToken</span><span class="w"> </span><span class="n">cancellationToken</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">correlationId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_httpContextAccessor</span><span class="p">.</span><span class="n">HttpContext</span><span class="o">?.</span><span class="n">Items</span><span class="p">[</span><span class="s">&quot;CorrelationId&quot;</span><span class="p">]</span><span class="o">?.</span><span class="n">ToString</span><span class="p">();</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">correlationId</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">request</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;X-Correlation-Id&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">correlationId</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">base</span><span class="p">.</span><span class="n">SendAsync</span><span class="p">(</span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">cancellationToken</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="dos">Do's ✅<a class="headerlink" href="#dos" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Implement retry with exponential backoff</li>
+<li>Use circuit breakers for external dependencies</li>
+<li>Set appropriate timeouts for all operations</li>
+<li>Monitor health checks continuously</li>
+<li>Log all retry attempts and failures</li>
+<li>Implement idempotency for all state-changing operations</li>
+<li>Use bulkheads to isolate critical resources</li>
+<li>Handle partial failures gracefully</li>
+<li>Implement proper error handling and logging</li>
+<li>Test failure scenarios regularly (chaos engineering)</li>
+</ul>
+<h3 id="donts">Don'ts ❌<a class="headerlink" href="#donts" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Don't retry indefinitely without backoff</li>
+<li>Don't ignore timeout configurations</li>
+<li>Don't skip health check implementations</li>
+<li>Don't let circuit breakers stay open forever</li>
+<li>Don't forget to implement fallback strategies</li>
+<li>Don't ignore dead-letter queues</li>
+<li>Don't cascade failures across services</li>
+<li>Don't skip distributed tracing</li>
+<li>Don't ignore correlation IDs in logging</li>
+</ul>
+<hr />
+<h2 id="testing-resilience">Testing Resilience<a class="headerlink" href="#testing-resilience" title="Permanent link">&para;</a></h2>
+<h3 id="chaos-engineering">Chaos Engineering<a class="headerlink" href="#chaos-engineering" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ChaosMiddleware</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">RequestDelegate</span><span class="w"> </span><span class="n">_next</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">Random</span><span class="w"> </span><span class="n">_random</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ChaosConfiguration</span><span class="w"> </span><span class="n">_config</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">InvokeAsync</span><span class="p">(</span><span class="n">HttpContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_config</span><span class="p">.</span><span class="n">IsEnabled</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">ShouldInjectFailure</span><span class="p">())</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">StatusCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">WriteAsync</span><span class="p">(</span><span class="s">&quot;Chaos: Simulated failure&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nf">_next</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">ShouldInjectFailure</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">_random</span><span class="p">.</span><span class="n">NextDouble</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">_config</span><span class="p">.</span><span class="n">FailureRate</span><span class="p">;</span><span class="w"> </span><span class="c1">// e.g., 0.1 = 10%</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>Dhanman's resilience patterns provide:
+- <strong>Fault tolerance</strong> through retry and circuit breaker patterns
+- <strong>Resource isolation</strong> via bulkhead pattern
+- <strong>Graceful degradation</strong> with fallback strategies
+- <strong>System observability</strong> through health checks and tracing
+- <strong>Data consistency</strong> with transactions and saga patterns
+- <strong>Operational reliability</strong> through idempotency and DLQ</p>
+<p>These patterns work together to create a robust, self-healing distributed system that maintains availability and consistency even under failure conditions.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.sections", "navigation.prune"], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+      
+        <script src="../../../../js/extra.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../../../js/mermaid-init.js"></script>
+      
+    
+  </body>
+</html>

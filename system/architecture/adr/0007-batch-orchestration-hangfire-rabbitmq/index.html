@@ -16,7 +16,7 @@
     
     
       
-        <title>ADR 0001: Use PostgreSQL 18 as Primary Database - Dhanman Documentation</title>
+        <title>0007 batch orchestration hangfire rabbitmq - Dhanman Documentation</title>
       
     
     
@@ -63,11 +63,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#adr-0001-use-postgresql-18-as-primary-database" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -99,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ADR 0001: Use PostgreSQL 18 as Primary Database
+              0007 batch orchestration hangfire rabbitmq
             
           </span>
         </div>
@@ -1180,199 +1175,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#status" class="md-nav__link">
-    <span class="md-ellipsis">
-      Status
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#context" class="md-nav__link">
-    <span class="md-ellipsis">
-      Context
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Context">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      Requirements
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#decision" class="md-nav__link">
-    <span class="md-ellipsis">
-      Decision
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Decision">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#key-factors" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Factors
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Key Factors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-acid-compliance" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. ACID Compliance
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-advanced-features" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Advanced Features
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-performance" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Performance
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-scalability-high-availability" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Scalability &amp; High Availability
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#implementation-details" class="md-nav__link">
-    <span class="md-ellipsis">
-      Implementation Details
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Implementation Details">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#database-per-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      Database Per Service
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#postgresql-specific-features-used" class="md-nav__link">
-    <span class="md-ellipsis">
-      PostgreSQL-Specific Features Used
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#consequences" class="md-nav__link">
-    <span class="md-ellipsis">
-      Consequences
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Consequences">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#positive" class="md-nav__link">
-    <span class="md-ellipsis">
-      Positive
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#negative" class="md-nav__link">
-    <span class="md-ellipsis">
-      Negative
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mitigation-strategies" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mitigation Strategies
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#related-documentation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Related Documentation
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -1387,127 +1189,9 @@
                   
 
 
-<h1 id="adr-0001-use-postgresql-18-as-primary-database">ADR 0001: Use PostgreSQL 18 as Primary Database<a class="headerlink" href="#adr-0001-use-postgresql-18-as-primary-database" title="Permanent link">&para;</a></h1>
-<h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
-<p>✅ <strong>Accepted</strong> - Implemented across all services</p>
-<h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
-<p>Dhanman ERP requires a robust, scalable database system to store:
-- Financial transactions and ledger entries (ACID compliance critical)
-- Customer, vendor, and employee records
-- Purchase orders, invoices, and bills
-- Payroll and attendance data
-- Community and facility management data
-- Audit logs and system events</p>
-<h3 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>ACID Compliance</strong>: Financial data requires strong transactional guarantees</li>
-<li><strong>Relational Model</strong>: Complex relationships between entities (invoices ↔ line items, POs ↔ GRNs)</li>
-<li><strong>JSON Support</strong>: Flexible schema for extensible data (custom fields, metadata)</li>
-<li><strong>Performance</strong>: Handle thousands of transactions per day</li>
-<li><strong>Multi-tenancy</strong>: Support organization-level data isolation</li>
-<li><strong>Open Source</strong>: No licensing costs, community support</li>
-<li><strong>Proven Technology</strong>: Battle-tested in production environments</li>
-<li><strong>Developer Familiarity</strong>: Team expertise in SQL</li>
-</ol>
-<h2 id="decision">Decision<a class="headerlink" href="#decision" title="Permanent link">&para;</a></h2>
-<p>We will use <strong>PostgreSQL 18</strong> as the primary database for all microservices with streaming replication for high availability.</p>
-<h3 id="key-factors">Key Factors<a class="headerlink" href="#key-factors" title="Permanent link">&para;</a></h3>
-<h4 id="1-acid-compliance">1. ACID Compliance<a class="headerlink" href="#1-acid-compliance" title="Permanent link">&para;</a></h4>
-<p>PostgreSQL provides full ACID compliance, critical for financial data:
-- <strong>Atomicity</strong>: All ledger entries succeed or fail together
-- <strong>Consistency</strong>: Database constraints enforce business rules
-- <strong>Isolation</strong>: Concurrent transactions don't interfere
-- <strong>Durability</strong>: Committed data persists even with system failures</p>
-<h4 id="2-advanced-features">2. Advanced Features<a class="headerlink" href="#2-advanced-features" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>JSON/JSONB</strong>: Store flexible data structures without schema changes</li>
-<li><strong>Full-Text Search</strong>: Search invoices, POs, and documents</li>
-<li><strong>Array Types</strong>: Store lists of values efficiently</li>
-<li><strong>Procedural Extensions (PL/pgSQL)</strong>: Complex business logic in database</li>
-<li><strong>Generated Columns</strong>: Computed values (e.g., invoice total)</li>
-<li><strong>Partitioning</strong>: Split large tables by date or tenant</li>
-<li><strong>CTEs and Window Functions</strong>: Complex analytical queries</li>
-</ul>
-<h4 id="3-performance">3. Performance<a class="headerlink" href="#3-performance" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Excellent query optimizer</strong>: Efficient execution plans</li>
-<li><strong>Indexes</strong>: B-tree, Hash, GiST, GIN for different use cases</li>
-<li><strong>Parallel queries</strong>: Utilize multiple CPU cores</li>
-<li><strong>Connection pooling</strong>: Efficient resource usage</li>
-<li><strong>Materialized views</strong>: Pre-computed aggregations</li>
-</ul>
-<h4 id="4-scalability-high-availability">4. Scalability &amp; High Availability<a class="headerlink" href="#4-scalability-high-availability" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Streaming replication</strong>: Real-time data replication for HA</li>
-<li><strong>Read replicas</strong>: Scale read operations</li>
-<li><strong>Partitioning</strong>: Manage large tables efficiently</li>
-<li><strong>Logical replication</strong>: Flexible replication topologies</li>
-</ul>
-<h2 id="implementation-details">Implementation Details<a class="headerlink" href="#implementation-details" title="Permanent link">&para;</a></h2>
-<h3 id="database-per-service">Database Per Service<a class="headerlink" href="#database-per-service" title="Permanent link">&para;</a></h3>
-<p>Each microservice has its own database for data isolation:</p>
-<div class="highlight"><pre><span></span><code>Production:
-- prod-dhanman-common
-- prod-dhanman-sales
-- prod-dhanman-purchase
-- prod-dhanman-payroll
-- prod-dhanman-community
-- prod-dhanman-inventory
+  <h1>0007 batch orchestration hangfire rabbitmq</h1>
 
-QA:
-- qa-dhanman-common
-- qa-dhanman-sales
-- qa-dhanman-purchase
-- qa-dhanman-payroll
-- qa-dhanman-community
-- qa-dhanman-inventory
-</code></pre></div>
-<h3 id="postgresql-specific-features-used">PostgreSQL-Specific Features Used<a class="headerlink" href="#postgresql-specific-features-used" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>JSONB columns</strong> for flexible metadata</li>
-<li><strong>Array types</strong> for lists (tags, attachments)</li>
-<li><strong>Full-text search</strong> for document searching</li>
-<li><strong>Generated columns</strong> for computed fields</li>
-<li><strong>PL/pgSQL functions</strong> for complex calculations</li>
-<li><strong>Streaming replication</strong> for high availability</li>
-</ul>
-<h2 id="consequences">Consequences<a class="headerlink" href="#consequences" title="Permanent link">&para;</a></h2>
-<h3 id="positive">Positive<a class="headerlink" href="#positive" title="Permanent link">&para;</a></h3>
-<p>✅ <strong>ACID compliance</strong> ensures data integrity for financial transactions<br />
-✅ <strong>Rich feature set</strong> (JSON, arrays, FTS) reduces need for external services<br />
-✅ <strong>Excellent performance</strong> for OLTP workloads<br />
-✅ <strong>Strong community</strong> and extensive documentation<br />
-✅ <strong>Cost-effective</strong> - no licensing fees<br />
-✅ <strong>Cross-platform</strong> - runs on Linux in production<br />
-✅ <strong>Great .NET support</strong> via Entity Framework Core and Npgsql<br />
-✅ <strong>High availability</strong> via streaming replication  </p>
-<h3 id="negative">Negative<a class="headerlink" href="#negative" title="Permanent link">&para;</a></h3>
-<p>⚠️ <strong>Operational overhead</strong> - Requires versioned schema sync across QA/Prod using nightly jobs<br />
-⚠️ <strong>Vertical scaling limits</strong> - Eventual need for horizontal scaling<br />
-⚠️ <strong>Replication lag</strong> - Streaming replication introduces small delays  </p>
-<h3 id="mitigation-strategies">Mitigation Strategies<a class="headerlink" href="#mitigation-strategies" title="Permanent link">&para;</a></h3>
-<p><strong>For Schema Sync:</strong>
-- Automated nightly sync jobs between QA and Prod schemas
-- EF Core migrations tracked in version control
-- Validation scripts to ensure schema consistency</p>
-<p><strong>For Vertical Scaling:</strong>
-- Plan for read replicas when needed
-- Implement caching layer (Redis) for frequent reads
-- Consider partitioning for large tables</p>
-<p><strong>For Replication Lag:</strong>
-- Monitor replication lag metrics
-- Use synchronous replication for critical operations if needed
-- Design application to handle eventual consistency</p>
-<h2 id="related-documentation">Related Documentation<a class="headerlink" href="#related-documentation" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="../../../infrastructure/database/postgresql-setup/">Database Setup</a></li>
-<li><a href="../../development/standards/">Entity Framework Core</a></li>
-<li><a href="../../design-decisions/">Multi-tenancy Strategy</a></li>
-</ul>
-<hr />
-<p><strong>Date</strong>: January 2024<br />
-<strong>Authors</strong>: Architecture Team<br />
-<strong>Status</strong>: Accepted and Implemented</p>
+
 
 
 

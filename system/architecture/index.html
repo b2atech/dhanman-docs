@@ -1258,6 +1258,186 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#key-architectural-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Key Architectural Characteristics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Key Architectural Characteristics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#microservices-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microservices Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqrs-event-sourcing" class="md-nav__link">
+    <span class="md-ellipsis">
+      CQRS &amp; Event Sourcing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domain-driven-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Domain-Driven Design
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resilience-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resilience Patterns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-flow-example-invoice-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔄 Data Flow Example: Invoice Creation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      📐 Design Principles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technology-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Technology Stack
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Technology Stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frontend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infrastructure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Observability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      DevOps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Further Reading
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 Further Reading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deep-dives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deep Dives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-guides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Guides
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1281,10 +1461,14 @@
 <ul>
 <li><a href="overview/">Architecture Overview</a> — High-level view of the system design, microservice boundaries, and data flow.</li>
 <li><a href="principles/">Architecture Principles</a> — Core design principles such as modularity, scalability, and resilience.</li>
+<li><a href="design-decisions/">Design Decisions</a> — Key architectural decisions, rationale, and trade-offs.</li>
+<li><a href="deployment-scalability/">Deployment &amp; Scalability</a> — Infrastructure topology, deployment procedures, and scaling strategies.</li>
+<li><a href="security-architecture/">Security Architecture</a> — Authentication, authorization, data protection, and security best practices.</li>
 </ul>
 <h3 id="architecture-decision-records-adr"><strong>Architecture Decision Records (ADR)</strong><a class="headerlink" href="#architecture-decision-records-adr" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="adr/">View ADRs</a> — Records of significant architectural decisions and rationale.</li>
+<li><a href="adr/0001-use-postgresql-18/">ADR-0001: Use PostgreSQL 18</a></li>
 </ul>
 <h3 id="diagrams"><strong>Diagrams</strong><a class="headerlink" href="#diagrams" title="Permanent link">&para;</a></h3>
 <ul>
@@ -1298,7 +1482,11 @@
 <h3 id="patterns"><strong>Patterns</strong><a class="headerlink" href="#patterns" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="patterns/cqrs/">CQRS</a> — Command Query Responsibility Segregation pattern applied in Dhanman.</li>
-<li><a href="patterns/event-sourcing/">Event Sourcing</a> — Approach for maintaining domain history and system consistency.</li>
+<li><a href="patterns/domain-driven-design/">Domain-Driven Design</a> — DDD tactical patterns, bounded contexts, and domain modeling.</li>
+<li><a href="patterns/event-sourcing/">Event Sourcing &amp; Messaging</a> — RabbitMQ-based event-driven architecture with MassTransit patterns.</li>
+<li><a href="patterns/communication-patterns/">Communication Patterns</a> — Synchronous and asynchronous inter-service communication.</li>
+<li><a href="patterns/scheduled-jobs/">Scheduled Jobs (Hangfire)</a> — Background job processing and recurring task scheduling.</li>
+<li><a href="patterns/resilience/">Resilience &amp; Fault Tolerance</a> — Circuit breakers, retries, bulkheads, and error handling.</li>
 </ul>
 <hr />
 <h2 id="architectural-summary">🧠 Architectural Summary<a class="headerlink" href="#architectural-summary" title="Permanent link">&para;</a></h2>
@@ -1307,38 +1495,194 @@
 <tr>
 <th>Layer</th>
 <th>Responsibility</th>
+<th>Technology</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>Presentation Layer</strong></td>
 <td>React/TypeScript frontend for end-user interactions.</td>
+<td>React 18, TypeScript, MUI</td>
 </tr>
 <tr>
 <td><strong>API Layer</strong></td>
 <td>.NET 9 microservices exposing RESTful endpoints for domain modules.</td>
+<td>.NET 9, ASP.NET Core</td>
+</tr>
+<tr>
+<td><strong>Application Layer</strong></td>
+<td>CQRS handlers, DTOs, business workflows.</td>
+<td>MediatR, FluentValidation</td>
+</tr>
+<tr>
+<td><strong>Domain Layer</strong></td>
+<td>Rich domain models, aggregates, domain events.</td>
+<td>Pure C# with DDD patterns</td>
 </tr>
 <tr>
 <td><strong>Messaging Layer</strong></td>
 <td>RabbitMQ-based event-driven communication between services.</td>
+<td>RabbitMQ 3.x</td>
 </tr>
 <tr>
 <td><strong>Data Layer</strong></td>
-<td>PostgreSQL 18 databases with schema-per-service and shared read models.</td>
+<td>PostgreSQL 18 databases with schema-per-service and read models.</td>
+<td>PostgreSQL 18, EF Core</td>
 </tr>
 <tr>
 <td><strong>Storage Layer</strong></td>
 <td>MinIO for document and media storage.</td>
+<td>MinIO (S3-compatible)</td>
+</tr>
+<tr>
+<td><strong>Job Processing</strong></td>
+<td>Hangfire for background and scheduled tasks.</td>
+<td>Hangfire 1.8+</td>
+</tr>
+<tr>
+<td><strong>Authentication</strong></td>
+<td>Auth0 for identity and access management.</td>
+<td>Auth0 SaaS</td>
 </tr>
 <tr>
 <td><strong>Monitoring &amp; Logging</strong></td>
 <td>Grafana + Loki + Promtail for observability and alerting.</td>
+<td>Grafana Stack</td>
 </tr>
 </tbody>
 </table>
 <hr />
+<h2 id="key-architectural-characteristics">🎯 Key Architectural Characteristics<a class="headerlink" href="#key-architectural-characteristics" title="Permanent link">&para;</a></h2>
+<h3 id="microservices-architecture">Microservices Architecture<a class="headerlink" href="#microservices-architecture" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>6 core services</strong> aligned with bounded contexts</li>
+<li><strong>Independent deployment</strong> and scaling per service</li>
+<li><strong>Database per service</strong> for data isolation</li>
+<li><strong>Event-driven integration</strong> via RabbitMQ</li>
+</ul>
+<h3 id="cqrs-event-sourcing">CQRS &amp; Event Sourcing<a class="headerlink" href="#cqrs-event-sourcing" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Separate read and write models</strong> for optimal performance</li>
+<li><strong>Domain events</strong> published to event bus</li>
+<li><strong>Event handlers</strong> in consuming services</li>
+<li><strong>Eventual consistency</strong> across bounded contexts</li>
+</ul>
+<h3 id="domain-driven-design">Domain-Driven Design<a class="headerlink" href="#domain-driven-design" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Rich domain models</strong> with business logic</li>
+<li><strong>Aggregates</strong> as consistency boundaries</li>
+<li><strong>Value objects</strong> for immutable concepts</li>
+<li><strong>Domain services</strong> for cross-aggregate operations</li>
+</ul>
+<h3 id="resilience-patterns">Resilience Patterns<a class="headerlink" href="#resilience-patterns" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Retry policies</strong> with exponential backoff</li>
+<li><strong>Circuit breakers</strong> for failing services</li>
+<li><strong>Bulkheads</strong> for resource isolation</li>
+<li><strong>Timeout policies</strong> for bounded waiting</li>
+<li><strong>Health checks</strong> for service monitoring</li>
+</ul>
+<h3 id="security">Security<a class="headerlink" href="#security" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Auth0</strong> for authentication with JWT tokens</li>
+<li><strong>Role-based access control</strong> (RBAC) with permissions</li>
+<li><strong>Multi-tenancy</strong> with data isolation</li>
+<li><strong>Encryption</strong> at rest and in transit</li>
+<li><strong>Audit logging</strong> for compliance</li>
+</ul>
+<hr />
+<h2 id="data-flow-example-invoice-creation">🔄 Data Flow Example: Invoice Creation<a class="headerlink" href="#data-flow-example-invoice-creation" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>1. User submits invoice (Frontend)
+   ↓
+2. Sales API validates and creates invoice
+   ↓
+3. Invoice saved to PostgreSQL (Sales DB)
+   ↓
+4. InvoiceCreatedEvent published to RabbitMQ
+   ↓
+   ├─▶ 5a. Common Service: Updates ledger entries
+   ├─▶ 5b. Notification Service: Sends email to customer
+   └─▶ 5c. Analytics Service: Updates dashboard metrics
+   ↓
+6. Hangfire schedules payment reminder (delayed job)
+</code></pre></div>
+<hr />
+<h2 id="design-principles">📐 Design Principles<a class="headerlink" href="#design-principles" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Business Domain First</strong>: Architecture driven by business capabilities</li>
+<li><strong>Evolutionary Design</strong>: Support incremental changes and technological evolution</li>
+<li><strong>Cloud-Native</strong>: Designed for containerized deployment and horizontal scalability</li>
+<li><strong>Developer Experience</strong>: Balance architectural rigor with developer productivity</li>
+<li><strong>Operational Excellence</strong>: Build observability and reliability into the architecture</li>
+<li><strong>Security by Design</strong>: Security considerations at every layer</li>
+<li><strong>Fail Fast, Recover Quickly</strong>: Resilience patterns for fault tolerance</li>
+</ol>
+<hr />
+<h2 id="technology-stack">🚀 Technology Stack<a class="headerlink" href="#technology-stack" title="Permanent link">&para;</a></h2>
+<h3 id="backend">Backend<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>.NET 9</strong> (C#) - High-performance, cross-platform</li>
+<li><strong>ASP.NET Core</strong> - Web API framework</li>
+<li><strong>Entity Framework Core</strong> - ORM with PostgreSQL provider</li>
+<li><strong>MediatR</strong> - CQRS implementation</li>
+<li><strong>FluentValidation</strong> - Input validation</li>
+</ul>
+<h3 id="frontend">Frontend<a class="headerlink" href="#frontend" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>React 18</strong> - UI library</li>
+<li><strong>TypeScript</strong> - Type-safe JavaScript</li>
+<li><strong>Material-UI (MUI)</strong> - Component library</li>
+<li><strong>React Query</strong> - Data fetching and caching</li>
+</ul>
+<h3 id="infrastructure">Infrastructure<a class="headerlink" href="#infrastructure" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>PostgreSQL 18</strong> - Primary database</li>
+<li><strong>RabbitMQ 3.x</strong> - Message broker</li>
+<li><strong>MinIO</strong> - Object storage (S3-compatible)</li>
+<li><strong>Hangfire</strong> - Background job processing</li>
+<li><strong>Redis</strong> - Distributed caching (planned)</li>
+</ul>
+<h3 id="observability">Observability<a class="headerlink" href="#observability" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Grafana</strong> - Dashboards and visualization</li>
+<li><strong>Loki</strong> - Log aggregation</li>
+<li><strong>Promtail</strong> - Log shipping</li>
+<li><strong>Netdata</strong> - System metrics</li>
+<li><strong>Uptime Kuma</strong> - Uptime monitoring</li>
+</ul>
+<h3 id="devops">DevOps<a class="headerlink" href="#devops" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>GitHub Actions</strong> - CI/CD pipelines</li>
+<li><strong>Ansible</strong> - Infrastructure automation</li>
+<li><strong>NGINX</strong> - Reverse proxy and load balancer</li>
+<li><strong>Docker</strong> - Containerization (for infrastructure services)</li>
+<li><strong>Let's Encrypt</strong> - SSL/TLS certificates</li>
+</ul>
+<hr />
+<h2 id="further-reading">📚 Further Reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
+<h3 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h3>
+<ol>
+<li><a href="overview/">Architecture Overview</a> - Understand the big picture</li>
+<li><a href="design-decisions/">Design Decisions</a> - Learn why we made these choices</li>
+<li><a href="patterns/cqrs/">CQRS Pattern</a> - Understand our command/query separation</li>
+<li><a href="patterns/communication-patterns/">Communication Patterns</a> - How services talk to each other</li>
+</ol>
+<h3 id="deep-dives">Deep Dives<a class="headerlink" href="#deep-dives" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="patterns/domain-driven-design/">Domain-Driven Design</a> - Rich domain modeling</li>
+<li><a href="patterns/resilience/">Resilience Patterns</a> - Building fault-tolerant systems</li>
+<li><a href="security-architecture/">Security Architecture</a> - Protecting data and users</li>
+<li><a href="deployment-scalability/">Deployment &amp; Scalability</a> - Operations and scaling</li>
+</ul>
+<h3 id="implementation-guides">Implementation Guides<a class="headerlink" href="#implementation-guides" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="patterns/scheduled-jobs/">Scheduled Jobs</a> - Background task processing</li>
+<li><a href="patterns/event-sourcing/">Event Sourcing</a> - Event-driven integration</li>
+<li><a href="adr/">ADRs</a> - Decision records and rationale</li>
+</ul>
+<hr />
 <p>📘 <strong>Next Step:</strong><br />
-Explore the <a href="overview/">Architecture Overview</a> or check <a href="diagrams/source/">Diagrams → Source</a> for detailed flow visualizations.</p>
+Start with the <a href="overview/">Architecture Overview</a> or check <a href="diagrams/source/">Diagrams → Source</a> for detailed flow visualizations.</p>
 
 
 

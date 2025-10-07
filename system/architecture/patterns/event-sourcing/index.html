@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../domain-driven-design/">
+      
+      
+        <link rel="next" href="../communication-patterns/">
       
       
       <link rel="icon" href="../../../../images/dhanman-docs.png">
@@ -16,7 +20,7 @@
     
     
       
-        <title>Dhanman Microservices RabbitMQ Messaging Developer Guide - Dhanman Documentation</title>
+        <title>Event Sourcing & Messaging - Dhanman Documentation</title>
       
     
     
@@ -64,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dhanman-microservices-rabbitmq-messaging-developer-guide" class="md-skip">
+        <a href="#dhanman-microservices-messaging-architecture" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Dhanman Microservices RabbitMQ Messaging Developer Guide
+              Event Sourcing & Messaging
             
           </span>
         </div>
@@ -845,8 +849,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -858,11 +864,11 @@
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -876,7 +882,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             System
@@ -908,6 +914,8 @@
                 
   
   
+    
+  
   
   
     
@@ -916,30 +924,685 @@
       
     
     
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
         
-  
-  
-    <a href="../../overview/" class="md-nav__link">
-      
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     Architecture
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
   
 
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design-decisions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Decisions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment-scalability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment & Scalability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../principles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagrams
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_9" id="__nav_3_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Patterns
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            Patterns
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cqrs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CQRS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../domain-driven-design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Domain-Driven Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Event Sourcing & Messaging
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Event Sourcing & Messaging
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-messaging-architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Messaging Architecture Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Messaging Architecture Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exchange" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exchange
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#routing-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      Routing Key
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publisher" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publisher
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consumer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#masstransit-inspired-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      MassTransit-Inspired Patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-our-exchanges" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Our Exchanges
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Queues
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-types-of-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Types of Messages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-publishers-consumers" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Publishers &amp; Consumers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Publishers & Consumers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#publishers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publishers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consumers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-common-service-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Common Service Role
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-what-has-been-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. What Has Been Done
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-developer-responsibilities-going-forward" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Developer Responsibilities Going Forward
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Developer Responsibilities Going Forward">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-new-eventscommands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining New Events/Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publishing-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publishing Messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consuming-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consuming Messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue-exchange-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queue &amp; Exchange Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hosted-service-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hosted Service Registration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handle-idempotency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handle Idempotency
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-useful-rabbitmq-management-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Useful RabbitMQ Management Tips
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture Diagram
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../communication-patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Communication Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scheduled-jobs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scheduled Jobs (Hangfire)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resilience/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resilience & Fault Tolerance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1190,19 +1853,88 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-introduction-to-messaging-architecture" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Introduction to Messaging Architecture
+      Overview
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. Introduction to Messaging Architecture">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-messaging-architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Messaging Architecture Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Messaging Architecture Overview">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#key-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       Key Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exchange" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exchange
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#routing-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      Routing Key
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publisher" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publisher
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consumer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#masstransit-inspired-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      MassTransit-Inspired Patterns
     </span>
   </a>
   
@@ -1402,18 +2134,52 @@
                   
 
 
-<h1 id="dhanman-microservices-rabbitmq-messaging-developer-guide">Dhanman Microservices RabbitMQ Messaging Developer Guide<a class="headerlink" href="#dhanman-microservices-rabbitmq-messaging-developer-guide" title="Permanent link">&para;</a></h1>
+<h1 id="dhanman-microservices-messaging-architecture">Dhanman Microservices Messaging Architecture<a class="headerlink" href="#dhanman-microservices-messaging-architecture" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Dhanman uses <strong>RabbitMQ</strong> as the primary message broker to enable asynchronous, event-driven communication between microservices. The messaging infrastructure is built on top of <strong>B2aTech.CrossCuttingConcern</strong> library with patterns inspired by <strong>MassTransit</strong> for reliable, scalable inter-service communication.</p>
+<p>This architecture enables:
+- <strong>Loose coupling</strong> between services
+- <strong>Asynchronous processing</strong> for better responsiveness
+- <strong>Event-driven workflows</strong> across bounded contexts
+- <strong>Scalability</strong> through distributed message processing
+- <strong>Resilience</strong> with automatic retries and dead-letter handling</p>
 <hr />
-<h2 id="1-introduction-to-messaging-architecture">1. Introduction to Messaging Architecture<a class="headerlink" href="#1-introduction-to-messaging-architecture" title="Permanent link">&para;</a></h2>
-<p>We use RabbitMQ as our message broker to enable asynchronous, loosely coupled communication between microservices via messages. This event-driven architecture helps build scalable and responsive systems.</p>
+<h2 id="1-messaging-architecture-overview">1. Messaging Architecture Overview<a class="headerlink" href="#1-messaging-architecture-overview" title="Permanent link">&para;</a></h2>
 <h3 id="key-concepts">Key Concepts<a class="headerlink" href="#key-concepts" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Exchange</strong>: Entry point for messages in RabbitMQ. Routes messages to queues based on exchange type and routing keys.</li>
-<li><strong>Queue</strong>: Holds messages until they are consumed.</li>
-<li><strong>Routing Key</strong>: Used by direct exchanges to route messages to appropriate queues.</li>
-<li><strong>Publisher</strong>: Sends messages to exchanges.</li>
-<li><strong>Consumer</strong>: Receives messages from queues.</li>
-</ul>
+<h4 id="exchange">Exchange<a class="headerlink" href="#exchange" title="Permanent link">&para;</a></h4>
+<p>The entry point for messages in RabbitMQ. Routes messages to queues based on exchange type and routing keys.</p>
+<p><strong>Exchange Types:</strong>
+- <strong>Fanout</strong>: Broadcasts messages to all bound queues (used for events)
+- <strong>Direct</strong>: Routes to specific queues based on routing keys (used for commands)
+- <strong>Topic</strong>: Routes based on routing key patterns (future use)
+- <strong>Headers</strong>: Routes based on message headers (not currently used)</p>
+<h4 id="queue">Queue<a class="headerlink" href="#queue" title="Permanent link">&para;</a></h4>
+<p>Holds messages until consumed by a service. Each microservice has dedicated queues for commands and events.</p>
+<p><strong>Queue Properties:</strong>
+- <strong>Durable</strong>: Survives broker restarts
+- <strong>Auto-delete</strong>: Removed when no consumers
+- <strong>Exclusive</strong>: Used by single connection only
+- <strong>TTL</strong>: Time-to-live for messages</p>
+<h4 id="routing-key">Routing Key<a class="headerlink" href="#routing-key" title="Permanent link">&para;</a></h4>
+<p>String used by exchanges to determine message routing. Format: <code>{service}.{message-type}.{action}</code></p>
+<p><strong>Examples:</strong>
+- <code>sales.command.create-invoice</code>
+- <code>sales.event.invoice-created</code>
+- <code>common.command.send-notification</code></p>
+<h4 id="publisher">Publisher<a class="headerlink" href="#publisher" title="Permanent link">&para;</a></h4>
+<p>Service that sends messages to exchanges. Uses <code>IEventPublisher</code> or <code>ICommandPublisher</code> interfaces.</p>
+<h4 id="consumer">Consumer<a class="headerlink" href="#consumer" title="Permanent link">&para;</a></h4>
+<p>Service that receives and processes messages from queues. Implements <code>IMessageHandler&lt;T&gt;</code> interface.</p>
+<h3 id="masstransit-inspired-patterns">MassTransit-Inspired Patterns<a class="headerlink" href="#masstransit-inspired-patterns" title="Permanent link">&para;</a></h3>
+<p>While Dhanman uses a custom implementation built on RabbitMQ.Client, it adopts proven patterns from MassTransit:</p>
+<ol>
+<li><strong>Message Conventions</strong>: Clear separation of commands, events, and queries</li>
+<li><strong>Retry Policies</strong>: Exponential backoff for transient failures</li>
+<li><strong>Circuit Breaker</strong>: Prevent cascade failures</li>
+<li><strong>Outbox Pattern</strong>: Ensure exactly-once delivery</li>
+<li><strong>Saga Pattern</strong>: Long-running distributed transactions</li>
+<li><strong>Consumer Configuration</strong>: Concurrent message processing with prefetch limits</li>
+</ol>
 <hr />
 <h2 id="2-our-exchanges">2. Our Exchanges<a class="headerlink" href="#2-our-exchanges" title="Permanent link">&para;</a></h2>
 <p>We have two main exchanges configured:</p>

@@ -1,0 +1,2755 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../overview/">
+      
+      
+        <link rel="next" href="../deployment-scalability/">
+      
+      
+      <link rel="icon" href="../../../images/dhanman-docs.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Design Decisions - Dhanman Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+    
+      <link rel="stylesheet" href="../../../extra.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#architecture-design-decisions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Dhanman Documentation" class="md-header__button md-logo" aria-label="Dhanman Documentation" data-md-component="logo">
+      
+  <img src="../../../images/dhanman-docs.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dhanman Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Design Decisions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Dhanman Documentation" class="md-nav__button md-logo" aria-label="Dhanman Documentation" data-md-component="logo">
+      
+  <img src="../../../images/dhanman-docs.png" alt="logo">
+
+    </a>
+    Dhanman Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Product
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Product
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/getting-started/app-ui-structure/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/community/complaints/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Community & Engagement
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/gate-management/visitor-management/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Gate & Security
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/events-calendar/event-management/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Events & Calendar
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/financial-management/introduction/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Financial Management
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/purchase-management/vendors/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Purchase & Vendor Management
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/inventory-assets/asset-management/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Inventory & Assets
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/payroll/employee-management/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Payroll & HR
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/water-management/meter-reading/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Water Management
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/reports-analytics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reports & Analytics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/integrations/payment-gateways/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Integrations
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/mobile-app/resident-app/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Mobile Applications
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/audit-compliance/audit-trails/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Audit & Compliance
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/users-roles/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Settings & Configuration
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    System
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Design Decisions
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Design Decisions
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-philosophy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Design Philosophy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Design Philosophy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Principles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-architectural-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Architectural Decisions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Architectural Decisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-microservices-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Microservices Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-event-driven-architecture-with-rabbitmq" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Event-Driven Architecture with RabbitMQ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cqrs-command-query-responsibility-segregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. CQRS (Command Query Responsibility Segregation)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-postgresql-as-primary-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. PostgreSQL as Primary Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-domain-driven-design-ddd" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Domain-Driven Design (DDD)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-hangfire-for-scheduled-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Hangfire for Scheduled Jobs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-auth0-for-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Auth0 for Authentication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-net-9-for-backend-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. .NET 9 for Backend Services
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-react-typescript-for-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. React + TypeScript for Frontend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-clean-architecture-layered-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Clean Architecture / Layered Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-minio-for-object-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. MinIO for Object Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-grafana-loki-promtail-for-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Grafana + Loki + Promtail for Observability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-api-gateway-pattern-future" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. API Gateway Pattern (Future)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-multi-tenancy-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Multi-tenancy Strategy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technology-stack-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technology Stack Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decision-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decision Process
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#under-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Under Evaluation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deferred" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deferred
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Documentation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment-scalability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment & Scalability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../principles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagrams
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../patterns/cqrs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Patterns
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../infrastructure/overview/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infrastructure
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../development/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Development
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../operations/commands/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Operations
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../onboarding/developer-onboarding/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Onboarding
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../security/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-philosophy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Design Philosophy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Design Philosophy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Principles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-architectural-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Architectural Decisions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Architectural Decisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-microservices-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Microservices Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-event-driven-architecture-with-rabbitmq" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Event-Driven Architecture with RabbitMQ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cqrs-command-query-responsibility-segregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. CQRS (Command Query Responsibility Segregation)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-postgresql-as-primary-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. PostgreSQL as Primary Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-domain-driven-design-ddd" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Domain-Driven Design (DDD)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-hangfire-for-scheduled-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Hangfire for Scheduled Jobs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-auth0-for-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Auth0 for Authentication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-net-9-for-backend-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. .NET 9 for Backend Services
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-react-typescript-for-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. React + TypeScript for Frontend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-clean-architecture-layered-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Clean Architecture / Layered Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-minio-for-object-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. MinIO for Object Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-grafana-loki-promtail-for-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Grafana + Loki + Promtail for Observability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-api-gateway-pattern-future" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. API Gateway Pattern (Future)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-multi-tenancy-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Multi-tenancy Strategy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technology-stack-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technology Stack Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decision-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decision Process
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#under-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Under Evaluation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deferred" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deferred
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Documentation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="architecture-design-decisions">Architecture Design Decisions<a class="headerlink" href="#architecture-design-decisions" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This document captures key architectural design decisions, their rationale, trade-offs, and implications for the Dhanman ERP system. These decisions shape the system's structure, technology choices, and operational characteristics.</p>
+<hr />
+<h2 id="design-philosophy">Design Philosophy<a class="headerlink" href="#design-philosophy" title="Permanent link">&para;</a></h2>
+<h3 id="core-principles">Core Principles<a class="headerlink" href="#core-principles" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Business Domain First</strong>: Architecture driven by business capabilities and bounded contexts</li>
+<li><strong>Evolutionary Design</strong>: Support incremental changes and technological evolution</li>
+<li><strong>Cloud-Native</strong>: Designed for containerized deployment and horizontal scalability</li>
+<li><strong>Developer Experience</strong>: Balance architectural rigor with developer productivity</li>
+<li><strong>Operational Excellence</strong>: Build observability and reliability into the architecture</li>
+</ol>
+<hr />
+<h2 id="key-architectural-decisions">Key Architectural Decisions<a class="headerlink" href="#key-architectural-decisions" title="Permanent link">&para;</a></h2>
+<h3 id="1-microservices-architecture">1. Microservices Architecture<a class="headerlink" href="#1-microservices-architecture" title="Permanent link">&para;</a></h3>
+<p><strong>Decision</strong>: Adopt microservices architecture over monolithic design</p>
+<p><strong>Context:</strong>
+- Dhanman serves multiple business domains (Sales, Purchase, Payroll, Community)
+- Need for independent deployment and scaling
+- Multiple teams working on different features
+- Different services may have different scaling requirements</p>
+<p><strong>Rationale:</strong>
+- <strong>Bounded Context Alignment</strong>: Each service maps to a domain bounded context
+- <strong>Independent Deployment</strong>: Deploy services without affecting others
+- <strong>Technology Flexibility</strong>: Choose appropriate technology per service
+- <strong>Scalability</strong>: Scale services based on individual load patterns
+- <strong>Team Autonomy</strong>: Teams own services end-to-end</p>
+<p><strong>Trade-offs:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Independent deployment</td>
+<td>Increased operational complexity</td>
+</tr>
+<tr>
+<td>Better scalability</td>
+<td>Network latency between services</td>
+</tr>
+<tr>
+<td>Technology diversity</td>
+<td>Distributed system challenges</td>
+</tr>
+<tr>
+<td>Fault isolation</td>
+<td>More complex testing</td>
+</tr>
+<tr>
+<td>Team autonomy</td>
+<td>Data consistency challenges</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Alternatives Considered:</strong>
+- <strong>Monolithic</strong>: Rejected due to coupling and scaling limitations
+- <strong>Modular Monolith</strong>: Considered but rejected for deployment flexibility needs
+- <strong>Service-Oriented Architecture (SOA)</strong>: Too heavyweight with ESB requirements</p>
+<p><strong>Implementation:</strong>
+<div class="highlight"><pre><span></span><code>Microservices:
+- dhanman-common (Auth, Notifications, Ledger)
+- dhanman-sales (Invoicing, Receipts)
+- dhanman-purchase (Procurement, Bills)
+- dhanman-payroll (Salaries, Employees)
+- dhanman-community (Residents, Facilities)
+- dhanman-inventory (Assets, Stock)
+</code></pre></div></p>
+<p><strong>Status</strong>: ✅ Implemented</p>
+<hr />
+<h3 id="2-event-driven-architecture-with-rabbitmq">2. Event-Driven Architecture with RabbitMQ<a class="headerlink" href="#2-event-driven-architecture-with-rabbitmq" title="Permanent link">&para;</a></h3>
+<p><strong>Decision</strong>: Use RabbitMQ for asynchronous event-driven communication</p>
+<p><strong>Context:</strong>
+- Services need to communicate without tight coupling
+- Business workflows span multiple services
+- Need for eventual consistency
+- Requirement for audit trail and event history</p>
+<p><strong>Rationale:</strong>
+- <strong>Decoupling</strong>: Services don't need direct knowledge of consumers
+- <strong>Asynchronous Processing</strong>: Non-blocking operations improve responsiveness
+- <strong>Scalability</strong>: Message broker handles load spikes
+- <strong>Reliability</strong>: Persistent messages ensure no data loss
+- <strong>Integration</strong>: Easy to add new services as event consumers</p>
+<p><strong>Trade-offs:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loose coupling</td>
+<td>Eventual consistency</td>
+</tr>
+<tr>
+<td>Scalability</td>
+<td>More complex debugging</td>
+</tr>
+<tr>
+<td>Reliability</td>
+<td>Message ordering challenges</td>
+</tr>
+<tr>
+<td>Asynchronous processing</td>
+<td>Requires message broker infrastructure</td>
+</tr>
+<tr>
+<td>Event history</td>
+<td>Potential message duplication</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why RabbitMQ over alternatives:</strong></p>
+<p><strong>vs Apache Kafka:</strong>
+- RabbitMQ better for traditional message queuing
+- Lower operational complexity
+- Sufficient throughput for current needs
+- Better routing capabilities</p>
+<p><strong>vs Azure Service Bus:</strong>
+- RabbitMQ is open-source and cloud-agnostic
+- Lower costs
+- More control over infrastructure
+- Similar features for our use cases</p>
+<p><strong>vs AWS SQS/SNS:</strong>
+- Avoid cloud vendor lock-in
+- Can deploy on-premises or any cloud
+- More features (exchange types, routing)</p>
+<p><strong>Implementation Details:</strong>
+<div class="highlight"><pre><span></span><code><span class="nt">Exchanges</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dhanman.events (fanout) - Domain events</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dhanman.commands (direct) - Service commands</span>
+
+<span class="nt">Queues per Service</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">service</span><span class="p p-Indicator">}</span><span class="l l-Scalar l-Scalar-Plain">.events</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">service</span><span class="p p-Indicator">}</span><span class="l l-Scalar l-Scalar-Plain">.commands</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">service</span><span class="p p-Indicator">}</span><span class="l l-Scalar l-Scalar-Plain">.dlq (dead-letter queue)</span>
+
+<span class="nt">Message Patterns</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Publish-Subscribe (events)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Point-to-Point (commands)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Request-Reply (synchronous operations)</span>
+</code></pre></div></p>
+<p><strong>Status</strong>: ✅ Implemented</p>
+<hr />
+<h3 id="3-cqrs-command-query-responsibility-segregation">3. CQRS (Command Query Responsibility Segregation)<a class="headerlink" href="#3-cqrs-command-query-responsibility-segregation" title="Permanent link">&para;</a></h3>
+<p><strong>Decision</strong>: Implement CQRS pattern using MediatR</p>
+<p><strong>Context:</strong>
+- Different performance characteristics for reads vs writes
+- Complex business logic for write operations
+- Need for optimized read models
+- Support for event sourcing</p>
+<p><strong>Rationale:</strong>
+- <strong>Separation of Concerns</strong>: Read and write models optimized independently
+- <strong>Scalability</strong>: Scale read and write sides separately
+- <strong>Performance</strong>: Optimized queries without business logic overhead
+- <strong>Maintainability</strong>: Clear structure for operations
+- <strong>Flexibility</strong>: Different data models for reads vs writes</p>
+<p><strong>Trade-offs:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Optimized performance</td>
+<td>Increased complexity</td>
+</tr>
+<tr>
+<td>Clear separation</td>
+<td>More code to maintain</td>
+</tr>
+<tr>
+<td>Independent scaling</td>
+<td>Potential data staleness</td>
+</tr>
+<tr>
+<td>Better testability</td>
+<td>Learning curve</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why MediatR:</strong>
+- Proven .NET library
+- In-process messaging (low latency)
+- Clean handler pattern
+- Pipeline behaviors for cross-cutting concerns
+- Good community support</p>
+<p><strong>Implementation Pattern:</strong>
+<div class="highlight"><pre><span></span><code><span class="n">Commands</span><span class="w"> </span><span class="p">(</span><span class="n">Write</span><span class="p">):</span>
+<span class="w">  </span><span class="n">CreateInvoiceCommand</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">CreateInvoiceCommandHandler</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">Validates</span><span class="w"> </span><span class="n">business</span><span class="w"> </span><span class="n">rules</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">Modifies</span><span class="w"> </span><span class="n">domain</span><span class="w"> </span><span class="n">entities</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">Publishes</span><span class="w"> </span><span class="n">domain</span><span class="w"> </span><span class="n">events</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">Returns</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+
+<span class="n">Queries</span><span class="w"> </span><span class="p">(</span><span class="n">Read</span><span class="p">):</span>
+<span class="w">  </span><span class="n">GetInvoiceByIdQuery</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">GetInvoiceByIdQueryHandler</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">Bypasses</span><span class="w"> </span><span class="n">domain</span><span class="w"> </span><span class="n">model</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">Reads</span><span class="w"> </span><span class="n">optimized</span><span class="w"> </span><span class="n">projections</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">Returns</span><span class="w"> </span><span class="n">DTOs</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">No</span><span class="w"> </span><span class="n">side</span><span class="w"> </span><span class="n">effects</span>
+</code></pre></div></p>
+<p><strong>Status</strong>: ✅ Implemented</p>
+<hr />
+<h3 id="4-postgresql-as-primary-database">4. PostgreSQL as Primary Database<a class="headerlink" href="#4-postgresql-as-primary-database" title="Permanent link">&para;</a></h3>
+<p><strong>Decision</strong>: Use PostgreSQL 18 as the primary database for all services</p>
+<p><strong>Context:</strong>
+- Need for relational data model
+- ACID transactions required
+- JSON support for flexible schemas
+- Open-source preference
+- Multi-tenancy support</p>
+<p><strong>Rationale:</strong>
+- <strong>Maturity</strong>: Battle-tested, reliable RDBMS
+- <strong>Features</strong>: JSON/JSONB, full-text search, GIS support
+- <strong>Performance</strong>: Excellent query performance
+- <strong>Cost</strong>: Open-source, no licensing fees
+- <strong>Scalability</strong>: Read replicas, partitioning support
+- <strong>Community</strong>: Large community, extensive documentation</p>
+<p><strong>Trade-offs:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACID compliance</td>
+<td>Vertical scaling limits</td>
+</tr>
+<tr>
+<td>Rich feature set</td>
+<td>Complex sharding</td>
+</tr>
+<tr>
+<td>JSON support</td>
+<td>Not ideal for document storage</td>
+</tr>
+<tr>
+<td>Open-source</td>
+<td>Manual operational overhead</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Database Per Service:</strong>
+<div class="highlight"><pre><span></span><code>Production:
+- prod-dhanman-common
+- prod-dhanman-sales
+- prod-dhanman-purchase
+- prod-dhanman-payroll
+- prod-dhanman-community
+- prod-dhanman-inventory
+
+QA:
+- qa-dhanman-common
+- qa-dhanman-sales
+- ... (similar structure)
+</code></pre></div></p>
+<p><strong>Why not NoSQL:</strong>
+- Accounting requires ACID transactions
+- Complex relational queries needed
+- Data integrity critical for financial records
+- Team expertise in SQL</p>
+<p><strong>Status</strong>: ✅ Implemented</p>
+<hr />
+<h3 id="5-domain-driven-design-ddd">5. Domain-Driven Design (DDD)<a class="headerlink" href="#5-domain-driven-design-ddd" title="Permanent link">&para;</a></h3>
+<p><strong>Decision</strong>: Apply DDD tactical patterns in domain layer</p>
+<p><strong>Context:</strong>
+- Complex business domain with specific rules
+- Need for rich domain model
+- Multiple bounded contexts
+- Business logic centralization</p>
+<p><strong>Rationale:</strong>
+- <strong>Business Alignment</strong>: Code reflects business concepts
+- <strong>Ubiquitous Language</strong>: Shared vocabulary between team and domain experts
+- <strong>Encapsulation</strong>: Business logic in domain entities
+- <strong>Maintainability</strong>: Clear domain boundaries
+- <strong>Testability</strong>: Domain logic testable in isolation</p>
+<p><strong>DDD Patterns Applied:</strong>
+<div class="highlight"><pre><span></span><code>✅ Entities - Objects with identity (Invoice, PurchaseOrder)
+✅ Value Objects - Immutable objects (Money, Address)
+✅ Aggregates - Consistency boundaries (Invoice + LineItems)
+✅ Domain Events - Business occurrences (InvoiceCreated)
+✅ Repositories - Persistence abstraction
+✅ Domain Services - Cross-aggregate operations
+✅ Bounded Contexts - Service boundaries
+</code></pre></div></p>
+<p><strong>Trade-offs:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Business alignment</td>
+<td>Learning curve</td>
+</tr>
+<tr>
+<td>Rich domain model</td>
+<td>More code</td>
+</tr>
+<tr>
+<td>Clear boundaries</td>
+<td>Can be over-engineered</td>
+</tr>
+<tr>
+<td>Testable</td>
+<td>Requires domain expertise</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Status</strong>: ✅ Implemented</p>
+<hr />
+<h3 id="6-hangfire-for-scheduled-jobs">6. Hangfire for Scheduled Jobs<a class="headerlink" href="#6-hangfire-for-scheduled-jobs" title="Permanent link">&para;</a></h3>
+<p><strong>Decision</strong>: Use Hangfire for background job processing and scheduling</p>
+<p><strong>Context:</strong>
+- Need for reliable background job processing
+- Scheduled tasks (e.g., monthly invoice generation)
+- Delayed jobs (e.g., payment reminders)
+- Job monitoring and management</p>
+<p><strong>Rationale:</strong>
+- <strong>Persistence</strong>: Jobs survive application restarts
+- <strong>Dashboard</strong>: Built-in monitoring UI
+- <strong>Retry Logic</strong>: Automatic retry with exponential backoff
+- <strong>Flexibility</strong>: Fire-and-forget, delayed, recurring jobs
+- <strong>Integration</strong>: Works well with PostgreSQL</p>
+<p><strong>Why Hangfire over alternatives:</strong></p>
+<p><strong>vs Quartz.NET:</strong>
+- Hangfire has better dashboard
+- Simpler configuration
+- Better persistence options</p>
+<p><strong>vs Azure Functions:</strong>
+- Avoid cloud lock-in
+- More control over execution
+- Lower costs</p>
+<p><strong>vs Custom Solution:</strong>
+- Don't reinvent the wheel
+- Proven reliability
+- Active maintenance</p>
+<p><strong>Job Types Used:</strong>
+<div class="highlight"><pre><span></span><code>Fire-and-Forget: Email notifications
+Delayed: Payment reminders
+Recurring: Monthly invoice generation, daily reports
+Continuations: Sequential workflows
+Batches: Bulk operations
+</code></pre></div></p>
+<p><strong>Status</strong>: ✅ Implemented</p>
+<hr />
+<h3 id="7-auth0-for-authentication">7. Auth0 for Authentication<a class="headerlink" href="#7-auth0-for-authentication" title="Permanent link">&para;</a></h3>
+<p><strong>Decision</strong>: Use Auth0 for authentication and authorization</p>
+<p><strong>Context:</strong>
+- Need for secure authentication
+- OAuth2/OIDC support required
+- Multi-tenancy requirements
+- Social login support</p>
+<p><strong>Rationale:</strong>
+- <strong>Security</strong>: Industry-standard security practices
+- <strong>Features</strong>: MFA, SSO, social logins
+- <strong>Multi-tenancy</strong>: Separate tenants for QA and Production
+- <strong>Maintenance</strong>: Managed service, no security patches to apply
+- <strong>Compliance</strong>: SOC2, HIPAA compliance</p>
+<p><strong>Trade-offs:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Managed security</td>
+<td>Vendor lock-in</td>
+</tr>
+<tr>
+<td>Rich features</td>
+<td>Costs scale with users</td>
+</tr>
+<tr>
+<td>Compliance</td>
+<td>External dependency</td>
+</tr>
+<tr>
+<td>Quick implementation</td>
+<td>Limited customization</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Implementation:</strong>
+<div class="highlight"><pre><span></span><code>Tenants:
+- qa-auth0 (QA environment)
+- prod-auth0 (Production)
+
+Custom Actions:
+- Inject customer_id, org_id in tokens
+- Custom claims for roles
+
+Integration:
+- Frontend: Auth0 React SDK
+- Backend: JWT Bearer authentication
+</code></pre></div></p>
+<p><strong>Status</strong>: ✅ Implemented</p>
+<hr />
+<h3 id="8-net-9-for-backend-services">8. .NET 9 for Backend Services<a class="headerlink" href="#8-net-9-for-backend-services" title="Permanent link">&para;</a></h3>
+<p><strong>Decision</strong>: Use .NET 9 (C#) for all backend microservices</p>
+<p><strong>Context:</strong>
+- Need for high-performance backend
+- Cross-platform deployment
+- Modern language features
+- Team expertise</p>
+<p><strong>Rationale:</strong>
+- <strong>Performance</strong>: Excellent throughput and low latency
+- <strong>Productivity</strong>: Modern C# features, strong typing
+- <strong>Ecosystem</strong>: Rich library ecosystem
+- <strong>Cross-platform</strong>: Runs on Linux (production servers)
+- <strong>Long-term Support</strong>: Microsoft backing</p>
+<p><strong>Why .NET over alternatives:</strong></p>
+<p><strong>vs Node.js:</strong>
+- Better performance for CPU-intensive tasks
+- Stronger typing
+- Better tooling (Visual Studio, Rider)</p>
+<p><strong>vs Java:</strong>
+- More modern language features
+- Better async/await support
+- Lighter memory footprint</p>
+<p><strong>vs Python:</strong>
+- Much better performance
+- Strong typing
+- Better for financial calculations</p>
+<p><strong>Status</strong>: ✅ Implemented</p>
+<hr />
+<h3 id="9-react-typescript-for-frontend">9. React + TypeScript for Frontend<a class="headerlink" href="#9-react-typescript-for-frontend" title="Permanent link">&para;</a></h3>
+<p><strong>Decision</strong>: Use React with TypeScript for the web application</p>
+<p><strong>Context:</strong>
+- Need for rich, interactive UI
+- Single-page application requirements
+- Team preference and expertise
+- Strong ecosystem</p>
+<p><strong>Rationale:</strong>
+- <strong>Component Model</strong>: Reusable UI components
+- <strong>Type Safety</strong>: TypeScript catches errors at compile time
+- <strong>Ecosystem</strong>: Large library ecosystem (MUI, React Query)
+- <strong>Performance</strong>: Virtual DOM for efficient updates
+- <strong>Developer Experience</strong>: Great tooling and debugging</p>
+<p><strong>Technology Stack:</strong>
+<div class="highlight"><pre><span></span><code>- React 18
+- TypeScript
+- Material-UI (MUI)
+- React Query (data fetching)
+- React Router (routing)
+- Vite (build tool)
+</code></pre></div></p>
+<p><strong>Status</strong>: ✅ Implemented</p>
+<hr />
+<h3 id="10-clean-architecture-layered-architecture">10. Clean Architecture / Layered Architecture<a class="headerlink" href="#10-clean-architecture-layered-architecture" title="Permanent link">&para;</a></h3>
+<p><strong>Decision</strong>: Organize code in clean architecture layers</p>
+<p><strong>Context:</strong>
+- Need for maintainable codebase
+- Clear separation of concerns
+- Testability requirements
+- Technology independence</p>
+<p><strong>Layers:</strong>
+<div class="highlight"><pre><span></span><code>1. Domain Layer (Core)
+   - Entities, Value Objects, Aggregates
+   - Domain Events, Interfaces
+   - No external dependencies
+
+2. Application Layer
+   - CQRS handlers (Commands, Queries)
+   - DTOs, Mappers, Validators
+   - Depends on Domain
+
+3. Infrastructure Layer
+   - EF Core implementations
+   - RabbitMQ, External APIs
+   - Depends on Domain and Application
+
+4. API/Presentation Layer
+   - Controllers, SignalR hubs
+   - Request/Response models
+   - Depends on Application
+</code></pre></div></p>
+<p><strong>Benefits:</strong>
+- <strong>Testability</strong>: Domain logic testable without infrastructure
+- <strong>Maintainability</strong>: Clear responsibilities
+- <strong>Flexibility</strong>: Can swap implementations
+- <strong>Independence</strong>: Business logic isolated from frameworks</p>
+<p><strong>Status</strong>: ✅ Implemented</p>
+<hr />
+<h3 id="11-minio-for-object-storage">11. MinIO for Object Storage<a class="headerlink" href="#11-minio-for-object-storage" title="Permanent link">&para;</a></h3>
+<p><strong>Decision</strong>: Use MinIO for document and file storage</p>
+<p><strong>Context:</strong>
+- Need for scalable file storage
+- PDF invoices, images, documents
+- S3-compatible API preferred
+- Self-hosted requirement</p>
+<p><strong>Rationale:</strong>
+- <strong>S3 Compatible</strong>: Standard API
+- <strong>Self-hosted</strong>: Control over data
+- <strong>Performance</strong>: Fast file access
+- <strong>Scalability</strong>: Distributed storage support</p>
+<p><strong>Why MinIO:</strong>
+- Open-source
+- Production-ready
+- Easy deployment
+- No vendor lock-in</p>
+<p><strong>Use Cases:</strong>
+<div class="highlight"><pre><span></span><code>- Invoice PDFs
+- Payslip documents
+- User profile images
+- Import/export files
+- Backup archives
+</code></pre></div></p>
+<p><strong>Status</strong>: ✅ Implemented</p>
+<hr />
+<h3 id="12-grafana-loki-promtail-for-observability">12. Grafana + Loki + Promtail for Observability<a class="headerlink" href="#12-grafana-loki-promtail-for-observability" title="Permanent link">&para;</a></h3>
+<p><strong>Decision</strong>: Use Grafana stack for logging and monitoring</p>
+<p><strong>Context:</strong>
+- Need for centralized logging
+- Service health monitoring
+- Performance metrics tracking
+- Alert management</p>
+<p><strong>Components:</strong>
+<div class="highlight"><pre><span></span><code>Promtail: Log collection from services
+Loki: Log aggregation and storage
+Grafana: Visualization and dashboards
+Prometheus: Metrics collection (planned)
+Netdata: System-level metrics
+</code></pre></div></p>
+<p><strong>Why this stack:</strong>
+- Open-source
+- Lightweight (compared to ELK stack)
+- Good integration between components
+- Excellent visualization (Grafana)
+- Cost-effective</p>
+<p><strong>Status</strong>: ✅ Implemented</p>
+<hr />
+<h3 id="13-api-gateway-pattern-future">13. API Gateway Pattern (Future)<a class="headerlink" href="#13-api-gateway-pattern-future" title="Permanent link">&para;</a></h3>
+<p><strong>Decision</strong>: Plan to implement API Gateway using NGINX/Ocelot</p>
+<p><strong>Context:</strong>
+- Currently using NGINX as reverse proxy
+- Need for centralized routing
+- Rate limiting requirements
+- Authentication/authorization enforcement</p>
+<p><strong>Planned Features:</strong>
+<div class="highlight"><pre><span></span><code>- Request routing
+- Load balancing
+- Rate limiting
+- Authentication
+- Response caching
+- API versioning
+</code></pre></div></p>
+<p><strong>Status</strong>: 🔄 Planned</p>
+<hr />
+<h3 id="14-multi-tenancy-strategy">14. Multi-tenancy Strategy<a class="headerlink" href="#14-multi-tenancy-strategy" title="Permanent link">&para;</a></h3>
+<p><strong>Decision</strong>: Database-per-tenant with schema isolation</p>
+<p><strong>Context:</strong>
+- Need for data isolation
+- Performance requirements
+- Compliance and security
+- Scalability considerations</p>
+<p><strong>Strategy:</strong>
+<div class="highlight"><pre><span></span><code>Organization Level:
+- Each organization has org_id
+- Row-level security via filters
+- Shared database schema
+- Custom database per organization (optional)
+
+Tenant Identification:
+- JWT claims (org_id, customer_id)
+- Global query filters in EF Core
+- Tenant resolver middleware
+</code></pre></div></p>
+<p><strong>Benefits:</strong>
+- Data isolation
+- Performance optimization
+- Cost-effective
+- Easier backups per tenant</p>
+<p><strong>Status</strong>: ✅ Implemented</p>
+<hr />
+<h2 id="technology-stack-summary">Technology Stack Summary<a class="headerlink" href="#technology-stack-summary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+<th>Version</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Backend</strong></td>
+<td>.NET</td>
+<td>9</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>Frontend</strong></td>
+<td>React</td>
+<td>18</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>Language</strong></td>
+<td>TypeScript</td>
+<td>5.x</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>Database</strong></td>
+<td>PostgreSQL</td>
+<td>18</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>Messaging</strong></td>
+<td>RabbitMQ</td>
+<td>3.x</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>Caching</strong></td>
+<td>Redis</td>
+<td>7.x</td>
+<td>🔄 Planned</td>
+</tr>
+<tr>
+<td><strong>Object Storage</strong></td>
+<td>MinIO</td>
+<td>Latest</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>Job Scheduling</strong></td>
+<td>Hangfire</td>
+<td>1.8+</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>Authentication</strong></td>
+<td>Auth0</td>
+<td>-</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>Logging</strong></td>
+<td>Loki + Promtail</td>
+<td>Latest</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>Monitoring</strong></td>
+<td>Grafana + Netdata</td>
+<td>Latest</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>Reverse Proxy</strong></td>
+<td>NGINX</td>
+<td>Latest</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>CI/CD</strong></td>
+<td>GitHub Actions</td>
+<td>-</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>Infrastructure</strong></td>
+<td>Ansible</td>
+<td>Latest</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="decision-process">Decision Process<a class="headerlink" href="#decision-process" title="Permanent link">&para;</a></h2>
+<p>When making architectural decisions, we consider:</p>
+<ol>
+<li><strong>Business Requirements</strong>: Does it solve the business problem?</li>
+<li><strong>Technical Fit</strong>: Does it align with existing architecture?</li>
+<li><strong>Team Capability</strong>: Can the team implement and maintain it?</li>
+<li><strong>Cost</strong>: What are the licensing and operational costs?</li>
+<li><strong>Scalability</strong>: Will it scale with growth?</li>
+<li><strong>Risk</strong>: What are the risks and mitigation strategies?</li>
+<li><strong>Alternatives</strong>: What other options exist?</li>
+</ol>
+<hr />
+<h2 id="future-considerations">Future Considerations<a class="headerlink" href="#future-considerations" title="Permanent link">&para;</a></h2>
+<h3 id="under-evaluation">Under Evaluation<a class="headerlink" href="#under-evaluation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Caching Strategy</strong>: Redis for distributed caching</li>
+<li><strong>API Gateway</strong>: Ocelot or custom gateway</li>
+<li><strong>Service Mesh</strong>: Istio or Linkerd for advanced routing</li>
+<li><strong>Event Sourcing</strong>: Full event sourcing for audit trail</li>
+<li><strong>GraphQL</strong>: Alternative API query language</li>
+<li><strong>gRPC</strong>: For internal service-to-service communication</li>
+</ul>
+<h3 id="deferred">Deferred<a class="headerlink" href="#deferred" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Kubernetes</strong>: Current deployment works well, defer until scale requires it</li>
+<li><strong>Cloud Migration</strong>: Stay on VPS until growth requires cloud scalability</li>
+<li><strong>Microservices Split</strong>: Current services are appropriate size</li>
+</ul>
+<hr />
+<h2 id="related-documentation">Related Documentation<a class="headerlink" href="#related-documentation" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../overview/">Architecture Overview</a></li>
+<li><a href="../patterns/cqrs/">Patterns</a></li>
+</ul>
+<hr />
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>Dhanman's architecture decisions prioritize:
+- <strong>Business alignment</strong> through DDD and bounded contexts
+- <strong>Scalability</strong> via microservices and event-driven design
+- <strong>Reliability</strong> with proven technologies (PostgreSQL, RabbitMQ, .NET)
+- <strong>Operational excellence</strong> through observability and automation
+- <strong>Developer productivity</strong> with modern tools and patterns
+- <strong>Flexibility</strong> to evolve with business needs</p>
+<p>These decisions form a solid foundation for a scalable, maintainable ERP system that can grow with the business.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.sections", "navigation.prune"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../../js/mermaid-init.js"></script>
+      
+    
+  </body>
+</html>
