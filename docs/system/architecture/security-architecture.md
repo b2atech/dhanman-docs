@@ -889,8 +889,8 @@ _logger.LogWarning(
 ---
 
 ## Related Documentation
-- [Auth0 Setup](../../onboarding/developer-onboarding.md)
-- [Deployment Security](../deployment-scalability.md)
+- [Developer Onboarding](../../onboarding/developer-onboarding.md)
+- [Deployment Security](deployment-scalability.md)
 - [API Guidelines](../../development/api-internal/)
 
 ---

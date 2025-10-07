@@ -665,9 +665,8 @@ When making architectural decisions, we consider:
 ---
 
 ## Related Documentation
-- [Architecture Overview](../overview.md)
-- [Patterns](./README.md)
-- [ADRs](../adr/)
+- [Architecture Overview](overview.md)
+- [Patterns](patterns/cqrs.md)
 
 ---
 

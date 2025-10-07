@@ -755,7 +755,6 @@ Domain model evolves with business needs
 ## Related Documentation
 - [CQRS Pattern](cqrs.md) — Separating reads and writes
 - [Event Sourcing](event-sourcing.md) — Event-driven architecture
-- [Repository Pattern](../modules/) — Data access abstraction
 
 ---
 

@@ -374,7 +374,6 @@ public class PerformanceMonitoringBehavior<TRequest, TResponse> : IPipelineBehav
 ## Related Patterns
 - [Event Sourcing](event-sourcing.md) — Event-driven communication between services
 - [Domain-Driven Design](domain-driven-design.md) — Rich domain models with CQRS
-- [Repository Pattern](../modules/) — Data access abstraction
 
 ---
 
