@@ -1,18 +1,64 @@
-# Dhanman Microservices RabbitMQ Messaging Developer Guide
+# Dhanman Microservices Messaging Architecture
+
+## Overview
+
+Dhanman uses **RabbitMQ** as the primary message broker to enable asynchronous, event-driven communication between microservices. The messaging infrastructure is built on top of **B2aTech.CrossCuttingConcern** library with patterns inspired by **MassTransit** for reliable, scalable inter-service communication.
+
+This architecture enables:
+- **Loose coupling** between services
+- **Asynchronous processing** for better responsiveness
+- **Event-driven workflows** across bounded contexts
+- **Scalability** through distributed message processing
+- **Resilience** with automatic retries and dead-letter handling
 
 ---
 
-## 1. Introduction to Messaging Architecture
-
-We use RabbitMQ as our message broker to enable asynchronous, loosely coupled communication between microservices via messages. This event-driven architecture helps build scalable and responsive systems.
+## 1. Messaging Architecture Overview
 
 ### Key Concepts
 
-- **Exchange**: Entry point for messages in RabbitMQ. Routes messages to queues based on exchange type and routing keys.
-- **Queue**: Holds messages until they are consumed.
-- **Routing Key**: Used by direct exchanges to route messages to appropriate queues.
-- **Publisher**: Sends messages to exchanges.
-- **Consumer**: Receives messages from queues.
+#### Exchange
+The entry point for messages in RabbitMQ. Routes messages to queues based on exchange type and routing keys.
+
+**Exchange Types:**
+- **Fanout**: Broadcasts messages to all bound queues (used for events)
+- **Direct**: Routes to specific queues based on routing keys (used for commands)
+- **Topic**: Routes based on routing key patterns (future use)
+- **Headers**: Routes based on message headers (not currently used)
+
+#### Queue
+Holds messages until consumed by a service. Each microservice has dedicated queues for commands and events.
+
+**Queue Properties:**
+- **Durable**: Survives broker restarts
+- **Auto-delete**: Removed when no consumers
+- **Exclusive**: Used by single connection only
+- **TTL**: Time-to-live for messages
+
+#### Routing Key
+String used by exchanges to determine message routing. Format: `{service}.{message-type}.{action}`
+
+**Examples:**
+- `sales.command.create-invoice`
+- `sales.event.invoice-created`
+- `common.command.send-notification`
+
+#### Publisher
+Service that sends messages to exchanges. Uses `IEventPublisher` or `ICommandPublisher` interfaces.
+
+#### Consumer
+Service that receives and processes messages from queues. Implements `IMessageHandler<T>` interface.
+
+### MassTransit-Inspired Patterns
+
+While Dhanman uses a custom implementation built on RabbitMQ.Client, it adopts proven patterns from MassTransit:
+
+1. **Message Conventions**: Clear separation of commands, events, and queries
+2. **Retry Policies**: Exponential backoff for transient failures
+3. **Circuit Breaker**: Prevent cascade failures
+4. **Outbox Pattern**: Ensure exactly-once delivery
+5. **Saga Pattern**: Long-running distributed transactions
+6. **Consumer Configuration**: Concurrent message processing with prefetch limits
 
 ---
 
