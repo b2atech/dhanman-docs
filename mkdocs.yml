@@ -65,11 +65,19 @@ nav:
     - Overview: system/index.md
     - Architecture:
       - Overview: system/architecture/overview.md
+      - Design Decisions: system/architecture/design-decisions.md
+      - Deployment & Scalability: system/architecture/deployment-scalability.md
       - Principles: system/architecture/principles.md
       - ADR: system/architecture/adr/
       - Diagrams: system/architecture/diagrams/
       - Modules: system/architecture/modules/
-      - Patterns: system/architecture/patterns/
+      - Patterns:
+        - CQRS: system/architecture/patterns/cqrs.md
+        - Domain-Driven Design: system/architecture/patterns/domain-driven-design.md
+        - Event Sourcing & Messaging: system/architecture/patterns/event-sourcing.md
+        - Communication Patterns: system/architecture/patterns/communication-patterns.md
+        - Scheduled Jobs (Hangfire): system/architecture/patterns/scheduled-jobs.md
+        - Resilience & Fault Tolerance: system/architecture/patterns/resilience.md
     - Infrastructure:
       - Overview: system/infrastructure/overview.md
       - Database: system/infrastructure/database/postgresql-setup.md
