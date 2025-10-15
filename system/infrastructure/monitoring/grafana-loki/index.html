@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#grafana-loki-setup" class="md-skip">
+        <a href="#promtail-loki-and-grafana-setup-overview" class="md-skip">
           Skip to content
         </a>
       
@@ -1072,6 +1072,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Monitoring
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1081,6 +1092,112 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#components-and-their-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 Components and Their Roles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧩 Components and Their Roles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-promtail-log-collector" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Promtail (Log Collector)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-loki-log-aggregator-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Loki (Log Aggregator / Storage)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-grafana-visualizer-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Grafana (Visualizer / Dashboard)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-flow-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Data Flow Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagram-mermaid" class="md-nav__link">
+    <span class="md-ellipsis">
+      🖼️ Architecture Diagram (Mermaid)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-dhanman-qa-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧠 Example: Dhanman QA Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧾 Summary Table
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benefits-of-this-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Benefits of This Setup
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1311,6 +1428,101 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#components-and-their-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 Components and Their Roles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧩 Components and Their Roles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-promtail-log-collector" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Promtail (Log Collector)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-loki-log-aggregator-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Loki (Log Aggregator / Storage)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-grafana-visualizer-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Grafana (Visualizer / Dashboard)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-flow-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Data Flow Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagram-mermaid" class="md-nav__link">
+    <span class="md-ellipsis">
+      🖼️ Architecture Diagram (Mermaid)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-dhanman-qa-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧠 Example: Dhanman QA Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧾 Summary Table
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benefits-of-this-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Benefits of This Setup
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1324,22 +1536,156 @@
                   
 
 
-<h1 id="grafana-loki-setup">Grafana + Loki Setup<a class="headerlink" href="#grafana-loki-setup" title="Permanent link">&para;</a></h1>
+<h1 id="promtail-loki-and-grafana-setup-overview">📘 Promtail, Loki, and Grafana Setup Overview<a class="headerlink" href="#promtail-loki-and-grafana-setup-overview" title="Permanent link">&para;</a></h1>
+<p>This document explains the roles, flow, and architecture of the <strong>Promtail–Loki–Grafana</strong> stack used in the Dhanman infrastructure for centralized log management.</p>
+<hr />
+<h2 id="components-and-their-roles">🧩 Components and Their Roles<a class="headerlink" href="#components-and-their-roles" title="Permanent link">&para;</a></h2>
+<h3 id="1-promtail-log-collector">1. <strong>Promtail (Log Collector)</strong><a class="headerlink" href="#1-promtail-log-collector" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Promtail</strong> scrapes logs from:</li>
-<li>/var/www/prod/logs</li>
-<li>/var/www/qa/logs</li>
-<li><strong>Loki</strong> stores data in /opt/logging/loki-data</li>
-<li><strong>Grafana</strong> dashboards at https://logs.dhanman.com and https://qa.logs.dhanman.com
-"@</li>
+<li><strong>Purpose:</strong> Reads and ships log files from servers.</li>
+<li><strong>Responsibilities:</strong></li>
+<li>Watches log files (e.g., <code>/var/www/prod/logs/*.log</code>).</li>
+<li>Adds contextual <strong>labels</strong> like <code>service</code>, <code>env</code>, and <code>filename</code>.</li>
+<li>Sends log data to <strong>Loki</strong> over HTTP.</li>
+<li><strong>Example:</strong>
+  <div class="highlight"><pre><span></span><code>/var/www/qa/logs/dhanman-purchase-20251015.log<span class="w"> </span>→<span class="w"> </span>Loki<span class="w"> </span><span class="o">(</span><span class="nv">service</span><span class="o">=</span>purchase,<span class="w"> </span><span class="nv">env</span><span class="o">=</span>qa<span class="o">)</span>
+</code></pre></div></li>
 </ul>
-<p>New-MarkdownFile "system\infrastructure\monitoring\netdata.md" @"</p>
-<h1 id="netdata-monitoring">Netdata Monitoring<a class="headerlink" href="#netdata-monitoring" title="Permanent link">&para;</a></h1>
+<hr />
+<h3 id="2-loki-log-aggregator-storage">2. <strong>Loki (Log Aggregator / Storage)</strong><a class="headerlink" href="#2-loki-log-aggregator-storage" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Installed via kickstart.sh on all VPS servers.</li>
-<li>Connected to Netdata Cloud Room: <em>Dhanman Infra</em></li>
-<li>Tracks CPU, memory, disk I/O, PostgreSQL, NGINX, Docker metrics.</li>
+<li><strong>Purpose:</strong> Acts as the central database for logs.</li>
+<li><strong>Responsibilities:</strong></li>
+<li>Receives and indexes logs from Promtail.</li>
+<li>Stores logs efficiently in chunks (like Prometheus for logs).</li>
+<li>Supports queries using <strong>LogQL</strong> (Loki Query Language).</li>
+<li><strong>Example Query:</strong>
+  <div class="highlight"><pre><span></span><code>{service=&quot;purchase&quot;, level=&quot;Error&quot;}
+</code></pre></div></li>
 </ul>
+<hr />
+<h3 id="3-grafana-visualizer-dashboard">3. <strong>Grafana (Visualizer / Dashboard)</strong><a class="headerlink" href="#3-grafana-visualizer-dashboard" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Purpose:</strong> Provides the UI for log exploration and monitoring.</li>
+<li><strong>Responsibilities:</strong></li>
+<li>Connects to Loki as a <strong>data source</strong>.</li>
+<li>Displays logs in tables, graphs, or custom dashboards.</li>
+<li>Allows filtering, searching, and alert creation.</li>
+<li><strong>Example Usage:</strong></li>
+<li>Dashboard panels for: <em>Recent Error Logs</em>, <em>Log Count by Service</em>, <em>SQL Query Logs</em>.</li>
+</ul>
+<hr />
+<h2 id="data-flow-summary">⚙️ Data Flow Summary<a class="headerlink" href="#data-flow-summary" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Promtail</strong> reads and labels logs.  </li>
+<li><strong>Promtail</strong> pushes logs to <strong>Loki</strong>.  </li>
+<li><strong>Grafana</strong> queries <strong>Loki</strong> to visualize and analyze logs.</li>
+</ol>
+<hr />
+<h2 id="architecture-diagram-mermaid">🖼️ Architecture Diagram (Mermaid)<a class="headerlink" href="#architecture-diagram-mermaid" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>graph TD
+    A[Application Logs&lt;br/&gt;/var/www/{env}/logs/*.log] --&gt;|Tails &amp; Labels| B[Promtail&lt;br/&gt;(Log Collector)]
+    B --&gt;|Pushes via HTTP| C[Loki&lt;br/&gt;(Log Aggregator &amp; Storage)]
+    C --&gt;|Queries via LogQL| D[Grafana&lt;br/&gt;(Dashboard &amp; Visualization)]
+
+    subgraph Environments
+    A
+    end
+
+    subgraph Dhanman Infrastructure
+    B
+    C
+    D
+    end
+</code></pre></div>
+<hr />
+<h2 id="example-dhanman-qa-setup">🧠 Example: Dhanman QA Setup<a class="headerlink" href="#example-dhanman-qa-setup" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Host / Container</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Promtail</strong></td>
+<td><code>qa</code> droplet</td>
+<td>Collects logs from <code>/var/www/qa/logs/</code></td>
+</tr>
+<tr>
+<td><strong>Loki</strong></td>
+<td>Docker container <code>loki</code></td>
+<td>Receives and stores logs</td>
+</tr>
+<tr>
+<td><strong>Grafana</strong></td>
+<td>Accessible at <code>https://logs.dhanman.com</code></td>
+<td>Visualizes logs and metrics</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Promtail Configuration Snippet:</strong>
+<div class="highlight"><pre><span></span><code><span class="nt">scrape_configs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;qa-logs&quot;</span>
+<span class="w">    </span><span class="nt">static_configs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">targets</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;localhost&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;qa&quot;</span>
+<span class="w">          </span><span class="nt">__path__</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/www/qa/logs/*.log</span>
+</code></pre></div></p>
+<p><strong>Loki Endpoint:</strong>
+<div class="highlight"><pre><span></span><code><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://loki:3100/loki/api/v1/push</span>
+</code></pre></div></p>
+<p><strong>Grafana Panels:</strong>
+- ✅ Recent Error Logs (filtered by service/env)
+- 📊 Log Count per Service (QA/PROD)
+- 🔍 SQL Query Logs (Entity Framework tracking)</p>
+<hr />
+<h2 id="summary-table">🧾 Summary Table<a class="headerlink" href="#summary-table" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Function</th>
+<th>Acts On</th>
+<th>Outputs To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Promtail</strong></td>
+<td>Collects logs</td>
+<td>Log files</td>
+<td>Loki</td>
+</tr>
+<tr>
+<td><strong>Loki</strong></td>
+<td>Stores &amp; indexes</td>
+<td>Logs</td>
+<td>Grafana</td>
+</tr>
+<tr>
+<td><strong>Grafana</strong></td>
+<td>Displays &amp; alerts</td>
+<td>Loki</td>
+<td>Dashboard/UI</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="benefits-of-this-setup">🚀 Benefits of This Setup<a class="headerlink" href="#benefits-of-this-setup" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Centralized log visibility across all services.  </li>
+<li>Easy filtering by environment (QA / PROD) and service name.  </li>
+<li>Lightweight and efficient (no heavy Elasticsearch setup).  </li>
+<li>Integrates seamlessly with existing monitoring (Prometheus, Node Exporter).</li>
+</ul>
+<hr />
+<p><strong>Author:</strong> B2A Technologies Pvt. Ltd.<br />
+<strong>Project:</strong> Dhanman Logging &amp; Monitoring Architecture<br />
+<strong>Date:</strong> 2025-10-15</p>
 
 
 
