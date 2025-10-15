@@ -14,7 +14,8 @@ It includes details on database setup, message brokers, storage systems, and obs
 - [Database](database/postgresql-setup.md) — PostgreSQL configuration, replication, and backup strategy.
 - [Messaging](messaging/rabbitmq-setup.md) — RabbitMQ setup and exchange/queue conventions.
 - [Storage](storage/minio-setup.md) — MinIO-based document and media storage.
-- [Monitoring](monitoring/grafana-loki.md) — Logging and metrics using Loki, Promtail, Grafana.
+- [Monitoring Overview](monitoring/grafana-loki.md) — Logging and metrics overview using Loki, Promtail, Grafana.
+- [Monitoring Setup Guide](monitoring/monitoring-setup-guide.md) — Step-by-step configuration for Prometheus, Loki, Grafana, RabbitMQ, and Node Exporter integration.
 
 ---
 
@@ -28,4 +29,4 @@ It includes details on database setup, message brokers, storage systems, and obs
 ---
 
 📘 **Next Step:**  
-View the [Infrastructure Overview](overview.md) or dive into [Database Setup](database/postgresql-setup.md).
+View the [Infrastructure Overview](overview.md) or dive into [Monitoring Setup Guide](monitoring/monitoring-setup-guide.md).
