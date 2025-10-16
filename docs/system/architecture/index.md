@@ -12,6 +12,7 @@ This section documents the **Dhanman ERP system architecture**, key modules, gui
 - [Design Decisions](design-decisions.md) — Key architectural decisions, rationale, and trade-offs.
 - [Deployment & Scalability](deployment-scalability.md) — Infrastructure topology, deployment procedures, and scaling strategies.
 - [Security Architecture](security-architecture.md) — Authentication, authorization, data protection, and security best practices.
+- [Scheduling Architecture](ads/Sequential_Scheduling_Execution.md) — Scheduling.
 
 ### **Architecture Decision Records (ADR)**
 - [View ADRs](adr/) — Records of significant architectural decisions and rationale.
