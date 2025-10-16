@@ -68,6 +68,7 @@ nav:
       - Design Decisions: system/architecture/design-decisions.md
       - Deployment & Scalability: system/architecture/deployment-scalability.md
       - Security Architecture: system/architecture/security-architecture.md
+      - Scheduling Architecture: system/architecture/adr/Sequential_Scheduling_Execution.md
       - Principles: system/architecture/principles.md
       - ADR: system/architecture/adr/
       - Diagrams: system/architecture/diagrams/
