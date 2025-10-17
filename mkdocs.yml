@@ -5,123 +5,125 @@ nav:
 
   # === PRODUCT DOCUMENTATION ===
   - Product:
-    - Overview: product/index.md
-    - Getting Started:
-      - App UI Structure: product/getting-started/app-ui-structure.md
-      - Email Templates: product/getting-started/email-templates.md
-    - Community & Engagement:
-      - Complaints: product/community/complaints/
-      - Notice Board: product/community/notice-board/
-      - Polls & Voting: product/community/polls-voting/
-      - Resident Portal: product/community/resident-portal/
-    - Gate & Security:
-      - Visitor Management: product/gate-management/visitor-management/
-      - Access Control: product/gate-management/access-control/
-      - Security Staff: product/gate-management/security-staff/
-      - Vehicle Tracking: product/gate-management/vehicle-tracking/
-    - Events & Calendar:
-      - Event Management: product/events-calendar/event-management/
-      - Calendar Views: product/events-calendar/calendar-views/
-      - Facility Booking: product/events-calendar/facility-booking/
-    - Financial Management:
-      - Overview: product/financial-management/introduction.md
-      - Invoices: product/financial-management/invoices/
-      - Maintenance Bills: product/financial-management/maintenance-bills/
-      - Receipts: product/financial-management/receipts/
-    - Purchase & Vendor Management:
-      - Vendors: product/purchase-management/vendors/
-      - Purchase Orders: product/purchase-management/purchase-orders/
-    - Inventory & Assets:
-      - Asset Management: product/inventory-assets/asset-management/
-      - Stock Management: product/inventory-assets/stock-management/
-    - Payroll & HR:
-      - Employee Management: product/payroll/employee-management/
-      - Attendance: product/payroll/attendance/
-      - Salary Processing: product/payroll/salary-processing/
-      - Statutory Compliance: product/payroll/statutory-compliance/
-    - Water Management:
-      - Meter Reading: product/water-management/meter-reading/
-      - Water Billing: product/water-management/water-billing/
-      - Consumption Reports: product/water-management/consumption-reports/
-    - Reports & Analytics: product/reports-analytics/
-    - Integrations:
-      - Payment Gateways: product/integrations/payment-gateways/
-      - Email Providers: product/integrations/email-providers/
-      - SMS Gateways: product/integrations/sms-gateways/
-      - Accounting Export: product/integrations/accounting-export/
-    - Mobile Applications:
-      - Resident App: product/mobile-app/resident-app/
-      - Guard App: product/mobile-app/guard-app/
-    - Audit & Compliance:
-      - Audit Trails: product/audit-compliance/audit-trails/
-      - Compliance Reports: product/audit-compliance/compliance-reports/
-      - Document Management: product/audit-compliance/document-management/
-    - Settings & Configuration:
-      - User & Roles: product/users-roles/
-      - Global Configuration: product/settings-configuration/
+      - Overview: product/index.md
+      - Getting Started:
+          - App UI Structure: product/getting-started/app-ui-structure.md
+          - Email Templates: product/getting-started/email-templates.md
+      - Community & Engagement:
+          - Complaints: product/community/complaints/
+          - Notice Board: product/community/notice-board/
+          - Polls & Voting: product/community/polls-voting/
+          - Resident Portal: product/community/resident-portal/
+      - Gate & Security:
+          - Visitor Management: product/gate-management/visitor-management/
+          - Access Control: product/gate-management/access-control/
+          - Security Staff: product/gate-management/security-staff/
+          - Vehicle Tracking: product/gate-management/vehicle-tracking/
+      - Events & Calendar:
+          - Event Management: product/events-calendar/event-management/
+          - Calendar Views: product/events-calendar/calendar-views/
+          - Facility Booking: product/events-calendar/facility-booking/
+      - Financial Management:
+          - Overview: product/financial-management/introduction.md
+          - Invoices: product/financial-management/invoices/
+          - Maintenance Bills: product/financial-management/maintenance-bills/
+          - Receipts: product/financial-management/receipts/
+      - Purchase & Vendor Management:
+          - Vendors: product/purchase-management/vendors/
+          - Purchase Orders: product/purchase-management/purchase-orders/
+      - Inventory & Assets:
+          - Asset Management: product/inventory-assets/asset-management/
+          - Stock Management: product/inventory-assets/stock-management/
+      - Payroll & HR:
+          - Employee Management: product/payroll/employee-management/
+          - Attendance: product/payroll/attendance/
+          - Salary Processing: product/payroll/salary-processing/
+          - Statutory Compliance: product/payroll/statutory-compliance/
+      - Water Management:
+          - Meter Reading: product/water-management/meter-reading/
+          - Water Billing: product/water-management/water-billing/
+          - Consumption Reports: product/water-management/consumption-reports/
+      - Reports & Analytics: product/reports-analytics/
+      - Integrations:
+          - Payment Gateways: product/integrations/payment-gateways/
+          - Email Providers: product/integrations/email-providers/
+          - SMS Gateways: product/integrations/sms-gateways/
+          - Accounting Export: product/integrations/accounting-export/
+      - Mobile Applications:
+          - Resident App: product/mobile-app/resident-app/
+          - Guard App: product/mobile-app/guard-app/
+      - Audit & Compliance:
+          - Audit Trails: product/audit-compliance/audit-trails/
+          - Compliance Reports: product/audit-compliance/compliance-reports/
+          - Document Management: product/audit-compliance/document-management/
+      - Settings & Configuration:
+          - User & Roles: product/users-roles/
+          - Global Configuration: product/settings-configuration/
 
   # === SYSTEM DOCUMENTATION ===
   - System:
-    - Overview: system/index.md
-    - Architecture:
-      - Overview: system/architecture/overview.md
-      - Design Decisions: system/architecture/design-decisions.md
-      - Deployment & Scalability: system/architecture/deployment-scalability.md
-      - Security Architecture: system/architecture/security-architecture.md
-      - Scheduling Architecture: system/architecture/adr/Sequential_Scheduling_Execution.md
-      - Principles: system/architecture/principles.md
-      - ADR: system/architecture/adr/
-      - Diagrams: system/architecture/diagrams/
-      - Modules: system/architecture/modules/
-      - Patterns:
-        - CQRS: system/architecture/patterns/cqrs.md
-        - Domain-Driven Design: system/architecture/patterns/domain-driven-design.md
-        - Event Sourcing & Messaging: system/architecture/patterns/event-sourcing.md
-        - Communication Patterns: system/architecture/patterns/communication-patterns.md
-        - Scheduled Jobs (Hangfire): system/architecture/patterns/scheduled-jobs.md
-        - Resilience & Fault Tolerance: system/architecture/patterns/resilience.md
-    - Infrastructure:
-      - Overview: system/infrastructure/overview.md
-      - Database: system/infrastructure/database/postgresql-setup.md
-      - Messaging: system/infrastructure/messaging/rabbitmq-setup.md
-      - Monitoring: system/infrastructure/monitoring/grafana-loki.md
-      - Storage: system/infrastructure/storage/minio-setup.md
-    - Development:
-      - Overview: system/development/index.md
-      - Getting Started: system/development/getting-started.md
-      - Standards:
-        - Backend Principles: system/development/standards/cc_principle_backend.md
-        - Frontend Principles: "system/development/standards/clean code principle - front end.md"
-        - Code Review Checklist: system/development/standards/code-review-checklist.md
-        - Git Workflow: system/development/standards/git-workflow.md
-      - Project Structure:
-        - Create New Project: system/development/project-structure/create-new-project.md
-        - Repository Conventions: system/development/project-structure/repository-conventions.md
-      - API Internal:
-        - Event Schemas: system/development/api-internal/event-schemas.md
-        - Service Contracts: system/development/api-internal/service-contracts.md
-      - Testing:
-        - Troubleshooting: system/development/testing/troubleshooting.md
-        - Test ID Strategy: system/development/testing/testid-strategy.md
-    - Operations:
-      - Commands & Service Management: system/operations/commands.md
-      - Deployment:
-        - QA Deployment Guide: system/operations/deployment/qa_deployment_guide.md
-        - QA-PROD Deployment: system/operations/deployment/qa_prod_deployment_guide.md
-        - Data Backup & Restore: system/operations/deployment/dump_restore_clean.md
-      - Monitoring:
-        - Dashboards: system/operations/monitoring/dashboards.md
-        - Setup: system/operations/monitoring/smonitoring-setup-guide.md
-      - Runbooks: system/operations/runbooks/qa-refresh-procedure.md
-    - Onboarding:
-      - Developer Onboarding: system/onboarding/developer-onboarding.md
-      - First Contribution: system/onboarding/first-contribution.md
-    - Security:
-      - Overview: system/security/index.md
-      - Authentication Flow: system/security/authentication-flow.md
-      - Permissions Guidelines: system/security/permissions-naming-guidelines.md
-      - Secrets Management: system/security/secrets-management.md
-      - Office Etiquette Policy: system/security/office_etiquette_policy.md
+      - Overview: system/index.md
+      - Architecture:
+          - Overview: system/architecture/overview.md
+          - Design Decisions: system/architecture/design-decisions.md
+          - Deployment & Scalability: system/architecture/deployment-scalability.md
+          - Security Architecture: system/architecture/security-architecture.md
+          - Acknowledgment Event Pattern: system/architecture/AcknowledgmentEventPattern.md
+          - Messaging Architecture: system/architecture/dhanman-messaging-architecture.md
+          - Scheduling Architecture: system/architecture/adr/Sequential_Scheduling_Execution.md
+          - Principles: system/architecture/principles.md
+          - ADR: system/architecture/adr/
+          - Diagrams: system/architecture/diagrams/
+          - Modules: system/architecture/modules/
+          - Patterns:
+              - CQRS: system/architecture/patterns/cqrs.md
+              - Domain-Driven Design: system/architecture/patterns/domain-driven-design.md
+              - Event Sourcing & Messaging: system/architecture/patterns/event-sourcing.md
+              - Communication Patterns: system/architecture/patterns/communication-patterns.md
+              - Scheduled Jobs (Hangfire): system/architecture/patterns/scheduled-jobs.md
+              - Resilience & Fault Tolerance: system/architecture/patterns/resilience.md
+      - Infrastructure:
+          - Overview: system/infrastructure/overview.md
+          - Database: system/infrastructure/database/postgresql-setup.md
+          - Messaging: system/infrastructure/messaging/rabbitmq-setup.md
+          - Monitoring: system/infrastructure/monitoring/grafana-loki.md
+          - Storage: system/infrastructure/storage/minio-setup.md
+      - Development:
+          - Overview: system/development/index.md
+          - Getting Started: system/development/getting-started.md
+          - Standards:
+              - Backend Principles: system/development/standards/cc_principle_backend.md
+              - Frontend Principles: "system/development/standards/clean code principle - front end.md"
+              - Code Review Checklist: system/development/standards/code-review-checklist.md
+              - Git Workflow: system/development/standards/git-workflow.md
+          - Project Structure:
+              - Create New Project: system/development/project-structure/create-new-project.md
+              - Repository Conventions: system/development/project-structure/repository-conventions.md
+          - API Internal:
+              - Event Schemas: system/development/api-internal/event-schemas.md
+              - Service Contracts: system/development/api-internal/service-contracts.md
+          - Testing:
+              - Troubleshooting: system/development/testing/troubleshooting.md
+              - Test ID Strategy: system/development/testing/testid-strategy.md
+      - Operations:
+          - Commands & Service Management: system/operations/commands.md
+          - Deployment:
+              - QA Deployment Guide: system/operations/deployment/qa_deployment_guide.md
+              - QA-PROD Deployment: system/operations/deployment/qa_prod_deployment_guide.md
+              - Data Backup & Restore: system/operations/deployment/dump_restore_clean.md
+          - Monitoring:
+              - Dashboards: system/operations/monitoring/dashboards.md
+              - Setup: system/operations/monitoring/smonitoring-setup-guide.md
+          - Runbooks: system/operations/runbooks/qa-refresh-procedure.md
+      - Onboarding:
+          - Developer Onboarding: system/onboarding/developer-onboarding.md
+          - First Contribution: system/onboarding/first-contribution.md
+      - Security:
+          - Overview: system/security/index.md
+          - Authentication Flow: system/security/authentication-flow.md
+          - Permissions Guidelines: system/security/permissions-naming-guidelines.md
+          - Secrets Management: system/security/secrets-management.md
+          - Office Etiquette Policy: system/security/office_etiquette_policy.md
 
 theme:
   name: material
