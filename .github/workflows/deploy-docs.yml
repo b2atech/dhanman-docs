@@ -42,9 +42,9 @@ jobs:
       - name: Deploy Product Documentation to OVH
         uses: appleboy/scp-action@v0.1.4
         with:
-          host: ${{ env.OVH_HOST }}
-          username: ${{ env.OVH_USER }}
-          key: ${{ secrets.OVH_SSH_KEY }}
+          host: ${{ secrets.OVH_HOST }}
+          username: ${{ secrets.OVH_USER }}
+          password: ${{ secrets.OVH_PASSWORD }}
           port: 22
           source: "${{ env.PRODUCT_DIR }}"
           target: "${{ env.PRODUCT_TARGET }}"
@@ -56,9 +56,9 @@ jobs:
       - name: Deploy System Documentation to OVH
         uses: appleboy/scp-action@v0.1.4
         with:
-          host: ${{ env.OVH_HOST }}
-          username: ${{ env.OVH_USER }}
-          key: ${{ secrets.OVH_SSH_KEY }}
+          host: ${{ secrets.OVH_HOST }}
+          username: ${{ secrets.OVH_USER }}
+          password: ${{ secrets.OVH_PASSWORD }}
           port: 22
           source: "${{ env.SYSTEM_DIR }}"
           target: "${{ env.SYSTEM_TARGET }}"
