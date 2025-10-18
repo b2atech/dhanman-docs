@@ -23,11 +23,11 @@ jobs:
 
       - name: Build MkDocs Product Documentation
         run: |
-          mkdocs --config-file mkdocs-product.yml build --site-dir site-product
+          MKDOCS_CONFIG_FILE=mkdocs-product.yml mkdocs build --site-dir site-product
 
       - name: Build MkDocs System Documentation
         run: |
-          mkdocs --config-file mkdocs-system.yml build --site-dir site-system
+          MKDOCS_CONFIG_FILE=mkdocs-system.yml mkdocs build --site-dir site-system
 
       - name: Deploy Product Documentation to OVH
         uses: appleboy/scp-action@v0.1.4
