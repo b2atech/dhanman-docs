@@ -1,0 +1,102 @@
+site_name: Dhanman System Documentation
+
+nav:
+  - Home: index.md
+
+  # === SYSTEM DOCUMENTATION ===
+  - System:
+      - Overview: system/index.md
+      - Architecture:
+          - Overview: system/architecture/overview.md
+          - Design Decisions: system/architecture/design-decisions.md
+          - Deployment & Scalability: system/architecture/deployment-scalability.md
+          - Security Architecture: system/architecture/security-architecture.md
+          - Acknowledgment Event Pattern: system/architecture/AcknowledgmentEventPattern.md
+          - Messaging Architecture: system/architecture/dhanman-messaging-architecture.md
+          - Scheduling Architecture: system/architecture/adr/Sequential_Scheduling_Execution.md
+          - Principles: system/architecture/principles.md
+          - ADR: system/architecture/adr/
+          - Diagrams: system/architecture/diagrams/
+          - Modules: system/architecture/modules/
+          - Patterns:
+              - CQRS: system/architecture/patterns/cqrs.md
+              - Domain-Driven Design: system/architecture/patterns/domain-driven-design.md
+              - Event Sourcing & Messaging: system/architecture/patterns/event-sourcing.md
+              - Communication Patterns: system/architecture/patterns/communication-patterns.md
+              - Scheduled Jobs (Hangfire): system/architecture/patterns/scheduled-jobs.md
+              - Resilience & Fault Tolerance: system/architecture/patterns/resilience.md
+      - Infrastructure:
+          - Overview: system/infrastructure/overview.md
+          - Database: system/infrastructure/database/postgresql-setup.md
+          - Messaging: system/infrastructure/messaging/rabbitmq-setup.md
+          - Monitoring: system/infrastructure/monitoring/grafana-loki.md
+          - Storage: system/infrastructure/storage/minio-setup.md
+      - Development:
+          - Overview: system/development/index.md
+          - Getting Started: system/development/getting-started.md
+          - Standards:
+              - Backend Principles: system/development/standards/cc_principle_backend.md
+              - Frontend Principles: "system/development/standards/clean code principle - front end.md"
+              - Code Review Checklist: system/development/standards/code-review-checklist.md
+              - Git Workflow: system/development/standards/git-workflow.md
+          - Project Structure:
+              - Create New Project: system/development/project-structure/create-new-project.md
+              - Repository Conventions: system/development/project-structure/repository-conventions.md
+          - API Internal:
+              - Event Schemas: system/development/api-internal/event-schemas.md
+              - Service Contracts: system/development/api-internal/service-contracts.md
+          - Testing:
+              - Troubleshooting: system/development/testing/troubleshooting.md
+              - Test ID Strategy: system/development/testing/testid-strategy.md
+      - Operations:
+          - Commands & Service Management: system/operations/commands.md
+          - Deployment:
+              - QA Deployment Guide: system/operations/deployment/qa_deployment_guide.md
+              - QA-PROD Deployment: system/operations/deployment/qa_prod_deployment_guide.md
+              - Data Backup & Restore: system/operations/deployment/dump_restore_clean.md
+          - Monitoring:
+              - Dashboards: system/operations/monitoring/dashboards.md
+              - Setup: system/operations/monitoring/smonitoring-setup-guide.md
+          - Runbooks: system/operations/runbooks/qa-refresh-procedure.md
+      - Onboarding:
+          - Developer Onboarding: system/onboarding/developer-onboarding.md
+          - First Contribution: system/onboarding/first-contribution.md
+      - Security:
+          - Overview: system/security/index.md
+          - Authentication Flow: system/security/authentication-flow.md
+          - Permissions Guidelines: system/security/permissions-naming-guidelines.md
+          - Secrets Management: system/security/secrets-management.md
+          - Office Etiquette Policy: system/security/office_etiquette_policy.md
+
+theme:
+  name: material
+  logo: images/dhanman-docs.png
+  favicon: images/dhanman-docs.png
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.prune
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - plantuml_markdown:
+      server: http://www.plantuml.com/plantuml
+  - pymdownx.superfences
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js
+  - js/extra.js
+  - https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - js/mermaid-init.js
+
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css
+  - extra.css
+  - https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css

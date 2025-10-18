@@ -21,18 +21,37 @@ jobs:
         run: |
           pip install mkdocs mkdocs-material plantuml-markdown
 
-      - name: Build MkDocs site
-        run: mkdocs build
+      - name: Build MkDocs Product Documentation
+        run: |
+          mkdocs -f mkdocs-product.yml build --site-dir site-product
 
-      - name: Deploy to OVH Server
+      - name: Build MkDocs System Documentation
+        run: |
+          mkdocs -f mkdocs-system.yml build --site-dir site-system
+
+      - name: Deploy Product Documentation to OVH
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.OVH_HOST }}
           username: ${{ secrets.OVH_USER }}
           password: ${{ secrets.OVH_PASSWORD }}
           port: 22
-          source: "site/*"
-          target: "/var/www/dhanman-docs-site"  # Change to your OVH web root folder for docs
+          source: "site-product/*"
+          target: "/var/www/dhanman-docs-site"
+          strip_components: 1
+          timeout: 30s
+          command_timeout: 10m
+          debug: false
+
+      - name: Deploy System Documentation to OVH
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.OVH_HOST }}
+          username: ${{ secrets.OVH_USER }}
+          password: ${{ secrets.OVH_PASSWORD }}
+          port: 22
+          source: "site-system/*"
+          target: "/var/www/dhanman-tech-docs-site"
           strip_components: 1
           timeout: 30s
           command_timeout: 10m

@@ -1,0 +1,94 @@
+site_name: Dhanman Product Documentation
+
+nav:
+  - Home: index.md
+
+  # === PRODUCT DOCUMENTATION ===
+  - Product:
+      - Overview: product/index.md
+      - Getting Started:
+          - App UI Structure: product/getting-started/app-ui-structure.md
+          - Email Templates: product/getting-started/email-templates.md
+      - Community & Engagement:
+          - Complaints: product/community/complaints.md
+          - Notice Board: product/community/notice-board.md
+          - Polls & Voting: product/community/polls-voting.md
+          - Resident Portal: product/community/resident-portal.md
+      - Gate & Security:
+          - Visitor Management: product/gate-management/visitor-management.md
+          - Access Control: product/gate-management/access-control.md
+          - Security Staff: product/gate-management/security-staff.md
+          - Vehicle Tracking: product/gate-management/vehicle-tracking.md
+      - Events & Calendar:
+          - Event Management: product/events-calendar/event-management.md
+          - Calendar Views: product/events-calendar/calendar-views.md
+          - Facility Booking: product/events-calendar/facility-booking.md
+      - Financial Management:
+          - Overview: product/financial-management/introduction.md
+          - Invoices: product/financial-management/invoices.md
+          - Maintenance Bills: product/financial-management/maintenance-bills.md
+          - Receipts: product/financial-management/receipts.md
+      - Purchase & Vendor Management:
+          - Vendors: product/purchase-management/vendors.md
+          - Purchase Orders: product/purchase-management/purchase-orders.md
+      - Inventory & Assets:
+          - Asset Management: product/inventory-assets/asset-management.md
+          - Stock Management: product/inventory-assets/stock-management.md
+      - Payroll & HR:
+          - Employee Management: product/payroll/employee-management.md
+          - Attendance: product/payroll/attendance.md
+          - Salary Processing: product/payroll/salary-processing.md
+          - Statutory Compliance: product/payroll/statutory-compliance.md
+      - Water Management:
+          - Meter Reading: product/water-management/meter-reading.md
+          - Water Billing: product/water-management/water-billing.md
+          - Consumption Reports: product/water-management/consumption-reports.md
+      - Reports & Analytics: product/reports-analytics.md
+      - Integrations:
+          - Payment Gateways: product/integrations/payment-gateways.md
+          - Email Providers: product/integrations/email-providers.md
+          - SMS Gateways: product/integrations/sms-gateways.md
+          - Accounting Export: product/integrations/accounting-export.md
+      - Mobile Applications:
+          - Resident App: product/mobile-app/resident-app.md
+          - Guard App: product/mobile-app/guard-app.md
+      - Audit & Compliance:
+          - Audit Trails: product/audit-compliance/audit-trails.md
+          - Compliance Reports: product/audit-compliance/compliance-reports.md
+          - Document Management: product/audit-compliance/document-management.md
+      - Settings & Configuration:
+          - User & Roles: product/users-roles.md
+          - Global Configuration: product/settings-configuration.md
+
+theme:
+  name: material
+  logo: images/dhanman-docs.png
+  favicon: images/dhanman-docs.png
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.prune
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - plantuml_markdown:
+      server: http://www.plantuml.com/plantuml
+  - pymdownx.superfences
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js
+  - js/extra.js
+  - https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - js/mermaid-init.js
+
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css
+  - extra.css
+  - https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css
