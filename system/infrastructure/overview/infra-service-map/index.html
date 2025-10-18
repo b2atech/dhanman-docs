@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="../../monitoring/dashboards/">
-      
-      
-        <link rel="next" href="../../../onboarding/developer-onboarding/">
       
       
       <link rel="icon" href="../../../../images/dhanman-docs.png">
@@ -20,7 +16,7 @@
     
     
       
-        <title>Runbooks - Dhanman Documentation</title>
+        <title>🏗 Dhanman Production Infrastructure Map - Dhanman Documentation</title>
       
     
     
@@ -68,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#qa-refresh-procedure" class="md-skip">
+        <a href="#dhanman-production-infrastructure-map" class="md-skip">
           Skip to content
         </a>
       
@@ -103,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Runbooks
+              🏗 Dhanman Production Infrastructure Map
             
           </span>
         </div>
@@ -849,10 +845,8 @@
       
   
   
-    
   
   
-  
     
     
     
@@ -864,11 +858,11 @@
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -882,7 +876,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             System
@@ -974,7 +968,7 @@
         
   
   
-    <a href="../../../infrastructure/overview/" class="md-nav__link">
+    <a href="../" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1040,8 +1034,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1051,170 +1043,29 @@
     
     
       
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
-            
+  
+  
+    <a href="../../../operations/commands/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     Operations
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_5">
-            <span class="md-nav__icon md-icon"></span>
-            Operations
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../commands/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Commands & Service Management
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../deployment/qa_deployment_guide/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Deployment
-  </span>
-  
-
       
         <span class="md-nav__icon md-icon"></span>
       
     </a>
   
 
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../monitoring/dashboards/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Monitoring
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Runbooks
-  </span>
-  
-
-      </a>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1332,6 +1183,86 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-dockerized-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 1. Dockerized Services
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-host-based-services-via-systemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧮 2. Host-Based Services (via systemd)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-configuration-file-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧰 3. Configuration File Map
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-nginx-site-configs" class="md-nav__link">
+    <span class="md-ellipsis">
+      🗂 4. NGINX Site Configs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-prometheus-integrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 5. Prometheus Integrations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-log-data-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      🪵 6. Log &amp; Data Paths
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-network-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔌 7. Network &amp; Ports
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-architecture-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧭 8. Architecture Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1345,13 +1276,307 @@
                   
 
 
-<h1 id="qa-refresh-procedure">QA Refresh Procedure<a class="headerlink" href="#qa-refresh-procedure" title="Permanent link">&para;</a></h1>
-<ol>
-<li>Backup QA DBs to B2.</li>
-<li>Restore from Production backups.</li>
-<li>Mask sensitive data.</li>
-<li>Verify services, restart QA containers.</li>
-</ol>
+<h1 id="dhanman-production-infrastructure-map">🏗 Dhanman Production Infrastructure Map<a class="headerlink" href="#dhanman-production-infrastructure-map" title="Permanent link">&para;</a></h1>
+<p>This document provides a full overview of the Dhanman production server (<code>dhanman-prod</code>), detailing which services run in Docker versus directly on the host, along with configuration paths, log locations, and exposed ports.</p>
+<hr />
+<h2 id="1-dockerized-services">🧩 1. Dockerized Services<a class="headerlink" href="#1-dockerized-services" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Container</th>
+<th>Image</th>
+<th>Purpose</th>
+<th>Ports</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>loki-stack_loki_1</code></td>
+<td>grafana/loki:latest</td>
+<td>Centralized log store</td>
+<td>3100</td>
+</tr>
+<tr>
+<td><code>loki-stack_promtail_1</code></td>
+<td>grafana/promtail:2.9.0</td>
+<td>Log collector (tails <code>/var/www/{env}/logs/*.log</code>)</td>
+<td>Internal</td>
+</tr>
+<tr>
+<td><code>loki-stack_grafana_1</code></td>
+<td>grafana/grafana:latest</td>
+<td>Visualization dashboards (Loki, Prometheus)</td>
+<td>3000</td>
+</tr>
+<tr>
+<td><code>rabbitmq-prod</code></td>
+<td>rabbitmq:3-management</td>
+<td>Message broker for all services</td>
+<td>5672, 15672</td>
+</tr>
+<tr>
+<td><code>rabbitmq-exporter</code></td>
+<td>kbudde/rabbitmq-exporter</td>
+<td>RabbitMQ metrics for Prometheus</td>
+<td>9102</td>
+</tr>
+<tr>
+<td><code>uptime-kuma</code></td>
+<td>louislam/uptime-kuma:latest</td>
+<td>Service uptime monitoring</td>
+<td>3001</td>
+</tr>
+<tr>
+<td><code>portainer</code></td>
+<td>portainer/portainer-ce:latest</td>
+<td>Docker management UI</td>
+<td>9443</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Docker Compose file:</strong><br />
+<code>/home/ubuntu/loki-stack/docker-compose.yml</code></p>
+<hr />
+<h2 id="2-host-based-services-via-systemd">🧮 2. Host-Based Services (via systemd)<a class="headerlink" href="#2-host-based-services-via-systemd" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>Port</th>
+<th>Config</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>postgresql@18-main</code></td>
+<td>PostgreSQL</td>
+<td>Core DB for all microservices</td>
+<td>5432</td>
+<td><code>/var/lib/postgresql/18/main</code></td>
+</tr>
+<tr>
+<td><code>postgres_exporter</code></td>
+<td>Prometheus Exporter</td>
+<td>PostgreSQL metrics for Prometheus</td>
+<td>9187</td>
+<td><code>/etc/postgres_exporter/queries_pg_stat_statements.yaml</code></td>
+</tr>
+<tr>
+<td><code>prometheus</code></td>
+<td>Prometheus TSDB</td>
+<td>Metrics collection</td>
+<td>9090</td>
+<td><code>/etc/prometheus/prometheus.yml</code></td>
+</tr>
+<tr>
+<td><code>node_exporter</code></td>
+<td>Prometheus Exporter</td>
+<td>Host metrics (CPU, memory, disk)</td>
+<td>9100</td>
+<td><code>/usr/local/bin/node_exporter</code></td>
+</tr>
+<tr>
+<td><code>nginx</code></td>
+<td>Web proxy</td>
+<td>Reverse proxy &amp; SSL</td>
+<td>80 / 443</td>
+<td><code>/etc/nginx/nginx.conf</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-configuration-file-map">🧰 3. Configuration File Map<a class="headerlink" href="#3-configuration-file-map" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Config File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Grafana</td>
+<td><code>/etc/grafana/grafana.ini</code></td>
+<td>Global Grafana config</td>
+</tr>
+<tr>
+<td>Prometheus</td>
+<td><code>/etc/prometheus/prometheus.yml</code></td>
+<td>Target scrape definitions</td>
+</tr>
+<tr>
+<td>Postgres Exporter</td>
+<td><code>/etc/postgres_exporter/queries_pg_stat_statements.yaml</code></td>
+<td>Custom SQL metrics (query stats)</td>
+</tr>
+<tr>
+<td>NGINX</td>
+<td><code>/etc/nginx/nginx.conf</code></td>
+<td>Global NGINX config</td>
+</tr>
+<tr>
+<td>Loki Stack</td>
+<td><code>/home/ubuntu/loki-stack/docker-compose.yml</code></td>
+<td>Docker services (Loki, Promtail, Grafana)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-nginx-site-configs">🗂 4. NGINX Site Configs<a class="headerlink" href="#4-nginx-site-configs" title="Permanent link">&para;</a></h2>
+<p>Located in <code>/etc/nginx/sites-enabled/</code></p>
+<p>Includes:
+- <code>prod.*.dhanman.com</code> → Production microservices<br />
+- <code>qa.*.dhanman.com</code> → QA environment<br />
+- <code>test.*.dhanman.com</code> → Test environment<br />
+- <code>grafana</code>, <code>prom.dhanman.com</code>, <code>vault.dhanman.com</code>, <code>uptime-kuma</code>, etc.</p>
+<p>NGINX handles reverse proxy + SSL termination for all subdomains.</p>
+<hr />
+<h2 id="5-prometheus-integrations">📊 5. Prometheus Integrations<a class="headerlink" href="#5-prometheus-integrations" title="Permanent link">&para;</a></h2>
+<p>Prometheus scrapes the following targets:</p>
+<ul>
+<li><code>localhost:9187</code> → PostgreSQL Exporter  </li>
+<li><code>localhost:9100</code> → Node Exporter  </li>
+<li><code>localhost:9102</code> → RabbitMQ Exporter  </li>
+<li><code>loki-stack_loki_1</code> → Loki internal metrics  </li>
+</ul>
+<p>Config file: <code>/etc/prometheus/prometheus.yml</code></p>
+<hr />
+<h2 id="6-log-data-paths">🪵 6. Log &amp; Data Paths<a class="headerlink" href="#6-log-data-paths" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Log Path</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PostgreSQL</td>
+<td><code>/var/log/postgresql/postgresql-18-main.log</code></td>
+<td>Auto Explain + Query logs</td>
+</tr>
+<tr>
+<td>Promtail (container)</td>
+<td><code>/var/www/{qa,prod,test}/logs/</code></td>
+<td>Scraped by Promtail</td>
+</tr>
+<tr>
+<td>Prometheus</td>
+<td><code>/var/lib/prometheus/</code></td>
+<td>Metric storage</td>
+</tr>
+<tr>
+<td>Loki</td>
+<td><code>/opt/loki-data/</code> (in container)</td>
+<td>Log chunks</td>
+</tr>
+<tr>
+<td>NGINX</td>
+<td><code>/var/log/nginx/</code></td>
+<td>Access &amp; error logs</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-network-ports">🔌 7. Network &amp; Ports<a class="headerlink" href="#7-network-ports" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Port</th>
+<th>Service</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>22</td>
+<td>SSH</td>
+<td></td>
+</tr>
+<tr>
+<td>80 / 443</td>
+<td>NGINX</td>
+<td></td>
+</tr>
+<tr>
+<td>5432</td>
+<td>PostgreSQL</td>
+<td></td>
+</tr>
+<tr>
+<td>9187</td>
+<td>PostgreSQL Exporter</td>
+<td></td>
+</tr>
+<tr>
+<td>9090</td>
+<td>Prometheus</td>
+<td></td>
+</tr>
+<tr>
+<td>9100</td>
+<td>Node Exporter</td>
+<td></td>
+</tr>
+<tr>
+<td>9102</td>
+<td>RabbitMQ Exporter</td>
+<td></td>
+</tr>
+<tr>
+<td>15672 / 5672</td>
+<td>RabbitMQ</td>
+<td></td>
+</tr>
+<tr>
+<td>3000</td>
+<td>Grafana</td>
+<td></td>
+</tr>
+<tr>
+<td>3100</td>
+<td>Loki</td>
+<td></td>
+</tr>
+<tr>
+<td>3001</td>
+<td>Uptime Kuma</td>
+<td></td>
+</tr>
+<tr>
+<td>9443</td>
+<td>Portainer</td>
+<td></td>
+</tr>
+<tr>
+<td>8200 / 8201</td>
+<td>Vault</td>
+<td></td>
+</tr>
+<tr>
+<td>9000 / 9200</td>
+<td>MinIO</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-architecture-summary">🧭 8. Architecture Summary<a class="headerlink" href="#8-architecture-summary" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Metrics:</strong> Prometheus + Node Exporter + Postgres Exporter + RabbitMQ Exporter  </li>
+<li><strong>Logs:</strong> Promtail → Loki → Grafana  </li>
+<li><strong>Monitoring:</strong> Grafana + Uptime Kuma  </li>
+<li><strong>Reverse Proxy &amp; SSL:</strong> NGINX (Let’s Encrypt / Certbot)  </li>
+<li><strong>Data Storage:</strong> PostgreSQL 18-main  </li>
+<li><strong>Message Broker:</strong> RabbitMQ (Prod vhost)  </li>
+<li><strong>Secrets Management:</strong> Vault (Prod instance)</li>
+</ul>
+<hr />
+<p>✅ <strong>Status:</strong> Verified configuration as of <em>October 18, 2025</em></p>
 
 
 

@@ -1009,6 +1009,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1018,6 +1029,52 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#components-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Components at a Glance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      📍 Infrastructure Layers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#management-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Management Approach
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1311,6 +1368,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#components-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Components at a Glance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      📍 Infrastructure Layers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#management-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Management Approach
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1324,11 +1416,116 @@
                   
 
 
-<h1 id="infrastructure-overview">Infrastructure Overview<a class="headerlink" href="#infrastructure-overview" title="Permanent link">&para;</a></h1>
-<p>Dhanman runs on <strong>OVH Cloud VPS servers</strong> for QA and Production.
-- <strong>Prod:</strong> 51.79.156.217 (Singapore)
-- <strong>QA:</strong> 54.37.159.71 (France)
-- Managed using <strong>Ansible</strong> from Raigad (WSL)</p>
+<h1 id="infrastructure-overview">🏗 Infrastructure Overview<a class="headerlink" href="#infrastructure-overview" title="Permanent link">&para;</a></h1>
+<p>Dhanman runs on <strong>OVH Cloud VPS servers</strong> for QA and Production.</p>
+<table>
+<thead>
+<tr>
+<th>Environment</th>
+<th>Location</th>
+<th>IP Address</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Production</strong></td>
+<td>Singapore</td>
+<td><code>51.79.156.217</code></td>
+<td>Live customer environment</td>
+</tr>
+<tr>
+<td><strong>QA</strong></td>
+<td>France</td>
+<td><code>54.37.159.71</code></td>
+<td>Pre-production / testing</td>
+</tr>
+</tbody>
+</table>
+<p>Provisioning, deployment, and monitoring are managed centrally from <strong>Raigad (WSL)</strong> via <strong>Ansible</strong> playbooks.</p>
+<hr />
+<h2 id="components-at-a-glance">🔧 Components at a Glance<a class="headerlink" href="#components-at-a-glance" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Application</strong></td>
+<td>.NET 9 Microservices</td>
+<td>Common, Sales, Purchase, Payroll, Inventory, Community, Document, Payment</td>
+</tr>
+<tr>
+<td><strong>Database</strong></td>
+<td>PostgreSQL 18</td>
+<td>Separate DB per service and environment</td>
+</tr>
+<tr>
+<td><strong>Messaging</strong></td>
+<td>RabbitMQ</td>
+<td>Environment-specific vhosts; integrated with MassTransit</td>
+</tr>
+<tr>
+<td><strong>Storage</strong></td>
+<td>MinIO</td>
+<td>Document storage</td>
+</tr>
+<tr>
+<td><strong>Monitoring</strong></td>
+<td>Prometheus, Loki, Grafana, Uptime Kuma</td>
+<td>Metrics, logs, dashboards</td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>Vault, UFW, Certbot</td>
+<td>Secrets, firewall, SSL</td>
+</tr>
+<tr>
+<td><strong>Automation</strong></td>
+<td>Ansible, Jenkins, GitHub Actions</td>
+<td>CI/CD and environment provisioning</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="infrastructure-layers">📍 Infrastructure Layers<a class="headerlink" href="#infrastructure-layers" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><strong>Deployment Architecture &amp; Scalability:</strong><br />
+  → <a href="deployment-scalability.md">deployment-scalability.md</a><br />
+  Covers full topology diagrams, NGINX configs, CI/CD pipelines, and scaling roadmap.</p>
+</li>
+<li>
+<p><strong>Infrastructure Service Map:</strong><br />
+  → <a href="infra-service-map/">overview/infra-service-map.md</a><br />
+  Live mapping of all running services (Docker + systemd), ports, configs, and exporters.</p>
+</li>
+<li>
+<p><strong>Monitoring &amp; Observability:</strong><br />
+  → <a href="../monitoring/postgres_query_monitoring.md">monitoring/postgres_query_monitoring.md</a><br />
+  Explains query-level performance tracking and Prometheus integration.</p>
+</li>
+<li>
+<p><strong>Disaster Recovery:</strong><br />
+  → <a href="../scripts/dr-audit-extended.md">scripts/dr-audit-extended.md</a><br />
+  Details nightly Backblaze snapshot automation (<code>dr-audit-extended.sh</code>).</p>
+</li>
+</ul>
+<hr />
+<h2 id="management-approach">🚀 Management Approach<a class="headerlink" href="#management-approach" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Configuration:</strong> Managed through Ansible (<code>~/dhanman-infra/ansible/roles</code>)</li>
+<li><strong>Secrets:</strong> Stored in HashiCorp Vault (Prod and QA isolated)</li>
+<li><strong>SSL:</strong> Automated renewal via Certbot + NGINX reload</li>
+<li><strong>Logging:</strong> Centralized via Loki stack (<code>logs.dhanman.com</code>)</li>
+<li><strong>Backups:</strong> Daily via audit script, uploaded to Backblaze B2</li>
+</ul>
+<hr />
+<p>✅ <em>For a full list of live services, containers, and ports — see <a href="infra-service-map/">Infrastructure Service Map</a>.</em></p>
 
 
 

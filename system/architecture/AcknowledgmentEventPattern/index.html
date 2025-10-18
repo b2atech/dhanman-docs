@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../adr/Sequential_Scheduling_Execution/">
+        <link rel="prev" href="../security-architecture/">
       
       
-        <link rel="next" href="../patterns/cqrs/">
+        <link rel="next" href="../dhanman-messaging-architecture/">
       
       
       <link rel="icon" href="../../../images/dhanman-docs.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Principles - Dhanman Documentation</title>
+        <title>Acknowledgment Event Pattern - Dhanman Documentation</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dhanman-ovh-vps-infrastructure-full-deployment-documentation" class="md-skip">
+        <a href="#dhanman-messaging-design-acknowledgment-event-pattern" class="md-skip">
           Skip to content
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Principles
+              Acknowledgment Event Pattern
             
           </span>
         </div>
@@ -1039,10 +1039,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../AcknowledgmentEventPattern/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Acknowledgment Event Pattern
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1051,6 +1071,131 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-design-philosophy" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 1. Design Philosophy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-high-level-flow-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔁 2. High-Level Flow Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-exchange-and-queue-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧱 3. Exchange and Queue Strategy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-complete-list-of-acknowledgment-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 4. Complete List of Acknowledgment Events
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-masstransit-configuration-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ 5. MassTransit Configuration Example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ 5. MassTransit Configuration Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commonapi-publisher" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common.Api Publisher
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#salesapi-consumer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sales.Api Consumer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-why-use-direct-exchange" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧠 6. Why Use Direct Exchange
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-schema-example-event-dto" class="md-nav__link">
+    <span class="md-ellipsis">
+      🪶 7. Schema Example (Event DTO)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-summary-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 8. Summary Checklist
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1102,30 +1247,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Principles
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../principles/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1134,224 +1259,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-tech-stack-overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      📆 1. Tech Stack Overview
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-repositories-overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      🧰 2. Repositories Overview
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-database-layout-postgresql-17" class="md-nav__link">
-    <span class="md-ellipsis">
-      🗃️ 3. Database Layout (PostgreSQL 17)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🗃️ 3. Database Layout (PostgreSQL 17)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#production" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Production
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#qa" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ QA
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-deployment-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      ⚙️ 4. Deployment Architecture
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="⚙️ 4. Deployment Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#folder-structure-on-ovh" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔹 Folder Structure (on OVH)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ports" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔹 Ports
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#env-example-per-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔹 .env Example (Per Service)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-cicd-github-actions" class="md-nav__link">
-    <span class="md-ellipsis">
-      🚀 5. CI/CD: GitHub Actions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🚀 5. CI/CD: GitHub Actions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#qa-deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ QA Deployment
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#prod-deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ PROD Deployment
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#secrets-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Secrets Management
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-authentication-with-auth0" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔐 6. Authentication with Auth0
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-logging-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      📄 7. Logging Architecture
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-monitoring-metrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      📊 8. Monitoring &amp; Metrics
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-email-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      📧 9. Email Setup
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-code-quality" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔢 10. Code Quality
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-future-improvements" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔧 11. Future Improvements
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary-table" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Summary Table
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1714,46 +1621,73 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-tech-stack-overview" class="md-nav__link">
+  <a href="#objective" class="md-nav__link">
     <span class="md-ellipsis">
-      📆 1. Tech Stack Overview
+      Objective
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-repositories-overview" class="md-nav__link">
+  <a href="#1-design-philosophy" class="md-nav__link">
     <span class="md-ellipsis">
-      🧰 2. Repositories Overview
+      🧩 1. Design Philosophy
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-database-layout-postgresql-17" class="md-nav__link">
+  <a href="#2-high-level-flow-example" class="md-nav__link">
     <span class="md-ellipsis">
-      🗃️ 3. Database Layout (PostgreSQL 17)
+      🔁 2. High-Level Flow Example
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🗃️ 3. Database Layout (PostgreSQL 17)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-exchange-and-queue-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧱 3. Exchange and Queue Strategy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-complete-list-of-acknowledgment-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 4. Complete List of Acknowledgment Events
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-masstransit-configuration-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ 5. MassTransit Configuration Example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ 5. MassTransit Configuration Example">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#production" class="md-nav__link">
+  <a href="#commonapi-publisher" class="md-nav__link">
     <span class="md-ellipsis">
-      ✅ Production
+      Common.Api Publisher
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#qa" class="md-nav__link">
+  <a href="#salesapi-consumer" class="md-nav__link">
     <span class="md-ellipsis">
-      ✅ QA
+      Sales.Api Consumer
     </span>
   </a>
   
@@ -1765,147 +1699,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-deployment-architecture" class="md-nav__link">
+  <a href="#6-why-use-direct-exchange" class="md-nav__link">
     <span class="md-ellipsis">
-      ⚙️ 4. Deployment Architecture
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="⚙️ 4. Deployment Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#folder-structure-on-ovh" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔹 Folder Structure (on OVH)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ports" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔹 Ports
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#env-example-per-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔹 .env Example (Per Service)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-cicd-github-actions" class="md-nav__link">
-    <span class="md-ellipsis">
-      🚀 5. CI/CD: GitHub Actions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🚀 5. CI/CD: GitHub Actions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#qa-deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ QA Deployment
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#prod-deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ PROD Deployment
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#secrets-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Secrets Management
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-authentication-with-auth0" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔐 6. Authentication with Auth0
+      🧠 6. Why Use Direct Exchange
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-logging-architecture" class="md-nav__link">
+  <a href="#7-schema-example-event-dto" class="md-nav__link">
     <span class="md-ellipsis">
-      📄 7. Logging Architecture
+      🪶 7. Schema Example (Event DTO)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-monitoring-metrics" class="md-nav__link">
+  <a href="#8-summary-checklist" class="md-nav__link">
     <span class="md-ellipsis">
-      📊 8. Monitoring &amp; Metrics
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-email-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      📧 9. Email Setup
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-code-quality" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔢 10. Code Quality
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-future-improvements" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔧 11. Future Improvements
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary-table" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Summary Table
+      🧩 8. Summary Checklist
     </span>
   </a>
   
@@ -1926,406 +1740,282 @@
                   
 
 
-<h1 id="dhanman-ovh-vps-infrastructure-full-deployment-documentation">🏠 Dhanman OVH VPS Infrastructure – Full Deployment Documentation<a class="headerlink" href="#dhanman-ovh-vps-infrastructure-full-deployment-documentation" title="Permanent link">&para;</a></h1>
+<h1 id="dhanman-messaging-design-acknowledgment-event-pattern">🧭 Dhanman Messaging Design: Acknowledgment Event Pattern<a class="headerlink" href="#dhanman-messaging-design-acknowledgment-event-pattern" title="Permanent link">&para;</a></h1>
+<h2 id="objective"><strong>Objective</strong><a class="headerlink" href="#objective" title="Permanent link">&para;</a></h2>
+<p>Enable asynchronous, reliable communication between services using <strong>event-based acknowledgments</strong> instead of blocking request–response.<br />
+Each service that initiates a command will later receive a <strong>targeted acknowledgment event</strong> confirming completion and returning necessary identifiers.</p>
 <hr />
-<h2 id="1-tech-stack-overview">📆 1. Tech Stack Overview<a class="headerlink" href="#1-tech-stack-overview" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Layer</th>
-<th>Technology Used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Backend APIs</td>
-<td>.NET 9</td>
-</tr>
-<tr>
-<td>Frontend</td>
-<td>React 18 (Vite)</td>
-</tr>
-<tr>
-<td>Database</td>
-<td>PostgreSQL 17</td>
-</tr>
-<tr>
-<td>Auth</td>
-<td>Auth0 (QA + PROD tenants)</td>
-</tr>
-<tr>
-<td>Logging</td>
-<td>Serilog → Promtail → Loki</td>
-</tr>
-<tr>
-<td>Monitoring</td>
-<td>Grafana, Prometheus, Node/PG Exporter, Uptime Kuma</td>
-</tr>
-<tr>
-<td>Email</td>
-<td>Zoho Mail (MX), Brevo SMTP</td>
-</tr>
-<tr>
-<td>Code Quality</td>
-<td>SonarQube (Community)</td>
-</tr>
-<tr>
-<td>Automation</td>
-<td>Ansible</td>
-</tr>
-<tr>
-<td>CI/CD</td>
-<td>GitHub Actions</td>
-</tr>
-<tr>
-<td>Reverse Proxy</td>
-<td>NGINX + Certbot</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="2-repositories-overview">🧰 2. Repositories Overview<a class="headerlink" href="#2-repositories-overview" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Repository</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>dhanman-common</code></td>
-<td>Shared organization-level API logic</td>
-</tr>
-<tr>
-<td><code>dhanman-community</code></td>
-<td>Housing/residents management</td>
-</tr>
-<tr>
-<td><code>dhanman-inventory</code></td>
-<td>Stock and warehouse management</td>
-</tr>
-<tr>
-<td><code>dhanman-payroll</code></td>
-<td>Salary and employee management</td>
-</tr>
-<tr>
-<td><code>dhanman-purchase</code></td>
-<td>Vendor, PO, GRN, Bills</td>
-</tr>
-<tr>
-<td><code>dhanman-sales</code></td>
-<td>Customer billing, invoices</td>
-</tr>
-<tr>
-<td><code>dhanman-react</code></td>
-<td>Frontend App</td>
-</tr>
-<tr>
-<td><code>b2a-crosscutting</code></td>
-<td>Shared EF Core logic</td>
-</tr>
-<tr>
-<td>└️ <code>b2a-permissions</code></td>
-<td>Permission handling module</td>
-</tr>
-<tr>
-<td>└️ <code>b2a-emailtemplate</code></td>
-<td>Email templating module</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="3-database-layout-postgresql-17">🗃️ 3. Database Layout (PostgreSQL 17)<a class="headerlink" href="#3-database-layout-postgresql-17" title="Permanent link">&para;</a></h2>
-<h3 id="production">✅ Production<a class="headerlink" href="#production" title="Permanent link">&para;</a></h3>
+<h2 id="1-design-philosophy">🧩 <strong>1. Design Philosophy</strong><a class="headerlink" href="#1-design-philosophy" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>prod-dhanman-common</code></li>
-<li><code>prod-dhanman-community</code></li>
-<li><code>prod-dhanman-inventory</code></li>
-<li><code>prod-dhanman-payroll</code></li>
-<li><code>prod-dhanman-purchase</code></li>
-<li><code>prod-dhanman-sales</code></li>
-</ul>
-<h3 id="qa">✅ QA<a class="headerlink" href="#qa" title="Permanent link">&para;</a></h3>
-<ul>
-<li><code>qa-dhanman-common</code></li>
-<li><code>qa-dhanman-community</code></li>
-<li><code>qa-dhanman-inventory</code></li>
-<li><code>qa-dhanman-payroll</code></li>
-<li><code>qa-dhanman-purchase</code></li>
-<li><code>qa-dhanman-sales</code></li>
+<li><strong>Fire-and-Forget Commands:</strong> Sales, Purchase, Payroll, and Community send commands to Common or other shared modules.</li>
+<li><strong>Targeted Acknowledgment Events:</strong> The receiver (e.g., Common) publishes back an acknowledgment event containing IDs or status for the initiating entity.</li>
+<li><strong>Point-to-Point Routing:</strong> Each acknowledgment event is delivered only to its respective source service, avoiding fanout noise.</li>
+<li><strong>Guaranteed Delivery:</strong> All acknowledgment events use durable queues bound to a <strong>direct exchange</strong> with explicit routing keys.</li>
 </ul>
 <hr />
-<h2 id="4-deployment-architecture">⚙️ 4. Deployment Architecture<a class="headerlink" href="#4-deployment-architecture" title="Permanent link">&para;</a></h2>
-<h3 id="folder-structure-on-ovh">🔹 Folder Structure (on OVH)<a class="headerlink" href="#folder-structure-on-ovh" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>/var/www/
-├── prod/
-│   ├── dhanman-common/
-│   │   ├── .env
-│   │   └── logs/dhanman-common-YYYYMMDD.log
-│   ├── ...
-│   └── logs/
-├── qa/
-│   ├── dhanman-common/
-│   │   ├── .env
-│   │   └── logs/dhanman-common-YYYYMMDD.log
-│   ├── ...
-│   └── logs/
+<h2 id="2-high-level-flow-example">🔁 <strong>2. High-Level Flow Example</strong><a class="headerlink" href="#2-high-level-flow-example" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>sequenceDiagram
+    participant Sales as Dhanman.Sales
+    participant Common as Dhanman.Common
+
+    Sales-&gt;&gt;Common: 🔶 CreateTransactionCommand (InvoiceId, Amount)
+    Common-&gt;&gt;CommonDB: 💾 Create Transaction
+    Common--&gt;&gt;Sales: 🔵 TransactionPostedForInvoiceEvent (InvoiceId, TransactionId)
+    Sales-&gt;&gt;SalesDB: 🧾 Update Invoice (TransactionId, Posted = true)
 </code></pre></div>
-<h3 id="ports">🔹 Ports<a class="headerlink" href="#ports" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="3-exchange-and-queue-strategy">🧱 <strong>3. Exchange and Queue Strategy</strong><a class="headerlink" href="#3-exchange-and-queue-strategy" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Env</th>
-<th>Service</th>
-<th>Port</th>
+<th><strong>Exchange</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Publisher</strong></th>
+<th><strong>Routing Key Pattern</strong></th>
+<th><strong>Consumer Service</strong></th>
+<th><strong>Queue Example</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>QA</td>
-<td>dhanman-common</td>
-<td>5101</td>
+<td><code>common.ack.events</code></td>
+<td><strong>direct</strong></td>
+<td>Common</td>
+<td><code>invoice.posted</code></td>
+<td>Sales</td>
+<td><code>sales.invoice_posted.queue</code></td>
 </tr>
 <tr>
-<td>QA</td>
-<td>dhanman-community</td>
-<td>5102</td>
+<td><code>common.ack.events</code></td>
+<td><strong>direct</strong></td>
+<td>Common</td>
+<td><code>bill.posted</code></td>
+<td>Purchase</td>
+<td><code>purchase.bill_posted.queue</code></td>
 </tr>
 <tr>
-<td>QA</td>
-<td>dhanman-inventory</td>
-<td>5103</td>
+<td><code>common.ack.events</code></td>
+<td><strong>direct</strong></td>
+<td>Common</td>
+<td><code>salary.posted</code></td>
+<td>Payroll</td>
+<td><code>payroll.salary_posted.queue</code></td>
 </tr>
 <tr>
-<td>QA</td>
-<td>dhanman-payroll</td>
-<td>5104</td>
+<td><code>common.ack.events</code></td>
+<td><strong>direct</strong></td>
+<td>Common</td>
+<td><code>customer.created</code></td>
+<td>Sales / Community</td>
+<td><code>sales.customer_created.queue</code>, <code>community.customer_created.queue</code></td>
 </tr>
 <tr>
-<td>QA</td>
-<td>dhanman-purchase</td>
-<td>5105</td>
+<td><code>common.ack.events</code></td>
+<td><strong>direct</strong></td>
+<td>Common</td>
+<td><code>vendor.created</code></td>
+<td>Purchase</td>
+<td><code>purchase.vendor_created.queue</code></td>
 </tr>
 <tr>
-<td>QA</td>
-<td>dhanman-sales</td>
-<td>5106</td>
-</tr>
-<tr>
-<td>PROD</td>
-<td>dhanman-common</td>
-<td>5001</td>
-</tr>
-<tr>
-<td>PROD</td>
-<td>dhanman-community</td>
-<td>5002</td>
-</tr>
-<tr>
-<td>PROD</td>
-<td>dhanman-inventory</td>
-<td>5003</td>
-</tr>
-<tr>
-<td>PROD</td>
-<td>dhanman-payroll</td>
-<td>5004</td>
-</tr>
-<tr>
-<td>PROD</td>
-<td>dhanman-purchase</td>
-<td>5005</td>
-</tr>
-<tr>
-<td>PROD</td>
-<td>dhanman-sales</td>
-<td>5006</td>
+<td><code>common.ack.events</code></td>
+<td><strong>direct</strong></td>
+<td>Common</td>
+<td><code>employee.created</code></td>
+<td>Payroll</td>
+<td><code>payroll.employee_created.queue</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="env-example-per-service">🔹 .env Example (Per Service)<a class="headerlink" href="#env-example-per-service" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>ASPNETCORE_ENVIRONMENT=Production
-ConnectionStrings__MainDb=Host=...;Database=prod-dhanman-common;...
-ConnectionStrings__PermissionsDb=...;
-Brevo__ApiKey=...;
-Logging__Path=/var/www/prod/logs/
+<hr />
+<h2 id="4-complete-list-of-acknowledgment-events">🧩 <strong>4. Complete List of Acknowledgment Events</strong><a class="headerlink" href="#4-complete-list-of-acknowledgment-events" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Origin Service (Sender)</strong></th>
+<th><strong>Target Publisher (Responder)</strong></th>
+<th><strong>Command Sent</strong></th>
+<th><strong>Acknowledgment Event</strong></th>
+<th><strong>Payload Fields (Suggested)</strong></th>
+<th><strong>Consumer Queue</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sales</strong></td>
+<td>Common</td>
+<td><code>CreateBasicCustomerCommand</code></td>
+<td><code>CustomerCreatedForSalesEvent</code></td>
+<td><code>CustomerId</code>, <code>CompanyId</code>, <code>OrganizationId</code>, <code>CorrelationId</code>, <code>CreatedOnUtc</code></td>
+<td><code>sales.customer_created.queue</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Common</td>
+<td><code>CreateTransactionCommand</code></td>
+<td><code>TransactionPostedForInvoiceEvent</code></td>
+<td><code>InvoiceId</code>, <code>TransactionId</code>, <code>CompanyId</code>, <code>OrganizationId</code>, <code>PostedOnUtc</code></td>
+<td><code>sales.invoice_posted.queue</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Common</td>
+<td><code>CreateInvoicePaymentCommand</code></td>
+<td><code>TransactionPostedForInvoicePaymentEvent</code></td>
+<td><code>InvoicePaymentId</code>, <code>TransactionId</code>, <code>CompanyId</code>, <code>OrganizationId</code>, <code>PostedOnUtc</code></td>
+<td><code>sales.invoice_payment_posted.queue</code></td>
+</tr>
+<tr>
+<td><strong>Purchase</strong></td>
+<td>Common</td>
+<td><code>CreateBasicVendorCommand</code></td>
+<td><code>VendorCreatedForPurchaseEvent</code></td>
+<td><code>VendorId</code>, <code>CompanyId</code>, <code>OrganizationId</code>, <code>CreatedOnUtc</code></td>
+<td><code>purchase.vendor_created.queue</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Common</td>
+<td><code>CreateTransactionCommand</code></td>
+<td><code>TransactionPostedForBillEvent</code></td>
+<td><code>BillId</code>, <code>TransactionId</code>, <code>CompanyId</code>, <code>OrganizationId</code>, <code>PostedOnUtc</code></td>
+<td><code>purchase.bill_posted.queue</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Common</td>
+<td><code>CreateBillPaymentCommand</code></td>
+<td><code>TransactionPostedForBillPaymentEvent</code></td>
+<td><code>BillPaymentId</code>, <code>TransactionId</code>, <code>CompanyId</code>, <code>OrganizationId</code>, <code>PostedOnUtc</code></td>
+<td><code>purchase.bill_payment_posted.queue</code></td>
+</tr>
+<tr>
+<td><strong>Payroll</strong></td>
+<td>Common</td>
+<td><code>CreateBasicEmployeeCommand</code></td>
+<td><code>EmployeeCreatedForPayrollEvent</code></td>
+<td><code>EmployeeId</code>, <code>CompanyId</code>, <code>OrganizationId</code>, <code>CreatedOnUtc</code></td>
+<td><code>payroll.employee_created.queue</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Common</td>
+<td><code>CreateTransactionCommand</code></td>
+<td><code>TransactionPostedForSalaryEvent</code></td>
+<td><code>SalaryId</code>, <code>TransactionId</code>, <code>CompanyId</code>, <code>OrganizationId</code>, <code>PostedOnUtc</code></td>
+<td><code>payroll.salary_posted.queue</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Common</td>
+<td><code>CreateSalaryPaymentCommand</code></td>
+<td><code>TransactionPostedForSalaryPaymentEvent</code></td>
+<td><code>SalaryPaymentId</code>, <code>TransactionId</code>, <code>CompanyId</code>, <code>OrganizationId</code>, <code>PostedOnUtc</code></td>
+<td><code>payroll.salary_payment_posted.queue</code></td>
+</tr>
+<tr>
+<td><strong>Community</strong></td>
+<td>Common</td>
+<td><code>CreateBasicCustomerCommand</code></td>
+<td><code>CustomerCreatedForCommunityEvent</code></td>
+<td><code>CustomerId</code>, <code>UnitId</code>, <code>CompanyId</code>, <code>OrganizationId</code>, <code>CreatedOnUtc</code></td>
+<td><code>community.customer_created.queue</code></td>
+</tr>
+<tr>
+<td><strong>Common (reverse ack)</strong></td>
+<td>Community</td>
+<td>(Triggered when Unit creates a Customer)</td>
+<td><code>CustomerLinkedToUnitEvent</code></td>
+<td><code>UnitId</code>, <code>CustomerId</code>, <code>CompanyId</code>, <code>OrganizationId</code>, <code>LinkedOnUtc</code></td>
+<td><code>community.customer_linked.queue</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-masstransit-configuration-example">⚙️ <strong>5. MassTransit Configuration Example</strong><a class="headerlink" href="#5-masstransit-configuration-example" title="Permanent link">&para;</a></h2>
+<h3 id="commonapi-publisher"><strong>Common.Api Publisher</strong><a class="headerlink" href="#commonapi-publisher" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="n">_eventPublisher</span><span class="p">.</span><span class="n">PublishAsync</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">TransactionPostedForInvoiceEvent</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">InvoiceId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">InvoiceId</span><span class="p">,</span>
+<span class="w">    </span><span class="n">TransactionId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transaction</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span>
+<span class="w">    </span><span class="n">CompanyId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">CompanyId</span><span class="p">,</span>
+<span class="w">    </span><span class="n">OrganizationId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">OrganizationId</span><span class="p">,</span>
+<span class="w">    </span><span class="n">PostedOnUtc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">UtcNow</span>
+<span class="p">},</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">context</span><span class="p">.</span><span class="n">SetRoutingKey</span><span class="p">(</span><span class="s">&quot;invoice.posted&quot;</span><span class="p">);</span>
+<span class="p">});</span>
 </code></pre></div>
-- Injected dynamically from GitHub Secrets during deployment.
-- Ensures clean separation of environments.</p>
+<h3 id="salesapi-consumer"><strong>Sales.Api Consumer</strong><a class="headerlink" href="#salesapi-consumer" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">cfg</span><span class="p">.</span><span class="n">ReceiveEndpoint</span><span class="p">(</span><span class="s">&quot;sales.invoice_posted.queue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">e</span><span class="p">.</span><span class="n">ConfigureConsumeTopology</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">e</span><span class="p">.</span><span class="n">Bind</span><span class="p">(</span><span class="s">&quot;common.ack.events&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">x</span><span class="p">.</span><span class="n">RoutingKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;invoice.posted&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="n">e</span><span class="p">.</span><span class="n">ConfigureConsumer</span><span class="o">&lt;</span><span class="n">TransactionPostedForInvoiceConsumer</span><span class="o">&gt;</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
 <hr />
-<h2 id="5-cicd-github-actions">🚀 5. CI/CD: GitHub Actions<a class="headerlink" href="#5-cicd-github-actions" title="Permanent link">&para;</a></h2>
-<h3 id="qa-deployment">✅ QA Deployment<a class="headerlink" href="#qa-deployment" title="Permanent link">&para;</a></h3>
+<h2 id="6-why-use-direct-exchange">🧠 <strong>6. Why Use Direct Exchange</strong><a class="headerlink" href="#6-why-use-direct-exchange" title="Permanent link">&para;</a></h2>
+<p>✔ Only specific consumers receive relevant messages<br />
+✔ Reduces unnecessary message traffic<br />
+✔ Keeps event routing explicit and predictable<br />
+✔ Easy to extend — just add a new routing key and queue binding for another event type</p>
+<hr />
+<h2 id="7-schema-example-event-dto">🪶 <strong>7. Schema Example (Event DTO)</strong><a class="headerlink" href="#7-schema-example-event-dto" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">record</span><span class="w"> </span><span class="nf">TransactionPostedForInvoiceEvent</span><span class="p">(</span>
+<span class="w">    </span><span class="n">Guid</span><span class="w"> </span><span class="n">InvoiceId</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">TransactionId</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Guid</span><span class="w"> </span><span class="n">CompanyId</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Guid</span><span class="w"> </span><span class="n">OrganizationId</span><span class="p">,</span>
+<span class="w">    </span><span class="n">DateTime</span><span class="w"> </span><span class="n">PostedOnUtc</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Guid</span><span class="w"> </span><span class="n">CorrelationId</span><span class="p">);</span>
+</code></pre></div>
+<p>All acknowledgment events follow a consistent convention:</p>
 <ul>
-<li>Triggered on merge to <code>main</code>.</li>
-<li>Auto deploys to OVH:</li>
-<li>SSH</li>
-<li>Rsync binaries</li>
-<li>Generate <code>.env</code></li>
-<li>Restart systemd service</li>
+<li>Include <strong>CorrelationId</strong> from originating command</li>
+<li>Include <strong>EntityId</strong> (InvoiceId, BillId, etc.)</li>
+<li>Include <strong>TransactionId</strong></li>
+<li>Include <strong>OrganizationId</strong>, <strong>CompanyId</strong>, and <strong>Timestamp</strong></li>
 </ul>
-<h3 id="prod-deployment">✅ PROD Deployment<a class="headerlink" href="#prod-deployment" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Manual via <code>workflow_dispatch</code>.</li>
-<li>Uses same logic but run intentionally.</li>
-</ul>
-<h3 id="secrets-management">✅ Secrets Management<a class="headerlink" href="#secrets-management" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="8-summary-checklist">🧩 <strong>8. Summary Checklist</strong><a class="headerlink" href="#8-summary-checklist" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Secret Name</th>
-<th>Purpose</th>
+<th>✅ Goal</th>
+<th>🧩 Implementation</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>DO_HOST</code></td>
-<td>OVH IP address</td>
+<td>Maintain async non-blocking flow</td>
+<td>Fire commands, listen for acknowledgment events</td>
 </tr>
 <tr>
-<td><code>DO_USER</code></td>
-<td>SSH user</td>
+<td>Event naming consistency</td>
+<td>Use <code>TransactionPostedForXEvent</code>, <code>CustomerCreatedForXEvent</code>, etc.</td>
 </tr>
 <tr>
-<td><code>DO_SSH_KEY</code></td>
-<td>SSH private key</td>
+<td>Routing isolation</td>
+<td>Use direct exchange with service-specific routing keys</td>
 </tr>
 <tr>
-<td><code>CONNECTIONSTRINGS__PURCHASEDB_QA</code></td>
-<td>QA DB conn string</td>
+<td>Observability</td>
+<td>Include CorrelationId in every message</td>
 </tr>
 <tr>
-<td><code>CONNECTIONSTRINGS__PURCHASEDB_PROD</code></td>
-<td>PROD DB conn string</td>
+<td>Reliability</td>
+<td>Use Outbox pattern for event publishing</td>
 </tr>
 <tr>
-<td><code>CONNECTIONSTRINGS__PERMISSIONSDB_QA</code></td>
-<td>Permissions DB</td>
-</tr>
-<tr>
-<td><code>CONNECTIONSTRINGS__PERMISSIONSDB_PROD</code></td>
-<td>Permissions DB</td>
-</tr>
-<tr>
-<td><code>SONAR_TOKEN</code></td>
-<td>SonarCloud token</td>
+<td>Maintainability</td>
+<td>Group all acknowledgments under <code>common.ack.events</code> exchange</td>
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="6-authentication-with-auth0">🔐 6. Authentication with Auth0<a class="headerlink" href="#6-authentication-with-auth0" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Two tenants: <code>qa-auth0</code>, <code>prod-auth0</code></li>
-<li>Custom Actions:</li>
-<li>Inject <code>customer_id</code>, <code>org_id</code> in access tokens</li>
-<li>Used in both frontend and backend</li>
-</ul>
-<hr />
-<h2 id="7-logging-architecture">📄 7. Logging Architecture<a class="headerlink" href="#7-logging-architecture" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Serilog</strong> (JSON logs)</li>
-<li>Logs written to:</li>
-<li><code>/var/www/prod/logs/*.log</code></li>
-<li><code>/var/www/qa/logs/*.log</code></li>
-<li>Filename format: <code>service-name-YYYYMMDD.log</code></li>
-<li>Promtail regex extracts service/environment</li>
-<li>Loki aggregates logs</li>
-<li>Grafana dashboards include:</li>
-<li>Error logs</li>
-<li>Recent events</li>
-<li>SQL queries via EF</li>
-</ul>
-<hr />
-<h2 id="8-monitoring-metrics">📊 8. Monitoring &amp; Metrics<a class="headerlink" href="#8-monitoring-metrics" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Uptime Kuma</strong>: HTTP-based health monitoring</li>
-<li><strong>Prometheus</strong>:</li>
-<li>Node Exporter: CPU, RAM, disk</li>
-<li>PostgreSQL Exporter: query times, active connections</li>
-<li><strong>Grafana Dashboards</strong>:</li>
-<li>Live stats</li>
-<li>Alerts (future enhancement)</li>
-</ul>
-<hr />
-<h2 id="9-email-setup">📧 9. Email Setup<a class="headerlink" href="#9-email-setup" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Zoho Mail</strong>:</li>
-<li>Mailboxes like <code>info@dhanman.com</code></li>
-<li>
-<p>SPF, DKIM, DMARC configured</p>
-</li>
-<li>
-<p><strong>Brevo SMTP</strong>:</p>
-</li>
-<li>Used in email template service</li>
-<li>Injected via <code>.env</code></li>
-</ul>
-<hr />
-<h2 id="10-code-quality">🔢 10. Code Quality<a class="headerlink" href="#10-code-quality" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>SonarQube (Community)</strong>:</li>
-<li><code>.NET</code> and <code>React</code> projects</li>
-<li>Scans run in pipeline</li>
-<li>Token stored in <code>SONAR_TOKEN</code></li>
-</ul>
-<hr />
-<h2 id="11-future-improvements">🔧 11. Future Improvements<a class="headerlink" href="#11-future-improvements" title="Permanent link">&para;</a></h2>
-<ul>
-<li>[ ] PgBouncer setup for DB pooling</li>
-<li>[ ] Auto backup of PostgreSQL</li>
-<li>[ ] Log archival + rotation</li>
-<li>[ ] Grafana alerts for anomalies</li>
-<li>[ ] Audit logging for user actions</li>
-</ul>
-<hr />
-<h2 id="summary-table">✅ Summary Table<a class="headerlink" href="#summary-table" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Area</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>APIs</td>
-<td>6 PROD + 6 QA</td>
-</tr>
-<tr>
-<td>Frontend</td>
-<td>React 18 SPA</td>
-</tr>
-<tr>
-<td>Authentication</td>
-<td>Auth0 (multi-tenant)</td>
-</tr>
-<tr>
-<td>CI/CD</td>
-<td>GitHub Actions</td>
-</tr>
-<tr>
-<td>Logging</td>
-<td>Serilog + Loki</td>
-</tr>
-<tr>
-<td>Monitoring</td>
-<td>Prometheus + Kuma</td>
-</tr>
-<tr>
-<td>Email</td>
-<td>Zoho + Brevo SMTP</td>
-</tr>
-<tr>
-<td>Code Quality</td>
-<td>SonarQube CI</td>
-</tr>
-<tr>
-<td>Deployment</td>
-<td>Ansible + GitHub</td>
-</tr>
-</tbody>
-</table>
-<hr />
 
 
 

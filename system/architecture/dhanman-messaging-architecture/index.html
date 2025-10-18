@@ -1,0 +1,3356 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../AcknowledgmentEventPattern/">
+      
+      
+        <link rel="next" href="../adr/Sequential_Scheduling_Execution/">
+      
+      
+      <link rel="icon" href="../../../images/dhanman-docs.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Messaging Architecture - Dhanman Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+    
+      <link rel="stylesheet" href="../../../extra.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dhanman-messaging-architecture-rabbitmq-masstransit-detailed" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Dhanman Documentation" class="md-header__button md-logo" aria-label="Dhanman Documentation" data-md-component="logo">
+      
+  <img src="../../../images/dhanman-docs.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dhanman Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Messaging Architecture
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Dhanman Documentation" class="md-nav__button md-logo" aria-label="Dhanman Documentation" data-md-component="logo">
+      
+  <img src="../../../images/dhanman-docs.png" alt="logo">
+
+    </a>
+    Dhanman Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Product
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Product
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/getting-started/app-ui-structure/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/community/complaints/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Community & Engagement
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/gate-management/visitor-management/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Gate & Security
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/events-calendar/event-management/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Events & Calendar
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/financial-management/introduction/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Financial Management
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/purchase-management/vendors/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Purchase & Vendor Management
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/inventory-assets/asset-management/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Inventory & Assets
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/payroll/employee-management/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Payroll & HR
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/water-management/meter-reading/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Water Management
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product/reports-analytics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reports & Analytics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/integrations/payment-gateways/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Integrations
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/mobile-app/resident-app/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Mobile Applications
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/audit-compliance/audit-trails/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Audit & Compliance
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../product/users-roles/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Settings & Configuration
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    System
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design-decisions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Decisions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment-scalability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment & Scalability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AcknowledgmentEventPattern/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acknowledgment Event Pattern
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Messaging Architecture
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Messaging Architecture
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      0) At-a-glance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-services-ownership" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) Services &amp; Ownership
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-commands-vs-events-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) Commands vs Events (recap)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-rabbitmq-primer-with-dhanman-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      3) RabbitMQ Primer (with Dhanman conventions)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3) RabbitMQ Primer (with Dhanman conventions)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-virtual-hosts-vhosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Virtual Hosts (vhosts)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-exchanges-queues-bindings-routing-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Exchanges, Queues, Bindings, Routing Keys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-durability-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Durability &amp; Persistence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-acknowledgements-prefetch" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 Acknowledgements &amp; Prefetch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-dead-lettering-dlxdlq" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 Dead-Lettering (DLX/DLQ)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-policies-ha" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6 Policies &amp; HA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-naming-conventions-clear-consistent" class="md-nav__link">
+    <span class="md-ellipsis">
+      4) Naming Conventions (clear &amp; consistent)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4) Naming Conventions (clear & consistent)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-exchanges" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Exchanges
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Queues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-routing-keys-for-directtopic" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Routing Keys (for direct/topic)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-service-wise-contracts-with-suggested-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      5) Service-wise Contracts (with suggested names)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5) Service-wise Contracts (with suggested names)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-common-events-fanout-on-commonevents" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 Common → Events (fanout on common.events)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-commands-common-direct-on-commoncommands" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Commands → Common (direct on common.commands)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-community-sales-direct-on-salescommands" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 Community → Sales (direct on sales.commands)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-events-consumed-by-salespurchasepayrollinventorycommunity" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4 Events Consumed by Sales/Purchase/Payroll/Inventory/Community
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-masstransit-setup-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      6) MassTransit Setup (C#)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6) MassTransit Setup (C#)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-bus-configuration-generic" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Bus Configuration (generic)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-define-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 Define Contracts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-producer-sales-common" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 Producer (Sales → Common)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-consumer-common-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4 Consumer (Common side)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-events-fanout" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.5 Events (fanout)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#66-outbox-idempotency-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.6 Outbox &amp; Idempotency (recommended)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-error-queues-retries-reprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      7) Error Queues, Retries &amp; Reprocessing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7) Error Queues, Retries & Reprocessing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-how-errors-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 How errors flow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-viewing-messages-rabbitmq-management-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 Viewing messages (RabbitMQ Management UI)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-reprocessing-a-failed-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3 Reprocessing a failed message
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-operational-alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.4 Operational alerts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-how-to-set-up-dlqdlx-example-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      8) How to set up DLQ/DLX (example policy)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-security-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      9) Security &amp; Access
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-monitoring-slos" class="md-nav__link">
+    <span class="md-ellipsis">
+      10) Monitoring &amp; SLOs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-message-envelope-standard-proposal" class="md-nav__link">
+    <span class="md-ellipsis">
+      11) Message Envelope (standard proposal)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-end-to-end-flow-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      12) End-to-end Flow Tables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12) End-to-end Flow Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-ledger-flows" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.1 Ledger flows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-master-data-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.2 Master data replication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-owner-entity-mirroring" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.3 Owner entity mirroring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      13) Diagrams
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13) Diagrams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-high-level-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.1 High-level system
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-command-routing-direct" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.2 Command routing (direct)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-event-fanout-broadcast" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.3 Event fanout (broadcast)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-operational-runbook-daily-quick-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      14) Operational Runbook (daily quick-check)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      15) Glossary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-checklists" class="md-nav__link">
+    <span class="md-ellipsis">
+      16) Checklists
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16) Checklists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161-adding-a-new-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      16.1 Adding a new command
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162-adding-a-new-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      16.2 Adding a new event
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-appendix-sample-policies-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      17) Appendix: Sample Policies &amp; CLI
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/Sequential_Scheduling_Execution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scheduling Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../principles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ADR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagrams/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagrams
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../patterns/cqrs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Patterns
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../infrastructure/overview/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infrastructure
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../development/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Development
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../operations/commands/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Operations
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../onboarding/developer-onboarding/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Onboarding
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../security/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      0) At-a-glance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-services-ownership" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) Services &amp; Ownership
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-commands-vs-events-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) Commands vs Events (recap)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-rabbitmq-primer-with-dhanman-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      3) RabbitMQ Primer (with Dhanman conventions)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3) RabbitMQ Primer (with Dhanman conventions)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-virtual-hosts-vhosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Virtual Hosts (vhosts)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-exchanges-queues-bindings-routing-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Exchanges, Queues, Bindings, Routing Keys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-durability-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Durability &amp; Persistence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-acknowledgements-prefetch" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 Acknowledgements &amp; Prefetch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-dead-lettering-dlxdlq" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 Dead-Lettering (DLX/DLQ)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-policies-ha" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6 Policies &amp; HA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-naming-conventions-clear-consistent" class="md-nav__link">
+    <span class="md-ellipsis">
+      4) Naming Conventions (clear &amp; consistent)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4) Naming Conventions (clear & consistent)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-exchanges" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Exchanges
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Queues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-routing-keys-for-directtopic" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Routing Keys (for direct/topic)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-service-wise-contracts-with-suggested-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      5) Service-wise Contracts (with suggested names)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5) Service-wise Contracts (with suggested names)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-common-events-fanout-on-commonevents" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 Common → Events (fanout on common.events)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-commands-common-direct-on-commoncommands" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Commands → Common (direct on common.commands)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-community-sales-direct-on-salescommands" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 Community → Sales (direct on sales.commands)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-events-consumed-by-salespurchasepayrollinventorycommunity" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4 Events Consumed by Sales/Purchase/Payroll/Inventory/Community
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-masstransit-setup-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      6) MassTransit Setup (C#)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6) MassTransit Setup (C#)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-bus-configuration-generic" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Bus Configuration (generic)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-define-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 Define Contracts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-producer-sales-common" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 Producer (Sales → Common)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-consumer-common-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4 Consumer (Common side)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-events-fanout" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.5 Events (fanout)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#66-outbox-idempotency-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.6 Outbox &amp; Idempotency (recommended)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-error-queues-retries-reprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      7) Error Queues, Retries &amp; Reprocessing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7) Error Queues, Retries & Reprocessing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-how-errors-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 How errors flow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-viewing-messages-rabbitmq-management-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 Viewing messages (RabbitMQ Management UI)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-reprocessing-a-failed-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3 Reprocessing a failed message
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-operational-alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.4 Operational alerts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-how-to-set-up-dlqdlx-example-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      8) How to set up DLQ/DLX (example policy)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-security-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      9) Security &amp; Access
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-monitoring-slos" class="md-nav__link">
+    <span class="md-ellipsis">
+      10) Monitoring &amp; SLOs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-message-envelope-standard-proposal" class="md-nav__link">
+    <span class="md-ellipsis">
+      11) Message Envelope (standard proposal)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-end-to-end-flow-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      12) End-to-end Flow Tables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12) End-to-end Flow Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-ledger-flows" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.1 Ledger flows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-master-data-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.2 Master data replication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-owner-entity-mirroring" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.3 Owner entity mirroring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      13) Diagrams
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13) Diagrams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-high-level-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.1 High-level system
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-command-routing-direct" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.2 Command routing (direct)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-event-fanout-broadcast" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.3 Event fanout (broadcast)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-operational-runbook-daily-quick-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      14) Operational Runbook (daily quick-check)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      15) Glossary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-checklists" class="md-nav__link">
+    <span class="md-ellipsis">
+      16) Checklists
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16) Checklists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161-adding-a-new-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      16.1 Adding a new command
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162-adding-a-new-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      16.2 Adding a new event
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-appendix-sample-policies-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      17) Appendix: Sample Policies &amp; CLI
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="dhanman-messaging-architecture-rabbitmq-masstransit-detailed">🧩 Dhanman Messaging Architecture — RabbitMQ + MassTransit (Detailed)<a class="headerlink" href="#dhanman-messaging-architecture-rabbitmq-masstransit-detailed" title="Permanent link">&para;</a></h1>
+<p><strong>Version:</strong> 2.0<br />
+<strong>Last Updated:</strong> 2025-10-17 (IST)<br />
+<strong>Maintainer:</strong> Dhanman Engineering Team (B2A Technologies Pvt. Ltd.)</p>
+<hr />
+<h2 id="0-at-a-glance">0) At-a-glance<a class="headerlink" href="#0-at-a-glance" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Broker:</strong> RabbitMQ</li>
+<li><strong>Library:</strong> MassTransit (.NET)</li>
+<li><strong>Message Types:</strong> <strong>Commands</strong> (one-to-one, <code>direct</code>) and <strong>Events</strong> (broadcast, <code>fanout</code>)</li>
+<li><strong>Participants:</strong> Common (financial core), Sales, Purchase, Payroll, Inventory, Community <em>(active)</em>; Payment (no DB) &amp; Document (own DB) <em>(currently passive for messaging)</em></li>
+<li><strong>Error Handling:</strong> MassTransit <code>_skipped</code>, <code>_error</code>, <code>_delay</code> queues; DLX/DLQ policies; retries &amp; scheduled redelivery</li>
+<li><strong>Environments:</strong> prod / qa per <strong>virtual host</strong> (<code>/prod</code>, <code>/qa</code>) with separate credentials and permissions</li>
+</ul>
+<hr />
+<h2 id="1-services-ownership">1) Services &amp; Ownership<a class="headerlink" href="#1-services-ownership" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Service</th>
+<th>Owns</th>
+<th>Messaging Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Common</strong> (Financial Core)</td>
+<td>Organizations, Companies, Users, Chart of Accounts, Ledger/Transactions, Reports</td>
+<td><strong>Publishes events</strong> (Org/Company/User created/updated/deleted), <strong>Consumes commands</strong> (CreateTransaction, CreateCustomer, CreateVendor, CreateEmployee)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Sales</strong></td>
+<td>Customers, Invoices, Receipts, Credit/Debit Notes</td>
+<td><strong>Publishes commands</strong> to Common (CreateTransaction, CreateCustomer); <strong>Consumes events</strong> from Common and Community</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Purchase</strong></td>
+<td>Vendors, Bills, Payments, Credit/Debit Notes</td>
+<td><strong>Publishes commands</strong> to Common (CreateTransaction, CreateVendor); <strong>Consumes events</strong> from Common</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Payroll</strong></td>
+<td>Employees, Salaries (posting &amp; payment)</td>
+<td><strong>Publishes commands</strong> to Common (CreateTransaction, CreateEmployee, CreateUser); <strong>Consumes events</strong> from Common</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Inventory</strong></td>
+<td>Items/Stock (valuation future)</td>
+<td><strong>Consumes events</strong> from Common (and Purchase vendor if needed)</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Community</strong></td>
+<td>Units, Members</td>
+<td><strong>Publishes commands</strong> to Sales/Common (CreateCustomer, CreateUser); <strong>Consumes events</strong> from Common</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Payment <em>(no DB)</em></td>
+<td>Gateway orchestration</td>
+<td>(future) publish <code>PaymentVerifiedEvent</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Document <em>(own DB)</em></td>
+<td>Documents/Blobs</td>
+<td>(future) publish <code>DocumentUploadedEvent</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-commands-vs-events-recap">2) Commands vs Events (recap)<a class="headerlink" href="#2-commands-vs-events-recap" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th><strong>Command</strong></th>
+<th><strong>Event</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Meaning</td>
+<td>“Do X” (imperative)</td>
+<td>“X happened” (fact)</td>
+</tr>
+<tr>
+<td>Direction</td>
+<td>One-to-one</td>
+<td>One-to-many</td>
+</tr>
+<tr>
+<td>Exchange</td>
+<td><code>direct</code></td>
+<td><code>fanout</code></td>
+</tr>
+<tr>
+<td>Coupling</td>
+<td>Higher (explicit target)</td>
+<td>Lower (broadcast)</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><code>CreateTransactionCommand</code> → Common</td>
+<td><code>OrganizationCreatedEvent</code> → all services</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-rabbitmq-primer-with-dhanman-conventions">3) RabbitMQ Primer (with Dhanman conventions)<a class="headerlink" href="#3-rabbitmq-primer-with-dhanman-conventions" title="Permanent link">&para;</a></h2>
+<h3 id="31-virtual-hosts-vhosts">3.1 Virtual Hosts (vhosts)<a class="headerlink" href="#31-virtual-hosts-vhosts" title="Permanent link">&para;</a></h3>
+<p>A <strong>virtual host</strong> is a namespaced RabbitMQ instance: its own users/permissions, exchanges, queues, and bindings.<br />
+<strong>Why:</strong> strict isolation between <strong>environments</strong> and/or <strong>tenants</strong>.</p>
+<ul>
+<li><strong>Recommended:</strong></li>
+<li><code>/prod</code> for production</li>
+<li><code>/qa</code> for QA</li>
+<li>Create per-vhost users with minimum permissions.</li>
+<li>MassTransit/clients connect to the right vhost via connection string (e.g., <code>amqp://user:pass@host:5672/qa</code>).</li>
+</ul>
+<h3 id="32-exchanges-queues-bindings-routing-keys">3.2 Exchanges, Queues, Bindings, Routing Keys<a class="headerlink" href="#32-exchanges-queues-bindings-routing-keys" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Exchange types used:</strong></li>
+<li><strong><code>direct</code></strong> for <strong>Commands</strong> (point-to-point).</li>
+<li><strong><code>fanout</code></strong> for <strong>Events</strong> (broadcast).</li>
+<li><em>(Optionally <code>topic</code> later for routing-key-based patterns)</em></li>
+<li><strong>Queues</strong> are where consumers read messages.</li>
+<li><strong>Bindings</strong> connect exchanges to queues (possibly with routing keys).</li>
+</ul>
+<h3 id="33-durability-persistence">3.3 Durability &amp; Persistence<a class="headerlink" href="#33-durability-persistence" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Set exchanges/queues to <strong>durable</strong>; publish messages with <strong>delivery mode = persistent</strong> (MassTransit does this by default in production profiles).</li>
+</ul>
+<h3 id="34-acknowledgements-prefetch">3.4 Acknowledgements &amp; Prefetch<a class="headerlink" href="#34-acknowledgements-prefetch" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Consumers <strong>ack</strong> on success; <strong>nack/reject</strong> on failure → triggers retry or DLQ.</li>
+<li><strong>Prefetch</strong> (QoS) controls parallelism; tune per consumer (MassTransit: <code>PrefetchCount</code>).</li>
+</ul>
+<h3 id="35-dead-lettering-dlxdlq">3.5 Dead-Lettering (DLX/DLQ)<a class="headerlink" href="#35-dead-lettering-dlxdlq" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Configure a <strong>Dead Letter Exchange (DLX)</strong> at queue level.</li>
+<li>On reject/expired/limit-exceeded, messages are routed to <strong>DLQ</strong> (dead-letter queue).</li>
+<li>MassTransit also creates <code>_error</code> and <code>_skipped</code> queues per endpoint.</li>
+</ul>
+<h3 id="36-policies-ha">3.6 Policies &amp; HA<a class="headerlink" href="#36-policies-ha" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use policies for DLX/TTL on a namespace of queues.</li>
+<li>Consider quorum/mirrored queues for HA (depends on cluster topology and throughput).</li>
+</ul>
+<hr />
+<h2 id="4-naming-conventions-clear-consistent">4) Naming Conventions (clear &amp; consistent)<a class="headerlink" href="#4-naming-conventions-clear-consistent" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Keep names lowercase, hyphen-separated, environment-scoped by vhost. Examples below assume vhost <code>/qa</code> or <code>/prod</code>.</p>
+</blockquote>
+<h3 id="41-exchanges">4.1 Exchanges<a class="headerlink" href="#41-exchanges" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Events:</strong> <code>{service}.events</code> (type: <code>fanout</code>)</li>
+<li>e.g., <code>common.events</code></li>
+<li><strong>Commands:</strong> <code>{service}.commands</code> (type: <code>direct</code>)</li>
+<li>e.g., <code>common.commands</code> (consumed by Common)</li>
+</ul>
+<h3 id="42-queues">4.2 Queues<a class="headerlink" href="#42-queues" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Per consumer endpoint:</strong> <code>{service}.{endpoint}</code></li>
+<li>e.g., <code>common.create-transaction</code>, <code>common.create-customer</code>, <code>sales.org-sync</code></li>
+</ul>
+<h3 id="43-routing-keys-for-directtopic">4.3 Routing Keys (for <code>direct</code>/<code>topic</code>)<a class="headerlink" href="#43-routing-keys-for-directtopic" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Commands: <code>{action}</code> or <code>{aggregate}.{action}</code></li>
+<li>e.g., <code>transaction.create</code>, <code>customer.create</code>, <code>vendor.create</code></li>
+<li>Events (<code>fanout</code>) ignore routing keys; if switching to <code>topic</code>, prefer: <code>{aggregate}.{event}</code></li>
+<li>e.g., <code>organization.created</code>, <code>company.updated</code>, <code>user.deleted</code></li>
+</ul>
+<blockquote>
+<p><strong>MassTransit</strong> will create exchanges/queues automatically based on endpoint configuration when <code>ConfigureEndpoints()</code> is used.</p>
+</blockquote>
+<hr />
+<h2 id="5-service-wise-contracts-with-suggested-names">5) Service-wise Contracts (with suggested names)<a class="headerlink" href="#5-service-wise-contracts-with-suggested-names" title="Permanent link">&para;</a></h2>
+<h3 id="51-common-events-fanout-on-commonevents">5.1 Common → Events (fanout on <code>common.events</code>)<a class="headerlink" href="#51-common-events-fanout-on-commonevents" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Example Payload (envelope)</th>
+<th>Consumers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OrganizationCreatedEvent</code></td>
+<td><code>{ "id": "...", "name": "...", ... }</code></td>
+<td>Sales, Purchase, Payroll, Inventory, Community</td>
+</tr>
+<tr>
+<td><code>CompanyCreatedEvent</code></td>
+<td><code>{ "id": "...", "organizationId": "...", ... }</code></td>
+<td>Same</td>
+</tr>
+<tr>
+<td><code>UserCreatedEvent</code></td>
+<td><code>{ "id": "...", "email": "...", ... }</code></td>
+<td>Same</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Queues (per consumer)</strong></p>
+<ul>
+<li><code>sales.org-sync</code>, <code>purchase.org-sync</code>, <code>payroll.org-sync</code>, <code>inventory.org-sync</code>, <code>community.org-sync</code><br />
+<em>(bound to <code>common.events</code>)</em></li>
+</ul>
+<h3 id="52-commands-common-direct-on-commoncommands">5.2 Commands → Common (direct on <code>common.commands</code>)<a class="headerlink" href="#52-commands-common-direct-on-commoncommands" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>From</th>
+<th>Command</th>
+<th>Routing Key</th>
+<th>Queue (endpoint)</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sales</td>
+<td><code>CreateTransactionCommand</code></td>
+<td><code>transaction.create</code></td>
+<td><code>common.create-transaction</code></td>
+<td>Invoice/Receipt/Reversal/Credit/Debit</td>
+</tr>
+<tr>
+<td>Purchase</td>
+<td><code>CreateTransactionCommand</code></td>
+<td><code>transaction.create</code></td>
+<td><code>common.create-transaction</code></td>
+<td>Bill/Payment/Reversal/Credit/Debit</td>
+</tr>
+<tr>
+<td>Payroll</td>
+<td><code>CreateTransactionCommand</code></td>
+<td><code>transaction.create</code></td>
+<td><code>common.create-transaction</code></td>
+<td>Salary posting/payment</td>
+</tr>
+<tr>
+<td>Sales</td>
+<td><code>CreateCustomerCommand</code></td>
+<td><code>customer.create</code></td>
+<td><code>common.create-customer</code></td>
+<td>Mirror owner entity</td>
+</tr>
+<tr>
+<td>Purchase</td>
+<td><code>CreateVendorCommand</code></td>
+<td><code>vendor.create</code></td>
+<td><code>common.create-vendor</code></td>
+<td>Mirror owner entity</td>
+</tr>
+<tr>
+<td>Payroll</td>
+<td><code>CreateEmployeeCommand</code></td>
+<td><code>employee.create</code></td>
+<td><code>common.create-employee</code></td>
+<td>Mirror owner entity</td>
+</tr>
+<tr>
+<td>Payroll</td>
+<td><code>CreateUserCommand</code></td>
+<td><code>user.create</code></td>
+<td><code>common.create-user</code></td>
+<td>Employee → User mapping</td>
+</tr>
+<tr>
+<td>Community</td>
+<td><code>CreateUserCommand</code></td>
+<td><code>user.create</code></td>
+<td><code>common.create-user</code></td>
+<td>Member → User mapping</td>
+</tr>
+</tbody>
+</table>
+<h3 id="53-community-sales-direct-on-salescommands">5.3 Community → Sales (direct on <code>sales.commands</code>)<a class="headerlink" href="#53-community-sales-direct-on-salescommands" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Routing Key</th>
+<th>Queue</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CreateCustomerCommand</code></td>
+<td><code>customer.create</code></td>
+<td><code>sales.create-customer</code></td>
+<td>Unit becomes a Customer in Sales</td>
+</tr>
+</tbody>
+</table>
+<h3 id="54-events-consumed-by-salespurchasepayrollinventorycommunity">5.4 Events Consumed by Sales/Purchase/Payroll/Inventory/Community<a class="headerlink" href="#54-events-consumed-by-salespurchasepayrollinventorycommunity" title="Permanent link">&para;</a></h3>
+<p>All consume from <code>common.events</code> (fanout) to maintain local master copies.</p>
+<hr />
+<h2 id="6-masstransit-setup-c">6) MassTransit Setup (C#)<a class="headerlink" href="#6-masstransit-setup-c" title="Permanent link">&para;</a></h2>
+<h3 id="61-bus-configuration-generic">6.1 Bus Configuration (generic)<a class="headerlink" href="#61-bus-configuration-generic" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">MassTransit</span><span class="p">;</span>
+
+<span class="n">builder</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="n">AddMassTransit</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">x</span><span class="p">.</span><span class="n">AddConsumers</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">Program</span><span class="p">).</span><span class="n">Assembly</span><span class="p">);</span><span class="w"> </span><span class="c1">// or specific consumers</span>
+
+<span class="w">    </span><span class="n">x</span><span class="p">.</span><span class="n">UsingRabbitMq</span><span class="p">((</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">cfg</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cfg</span><span class="p">.</span><span class="n">Host</span><span class="p">(</span><span class="s">&quot;rabbitmq-host&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">h</span><span class="p">.</span><span class="n">Username</span><span class="p">(</span><span class="s">&quot;user&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">h</span><span class="p">.</span><span class="n">Password</span><span class="p">(</span><span class="s">&quot;pass&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">h</span><span class="p">.</span><span class="n">VirtualHost</span><span class="p">(</span><span class="s">&quot;/qa&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// or &quot;/prod&quot;</span>
+<span class="w">        </span><span class="p">});</span>
+
+<span class="w">        </span><span class="c1">// Global topology</span>
+<span class="w">        </span><span class="n">cfg</span><span class="p">.</span><span class="n">PrefetchCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="c1">// tune</span>
+<span class="w">        </span><span class="n">cfg</span><span class="p">.</span><span class="n">ConcurrentMessageLimit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="c1">// optional</span>
+
+<span class="w">        </span><span class="c1">// Retry policy (immediate + redelivery)</span>
+<span class="w">        </span><span class="n">cfg</span><span class="p">.</span><span class="n">UseMessageRetry</span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">r</span><span class="p">.</span><span class="n">Immediate</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="w">            </span><span class="n">r</span><span class="p">.</span><span class="n">Ignore</span><span class="o">&lt;</span><span class="n">ArgumentException</span><span class="o">&gt;</span><span class="p">();</span><span class="w"> </span><span class="c1">// example</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="n">cfg</span><span class="p">.</span><span class="n">UseDelayedRedelivery</span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">r</span><span class="p">.</span><span class="n">Intervals</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="w"> </span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromMinutes</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+<span class="w">        </span><span class="p">});</span>
+
+<span class="w">        </span><span class="c1">// Error/skip handling</span>
+<span class="w">        </span><span class="n">cfg</span><span class="p">.</span><span class="n">UseKillSwitch</span><span class="p">(</span><span class="n">options</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">options</span><span class="p">.</span><span class="n">SetActivationThreshold</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">            </span><span class="n">options</span><span class="p">.</span><span class="n">SetTripThreshold</span><span class="p">(</span><span class="mf">0.15</span><span class="p">);</span>
+<span class="w">            </span><span class="n">options</span><span class="p">.</span><span class="n">SetRestartTimeout</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span>
+<span class="w">        </span><span class="p">});</span>
+
+<span class="w">        </span><span class="c1">// Endpoint auto-bindings per consumer</span>
+<span class="w">        </span><span class="n">cfg</span><span class="p">.</span><span class="n">ConfigureEndpoints</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="62-define-contracts">6.2 Define Contracts<a class="headerlink" href="#62-define-contracts" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">CreateTransactionCommand</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Guid</span><span class="w"> </span><span class="n">CorrelationId</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">Guid</span><span class="w"> </span><span class="n">OrganizationId</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">Guid</span><span class="w"> </span><span class="n">CompanyId</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="n">SourceService</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">DateTime</span><span class="w"> </span><span class="n">Timestamp</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// domain-specific fields...</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="63-producer-sales-common">6.3 Producer (Sales → Common)<a class="headerlink" href="#63-producer-sales-common" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SalesTransactionPublisher</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IPublishEndpoint</span><span class="w"> </span><span class="n">_publish</span><span class="p">;</span><span class="w">      </span><span class="c1">// for events</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ISendEndpointProvider</span><span class="w"> </span><span class="n">_send</span><span class="p">;</span><span class="w">    </span><span class="c1">// for commands (to a specific queue)</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">SalesTransactionPublisher</span><span class="p">(</span><span class="n">IPublishEndpoint</span><span class="w"> </span><span class="n">publish</span><span class="p">,</span><span class="w"> </span><span class="n">ISendEndpointProvider</span><span class="w"> </span><span class="n">send</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_publish</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">publish</span><span class="p">;</span>
+<span class="w">        </span><span class="n">_send</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">send</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">SendCreateTransactionAsync</span><span class="p">(</span><span class="n">CreateTransactionCommand</span><span class="w"> </span><span class="n">cmd</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Resolve the command queue endpoint (MassTransit builds the name as you define endpoints)</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_send</span><span class="p">.</span><span class="n">GetSendEndpoint</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Uri</span><span class="p">(</span><span class="s">&quot;queue:common.create-transaction&quot;</span><span class="p">));</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">endpoint</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="n">cmd</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="64-consumer-common-side">6.4 Consumer (Common side)<a class="headerlink" href="#64-consumer-common-side" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">CreateTransactionConsumer</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IConsumer</span><span class="o">&lt;</span><span class="n">CreateTransactionCommand</span><span class="o">&gt;</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">Consume</span><span class="p">(</span><span class="n">ConsumeContext</span><span class="o">&lt;</span><span class="n">CreateTransactionCommand</span><span class="o">&gt;</span><span class="w"> </span><span class="n">context</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="n">Message</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// Process and write ledger/journal entries...</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">Task</span><span class="p">.</span><span class="n">CompletedTask</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Endpoint mapping</span>
+<span class="n">builder</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="n">AddMassTransit</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">x</span><span class="p">.</span><span class="n">AddConsumer</span><span class="o">&lt;</span><span class="n">CreateTransactionConsumer</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">x</span><span class="p">.</span><span class="n">UsingRabbitMq</span><span class="p">((</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">cfg</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cfg</span><span class="p">.</span><span class="n">Host</span><span class="p">(</span><span class="s">&quot;rabbitmq-host&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* creds + vhost */</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="n">cfg</span><span class="p">.</span><span class="n">ReceiveEndpoint</span><span class="p">(</span><span class="s">&quot;common.create-transaction&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="n">ConfigureConsumer</span><span class="o">&lt;</span><span class="n">CreateTransactionConsumer</span><span class="o">&gt;</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+<span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="n">PrefetchCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="p">;</span>
+<span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="n">ConcurrentMessageLimit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="65-events-fanout">6.5 Events (fanout)<a class="headerlink" href="#65-events-fanout" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">OrganizationCreatedEvent</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Guid</span><span class="w"> </span><span class="n">Id</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">DateTime</span><span class="w"> </span><span class="n">Timestamp</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">CommonEventPublisher</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IPublishEndpoint</span><span class="w"> </span><span class="n">_publish</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">CommonEventPublisher</span><span class="p">(</span><span class="n">IPublishEndpoint</span><span class="w"> </span><span class="n">publish</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">_publish</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">publish</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">PublishOrganizationAsync</span><span class="p">(</span><span class="n">OrganizationCreatedEvent</span><span class="w"> </span><span class="n">evt</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">_publish</span><span class="p">.</span><span class="n">Publish</span><span class="p">(</span><span class="n">evt</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>MassTransit uses <strong>publish/subscribe</strong> for events. Each subscriber gets its own queue bound to the exchange.</p>
+</blockquote>
+<h3 id="66-outbox-idempotency-recommended">6.6 Outbox &amp; Idempotency (recommended)<a class="headerlink" href="#66-outbox-idempotency-recommended" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// In Startup:</span>
+<span class="n">cfg</span><span class="p">.</span><span class="n">UseInMemoryOutbox</span><span class="p">();</span><span class="w"> </span><span class="c1">// Or EFCore outbox to ensure &quot;once&quot; semantics</span>
+
+<span class="c1">// In consumers, use CorrelationId + natural keys to de-duplicate.</span>
+</code></pre></div>
+<hr />
+<h2 id="7-error-queues-retries-reprocessing">7) Error Queues, Retries &amp; Reprocessing<a class="headerlink" href="#7-error-queues-retries-reprocessing" title="Permanent link">&para;</a></h2>
+<h3 id="71-how-errors-flow">7.1 How errors flow<a class="headerlink" href="#71-how-errors-flow" title="Permanent link">&para;</a></h3>
+<ul>
+<li>If a consumer throws, <strong>MassTransit</strong> applies retry policy (immediate &amp; delayed if configured).</li>
+<li>After retries are exhausted, the message goes to <strong><code>{endpoint}_error</code></strong> queue.</li>
+<li>Messages explicitly skipped (e.g., validation failure) go to <strong><code>{endpoint}_skipped</code></strong>.</li>
+<li>If RabbitMQ DLX policy exists, TTL/reject routes to <strong>DLQ</strong> (often same as <code>_error</code>).</li>
+</ul>
+<h3 id="72-viewing-messages-rabbitmq-management-ui">7.2 Viewing messages (RabbitMQ Management UI)<a class="headerlink" href="#72-viewing-messages-rabbitmq-management-ui" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Navigate to the correct <strong>vhost</strong> (<code>/qa</code> or <code>/prod</code>).</li>
+<li><strong>Queues</strong> → filter for <code>*_error</code> or <code>*_skipped</code>.</li>
+<li>Click a queue → <strong>Get messages</strong> → choose count → <strong>Get Message(s)</strong>.</li>
+<li>Inspect headers/body to diagnose (CorrelationId, exceptions, stack traces).</li>
+</ol>
+<h3 id="73-reprocessing-a-failed-message">7.3 Reprocessing a failed message<a class="headerlink" href="#73-reprocessing-a-failed-message" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Option A: Requeue from UI</strong></li>
+<li>In the <code>_error</code> queue, <strong>Get messages</strong> → <strong>Requeue</strong> to the original queue name (<code>common.create-transaction</code>).</li>
+<li><strong>Option B: Move via script</strong></li>
+<li>Write a small tool/consumer that reads from <code>_error</code> and republishes to the main endpoint.</li>
+<li><strong>Option C: MassTransit Scheduler</strong></li>
+<li>Use scheduled redelivery to retry after a cool-down (Quartz or RabbitMQ delayed exchange).</li>
+</ul>
+<blockquote>
+<p><strong>Important:</strong> fix the root cause (code/data) before bulk requeue to avoid loops. Consider placing a <strong>poison message parking lot</strong> queue.</p>
+</blockquote>
+<h3 id="74-operational-alerts">7.4 Operational alerts<a class="headerlink" href="#74-operational-alerts" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Alert on growth in <code>_error</code>/DLQ and on consumer crashes.</li>
+<li>Grafana dashboards for queue depth, publish/consume rates, and connection health.</li>
+</ul>
+<hr />
+<h2 id="8-how-to-set-up-dlqdlx-example-policy">8) How to set up DLQ/DLX (example policy)<a class="headerlink" href="#8-how-to-set-up-dlqdlx-example-policy" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Example: set DLX for all &#39;common.*&#39; queues in vhost /qa</span>
+rabbitmqctl<span class="w"> </span>set_policy<span class="w"> </span>-p<span class="w"> </span>/qa<span class="w"> </span>common-dlx<span class="w"> </span><span class="s2">&quot;^common\.&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="s1">&#39;{&quot;dead-letter-exchange&quot;:&quot;common.dlx&quot;,&quot;message-ttl&quot;:604800000}&#39;</span><span class="w"> </span>--apply-to<span class="w"> </span>queues
+
+<span class="c1"># Create a DLX exchange and bind a DLQ</span>
+<span class="c1"># (MassTransit can also create these when endpoints are defined)</span>
+</code></pre></div>
+<blockquote>
+<p>Use <strong>regex</strong> in policy to target a family of queues (<code>^common\.</code>).<br />
+Set <strong>message-ttl</strong> (milliseconds) if you want deferred expiration behavior.</p>
+</blockquote>
+<hr />
+<h2 id="9-security-access">9) Security &amp; Access<a class="headerlink" href="#9-security-access" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Per-vhost users</strong> (e.g., <code>dhanman-qa</code>, <code>dhanman-prod</code>), least privilege.</li>
+<li><strong>TLS</strong> if broker is exposed beyond private network.</li>
+<li>Credentials in <strong>Vault</strong>; apps fetch via AppRole.</li>
+<li>Disable guest access; restrict management UI to admin IPs.</li>
+<li>Separate <strong>publisher vs consumer</strong> permissions if needed.</li>
+</ul>
+<hr />
+<h2 id="10-monitoring-slos">10) Monitoring &amp; SLOs<a class="headerlink" href="#10-monitoring-slos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Key metrics:</strong> queue depth, consumer count, publish/consume rate, unacked messages, connection churn, error queue size.</li>
+<li><strong>Alarms:</strong> sustained backlog, dead consumer, error queue growth, DLQ spikes.</li>
+<li><strong>Tracing:</strong> include <code>CorrelationId</code>, <code>CausationId</code>, <code>SourceService</code> in envelope; feed to logs/APM.</li>
+</ul>
+<hr />
+<h2 id="11-message-envelope-standard-proposal">11) Message Envelope (standard proposal)<a class="headerlink" href="#11-message-envelope-standard-proposal" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;MessageId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9f7b9f3c-7dad-4c0b-8d62-6a8c8b7f5f54&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;CorrelationId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a2b3c4d5-e6f7-4890-9abc-0123456789ab&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;CausationId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optional-previous-id&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;OrganizationId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org-uuid&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;CompanyId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;company-uuid&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;SourceService&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sales&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;MessageType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CreateTransactionCommand&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;OccurredOnUtc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-10-17T10:35:00Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Payload&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="cm">/* domain-specific */</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="12-end-to-end-flow-tables">12) End-to-end Flow Tables<a class="headerlink" href="#12-end-to-end-flow-tables" title="Permanent link">&para;</a></h2>
+<h3 id="121-ledger-flows">12.1 Ledger flows<a class="headerlink" href="#121-ledger-flows" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Trigger</th>
+<th>Command</th>
+<th>Exchange</th>
+<th>Routing Key</th>
+<th>Target Queue</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sales</td>
+<td>Invoice created</td>
+<td>CreateTransactionCommand</td>
+<td><code>common.commands</code></td>
+<td><code>transaction.create</code></td>
+<td><code>common.create-transaction</code></td>
+<td>Ledger entry</td>
+</tr>
+<tr>
+<td>Sales</td>
+<td>Receipt posted</td>
+<td>CreateTransactionCommand</td>
+<td><code>common.commands</code></td>
+<td><code>transaction.create</code></td>
+<td><code>common.create-transaction</code></td>
+<td>Ledger entry</td>
+</tr>
+<tr>
+<td>Sales</td>
+<td>Reversal (paid invoice)</td>
+<td>CreateTransactionCommand ×2</td>
+<td><code>common.commands</code></td>
+<td><code>transaction.create</code></td>
+<td><code>common.create-transaction</code></td>
+<td>Reverse money + invoice</td>
+</tr>
+<tr>
+<td>Purchase</td>
+<td>Bill created/payment/reversal</td>
+<td>CreateTransactionCommand</td>
+<td><code>common.commands</code></td>
+<td><code>transaction.create</code></td>
+<td><code>common.create-transaction</code></td>
+<td>Ledger entry</td>
+</tr>
+<tr>
+<td>Payroll</td>
+<td>Salary posted/paid</td>
+<td>CreateTransactionCommand</td>
+<td><code>common.commands</code></td>
+<td><code>transaction.create</code></td>
+<td><code>common.create-transaction</code></td>
+<td>Ledger entry</td>
+</tr>
+</tbody>
+</table>
+<h3 id="122-master-data-replication">12.2 Master data replication<a class="headerlink" href="#122-master-data-replication" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Publisher</th>
+<th>Event</th>
+<th>Exchange</th>
+<th>Consumers (Queues)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Common</td>
+<td>OrganizationCreatedEvent</td>
+<td><code>common.events</code></td>
+<td><code>sales.org-sync</code>, <code>purchase.org-sync</code>, <code>payroll.org-sync</code>, <code>inventory.org-sync</code>, <code>community.org-sync</code></td>
+</tr>
+<tr>
+<td>Common</td>
+<td>CompanyCreatedEvent</td>
+<td><code>common.events</code></td>
+<td>Same as above</td>
+</tr>
+<tr>
+<td>Common</td>
+<td>UserCreatedEvent</td>
+<td><code>common.events</code></td>
+<td>Same as above</td>
+</tr>
+</tbody>
+</table>
+<h3 id="123-owner-entity-mirroring">12.3 Owner entity mirroring<a class="headerlink" href="#123-owner-entity-mirroring" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Owner</th>
+<th>Command</th>
+<th>Target</th>
+<th>Exchange</th>
+<th>Routing Key</th>
+<th>Queue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sales (Customer)</td>
+<td>CreateCustomerCommand</td>
+<td>Common</td>
+<td><code>common.commands</code></td>
+<td><code>customer.create</code></td>
+<td><code>common.create-customer</code></td>
+</tr>
+<tr>
+<td>Purchase (Vendor)</td>
+<td>CreateVendorCommand</td>
+<td>Common</td>
+<td><code>common.commands</code></td>
+<td><code>vendor.create</code></td>
+<td><code>common.create-vendor</code></td>
+</tr>
+<tr>
+<td>Payroll (Employee)</td>
+<td>CreateEmployeeCommand</td>
+<td>Common</td>
+<td><code>common.commands</code></td>
+<td><code>employee.create</code></td>
+<td><code>common.create-employee</code></td>
+</tr>
+<tr>
+<td>Community (Member→User)</td>
+<td>CreateUserCommand</td>
+<td>Common</td>
+<td><code>common.commands</code></td>
+<td><code>user.create</code></td>
+<td><code>common.create-user</code></td>
+</tr>
+<tr>
+<td>Community (Unit→Customer)</td>
+<td>CreateCustomerCommand</td>
+<td>Sales</td>
+<td><code>sales.commands</code></td>
+<td><code>customer.create</code></td>
+<td><code>sales.create-customer</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="13-diagrams">13) Diagrams<a class="headerlink" href="#13-diagrams" title="Permanent link">&para;</a></h2>
+<h3 id="131-high-level-system">13.1 High-level system<a class="headerlink" href="#131-high-level-system" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>flowchart LR
+    subgraph Common[&quot;COMMON (Financial Core)&quot;]
+        E1[&quot;Publishes: Org/Company/User Events (fanout: common.events)&quot;]
+        C1[&quot;Consumes: Commands (direct: common.commands)\nQueues: create-transaction, create-customer, create-vendor, create-employee, create-user&quot;]
+    end
+
+    subgraph Sales[&quot;SALES&quot;]
+        S1[&quot;Publishes: CreateTransaction, CreateCustomer (to Common)&quot;]
+        S2[&quot;Consumes: Org/Company/User Events, UnitCreatedEvent&quot;]
+    end
+
+    subgraph Purchase[&quot;PURCHASE&quot;]
+        P1[&quot;Publishes: CreateTransaction, CreateVendor (to Common)&quot;]
+        P2[&quot;Consumes: Org/Company/User Events&quot;]
+    end
+
+    subgraph Payroll[&quot;PAYROLL&quot;]
+        Y1[&quot;Publishes: CreateTransaction, CreateEmployee, CreateUser (to Common)&quot;]
+        Y2[&quot;Consumes: Org/Company/User Events&quot;]
+    end
+
+    subgraph Community[&quot;COMMUNITY&quot;]
+        M1[&quot;Publishes: CreateCustomer (to Sales), CreateUser (to Common)&quot;]
+        M2[&quot;Consumes: Org/Company/User Events&quot;]
+    end
+
+    E1 --&gt; S2 &amp; P2 &amp; Y2 &amp; M2
+    S1 --&gt; C1
+    P1 --&gt; C1
+    Y1 --&gt; C1
+    M1 --&gt; S1 &amp; C1
+</code></pre></div>
+<h3 id="132-command-routing-direct">13.2 Command routing (direct)<a class="headerlink" href="#132-command-routing-direct" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>sequenceDiagram
+    participant Sales
+    participant Exchange as common.commands (direct)
+    participant Queue as common.create-transaction
+    participant Common
+
+    Sales-&gt;&gt;Exchange: Send(CreateTransactionCommand) routingKey=transaction.create
+    Exchange-&gt;&gt;Queue: bind(routingKey=transaction.create)
+    Queue-&gt;&gt;Common: deliver message
+    Common--&gt;&gt;Sales: ack (optional reply pattern out-of-band)
+</code></pre></div>
+<h3 id="133-event-fanout-broadcast">13.3 Event fanout (broadcast)<a class="headerlink" href="#133-event-fanout-broadcast" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>flowchart TB
+    E[&quot;Exchange: common.events (fanout)&quot;]
+    Qs[&quot;Queues: sales.org-sync | purchase.org-sync | payroll.org-sync | inventory.org-sync | community.org-sync&quot;]
+    Pub[&quot;Publisher: Common&quot;]
+    Sub[&quot;Subscribers: Sales, Purchase, Payroll, Inventory, Community&quot;]
+
+    Pub --&gt; E
+    E --&gt; Qs
+    Qs --&gt; Sub
+</code></pre></div>
+<hr />
+<h2 id="14-operational-runbook-daily-quick-check">14) Operational Runbook (daily quick-check)<a class="headerlink" href="#14-operational-runbook-daily-quick-check" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Brokers healthy:</strong> all nodes up, disk free &gt; 20%, file descriptors OK.</li>
+<li><strong>Connections &amp; channels:</strong> stable counts; no runaway reconnect loops.</li>
+<li><strong>Queues depth:</strong> command queues empty/near-empty; event sync queues not growing.</li>
+<li><strong>Unacked:</strong> &lt; threshold (e.g., 100 per queue).</li>
+<li><strong>Error queues:</strong> no sustained growth; investigate spikes.</li>
+<li><strong>Consumers:</strong> expected count matches deployments; restart failed pods/services.</li>
+<li><strong>Alerts:</strong> clear or acknowledged; Jira ticket for recurring patterns.</li>
+</ol>
+<hr />
+<h2 id="15-glossary">15) Glossary<a class="headerlink" href="#15-glossary" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Virtual Host (vhost):</strong> Namespaced RabbitMQ instance for isolation (objects &amp; permissions).</li>
+<li><strong>Exchange:</strong> Routes messages to queues. Types: <code>direct</code>, <code>fanout</code>, <code>topic</code>, <code>headers</code>.</li>
+<li><strong>Queue:</strong> Durable buffer from which consumers read messages.</li>
+<li><strong>Binding:</strong> Rule tying exchange → queue (plus optional routing key).</li>
+<li><strong>DLX/DLQ:</strong> Dead Letter Exchange/Queue for failed/expired messages.</li>
+<li><strong>Prefetch/QoS:</strong> Concurrent delivery control per consumer.</li>
+<li><strong>MassTransit:</strong> .NET messaging framework providing bus, consumers, retries, outbox, sagas.</li>
+<li><strong>Outbox Pattern:</strong> Ensures once-only publish relative to DB transactions.</li>
+</ul>
+<hr />
+<h2 id="16-checklists">16) Checklists<a class="headerlink" href="#16-checklists" title="Permanent link">&para;</a></h2>
+<h3 id="161-adding-a-new-command">16.1 Adding a new command<a class="headerlink" href="#161-adding-a-new-command" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Define contract interface (<code>ICommandName</code>).</li>
+<li>[ ] Choose exchange (<code>{target}.commands</code>) &amp; routing key.</li>
+<li>[ ] Add producer (sender) code and unit tests.</li>
+<li>[ ] Add consumer endpoint in target service (<code>{target}.{action}</code> queue).</li>
+<li>[ ] Configure retries, idempotency, and outbox.</li>
+<li>[ ] Update docs &amp; diagrams.</li>
+</ul>
+<h3 id="162-adding-a-new-event">16.2 Adding a new event<a class="headerlink" href="#162-adding-a-new-event" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Define event interface (<code>I{Aggregate}{PastTense}Event</code>).</li>
+<li>[ ] Publish via <code>IPublishEndpoint</code>.</li>
+<li>[ ] Create subscriber queue per consumer service.</li>
+<li>[ ] Ensure consumer is idempotent (events can be replayed).</li>
+<li>[ ] Update docs &amp; diagrams.</li>
+</ul>
+<hr />
+<h2 id="17-appendix-sample-policies-cli">17) Appendix: Sample Policies &amp; CLI<a class="headerlink" href="#17-appendix-sample-policies-cli" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># List vhosts</span>
+rabbitmqctl<span class="w"> </span>list_vhosts
+
+<span class="c1"># Create vhost</span>
+rabbitmqctl<span class="w"> </span>add_vhost<span class="w"> </span>/qa
+
+<span class="c1"># Add user &amp; set permissions</span>
+rabbitmqctl<span class="w"> </span>add_user<span class="w"> </span>dhanman-qa<span class="w"> </span><span class="s1">&#39;REDACTED_PASSWORD&#39;</span>
+rabbitmqctl<span class="w"> </span>set_permissions<span class="w"> </span>-p<span class="w"> </span>/qa<span class="w"> </span>dhanman-qa<span class="w"> </span><span class="s2">&quot;.*&quot;</span><span class="w"> </span><span class="s2">&quot;.*&quot;</span><span class="w"> </span><span class="s2">&quot;.*&quot;</span><span class="w">  </span><span class="c1"># tune for least-privilege</span>
+
+<span class="c1"># Enable management plugin (if not already)</span>
+rabbitmq-plugins<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>rabbitmq_management
+</code></pre></div>
+<hr />
+<p><strong>End of document.</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.sections", "navigation.prune"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../../js/mermaid-init.js"></script>
+      
+    
+  </body>
+</html>
