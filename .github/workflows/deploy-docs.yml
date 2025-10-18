@@ -4,9 +4,19 @@ on:
   push:
     branches:
       - main
+
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+
+    env:
+      OVH_HOST: ${{ secrets.OVH_HOST }}
+      OVH_USER: ${{ secrets.OVH_USER }}
+      OVH_SSH_KEY_PATH: ${{ secrets.OVH_SSH_KEY_PATH }}
+      PRODUCT_DIR: "site-product/*"
+      SYSTEM_DIR: "site-system/*"
+      PRODUCT_TARGET: "/var/www/dhanman-docs-site"
+      SYSTEM_TARGET: "/var/www/dhanman-tech-docs-site"
 
     steps:
       - name: Checkout Repository
@@ -32,12 +42,12 @@ jobs:
       - name: Deploy Product Documentation to OVH
         uses: appleboy/scp-action@v0.1.4
         with:
-          host: ${{ secrets.OVH_HOST }}
-          username: ${{ secrets.OVH_USER }}
-          password: ${{ secrets.OVH_PASSWORD }}
+          host: ${{ env.OVH_HOST }}
+          username: ${{ env.OVH_USER }}
+          key: ${{ secrets.OVH_SSH_KEY }}
           port: 22
-          source: "site-product/*"
-          target: "/var/www/dhanman-docs-site"
+          source: "${{ env.PRODUCT_DIR }}"
+          target: "${{ env.PRODUCT_TARGET }}"
           strip_components: 1
           timeout: 30s
           command_timeout: 10m
@@ -46,12 +56,12 @@ jobs:
       - name: Deploy System Documentation to OVH
         uses: appleboy/scp-action@v0.1.4
         with:
-          host: ${{ secrets.OVH_HOST }}
-          username: ${{ secrets.OVH_USER }}
-          password: ${{ secrets.OVH_PASSWORD }}
+          host: ${{ env.OVH_HOST }}
+          username: ${{ env.OVH_USER }}
+          key: ${{ secrets.OVH_SSH_KEY }}
           port: 22
-          source: "site-system/*"
-          target: "/var/www/dhanman-tech-docs-site"
+          source: "${{ env.SYSTEM_DIR }}"
+          target: "${{ env.SYSTEM_TARGET }}"
           strip_components: 1
           timeout: 30s
           command_timeout: 10m
