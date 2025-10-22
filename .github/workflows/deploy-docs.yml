@@ -4,65 +4,89 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
 
     env:
-      OVH_HOST: ${{ secrets.OVH_HOST }}
-      OVH_USER: ${{ secrets.OVH_USER }}
-      OVH_SSH_KEY_PATH: ${{ secrets.OVH_SSH_KEY_PATH }}
-      PRODUCT_DIR: "site-product/*"
-      SYSTEM_DIR: "site-system/*"
-      PRODUCT_TARGET: "/var/www/dhanman-docs-site"
-      SYSTEM_TARGET: "/var/www/dhanman-tech-docs-site"
+      DEPLOY_PATH: "/var/www/dhanman-tech-docs-site"
+      TEMP_PATH: "/home/ubuntu/dhanman-tech-docs-site-temp"
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      - name: 🧾 Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
-      - name: Install MkDocs and plugins
-        run: |
-          pip install mkdocs mkdocs-material plantuml-markdown
+      - name: ♻️ Cache Python dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
-      - name: Build MkDocs Product Documentation
+      - name: 📦 Install MkDocs and plugins
         run: |
-          MKDOCS_CONFIG_FILE=mkdocs-product.yml mkdocs build --site-dir site-product
+          pip install mkdocs mkdocs-material mkdocs-awesome-pages-plugin mkdocs-redirects plantuml-markdown
 
-      - name: Build MkDocs System Documentation
-        run: |
-          MKDOCS_CONFIG_FILE=mkdocs-system.yml mkdocs build --site-dir site-system
+      - name: 🏗️ Build MkDocs site
+        run: mkdocs build --clean --site-dir site
 
-      - name: Deploy Product Documentation to OVH
+      - name: 🧹 Prepare temporary directory on OVH
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.OVH_HOST }}
+          username: ${{ secrets.OVH_USER }}
+          key: ${{ secrets.OVH_SSH_KEY }}
+          port: 22
+          envs: TEMP_PATH
+          script: |
+            set -e
+            echo "Preparing temporary upload directory..."
+            rm -rf "$TEMP_PATH"
+            mkdir -p "$TEMP_PATH"
+            echo "✅ Temp directory ready at $TEMP_PATH"
+
+      - name: 🚚 Upload built site to OVH temp directory
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.OVH_HOST }}
           username: ${{ secrets.OVH_USER }}
-          password: ${{ secrets.OVH_PASSWORD }}
+          key: ${{ secrets.OVH_SSH_KEY }}
           port: 22
-          source: "${{ env.PRODUCT_DIR }}"
-          target: "${{ env.PRODUCT_TARGET }}"
+          source: "site/*"
+          target: "/home/ubuntu/dhanman-tech-docs-site-temp"
           strip_components: 1
-          timeout: 30s
-          command_timeout: 10m
-          debug: false
 
-      - name: Deploy System Documentation to OVH
-        uses: appleboy/scp-action@v0.1.4
+      - name: 🚀 Finalize deployment (atomic swap)
+        uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.OVH_HOST }}
           username: ${{ secrets.OVH_USER }}
-          password: ${{ secrets.OVH_PASSWORD }}
+          key: ${{ secrets.OVH_SSH_KEY }}
           port: 22
-          source: "${{ env.SYSTEM_DIR }}"
-          target: "${{ env.SYSTEM_TARGET }}"
-          strip_components: 1
-          timeout: 30s
-          command_timeout: 10m
-          debug: false
+          envs: DEPLOY_PATH,TEMP_PATH
+          script: |
+            set -e
+            echo "🚀 Starting atomic deployment..."
+            sudo mkdir -p "$(dirname $DEPLOY_PATH)"
+
+            # Backup old version if exists
+            if [ -d "$DEPLOY_PATH" ]; then
+              echo "📦 Creating backup..."
+              sudo rm -rf "$DEPLOY_PATH.bak"
+              sudo mv "$DEPLOY_PATH" "$DEPLOY_PATH.bak"
+            fi
+
+            # Move new site into place
+            echo "🪄 Moving new site into place..."
+            sudo mv "$TEMP_PATH" "$DEPLOY_PATH"
+            sudo chown -R www-data:www-data "$DEPLOY_PATH"
+
+            echo "✅ Deployment completed successfully"

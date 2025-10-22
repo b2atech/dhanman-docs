@@ -4,3 +4,70 @@ pre code {
     padding: 0.5em;
     border-radius: 0.3em;
 }
+
+/* Make landing cards neat and responsive */
+.md-typeset .grid.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.md-typeset .grid.cards > * {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  background-color: #fff;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+.md-typeset .grid.cards > *:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.md-typeset h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.md-typeset h2 {
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.3rem;
+}
+/* Layout for cards */
+.md-typeset .grid.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+
+.md-typeset .grid.cards > * {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1.2rem 1rem;
+  background-color: #fff;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease-in-out;
+}
+
+.md-typeset .grid.cards > *:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Icon styling */
+.icon {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  color: #3f51b5;
+}
+
+.md-typeset strong {
+  color: #2e3b4e;
+}
