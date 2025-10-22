@@ -71,3 +71,53 @@ pre code {
 .md-typeset strong {
   color: #2e3b4e;
 }
+
+/* ===== Custom Font & Size Adjustments ===== */
+
+/* Base text */
+.md-typeset {
+  font-size: 0.875rem; /* ~14px */
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Headings */
+.md-typeset h1 {
+  font-size: 1.6rem; /* ~25px */
+  font-weight: 600;
+}
+.md-typeset h2 {
+  font-size: 1.25rem; /* ~20px */
+  font-weight: 600;
+}
+.md-typeset h3 {
+  font-size: 1.1rem; /* ~18px */
+  font-weight: 500;
+}
+.md-typeset h4 {
+  font-size: 1rem; /* ~16px */
+  font-weight: 500;
+}
+
+/* Code blocks */
+.md-typeset code,
+.md-typeset pre code {
+  font-size: 0.8rem; /* ~13px */
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* Sidebar */
+.md-nav {
+  font-size: 0.85rem;
+}
+
+/* Table of Contents */
+.md-nav__title,
+.md-nav__item {
+  font-size: 0.85rem;
+}
+
+/* Reduce padding between sections slightly */
+.md-content {
+  padding: 1rem 2rem;
+}
