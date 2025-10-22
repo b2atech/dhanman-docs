@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DEPLOY_PATH: "/var/www/dhanman-tech-docs-site"
-      TEMP_PATH: "/home/ubuntu/dhanman-tech-docs-site-temp"
+      DEPLOY_PATH: "/var/www/dhanman-docs-site"
+      TEMP_PATH: "/home/ubuntu/dhanman-docs-site-temp"
 
     steps:
       - name: 🧾 Checkout Repository
@@ -61,7 +61,7 @@ jobs:
           key: ${{ secrets.OVH_SSH_KEY }}
           port: 22
           source: "site/*"
-          target: "/home/ubuntu/dhanman-tech-docs-site-temp"
+          target: "/home/ubuntu/dhanman-docs-site-temp"
           strip_components: 1
 
       - name: 🚀 Finalize deployment (atomic swap)
